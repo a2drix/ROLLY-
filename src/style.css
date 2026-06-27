@@ -3966,3 +3966,45 @@ body.admin-mode-active #view-admin.app-view.active {
 .chat-bubble.admin .chat-bubble-time {
   color: rgba(255, 255, 255, 0.6);
 }
+
+
+/* ==========================================================================
+   PHASE 13: MOBILE HEADER LAYOUT RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 576px) {
+  .main-header {
+    height: 64px !important;
+  }
+  .header-container {
+    padding: 0 10px !important;
+  }
+  .logo img {
+    height: 28px !important;
+  }
+  .logo span {
+    font-size: 16px !important;
+    margin-left: 4px !important;
+  }
+  .store-emoji {
+    font-size: 16px !important;
+  }
+  .header-actions {
+    gap: 8px !important;
+  }
+  .user-badge-header {
+    padding: 3px 8px !important;
+    font-size: 11px !important;
+    gap: 4px !important;
+  }
+  .btn-logout {
+    font-size: 10px !important;
+  }
+  .cart-trigger {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .menu-burger-trigger {
+    width: 36px !important;
+    height: 36px !important;
+  }
+}
