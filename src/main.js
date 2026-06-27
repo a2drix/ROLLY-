@@ -1664,6 +1664,18 @@ function loadDatabase() {
     products = parsedProds;
   }
 
+  // Backwards compatibility/migration for featuredCarousel flag
+  let productsFeaturedModified = false;
+  products.forEach(p => {
+    if (p.featuredCarousel === undefined) {
+      p.featuredCarousel = (p.popularIndex >= 80);
+      productsFeaturedModified = true;
+    }
+  });
+  if (productsFeaturedModified) {
+    localStorage.setItem("rolly_products", JSON.stringify(products));
+  }
+
   let parsedOrders = null;
   try {
     if (localOrders) {
@@ -1880,6 +1892,12 @@ function populateStockVariantsEditor() {
 
   // Prefill main stock status
   statusSelect.value = prod.stock || "in-stock";
+
+  // Prefill featured carousel checkbox status
+  const featuredCheckbox = document.getElementById("stock-featured-carousel-new");
+  if (featuredCheckbox) {
+    featuredCheckbox.checked = prod.featuredCarousel === true;
+  }
 
   if (!prod.subProducts || prod.subProducts.length === 0) {
     editorList.innerHTML = `<p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted);">Ce produit n'a pas de variantes.</p>`;
@@ -2513,6 +2531,12 @@ function setupEventListeners() {
             }
           }
         });
+
+        // Save featured carousel status
+        const featuredCheckbox = document.getElementById("stock-featured-carousel-new");
+        if (featuredCheckbox) {
+          prod.featuredCarousel = featuredCheckbox.checked;
+        }
 
         localStorage.setItem("rolly_products", JSON.stringify(products));
         showToast(`Prix et stock mis à jour pour ${prod.name} ! 💾`);
@@ -3940,8 +3964,11 @@ function renderHeroCarousel() {
   const track = document.getElementById("hero-carousel-track");
   if (!track) return;
 
-  // Filter top featured products with high popular index
-  carouselProducts = products.filter(p => p.popularIndex >= 80).slice(0, 5);
+  // Filter top featured products selected by the admin
+  carouselProducts = products.filter(p => p.featuredCarousel === true);
+  if (carouselProducts.length === 0) {
+    carouselProducts = products.filter(p => p.popularIndex >= 80).slice(0, 5);
+  }
   if (carouselProducts.length === 0) {
     carouselProducts = products.slice(0, 5);
   }
