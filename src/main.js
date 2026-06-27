@@ -1,5 +1,5 @@
 /* ==========================================
-   MYOOREDOO STORE - Main Application Logic
+   ROLLY STORE - Main Application Logic
    ========================================== */
 
 // 1. Live Products Database from API (45 products)
@@ -1581,16 +1581,16 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (e) {
     console.error("runStatsAnimation error:", e);
   }
-  showToast("Boutique MYOOREDOO chargée avec succès ! 🇹🇳");
+  showToast("Boutique ROLLY chargée avec succès ! 🇹🇳");
 });
 
 // Load DB from LocalStorage safely with fallback overrides
 function loadDatabase() {
-  const localProds = localStorage.getItem("myooredoo_products");
-  const localOrders = localStorage.getItem("myooredoo_orders");
-  const localCart = localStorage.getItem("myooredoo_cart");
-  const localUsers = localStorage.getItem("myooredoo_users");
-  const sessionUser = sessionStorage.getItem("myooredoo_session_user");
+  const localProds = localStorage.getItem("rolly_products");
+  const localOrders = localStorage.getItem("rolly_orders");
+  const localCart = localStorage.getItem("rolly_cart");
+  const localUsers = localStorage.getItem("rolly_users");
+  const sessionUser = sessionStorage.getItem("rolly_session_user");
 
   try {
     if (localUsers) {
@@ -1601,7 +1601,7 @@ function loadDatabase() {
   }
   if (!users) {
     users = [];
-    localStorage.setItem("myooredoo_users", JSON.stringify(users));
+    localStorage.setItem("rolly_users", JSON.stringify(users));
   }
 
   // Seed default master admin if it doesn't exist
@@ -1612,7 +1612,7 @@ function loadDatabase() {
       password: "admin",
       role: "admin"
     });
-    localStorage.setItem("myooredoo_users", JSON.stringify(users));
+    localStorage.setItem("rolly_users", JSON.stringify(users));
   }
 
   // Elevate or seed user 'adrix' to admin role
@@ -1620,7 +1620,7 @@ function loadDatabase() {
   if (adrixUser) {
     if (adrixUser.role !== "admin") {
       adrixUser.role = "admin";
-      localStorage.setItem("myooredoo_users", JSON.stringify(users));
+      localStorage.setItem("rolly_users", JSON.stringify(users));
     }
   } else {
     users.push({
@@ -1629,14 +1629,14 @@ function loadDatabase() {
       password: "admin", // Default password for initial login
       role: "admin"
     });
-    localStorage.setItem("myooredoo_users", JSON.stringify(users));
+    localStorage.setItem("rolly_users", JSON.stringify(users));
   }
 
   // Update current session user role to admin dynamically if active session is 'adrix'
   if (currentUser && currentUser.username.toLowerCase() === "adrix") {
     if (currentUser.role !== "admin") {
       currentUser.role = "admin";
-      sessionStorage.setItem("myooredoo_session_user", JSON.stringify(currentUser));
+      sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
     }
   }
 
@@ -1659,7 +1659,7 @@ function loadDatabase() {
 
   if (!parsedProds || parsedProds.length !== DEFAULT_PRODUCTS.length) {
     products = [...DEFAULT_PRODUCTS];
-    localStorage.setItem("myooredoo_products", JSON.stringify(products));
+    localStorage.setItem("rolly_products", JSON.stringify(products));
   } else {
     products = parsedProds;
   }
@@ -1675,7 +1675,7 @@ function loadDatabase() {
 
   if (!parsedOrders || parsedOrders.length === 0) {
     orders = [...DEFAULT_ORDERS];
-    localStorage.setItem("myooredoo_orders", JSON.stringify(orders));
+    localStorage.setItem("rolly_orders", JSON.stringify(orders));
   } else {
     orders = parsedOrders;
   }
@@ -1690,7 +1690,7 @@ function loadDatabase() {
   updateCartBadge();
 
   // Load support tickets
-  const localTickets = localStorage.getItem("myooredoo_tickets");
+  const localTickets = localStorage.getItem("rolly_tickets");
   let parsedTickets = null;
   try {
     if (localTickets) {
@@ -1728,7 +1728,7 @@ function loadDatabase() {
         ]
       }
     ];
-    localStorage.setItem("myooredoo_tickets", JSON.stringify(tickets));
+    localStorage.setItem("rolly_tickets", JSON.stringify(tickets));
   } else {
     tickets = parsedTickets;
   }
@@ -1829,7 +1829,7 @@ function renderAdminUsers() {
       const targetUsername = btn.getAttribute("data-username");
       if (confirm(`Supprimer l'administrateur ${targetUsername} ?`)) {
         users = users.filter(u => u.username.toLowerCase() !== targetUsername.toLowerCase());
-        localStorage.setItem("myooredoo_users", JSON.stringify(users));
+        localStorage.setItem("rolly_users", JSON.stringify(users));
         showToast(`Administrateur ${targetUsername} supprimé ! 🗑`);
         setupUI();
       }
@@ -2228,13 +2228,13 @@ function setupEventListeners() {
     const matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase() && u.password === passVal);
     if (matchedUser) {
       currentUser = matchedUser;
-      sessionStorage.setItem("myooredoo_session_user", JSON.stringify(currentUser));
+      sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
       
       // On first login of mock users, tag existing demo orders to this user so they see them
       orders.forEach(o => {
         if (!o.userId) o.userId = currentUser.id;
       });
-      localStorage.setItem("myooredoo_orders", JSON.stringify(orders));
+      localStorage.setItem("rolly_orders", JSON.stringify(orders));
 
       document.getElementById("auth-modal").classList.remove("active");
       document.getElementById("auth-login-form").reset();
@@ -2272,16 +2272,16 @@ function setupEventListeners() {
     };
 
     users.push(newUser);
-    localStorage.setItem("myooredoo_users", JSON.stringify(users));
+    localStorage.setItem("rolly_users", JSON.stringify(users));
 
     currentUser = newUser;
-    sessionStorage.setItem("myooredoo_session_user", JSON.stringify(currentUser));
+    sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
 
     // Tag current mock demo orders to the newly registered user so they can immediately test G2G details
     orders.forEach(o => {
       if (!o.userId) o.userId = currentUser.id;
     });
-    localStorage.setItem("myooredoo_orders", JSON.stringify(orders));
+    localStorage.setItem("rolly_orders", JSON.stringify(orders));
 
     document.getElementById("auth-modal").classList.remove("active");
     document.getElementById("auth-register-form").reset();
@@ -2350,7 +2350,7 @@ function setupEventListeners() {
           });
         }
 
-        localStorage.setItem("myooredoo_orders", JSON.stringify(orders));
+        localStorage.setItem("rolly_orders", JSON.stringify(orders));
         document.getElementById("admin-order-modal").classList.remove("active");
         showToast(`Commande ${orderId} mise à jour ! 💾`);
         setupUI();
@@ -2389,7 +2389,7 @@ function setupEventListeners() {
   if (adminLogoutBtn) {
     adminLogoutBtn.addEventListener("click", () => {
       currentUser = null;
-      localStorage.removeItem("myooredoo_current_user");
+      localStorage.removeItem("rolly_current_user");
       updateAuthUI();
       switchView("home");
       showToast("Déconnexion réussie. 👋");
@@ -2401,8 +2401,8 @@ function setupEventListeners() {
   if (resetDbBtnNew) {
     resetDbBtnNew.addEventListener("click", () => {
       if (confirm("Réinitialiser la base de données ?")) {
-        localStorage.removeItem("myooredoo_products");
-        localStorage.removeItem("myooredoo_orders");
+        localStorage.removeItem("rolly_products");
+        localStorage.removeItem("rolly_orders");
         loadDatabase();
         setupUI();
         showToast("Données réinitialisées. 🔄");
@@ -2435,7 +2435,7 @@ function setupEventListeners() {
       };
 
       products.push(newProd);
-      localStorage.setItem("myooredoo_products", JSON.stringify(products));
+      localStorage.setItem("rolly_products", JSON.stringify(products));
       addProdFormNew.reset();
       document.getElementById("add-product-modal").classList.remove("active");
       
@@ -2465,7 +2465,7 @@ function setupEventListeners() {
       };
 
       users.push(newAdmin);
-      localStorage.setItem("myooredoo_users", JSON.stringify(users));
+      localStorage.setItem("rolly_users", JSON.stringify(users));
       addAdminFormNew.reset();
       showToast(`Administrateur ${usernameVal} créé avec succès ! 🔑`);
       setupUI();
@@ -2505,7 +2505,7 @@ function setupEventListeners() {
           }
         });
 
-        localStorage.setItem("myooredoo_products", JSON.stringify(products));
+        localStorage.setItem("rolly_products", JSON.stringify(products));
         showToast(`Prix et stock mis à jour pour ${prod.name} ! 💾`);
         setupUI();
       }
@@ -2957,7 +2957,7 @@ function openProductDetailsView(productId) {
         </div>
 
         <p class="details-description-text">
-          Profitez du meilleur service de rechargement de la boutique MYOOREDOO. Nous offrons une livraison ultra rapide et automatisée. Toutes nos offres sont conformes aux directives des éditeurs officiels et des opérateurs locaux en Tunisie.
+          Profitez du meilleur service de rechargement de la boutique ROLLY. Nous offrons une livraison ultra rapide et automatisée. Toutes nos offres sont conformes aux directives des éditeurs officiels et des opérateurs locaux en Tunisie.
         </p>
 
         <!-- Variants Grid Section -->
@@ -3127,7 +3127,7 @@ function openProductDetailsView(productId) {
       quantity: qty,
       playerInfo: info
     });
-    localStorage.setItem("myooredoo_cart", JSON.stringify(cart));
+    localStorage.setItem("rolly_cart", JSON.stringify(cart));
     updateCartBadge();
     updateCartUI();
 
@@ -3152,7 +3152,7 @@ function addToCart(parentProduct, name, price, qty, playerInfo) {
     playerInfo: playerInfo
   });
 
-  localStorage.setItem("myooredoo_cart", JSON.stringify(cart));
+  localStorage.setItem("rolly_cart", JSON.stringify(cart));
   updateCartBadge();
   updateCartUI();
   showToast(`Ajouté au panier : ${name} 🛒`);
@@ -3160,7 +3160,7 @@ function addToCart(parentProduct, name, price, qty, playerInfo) {
 
 function removeFromCart(index) {
   cart.splice(index, 1);
-  localStorage.setItem("myooredoo_cart", JSON.stringify(cart));
+  localStorage.setItem("rolly_cart", JSON.stringify(cart));
   updateCartBadge();
   updateCartUI();
   showToast("Article retiré du panier. 🗑️");
@@ -3364,7 +3364,7 @@ function completeOrderSimulation() {
   };
 
   orders.push(newOrder);
-  localStorage.setItem("myooredoo_orders", JSON.stringify(orders));
+  localStorage.setItem("rolly_orders", JSON.stringify(orders));
 
   document.getElementById("success-order-id").innerText = orderId;
   
@@ -3376,7 +3376,7 @@ function completeOrderSimulation() {
   document.getElementById("valid-success").style.display = "block";
 
   cart = [];
-  localStorage.removeItem("myooredoo_cart");
+  localStorage.removeItem("rolly_cart");
   updateCartBadge();
   updateCartUI();
 
@@ -3455,7 +3455,7 @@ function renderAdminOrders() {
       const orderId = btn.getAttribute("data-order-id");
       if (confirm(`Supprimer la commande ${orderId} ?`)) {
         orders = orders.filter(o => o.id !== orderId);
-        localStorage.setItem("myooredoo_orders", JSON.stringify(orders));
+        localStorage.setItem("rolly_orders", JSON.stringify(orders));
         updateAdminStats();
         renderAdminOrders();
         showToast("Commande supprimée.");
@@ -3743,7 +3743,7 @@ function updateAuthUI() {
 
 function logoutClient() {
   currentUser = null;
-  sessionStorage.removeItem("myooredoo_session_user");
+  sessionStorage.removeItem("rolly_session_user");
   showToast("Vous vous êtes déconnecté. À bientôt ! 👋");
   
   // Reset back to home page if they were on client dashboard tracking
