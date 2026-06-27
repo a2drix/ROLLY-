@@ -1736,6 +1736,7 @@ function loadDatabase() {
 
 // Setup Page Elements
 function setupUI() {
+  renderHeroCarousel();
   renderCategoryMarquee();
   renderSidebarTrending();
   renderTrendingProducts();
@@ -1937,11 +1938,19 @@ function setupEventListeners() {
     switchView("home");
   });
 
-  // Hero click redirect
-  const heroBuyBtn = document.getElementById("hero-buy-btn");
-  if (heroBuyBtn) {
-    heroBuyBtn.addEventListener("click", () => {
-      switchView("products");
+  // 3D Hero Carousel control triggers
+  const prevBtn = document.getElementById("carousel-prev-btn");
+  const nextBtn = document.getElementById("carousel-next-btn");
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      activeCarouselIndex = (activeCarouselIndex - 1 + carouselProducts.length) % carouselProducts.length;
+      updateCarouselLayout();
+    });
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      activeCarouselIndex = (activeCarouselIndex + 1) % carouselProducts.length;
+      updateCarouselLayout();
     });
   }
 
@@ -3917,4 +3926,101 @@ function openClientTicketChat(ticketId) {
     // Auto scroll to bottom
     setTimeout(() => { chatBox.scrollTop = chatBox.scrollHeight; }, 50);
   }
+}
+
+
+// ==========================================================
+// PHASE 13: 3D COVER FLOW HERO CAROUSEL CONTROLLER
+// ==========================================================
+
+let activeCarouselIndex = 0;
+let carouselProducts = [];
+
+function renderHeroCarousel() {
+  const track = document.getElementById("hero-carousel-track");
+  if (!track) return;
+
+  // Filter top featured products with high popular index
+  carouselProducts = products.filter(p => p.popularIndex >= 80).slice(0, 5);
+  if (carouselProducts.length === 0) {
+    carouselProducts = products.slice(0, 5);
+  }
+
+  track.innerHTML = carouselProducts.map((p, index) => {
+    return `
+      <div class="carousel-card" data-index="${index}" data-product-id="${p.id}">
+        <img src="${p.image}" class="carousel-card-img" alt="${p.name}" />
+        <div class="carousel-card-overlay">
+          <h4 class="carousel-card-title">${p.name}</h4>
+          <button class="carousel-card-btn">Acheter Maintenant 🛒</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  updateCarouselLayout();
+
+  // Bind click listeners on cards
+  track.querySelectorAll(".carousel-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const idx = parseInt(card.getAttribute("data-index"));
+      if (idx === activeCarouselIndex) {
+        // Center card click -> opens product details wizard
+        const prodId = card.getAttribute("data-product-id");
+        openProductDetails(prodId);
+      } else {
+        // Flanking card click -> pivots it to center focus
+        activeCarouselIndex = idx;
+        updateCarouselLayout();
+      }
+    });
+  });
+}
+
+function updateCarouselLayout() {
+  const cards = document.querySelectorAll(".carousel-card");
+  if (cards.length === 0) return;
+
+  cards.forEach((card, index) => {
+    let offset = index - activeCarouselIndex;
+    let absOffset = Math.abs(offset);
+
+    if (absOffset > 2) {
+      // Hide far away cards
+      card.style.opacity = "0";
+      card.style.visibility = "hidden";
+      card.style.transform = `translateX(${offset * 160}px) scale(0.5) rotateY(0deg)`;
+      card.style.zIndex = "0";
+    } else {
+      card.style.opacity = "1";
+      card.style.visibility = "visible";
+
+      let transformStr = "";
+      let zIndex = 5 - absOffset;
+
+      if (offset === 0) {
+        // Center card: facing front with z-depth translation
+        transformStr = `translateX(0px) translateZ(120px) scale(1) rotateY(0deg)`;
+      } else if (offset > 0) {
+        // Right side cards: angled back with offset translations
+        transformStr = `translateX(${offset * 140}px) translateZ(${60 - absOffset * 40}px) scale(${1 - absOffset * 0.15}) rotateY(-35deg)`;
+      } else {
+        // Left side cards: angled back with offset translations
+        transformStr = `translateX(${offset * 140}px) translateZ(${60 - absOffset * 40}px) scale(${1 - absOffset * 0.15}) rotateY(35deg)`;
+      }
+
+      card.style.transform = transformStr;
+      card.style.zIndex = zIndex.toString();
+
+      // Dim overlays for inactive flanking cards
+      const overlay = card.querySelector(".carousel-card-overlay");
+      if (offset === 0) {
+        overlay.style.background = "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%)";
+        card.style.filter = "none";
+      } else {
+        overlay.style.background = "rgba(0, 0, 0, 0.7)";
+        card.style.filter = "brightness(0.5)";
+      }
+    }
+  });
 }
