@@ -1,0 +1,1994 @@
+[
+  {
+    "_id": "69a3a506fe5878c1877bd59e",
+    "title": "Youtube Boost",
+    "description": "Supercharge your channel's visibility and authority. Whether you're a new creator looking for your first 1,000 subscribers or an established brand aiming for viral status, our YouTube Boost services provide the high-quality engagement signals—Views, Subscribers, Likes, and Comments—needed to trigger the YouTube algorithm and reach a global audience.",
+    "category": "Youtube",
+    "subCategory": "69a3a2e8c81d042c4524eb5c",
+    "image": "https://i.cbc.ca/ais/1.7560884,1749839379000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1919%2C1079%29%3B",
+    "productImage": "https://i.cbc.ca/ais/1.7560884,1749839379000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1919%2C1079%29%3B",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Views",
+        "price": 10,
+        "originalPrice": 20,
+        "stock": 9999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Likes",
+        "price": 5,
+        "originalPrice": 10,
+        "stock": 9999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Comments",
+        "price": 20,
+        "originalPrice": 30,
+        "stock": 9999999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Select Your Package: Choose the number of views, subs, or likes you need.\n\nProvide URL: Paste your Video Link (for views/likes/comments) or Channel Link (for subscribers).\n\nStart Time: Most services begin within 1–12 hours.\n\nWait for Completion: Growth will appear gradually. Do not buy from other providers at the same time to avoid tracking errors.",
+    "terms": "Public Settings: Your video and subscriber count must be set to Public for the service to work.\n\nNo Refill Policy: For \"Economy\" packages, once delivered, no replacements are provided for natural drops. (Check for \"Refill\" badges on premium tiers).\n\nLink Accuracy: You must provide the correct Video or Channel URL. No refunds for incorrect links.\n\nAccount Safety: Our methods are 100% external and do not require your password.",
+    "faq": "Q: Can these views get my channel banned?\n\nA: No. We use safe, external marketing methods that comply with safety standards. We never ask for your password.\n\nQ: Do these subscribers watch my new videos?\n\nA: These are \"Social Proof\" subscribers meant to boost your numbers. For active fans, focus on creating high-quality content once your numbers look professional.\n\nQ: How long does it take to see results?\n\nA: Initial start is usually under 6 hours, with full delivery depending on the size of the package.\n\nQ: Can I get monetized with these?\n\nA: These services help you reach the 1,000 sub / 4,000 hour milestones. However, your content must still pass YouTube's manual review for monetization.",
+    "createdAt": "2026-03-01T02:31:34.014Z",
+    "updatedAt": "2026-03-01T02:31:34.014Z"
+  },
+  {
+    "_id": "69a3a3d5fe5878c1877bd59d",
+    "title": "Youtube Premium",
+    "description": "Unlock the ultimate YouTube experience. Watch your favorite creators without a single ad, play videos in the background while using other apps, and download content for offline viewing. Includes YouTube Music Premium and enhanced 1080p Premium bitrate for crystal-clear quality.",
+    "category": "Youtube",
+    "subCategory": "69a3a309fe5878c1877bd59c",
+    "image": "https://i.cbc.ca/ais/1.7560884,1749839379000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1919%2C1079%29%3Bac",
+    "productImage": "https://i.cbc.ca/ais/1.7560884,1749839379000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1919%2C1079%29%3B",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Youtube Premium Month",
+        "price": 10,
+        "originalPrice": 20,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Youtube Premium 3 Months",
+        "price": 20,
+        "originalPrice": 30,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Youtube Premium Family Onwer",
+        "price": 25,
+        "originalPrice": 30,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Shared Slot: Log in with the provided credentials. Do not attempt to add or remove members.\n\nInvitation Link: If you received a link, click it and join the family group using your own Google account.\n\nActivation: Once joined, the \"Premium\" logo will appear in the top-left corner of your YouTube app.",
+    "terms": "Type: Shared Family Slot or Individual Account (check listing).\n\nUsage: No changing the account password or email if using a shared slot.\n\nRefill: 30-day warranty provided for premium status. No refill for \"Economy\" non-guaranteed slots.\n\nRegion: Accounts are Global; no VPN required for daily use.",
+    "faq": "Q: Will I lose my playlists? * A: If you join via an invitation link, your playlists remain on your personal account.\n\nQ: Can I use it on multiple devices? * A: Yes, you can log in on your phone, TV, and PC simultaneously.",
+    "createdAt": "2026-03-01T02:26:29.989Z",
+    "updatedAt": "2026-03-01T02:26:29.989Z"
+  },
+  {
+    "_id": "69a3a1a88de4543ac2826d29",
+    "title": "ChatGPT",
+    "description": "Experience the world's most advanced AI. Get priority access to GPT-5.2, including \"Thinking\" modes for complex reasoning. Generate stunning images with DALL-E 3, create videos with Sora, and use Advanced Voice Mode for real-time human-like conversations.",
+    "category": "Softwares",
+    "subCategory": "69a3a112c81d042c4524eb5a",
+    "image": "https://cdn.neowin.com/news/images/uploaded/2023/05/1683188731_image-of-hand-holding-an-ai-face-looking-at-the-words-chatgpt-openai.jpg",
+    "productImage": "https://cdn.neowin.com/news/images/uploaded/2023/05/1683188731_image-of-hand-holding-an-ai-face-looking-at-the-words-chatgpt-openai.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "ChatGPT Plus",
+        "price": 5,
+        "originalPrice": 10,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "ChatGPT Business",
+        "price": 5,
+        "originalPrice": 10,
+        "stock": 99999999995,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "ChatGPT Pro",
+        "price": 5,
+        "originalPrice": 10,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "ChatGPT Plus 3 Months",
+        "price": 18,
+        "originalPrice": 30,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Go to chat.openai.com or open the ChatGPT app.\n\nLog in using the provided email and password.\n\nIf prompted for a code, check the provided Original Email (OGE) for the login verification.",
+    "terms": "Access: Full Access (Private) or Shared Account options.\n\nPolicy: Do not share credentials if you purchased a private account.\n\nLimits: Message caps apply per 3-hour window as set by OpenAI (usually 80-160 messages).\n\nSecurity: 2FA is highly recommended for private accounts.",
+    "faq": "Q: Does it include the API? * A: This is for the ChatGPT Plus interface. API credits are sold separately.\n\nQ: Can I analyze files? * A: Yes, you can upload up to 20 files at once for data analysis and PDF reading.",
+    "createdAt": "2026-03-01T02:17:12.622Z",
+    "updatedAt": "2026-03-01T02:17:12.622Z"
+  },
+  {
+    "_id": "69a3a0afc81d042c4524eb59",
+    "title": "NordVPN",
+    "description": "The industry leader in privacy. Secure up to 10 devices with ultra-fast 10Gbps+ servers in over 120 countries. Includes Threat Protection Pro to block ads, trackers, and malware automatically.",
+    "category": "Softwares",
+    "subCategory": "69a3a082fe5878c1877bd59b",
+    "image": "https://techjioblog.com/wp-content/uploads/2020/03/nordvpn_cover.jpg",
+    "productImage": "https://techjioblog.com/wp-content/uploads/2020/03/nordvpn_cover.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "NordVPN",
+        "price": 15,
+        "originalPrice": 30,
+        "stock": 99999999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Download the NordVPN app on your device.\n\nLog in with the credentials provided by MYOOREDOO.\n\nClick \"Quick Connect\" for the fastest server or choose a specific country.",
+    "terms": "Devices: Strictly follow the device limit (10 devices per account).\n\nStrict No-Logs: NordVPN does not track your activity.\n\nRenewal: Subscription status is guaranteed for the duration of the purchase.\n\nShared Use: Do not change the account password or security settings.",
+    "faq": "Q: Can I watch Netflix USA? * A: Yes, NordVPN is optimized for bypassing geo-blocks on streaming platforms.\n\nQ: Does it work in restricted regions? * A: Use \"Obfuscated Servers\" in settings if you are in a high-censorship area.",
+    "createdAt": "2026-03-01T02:13:03.974Z",
+    "updatedAt": "2026-03-01T02:13:03.974Z"
+  },
+  {
+    "_id": "69a3a04cfe5878c1877bd59a",
+    "title": "Duolingo Max",
+    "description": "Master a new language with the power of AI. Includes everything in Super Duolingo (Unlimited Hearts, No Ads) plus Video Call with Lily and AI Roleplay to practice real-world conversations.",
+    "category": "Softwares",
+    "subCategory": "69a3a01ec81d042c4524eb58",
+    "image": "https://cdn.slidesharecdn.com/ss_thumbnails/duolingo-230819152812-3a15b958-thumbnail.jpg?width=640&height=640&fit=bounds",
+    "productImage": "https://cdn.slidesharecdn.com/ss_thumbnails/duolingo-230819152812-3a15b958-thumbnail.jpg?width=640&height=640&fit=bounds",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Duolingo Max",
+        "price": 5,
+        "originalPrice": 10,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Log in to the Duolingo app.\n\nNavigate to the \"Practice Hub\" (dumbbell icon).\n\nAccess \"Video Call\" or \"Roleplay\" banners to start your AI sessions.",
+    "terms": "Platform: Max features are currently exclusive to iOS and Android apps.\n\nHearts: No limit on mistakes; learn as much as you want.\n\nSupport: AI features (Roleplay) are available for major languages (English, Spanish, French, German, Italian).",
+    "faq": "Q: Is it different from Super Duolingo? * A: Yes, \"Max\" includes the GPT-4/5 powered AI conversation tools that \"Super\" does not have.\n\nQ: Can I use it on Web? * A: You get Super benefits on Web, but AI Video Calls require the mobile app.",
+    "createdAt": "2026-03-01T02:11:24.395Z",
+    "updatedAt": "2026-03-01T02:11:24.395Z"
+  },
+  {
+    "_id": "69a39fdefe5878c1877bd599",
+    "title": "Canva Pro",
+    "description": "Design anything like a pro. Gain access to 100M+ premium photos, videos, and fonts. Use Magic Studio AI to resize designs instantly or remove backgrounds with one click. 1TB of cloud storage included for all your brand assets.",
+    "category": "Softwares",
+    "subCategory": "69a39faac81d042c4524eb57",
+    "image": "https://cegepgranby.ca/wp-content/uploads/2022/07/entete-sae-canva-pro.jpg",
+    "productImage": "https://cegepgranby.ca/wp-content/uploads/2022/07/entete-sae-canva-pro.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Canva Pro",
+        "price": 8,
+        "originalPrice": 20,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Log in to your Canva account.\n\nClick the invite link provided or log in with the account details sent to you.\n\nSwitch your \"Team\" in the top-left corner to access Pro features.",
+    "terms": "Account Type: Usually provided as a Team Invite or Private Account.\n\nPrivacy: If you join a Team, other members cannot see your private designs unless you share them.\n\nCopyright: You are licensed to use Pro elements for commercial social media and marketing.",
+    "faq": "Q: Can I use this for my business logo? * A: Yes, but you cannot trademark designs containing third-party stock elements.\n\nQ: Is the Background Remover unlimited? * A: Yes, for Pro users.",
+    "createdAt": "2026-03-01T02:09:34.221Z",
+    "updatedAt": "2026-03-01T02:09:34.221Z"
+  },
+  {
+    "_id": "69a39f7a8de4543ac2826d28",
+    "title": "Capcut Pro",
+    "description": "The professional's choice for social media editing. Unlock 4K HDR exports, remove all watermarks, and access premium AI tools like Auto-Captions and AI Background Removal. Includes 1TB of cloud space.",
+    "category": "Softwares",
+    "subCategory": "69a39f41fe5878c1877bd598",
+    "image": "https://hustle.com.sg/wp-content/uploads/2023/10/Capcut.png",
+    "productImage": "https://hustle.com.sg/wp-content/uploads/2023/10/Capcut.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Capcut Pro",
+        "price": 8,
+        "originalPrice": 20,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Log in to the CapCut app (Mobile or Desktop).\n\nEnsure you are logged into the Pro account before starting your export.\n\nUse the \"Cloud\" tab to sync your projects between devices.",
+    "terms": "License: Pro features are linked to the account provided.\n\nUsage: Commercial use of \"Pro\" templates and music is allowed under the CapCut license.\n\nDevice Limit: Usually supports 1-2 active login sessions.",
+    "faq": "Q: Will my drafts disappear if the sub ends? * A: No, but you won't be able to export using Pro features until you renew.\n\nQ: Does it work on Mac/PC? * A: Yes, CapCut Pro features work across all platforms.",
+    "createdAt": "2026-03-01T02:07:54.789Z",
+    "updatedAt": "2026-03-01T02:07:54.789Z"
+  },
+  {
+    "_id": "69a39e9b8de4543ac2826d27",
+    "title": "Crunchyroll Premium",
+    "description": "The ultimate destination for anime fans. Stream the world’s largest anime library ad-free, including exclusive simulcasts just one hour after they air in Japan. Whether you want to watch the latest Chainsaw Man movie or binge classic Jujutsu Kaisen, our Premium accounts give you high-definition access, offline downloads, and a massive library of digital manga.",
+    "category": "Crunchyroll",
+    "subCategory": "69a39da7fe5878c1877bd597",
+    "image": "https://anitrendz.net/news/wp-content/uploads/2020/08/Crunchyroll-Banner.png",
+    "productImage": "https://anitrendz.net/news/wp-content/uploads/2020/08/Crunchyroll-Banner.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Crunchyroll Random",
+        "price": 1,
+        "originalPrice": 5,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Crunchyroll Premium",
+        "price": 11,
+        "originalPrice": 15,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Crunchyroll Mega Fan",
+        "price": 15,
+        "originalPrice": 20,
+        "stock": 9999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Crunchyroll Premium 3 Months",
+        "price": 26,
+        "originalPrice": 30,
+        "stock": 999999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Crunchyroll Premium 1 Year",
+        "price": 55,
+        "originalPrice": 70,
+        "stock": 9999999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Use the provided email and password at crunchyroll.com or the app.\n\nSecure the Account: Log into the provided Original Email to retrieve the verification code and change the account password to your own.\n\nProfiles: You can now create separate profiles (with PIN protection) to keep your \"Watch History\" separate from others if you are on a Mega or Ultimate plan.\n\nEnjoy: Start streaming in 1080p/4K (where available) with zero ads.",
+    "terms": "Account Type: Full Access (Private) with Original Email (OGE).\n\nTiers: Choose between Fan (1 device), Mega Fan (4 devices), or Ultimate Fan (6 devices + Manga).\n\nUsage: Do not change the account region or add a payment method, as this may trigger a security ban.\n\nWarranty: 30-day \"No-Drop\" guarantee for monthly plans; full duration warranty for annual plans.",
+    "faq": "Q: Does it work on my Smart TV?\n\nA: Yes, Crunchyroll is compatible with Roku, Apple TV, PlayStation, Xbox, and most Smart TVs.\n\nQ: Can I watch offline?\n\nA: Yes! As of 2026, all paid tiers (including the Fan tier) now support offline downloads on mobile devices.\n\nQ: Is the Manga included?\n\nA: Full access to Crunchyroll Manga is exclusive to the Ultimate Fan tier.",
+    "createdAt": "2026-03-01T02:04:11.049Z",
+    "updatedAt": "2026-03-01T02:04:11.049Z"
+  },
+  {
+    "_id": "69a0e44a8d8eb71cd652a6e2",
+    "title": "ARC Raiders",
+    "description": "Secure your survival in the Rust Belt with a Full Access ARC Raiders account.\nIncludes Original Email (OGE) for 100% security—change all credentials to your own.\nChoose from Fresh starts to Max-Level 75 accounts with all Blueprints and Workbenches unlocked.\nInstant delivery—skip the grind and dominate the machines of Calabretta today.",
+    "category": "Games Accounts",
+    "subCategory": "69a0e3b1725b5479257c02c2",
+    "image": "https://image.api.playstation.com/vulcan/ap/rnd/202504/1515/3ef1ea90a64952c060b797fde8602ee745c2e7c73277c4a5.png",
+    "productImage": "https://image.api.playstation.com/vulcan/ap/rnd/202504/1515/3ef1ea90a64952c060b797fde8602ee745c2e7c73277c4a5.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "ARC Raiders",
+        "price": 85,
+        "originalPrice": 120,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Enter the provided details into the Steam (or respective) client.\n\nVerify OGE: Log into the original email provided to retrieve any security or verification codes.\n\nUpdate Security: Immediately change the account's primary email and password to your own.\n\n2FA Setup: Enable Two-Factor Authentication (Steam Guard or platform-specific 2FA) to protect your gear, currency, and blueprints.",
+    "terms": "Lifetime Ownership: You receive the Steam (or Console/Epic) login credentials and the Original Email (OGE). You have 100% control to change the password, email, and 2FA settings.\n\nPaid Base Game: ARC Raiders is a paid title (approx. $40). The account comes with the base game already purchased and licensed.\n\nClean Account Status: Guaranteed zero Embark ID or platform-level bans. These are fresh or manually leveled accounts with no history of cheating or exploits.\n\nGlobal Access: Most accounts are Region-Free and can be used worldwide.",
+    "faq": "Q: Can I use this for the \"Shrouded Sky\" update?\n\nA: Yes! All accounts are fully updated and ready for current content, including new map conditions like Hurricanes and the latest ARC enemies.\n\nQ: Is my pet rooster \"Scrappy\" included?\n\nA: Yes, all Raiders have access to their pet, and higher-tier accounts may already have Scrappy leveled up (e.g., Level 5).\n\nQ: Can I play solo or with friends?\n\nA: Both. You can play as a lone wolf or join a party of up to three Raiders.\n\nQ: Does this include the \"Deluxe Edition\" items?\n\nA: Check the specific listing title. Deluxe Edition accounts include extra outfits (like the Surgeon Raider Deck) and bonus Raider Tokens.",
+    "createdAt": "2026-02-27T00:24:42.111Z",
+    "updatedAt": "2026-02-27T00:26:41.217Z"
+  },
+  {
+    "_id": "698769153155184667394298",
+    "title": "Euro Truck Simulator 2",
+    "description": "Become the king of the road with a Full Access Euro Truck Simulator 2 Steam account. Includes Original Email (OGE) for 100% security and lifetime ownership of your profile. Guaranteed clean and ban-free—fully compatible with TruckersMP for multiplayer fun. Instant delivery—secure your account and start your trucking empire across Europe today.",
+    "category": "Games Accounts",
+    "subCategory": "6987684d3155184667394297",
+    "image": "https://media.overclock3d.net/2023/10/Euro-Truck-Simulator-2-image.jpg",
+    "productImage": "https://media.overclock3d.net/2023/10/Euro-Truck-Simulator-2-image.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Euro Truck Simulator 2",
+        "price": 10,
+        "originalPrice": 15,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Enter the credentials into the Steam client.\n\nVerify via OGE: Log into the provided original email to retrieve the Steam Guard verification code.\n\nUpdate Security: Change the Steam account's primary email to your own and update the password.\n\nEnable Steam Guard: We highly recommend activating the Steam Guard Mobile Authenticator for maximum account protection.",
+    "terms": "Total Ownership: You get the Steam username and password plus the Original Email (OGE) credentials. You are the sole owner.\n\nClean History: Guaranteed no VAC bans or TruckersMP bans. You can join any official or community server immediately.\n\nPlatform: Specifically for PC (Steam).\n\nGlobal Access: These accounts are Region-Free; you can play and update the game from any country.",
+    "faq": "Q: Can I use this for World of Trucks?\n\nA: Yes! Since you have full access, you can link the Steam account to your own World of Trucks profile to participate in official events.\n\nQ: Does it include DLCs (like Map Expansions)?\n\nA: This depends on the specific listing. Standard accounts include the base game. Check for \"Map Booster\" listings if you want Iberia, West Balkans, or Beyond the Baltic Sea.\n\nQ: Can I change the account's region?\n\nA: Yes, after a certain period of ownership, Steam allows you to change the store region if you have a valid payment method for that country.",
+    "createdAt": "2026-02-07T16:32:21.824Z",
+    "updatedAt": "2026-02-17T21:45:00.354Z"
+  },
+  {
+    "_id": "698767ce3155184667394296",
+    "title": "Red Dead Redemption 2",
+    "description": "Experience the epic tale of the Wild West with a Full Access Red Dead Redemption 2 account. Includes original email (OGE) for 100% security and total control over your credentials. Guaranteed clean and ban-free—ready for Story Mode, Red Dead Online, and RedM Roleplay. Instant delivery—step into the boots of an outlaw and start your adventure across the frontier.",
+    "category": "Games Accounts",
+    "subCategory": "698767413155184667394295",
+    "image": "https://wallpapers.com/images/hd/red-dead-redemption-2-desktop-71j3tjqunmm3a25b.jpg",
+    "productImage": "https://wallpapers.com/images/hd/red-dead-redemption-2-desktop-71j3tjqunmm3a25b.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Red Dead Redemption 2",
+        "price": 45,
+        "originalPrice": 50,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Enter the provided email and password into the Rockstar Games Launcher (or respective platform).\n\nVerify via OGE: Log into the original email provided to retrieve any required verification codes.\n\nUpdate Security: Immediately change the account's primary email and password to your own.\n\nEnable 2FA: Activate Two-Factor Authentication (2FA) to protect your account from unauthorized access.\n\n3. Account Highlights\nStory Mode + Online: Includes both the critically acclaimed single-player campaign and the Red Dead Online multiplayer experience.\n\nFull Access: Not a shared or \"offline only\" account. This is a private account for your use only.\n\nRedM Ready: These accounts are perfect for joining RedM Roleplay servers (similar to FiveM for GTA V).",
+    "terms": "Total Ownership: You receive the login credentials for the account and the Original Email (OGE). You have 100% control to change the password, email, and security settings.\n\nClean Account: Guaranteed no VAC bans, Rockstar Social Club bans, or RedM bans. The account is clean and ready for both Story Mode and Online.\n\nRegion Free: These accounts are typically Global and can be played from any country without a VPN.\n\nPlatform: Specify if the account is for PC (Rockstar Launcher/Steam/Epic) or Console (Xbox/PlayStation).",
+    "faq": "Q: Can I play RedM with this account?\n\nA: Yes! Since you have full access, you can link this account to RedM and play on custom roleplay servers.\n\nQ: Can I change the character's appearance in Online?\n\nA: Yes, you have full control over your Red Dead Online character, including their name, appearance, and horses.\n\nQ: Is this the Ultimate Edition?\n\nA: Check the specific product listing. Standard editions include the base game, while Ultimate Editions include extra horses, outfits, and online bonuses.",
+    "createdAt": "2026-02-07T16:26:54.443Z",
+    "updatedAt": "2026-02-07T16:27:48.227Z"
+  },
+  {
+    "_id": "698766c93155184667394294",
+    "title": "Minecraft Java and Bedrock Edition",
+    "description": "Get the ultimate Minecraft experience with both Java and Bedrock Editions in one bundle. Play with friends across any device or dive into the world of PC mods and shaders. Full Access Microsoft accounts with Original Email (OGE) included for lifetime security. Instant delivery—start crafting, building, and surviving in your own infinite world today.",
+    "category": "Games Accounts",
+    "subCategory": "698766183155184667394293",
+    "image": "https://kids.guinnessworldrecords.com/news/2025/4/images/minecraft-header-thumbnail-776652.jpg",
+    "productImage": "https://kids.guinnessworldrecords.com/news/2025/4/images/minecraft-header-thumbnail-776652.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Minecraft Account",
+        "price": 35,
+        "originalPrice": 50,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "For Digital Keys:\n\nLog into your Microsoft account at redeem.microsoft.com.\n\nEnter the 25-character key.\n\nDownload the Minecraft Launcher from the Microsoft Store.\n\nFor Full Access Accounts:\n\nLog into the Xbox App or Microsoft Store with the provided credentials.\n\nChange the password and security email immediately to your own.\n\nOpen the Launcher and choose which version to play.",
+    "terms": "Unified Bundle: One purchase grants access to both versions of the game on PC.\n\nFull Access (Account): If selling an account, it includes the Microsoft/Xbox login and the Original Email (OGE).\n\nDigital Key: If selling a key, it must be redeemed at microsoft.com/redeem.\n\nPlatform: Specifically for PC (Windows 10/11). Note: Bedrock on this account does not grant the game on PlayStation or Switch; those are separate purchases.\n\nMultiplayer Ready: No bans on major servers like Hypixel or 2b2t.",
+    "faq": "Q: Can I change my Minecraft Username?\n\nA: Yes. You can change your Java IGN (In-Game Name) once every 30 days and your Xbox Gamertag (for Bedrock) via the Microsoft account settings.\n\nQ: Does this include the \"Original Email\"?\n\nA: Yes, for our Full Access accounts, we provide the OGE to ensure you have 100% security and recovery power.\n\nQ: Can I play on Hypixel?\n\nA: Yes, our accounts are \"Unbanned\" and ready for the most popular Java servers.",
+    "createdAt": "2026-02-07T16:22:33.022Z",
+    "updatedAt": "2026-04-15T17:53:52.506Z"
+  },
+  {
+    "_id": "698765df3155184667394292",
+    "title": "ARK: Survival Evolved Accounts",
+    "description": "Full Access ARK: Survival Evolved account with 100% control over email and password. Includes Original Email (OGE) for maximum security and lifetime ownership. Clean, ban-free account ready for Official, Unofficial, and Modded servers. Instant delivery—start your survival journey and tame your first dinosaur today.",
+    "category": "Games Accounts",
+    "subCategory": "6987658c3155184667394291",
+    "image": "https://images.launchbox-app.com/7cdea627-b641-47bb-8894-3af22765b86b.jpg",
+    "productImage": "https://images.launchbox-app.com/7cdea627-b641-47bb-8894-3af22765b86b.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "ARK: Survival Evolved",
+        "price": 7,
+        "originalPrice": 10,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Enter the provided details into the Steam or Epic Games launcher.\n\nVerify via OGE: Log into the original email provided to retrieve any security or verification codes.\n\nUpdate Security: Change the account password and link it to your own primary email address.\n\nEnable 2FA: Activate Steam Guard or Epic 2FA to ensure your survivors and tamed dinos are safe from hackers.",
+    "terms": "Complete Ownership: You receive the Steam/Epic Games login credentials and the Original Email (OGE). You can change the password, email, and security settings immediately.\n\nPlatform: Specifically for PC (Steam or Epic Games). Check the listing to see which launcher the game is on.\n\nClean Account: Guaranteed no VAC bans or BattlEye bans. You can join any official or unofficial/modded server without restrictions.\n\nRegion Free: These accounts are Global; you can play from anywhere in the world without needing a VPN.",
+    "faq": "Q: Can I play on Official Servers?\n\nA: Yes. These accounts are 100% clean and can join any official ARK server cluster.\n\nQ: Does this account work for ARK: Survival Ascended (the new version)?\n\nA: No. This is for the original ARK: Survival Evolved. Ascended is a separate game and requires a different purchase.\n\nQ: Can I use mods from the Steam Workshop?\n\nA: If the account is on Steam, yes! You have full access to the Workshop for maps and mods.\n\nQ: What happens if I get raided?\n\nA: The account is yours forever. Getting raided in-game does not affect your ownership of the account itself.",
+    "createdAt": "2026-02-07T16:18:39.887Z",
+    "updatedAt": "2026-02-07T16:18:39.887Z"
+  },
+  {
+    "_id": "6987650f3155184667394290",
+    "title": "EA Sport FC Account",
+    "description": "Get ahead of the competition with a Full Access EA Sports FC 25 or FC 26 account. Includes Original Email (OGE) for 100% security and total control over your Ultimate Team. Clean, ban-free accounts ready for the Transfer Market and Weekend League. Instant delivery—secure your account and start building your dream squad today.",
+    "category": "Games Accounts",
+    "subCategory": "69876418315518466739428f",
+    "image": "https://image.mux.com/T1HTP5SEXGemp9E7yLTtvgFxdfVffjYg502hcVKZeKLw/thumbnail.jpg?time=84.823593",
+    "productImage": "https://image.mux.com/T1HTP5SEXGemp9E7yLTtvgFxdfVffjYg502hcVKZeKLw/thumbnail.jpg?time=84.823593",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "EA Sport FC 25",
+        "price": 25,
+        "originalPrice": 40,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "EA Sport FC 26",
+        "price": 50,
+        "originalPrice": 60,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Enter the credentials into the EA App or your Console.\n\nVerify: Access the Original Email provided to get the security code.\n\nUpdate: Change the password and primary email to your own.\n\n2FA: Enable Two-Factor Authentication immediately to secure your Ultimate Team players and coins.",
+    "terms": "Lifetime Ownership: You receive the EA App (PC) or Console login plus the Original Email (OGE).\n\nPre-Order Bonuses: For FC 26, accounts purchased early may include limited-time Hero cards, FC Points, and \"Early Access\" (usually 7 days before the official launch).\n\nTransfer Market: * Fresh Accounts: Market is usually locked until ~3-5 days of active play.\n\nMarket Unlocked: Accounts that can already use the Web/Companion App for trading.\n\nNo Bans: Guaranteed clean history with no previous \"Coin Wiping\" or transfer market bans.",
+    "faq": "Q: Will my FC 25 coins transfer to FC 26?\n\nA: No. Coins and players do not transfer between years. Only FC Points can be transferred (one-time) when you first start the new game.\n\nQ: Can I use the Web App immediately?\n\nA: If you played FC 25 actively, you usually get \"Early Web App Access\" for FC 26 before the game even launches.\n\nQ: Is this a \"Shared\" account?\n\nA: No. This is a Full Access account for your use only. You can change all security settings.",
+    "createdAt": "2026-02-07T16:15:11.938Z",
+    "updatedAt": "2026-05-24T12:44:14.287Z"
+  },
+  {
+    "_id": "69876392315518466739428e",
+    "title": "Forza Horizon 5",
+    "description": "Own Forza Horizon 5 permanently with a Full Access Microsoft/Xbox account. Includes original email for 100% security—change all credentials to your own. Explore Mexico in 4K with a clean, ban-free account ready for online racing. Instant delivery with full control over your profile, gamertag, and security settings.",
+    "category": "Games Accounts",
+    "subCategory": "698762f2315518466739428d",
+    "image": "https://amazing.tn/wp-content/uploads/2022/11/forza-horizon-5-pc-xbox-one-xbox-series-xs-pc-xbox-one-xbox-series-x-s-jeu-microsoft-store-cover.jpg",
+    "productImage": "https://amazing.tn/wp-content/uploads/2022/11/forza-horizon-5-pc-xbox-one-xbox-series-xs-pc-xbox-one-xbox-series-x-s-jeu-microsoft-store-cover.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Forza Horizon 5 Account",
+        "price": 40,
+        "originalPrice": 50,
+        "stock": 9999999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Go to account.microsoft.com and log in with the provided details.\n\nUpdate Security: Change the password and link your own phone number or secondary email for recovery.\n\nSecure the OGE: Log into the original email provider and change that password as well.\n\nDownload: Open the Xbox App on Windows or log in on your Console. Search for \"Forza Horizon 5\" in your library and start the download.",
+    "terms": "Full Ownership: You receive the Email and Password for the Microsoft/Xbox account plus the Original Email (OGE) login details.\n\nPlatform: Compatible with PC (Microsoft Store/Xbox App) and Xbox Series X|S / Xbox One.\n\nClean History: Guaranteed no bans from \"Turn 10\" or \"Playground Games.\" The account is 100% safe to play online in the Horizon Life mode.\n\nRegion Free: These accounts are typically Global and can be used in any country without a VPN.",
+    "faq": "Q: Can I play with my friends on Steam?\n\nA: Yes! Forza Horizon 5 supports full Cross-Play. Even though this is a Microsoft account, you can play with friends who own the game on Steam.\n\nQ: Is this a \"Shared Account\"?\n\nA: No. This is a Full Access account. Only you will have the login details, and you can play whenever you want without interruptions.\n\nQ: Do I need Xbox Game Pass?\n\nA: No. The game is permanently purchased on the account. You do not need a monthly subscription to play the base game.",
+    "createdAt": "2026-02-07T16:08:50.249Z",
+    "updatedAt": "2026-02-07T16:08:50.249Z"
+  },
+  {
+    "_id": "6987623b315518466739428c",
+    "title": "Grand Theft Auto V",
+    "description": "Full Access GTA V account with complete control over email and password settings. Includes the full game (Story Mode + GTA Online) with no previous bans or restrictions. Perfect for FiveM RP or starting your criminal empire in Los Santos today. Safe, secure, and delivered instantly with original email access included.",
+    "category": "Games Accounts",
+    "subCategory": "698761b5315518466739428b",
+    "image": "https://i.redd.it/xghgr1kwvcee1.jpeg",
+    "productImage": "https://i.redd.it/xghgr1kwvcee1.jpeg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Grand Theft Auto V Account",
+        "price": 35,
+        "originalPrice": 50,
+        "stock": 99999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "FiveM Ready Key",
+        "price": 3,
+        "originalPrice": 5,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Log In: Use the provided email and password to log into the platform (e.g., Rockstar Games Launcher).\n\nChange Credentials: Immediately change the account password and the linked email address to your own.\n\nVerify OGE: Access the provided email to confirm any security codes sent by Rockstar or Steam.\n\nEnable 2FA: Set up Two-Factor Authentication (2FA) immediately to prevent unauthorized access.",
+    "terms": "Total Ownership: You receive the login credentials for the account (Steam/Epic/Rockstar) and the Original Email (OGE). You can change everything.\n\nClean Status: Guaranteed no VAC bans, Rockstar Social Club bans, or FiveM bans. These are fresh or \"clean\" veteran accounts.\n\nPlatform Specific: Specify if the account is for PC (Steam/Epic/Rockstar), PlayStation, or Xbox.\n\nOnline Ready: The account is fully authorized to play GTA Online.",
+    "faq": "Q: Can I play FiveM with this account?\n\nA: Yes! Since this is a Full Access account, you can use it to link to FiveM and play on custom roleplay (RP) servers.\n\nQ: Is the Story Mode included?\n\nA: Yes, the full GTA V base game is included, covering both Story Mode and GTA Online.\n\nQ: What if the account gets \"recalled\"?\n\nA: Because we provide Full Access including the Original Email, the risk is nearly zero. You have the tools to recover the account yourself.",
+    "createdAt": "2026-02-07T16:03:07.815Z",
+    "updatedAt": "2026-02-07T16:04:47.313Z"
+  },
+  {
+    "_id": "6987612e315518466739428a",
+    "title": "Rust Steam",
+    "description": "Get instant access to Rust with a brand new, Full Access Steam Account. Includes original email data for 100% security and lifetime ownership. Guaranteed clean account with no bans—start your survival adventure immediately. Complete control: change password, email, and enable 2FA easily.",
+    "category": "Games Accounts",
+    "subCategory": "698760033155184667394289",
+    "image": "https://hone.gg/blog/wp-content/uploads/2025/05/rust-banner_1rust-banner.webp",
+    "productImage": "https://hone.gg/blog/wp-content/uploads/2025/05/rust-banner_1rust-banner.webp",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Rust Steam Account",
+        "price": 28,
+        "originalPrice": 40,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Login: Use the provided credentials to log into the Steam client.\n\nChange Email: Immediately go to Steam Settings and change the contact email to your own.\n\nChange Password: Update the password to something unique.\n\nSteam Guard: We highly recommend enabling Steam Guard Mobile Authenticator to ensure maximum security.\n\nEnjoy: Download Rust and start your survival journey!\n\nFull Ownership: Not a shared account. It is yours forever.\n\nMarket Enabled: Check if the account has the \"$5 spent\" requirement met to use the Steam Market (most fresh accounts are \"Limited\" until you add $5).\n\nOriginal Email included: This is the most secure way to buy an account because you can recover it if you lose the password.",
+    "terms": "Full Access (FA): You will receive the Steam username, Steam password, and the Original Email (OGE) login details. You have 100% control over the account.\n\nRegion Info: Specify if the account is Region Free (Global) or locked to a specific region (like Turkey or Ukraine) for cheaper game prices.\n\nZero Playtime: These are typically fresh accounts with 0 hours played, unless stated otherwise (e.g., \"Hours Boosted\" accounts).\n\nNo VAC Bans: All accounts are guaranteed to be \"Clean\"—no bans from Valve Anti-Cheat (VAC) or Game Bans at the time of delivery.\n\nWarranty: Once the account is secured by the customer (email changed, 2FA added), the warranty typically expires as the account is now in your total control.",
+    "faq": "Q: Can I change the nickname and profile picture?\n\nA: Yes. Since it is Full Access, you can customize everything on the profile.\n\nQ: Is the game already in the library?\n\nA: Yes, Rust is already purchased and sitting in the Steam library ready for download.\n\nQ: Can I play on any server?\n\nA: Yes, as long as you do not use cheats. These accounts are clean and can join any official or community server.",
+    "createdAt": "2026-02-07T15:58:38.357Z",
+    "updatedAt": "2026-02-07T15:58:38.357Z"
+  },
+  {
+    "_id": "6985295803f94df5313f2af1",
+    "title": "Facebook Products",
+    "description": "Boost your Facebook Page or Post authority with fast Followers, Likes, and Views. Build instant social proof and improve your brand's credibility at the best price. Economy Tier: No refill or guarantee provided for drops—our most budget-friendly option. Safe, secure, and easy—no password needed, just your public link to start growing.",
+    "category": "Social Media",
+    "subCategory": "6985215003f94df5313f2aeb",
+    "image": "https://images.unsplash.com/photo-1662947852129-ead669d746f0?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y291dmVydHVyZSUyMGZhY2Vib29rfGVufDB8fDB8fHww",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "1000 Followers",
+        "price": 10,
+        "originalPrice": 15,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 Likes",
+        "price": 1,
+        "originalPrice": 2.01,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 Views",
+        "price": 0.5,
+        "originalPrice": 1,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Page Followers/Likes: Provide your Facebook Page URL (e.g., facebook.com/YourPageName).\n\nPost Likes/Views: Provide the direct link to the specific post or video.\n\nCheck Privacy: Ensure the \"Follow\" button is visible to everyone in your Page settings.\n\nWait for Start: Delivery usually begins within 1–12 hours depending on current server load.",
+    "terms": "No Refill / Non-Guaranteed: This is an economy-tier service. We do not provide free replacements (refills) if the number of followers, likes, or views drops after the service is completed.\n\nPublic Settings: The Page or Post must be set to Public and have no age/country restrictions. If \"Public\" is not enabled, the order will fail.\n\nLink Accuracy: Double-check your link. We cannot cancel or change an order once the delivery process has started.\n\nPotential Drop: Expect a natural drop of 5% to 20% over time. We recommend ordering slightly more than your target to account for this.",
+    "faq": "Q: What is the difference between Page Likes and Followers?\n\nA: Page Likes usually include a Follow, but \"Followers\" only increase the follower count. Our service targets whichever link you provide.\n\nQ: Why are my likes dropping?\n\nA: Facebook occasionally cleans \"ghost\" or inactive accounts. Because this is an Economy service, we do not offer refills for these removals.\n\nQ: Can I use this for a Facebook Group?\n\nA: No. This service is for Pages and Public Profiles only. Group member services are sold separately.",
+    "createdAt": "2026-02-05T23:35:52.839Z",
+    "updatedAt": "2026-02-05T23:35:52.839Z"
+  },
+  {
+    "_id": "698527f903f94df5313f2af0",
+    "title": "Instagram Products",
+    "description": "Give your Instagram profile an instant boost with high-speed Followers, Likes, and Views. The most affordable way to increase your numbers and attract more organic attention. Economy Service: No refill or guarantee provided—perfect for budget-conscious growth. Safe delivery with no password required—just provide your link and watch the growth.",
+    "category": "Social Media",
+    "subCategory": "6985217803f94df5313f2aec",
+    "image": "https://m-cdn.phonearena.com/images/article/106266-wide-two_1200/Instagram-gains-new-feature-to-help-users-read-all-posts-on-their-Feed.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "1000 Followers",
+        "price": 10,
+        "originalPrice": 15,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 Likes ",
+        "price": 1,
+        "originalPrice": 2,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "10000 Views",
+        "price": 1,
+        "originalPrice": 2,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Meta Verify (6.5$)",
+        "price": 28,
+        "originalPrice": 40,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Followers: Provide your Profile Link (e.g., instagram.com/username).\n\nLikes/Views: Provide the specific Post or Reel link.\n\nCheck Privacy: Go to Settings > Privacy and ensure \"Account Privacy\" is set to Public.\n\nWait for Start: Most orders begin within 10–30 minute",
+    "terms": "No Refill Policy: This is an Economy/Non-Guaranteed service. If followers, likes, or views decrease after delivery, we cannot provide a free refill or a refund.\n\nPublic Account Required: Your Instagram account must remain Public until the order is fully completed. Setting it to Private will cause the order to fail.\n\nNo Link Changes: Once the order is submitted, the link cannot be changed. Ensure the username or post link is 100% correct.\n\nExpected Drop: Due to Instagram's periodic updates, a drop of 5% to 25% is possible. Please purchase a slightly higher amount if you need a specific final number.",
+    "faq": "Q: Why do followers drop?\n\nA: Instagram regularly removes inactive accounts. Since this is an economy service, we do not replace these accounts if they are removed.\n\nQ: Can I buy this for a new account?\n\nA: Yes, but we recommend having at least 3–5 posts and a profile picture to make the growth look more natural.\n\nQ: Will this affect my engagement?\n\nA: These services are for Social Proof (making your numbers look higher). They do not guarantee comments or shares from the new followers.",
+    "createdAt": "2026-02-05T23:30:01.784Z",
+    "updatedAt": "2026-02-05T23:30:01.784Z"
+  },
+  {
+    "_id": "6985256803f94df5313f2aef",
+    "title": "Tiktok Products",
+    "description": "Boost your TikTok presence instantly with our high-speed Followers, Likes, and Views. Perfect for social proof and increasing your visibility on the 'For You' page. Economy Service: No refill/guarantee provided for drops. Fast delivery directly to your profile or video link—no password required.",
+    "category": "Social Media",
+    "subCategory": "6985219203f94df5313f2aed",
+    "image": "https://as1.ftcdn.net/jpg/05/17/14/18/1000_F_517141830_8sbSRYMP13ulFVV2wFy0e1W6dmN44bFq.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "1000 Followers",
+        "price": 7,
+        "originalPrice": 10,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 Likes",
+        "price": 0.5,
+        "originalPrice": 1,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 Views",
+        "price": 0.5,
+        "originalPrice": 1,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "100 Tiktok Livestream Views (15 Mint)",
+        "price": 5,
+        "originalPrice": 7,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "For Followers: Provide your TikTok profile link (e.g., tiktok.com/@username).\n\nFor Likes/Views: Provide the specific video link.\n\nCheck Status: Ensure your account has no \"Sensitive Content\" warnings, as this can block the delivery of likes and views.\n\nWait for Start: Delivery usually begins within 5–60 minutes of payment.",
+    "terms": "No Refill (Non-Guaranteed): These services do not come with a refill guarantee. If followers or likes drop after delivery, they will not be replaced for free.\n\nPublic Account Required: The TikTok account must be set to Public. If the account is private, the order will fail or show as \"completed\" without delivery.\n\nNo Link Changes: Once the order is placed, you cannot change the video link or username.\n\nRisk of Drop: Because these are non-refill services, a drop of 5% to 20% is normal over time. Please purchase accordingly.",
+    "faq": "Q: Why is there no refill?\n\nA: These are \"Economy\" services provided at the lowest possible price. For a guaranteed permanent count, look for our \"Premium Refill\" category.\n\nQ: Will this get my account banned?\n\nA: We use safe delivery methods that comply with standard social media marketing practices, but we always recommend using these services to supplement organic content.\n\nQ: I bought 1000 and now I have 950. What happened?\n\nA: TikTok periodically cleans inactive accounts. Since this is a No Refill service, we cannot replace those 50 followers.",
+    "createdAt": "2026-02-05T23:19:04.609Z",
+    "updatedAt": "2026-02-05T23:19:04.609Z"
+  },
+  {
+    "_id": "69851d5503f94df5313f2ae9",
+    "title": "Spotify Premium",
+    "description": "Upgrade your own Spotify account to Premium at a fraction of the official price. Keep all your playlists and liked songs while enjoying ad-free, high-quality offline music. Choose from 1-month to 12-month plans with a full-period replacement warranty. Safe and secure activation via Invite Link or Direct Login.",
+    "category": "Spotify",
+    "subCategory": "69851c2503f94df5313f2ae8",
+    "image": "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/2024-spotify-brand-assets-media-kit.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "1 Month Individual",
+        "price": 12,
+        "originalPrice": 15,
+        "stock": 10,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1 Month Duo",
+        "price": 20,
+        "originalPrice": 25,
+        "stock": 10,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1 Month Family",
+        "price": 25,
+        "originalPrice": 30,
+        "stock": 10,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "If Providing Account Access:\n\nProvide your Spotify Email and Password to the MYOOREDOO team.\n\nTemporarily disable 2FA (Two-Factor Authentication) if active.\n\nIf Joining via Invite Link:\n\nYou will receive a Family Invite Link and a Home Address.\n\nClick the link, log into your account, and enter the exact address provided to verify your \"residency\" with the family.\n\nCompletion: Once the status shows \"Premium,\" you can change your password (if you provided login access) and enjoy ad-free music.",
+    "terms": "Upgrade Method: This is usually done by adding the customer's account to a Family Plan or Duo Plan.\n\n12-Month Rule: Spotify only allows an account to switch Family/Duo plans once every 12 months. If the customer joined a different family plan recently, the upgrade will fail.\n\nRegion Matching: The account's country must match the \"Family Manager's\" country. If they don't match, you (the seller) will need to change the account's region settings during the upgrade.\n\nNo Changes: If you provide a pre-made account, the customer must not change the email or billing info, or they will lose their warranty.\n\nPrivacy: Other members of a Family plan cannot see the customer's playlists, liked songs, or listening history.",
+    "faq": "Q: Will I keep my playlists?\n\nA: Yes! Since your own account is being upgraded, all your songs, playlists, and \"Made For You\" mixes stay exactly where they are.\n\nQ: Why does it say \"You're trying to join a plan in a different country\"?\n\nA: This means your account region doesn't match the plan. You must change your region in \"Account Settings\" to match the invite link's country.\n\nQ: What happens after the 1, 6, or 12 months?\n\nA: Your account will return to the \"Free\" version. You will need to purchase another upgrade from MYOOREDOO to stay Premium.",
+    "createdAt": "2026-02-05T22:44:37.298Z",
+    "updatedAt": "2026-02-05T22:44:37.298Z"
+  },
+  {
+    "_id": "69851b7303f94df5313f2ae6",
+    "title": "Netflix",
+    "description": "Instant access to a pre-activated Netflix Premium 4K HDR account. No gift card redemption required—just log in with the provided email and password. Includes full-period warranty and dedicated support for a hassle-free streaming experience.",
+    "category": "Netflix",
+    "subCategory": "69851ab503f94df5313f2ae5",
+    "image": "https://images.squarespace-cdn.com/content/v1/567e05c4e0327cd48ad079f3/1549393275390-RR6JD669IX1AS8LWUE3U/NETFLIX_FORM_06_wes.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "1 Month Basic",
+        "price": 16,
+        "originalPrice": 20,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1 Month Standard",
+        "price": 32,
+        "originalPrice": 40,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1 Month Premium",
+        "price": 39,
+        "originalPrice": 50,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Receive Credentials: After purchase on MYOOREDOO, the customer receives an Email and Password.\n\nLogin: Go to the Netflix app or website and enter the provided details.\n\nSelect Profile: If it is a shared account, the customer must only enter the specific Profile Name assigned to them (e.g., \"Profile 1\" or \"Customer A\").\n\nSet Profile PIN: (Optional) If allowed, customers can set a 4-digit PIN on their specific profile to keep their \"Must Watch\" list private.",
+    "terms": "Account Type: Specify if it is a Private Account (customer owns the whole account) or a Shared Profile (customer gets 1 profile on a 5-profile account).\n\nHousehold Rules: To avoid \"Incorrect Household\" errors, users should only use the account on the number of devices allowed by their specific plan.\n\nNo Changes Allowed: For shared accounts, customers are strictly forbidden from changing the Account Email, Password, or Billing Settings. Doing so usually voids the warranty.\n\nWarranty: Provide a \"Full Period Warranty.\" If the account stops working before the 30 days are up, you provide a replacement or a \"fix.\"",
+    "faq": "Q: Why does it say \"Too many people are using the account\"?\n\nA: This happens if more than the allowed number of screens are active. On a Shared Profile, ensure only one device is streaming at a time.\n\nQ: Can I use this on my Smart TV?\n\nA: Yes, but if the account is from a different region, Netflix might ask to \"Update Household.\" In this case, the customer may need to follow specific \"Home Location\" verification steps you provide.\n\nQ: What happens after 1 month?\n\nA: Since this is \"via account,\" the login will expire. The customer will need to purchase a new \"Account\" or \"Renewal\" from your site to continue.",
+    "createdAt": "2026-02-05T22:36:35.410Z",
+    "updatedAt": "2026-02-05T22:36:35.410Z"
+  },
+  {
+    "_id": "698519cd03f94df5313f2ae3",
+    "title": "Discord Effects",
+    "description": "Personalize your profile forever with permanent Avatar Decorations and Profile Effects. Delivered as an instant Gift Link—no account login required for activation. Items are yours to keep permanently, even after the gift link is used. Requires a Nitro subscription to equip and display your items to the community.",
+    "category": "Discord",
+    "subCategory": "698515cf03f94df5313f2adf",
+    "image": "https://imgur.com/E8m1AVT.png",
+    "rating": 5,
+    "featured": false,
+    "subProducts": [
+      {
+        "title": "Decoration & Effect 4.99$",
+        "price": 7,
+        "originalPrice": 10,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Decoration & Effect 5.99$",
+        "price": 8,
+        "originalPrice": 10,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Decoration & Effect 9.99$",
+        "price": 13,
+        "originalPrice": 15,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Decoration & Effect 10.99$",
+        "price": 14,
+        "originalPrice": 16,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Decoration & Effect 11.99$",
+        "price": 15,
+        "originalPrice": 18,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Receive the Gift Link (starts with discord.gift/) from MYOOREDOO.\n\nOpen the link in a browser where you are logged into Discord or paste it directly into a Discord chat and click \"Accept.\"\n\nTo apply the item: Go to User Settings > Profiles.\n\nClick Change Decoration or Change Effect to see your new permanent item in your collection.\n\n3. Types of Shop Items\nAvatar Decorations: Animated or static frames that sit around your profile picture (e.g., Cyberpunk, Fantasy, or Anime themes).\n\nProfile Effects: Large, full-screen animations that trigger when someone clicks your profile (e.g., falling Sakura petals or glitch effects).\n\nNameplates: Decorative banners or icons that appear next to your username (released in late 2025/early 2026 as a new shop category).",
+    "terms": "Permanent Ownership: Unlike Nitro, once a Gift Link for an Avatar Decoration or Profile Effect is redeemed, the item belongs to that account forever. It does not expire.\n\nNitro Not Required to Keep: You do not need an active Nitro subscription to keep or own the item, but you usually need Nitro to equip and use it.\n\nNon-Refundable: Once a Gift Link is generated and sent, it cannot be canceled or refunded by the seller.\n\nSingle Use: Each Gift Link can only be redeemed by one Discord account.",
+    "faq": "Q: Can I use the decoration if my Nitro expires?\n\nA: Generally, no. While you own the item permanently, Discord currently requires an active Nitro subscription (Basic or Gaming) to actually display the decorations to others.\n\nQ: Do these links expire?\n\nA: Gift Links stay valid until they are redeemed. However, once redeemed, the link becomes \"Unknown Gift Code.\"\n\nQ: Can I trade the item after I redeem it?\n\nA: No. Once added to your collection, the item is locked to your account and cannot be moved or traded.",
+    "createdAt": "2026-02-05T22:29:33.674Z",
+    "updatedAt": "2026-02-05T22:30:53.265Z"
+  },
+  {
+    "_id": "6985186703f94df5313f2ae2",
+    "title": "Discord Boosts",
+    "description": "Instantly upgrade any Discord server to Level 3 with a 14x Boost package. Unlock 384Kbps audio, 100MB uploads, and a custom vanity URL for your community. Choose between 1-month or 3-month durations with guaranteed stable delivery. Requires a permanent server invite link; do not kick booster accounts after joining.",
+    "category": "Discord",
+    "subCategory": "698515e903f94df5313f2ae0",
+    "image": "https://imgur.com/7Cjwkbg.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Boosts 1 Month X8",
+        "price": 15,
+        "originalPrice": 20,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Boosts 1 Month X14",
+        "price": 30,
+        "originalPrice": 40,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Boosts 3 Months X8",
+        "price": 25,
+        "originalPrice": 35,
+        "stock": 99999998,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Boosts 3 Months X14",
+        "price": 50,
+        "originalPrice": 70,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Provide Invite Link: The customer must provide a Permanent Invite Link (Never Expire / No Limit).\n\nDisable Protections: Temporarily turn off \"Anti-Raid\" bots or \"Verify to Join\" gates so the booster accounts can enter.\n\nDelivery Time: Most services take 30 minutes to 24 hours to fully reflect all 14 boosts.\n\nDo Not Kick: Advise the customer not to kick the new accounts that join; these are the \"boosters\" holding up the server level.",
+    "terms": "Duration-Based: Boosts are not permanent. A 1-Month or 3-Month package means the server will keep its level only for that specific period.\n\nServer Levels: * Level 1: 2 Boosts\n\nLevel 2: 7 Boosts\n\nLevel 3: 14 Boosts\n\nNon-Refundable: Once boosts are applied to a server, they cannot be retracted or refunded.\n\nBot/Account Method: Most 3rd-party \"Boost Packages\" (like 14x Boosts) work by having automated accounts join the server. If these accounts are kicked or banned by server admins, the boosts will be lost instantly.\n\n2. 1-Month vs. 3-Month Packages\n1-Month Boosts: Best for short-term events, tournaments, or testing out Level 3 features.\n\n3-Month Boosts: More cost-effective for established communities. It ensures the server stays at Level 3 for a full quarter without needing to renew every 30 days.\n\nStreak Badges: The \"Server Booster\" badge on a user's profile evolves based on how long they have continuously boosted a server. If the 1-month or 3-month package expires and is not renewed within 72 hours, the streak resets.",
+    "faq": "Q: Can I move the boosts to another server?\n\nA: For official Nitro boosts, yes (7-day cooldown). For 3rd-party \"14x Boost\" packages, no. They are locked to the link provided at purchase.\n\nQ: What happens when the 3 months are over?\n\nA: The accounts will leave the server, and the server level will drop back to its original state unless a new package is purchased.\n\nQ: Does this include Nitro for my account?\n\nA: No. Server Boosts only upgrade the Server. They do not give the buyer Nitro features (like animated avatars or larger file uploads for their own profile).",
+    "createdAt": "2026-02-05T22:23:35.116Z",
+    "updatedAt": "2026-02-05T22:23:35.116Z"
+  },
+  {
+    "_id": "6985174603f94df5313f2ae1",
+    "title": "Discord Nitro",
+    "description": "Get the full Discord experience with Nitro Gaming or Basic. 1-Month and 3-Month Promo links are for new/eligible accounts only. Ensure you haven't had Nitro in the last 12 months before purchasing a promo. \"Via Login\" activation requires temporary account access for guaranteed delivery.",
+    "category": "Discord",
+    "subCategory": "698515b603f94df5313f2ade",
+    "image": "https://imgur.com/1HXnUNz.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Nitro Gaming Gift",
+        "price": 27,
+        "originalPrice": 35,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Nitro Basic Gift",
+        "price": 10,
+        "originalPrice": 15,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Nitro 3 Months Link",
+        "price": 10,
+        "originalPrice": 15,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Visa Activation Link",
+        "price": 5,
+        "originalPrice": 7,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Instructions (How to Redeem)\nFor Gift Links: Simply click the link while logged into Discord and click \"Accept Gift.\"\n\nFor Promo Links: * Open the link in a browser where you are logged into the correct Discord account.\n\nEnsure no other Nitro is active on the account.\n\nAdd a payment method if prompted (you can remove it after activation).\n\nFor \"Via Login\": Provide the account details to the MYOOREDOO secure system and ensure Two-Factor Authentication (2FA) is temporarily disabled or the backup code is provided.",
+    "terms": "1-Month & 3-Month Promo Links (Important)\nWhen you sell \"Promo\" or \"Trial\" links (often from partnerships like Xbox, YouTube, or Twitch), the following rules apply:\n\n⚠️ The \"New User\" Rule\n1-Month & 3-Month Promo Links can ONLY be activated on accounts that have never had Nitro before.\n\nRestriction: If the account has had any Nitro subscription (Nitro, Nitro Classic, or Nitro Basic) in the last 12 months, the link will not work.\n\nNo Active Subs: You cannot activate these links if you currently own Nitro. You must wait for your current sub to expire, and even then, the \"12-month rule\" usually applies to these specific promo links.\n\n🔑 \"Via Login\" Activation\nFor links that require \"Via Login\" (Direct Activation):\n\nThe Process: The seller/system needs to log into the Discord account to bypass certain regional or payment hurdles.\n\nRequirement: The user must provide their login credentials or scan a QR code.\n\nPayment Method: Even though the link is \"free\" or \"pre-paid,\" Discord often requires a valid credit card or PayPal to be linked to the account to \"verify\" the user (it won't charge until the trial ends).",
+    "faq": "FAQ for your Customers\nQ: Why does it say \"Unknown Gift Code\"?\n\nA: This usually means the link has already been claimed or has expired.\n\nQ: Why does it say \"You are ineligible\"?\n\nA: This means you have had Nitro in the past 12 months. This link is only for users who haven't had a subscription recently.\n\nQ: Will I be charged after the 1 or 3 months?\n\nA: Yes, Discord will try to renew the sub. You must cancel the subscription in \"User Settings > Subscriptions\" immediately after activating to avoid future charges.",
+    "createdAt": "2026-02-05T22:18:46.892Z",
+    "updatedAt": "2026-03-16T08:08:07.634Z",
+    "productImage": ""
+  },
+  {
+    "_id": "698514e703f94df5313f2adc",
+    "title": "Free Fire Member",
+    "description": "The best value for Free Fire: Get up to 4x more Diamonds compared to standard top-ups. Choose Weekly for a quick boost or Monthly for long-term savings and exclusive VIP rewards.",
+    "category": "Free Fire",
+    "subCategory": "6985136003f94df5313f2ada",
+    "image": "https://i.redd.it/8c37jexvbrpb1.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Weekly Member",
+        "price": 10,
+        "originalPrice": 15,
+        "stock": 99999999999,
+        "deliveryTime": "1 - 2 Hours"
+      },
+      {
+        "title": "Monthly Member",
+        "price": 25,
+        "originalPrice": 30,
+        "stock": 99999999999,
+        "deliveryTime": "1 - 2 Hours"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Copy your Free Fire Player ID from your in-game profile.\n\nOn MYOOREDOO, select the Weekly or Monthly Membership option.\n\nPaste your Player ID and complete the payment.\n\nThe \"Instant\" Diamonds will be added to your account immediately.\n\nGo to the Membership Tab in-game daily to claim your remaining Diamonds.",
+    "terms": "ID-Based Activation: Memberships are activated directly via your Player ID. Ensure the ID is 100% correct, as the subscription cannot be transferred or refunded.\n\nDaily Claim Requirement: You must log in every day to claim your daily Diamonds. If you miss a day, you can \"check-in\" later using Gold, but it is best to claim them daily to maximize value.\n\nNon-Stackable Benefits: While you can buy both a Weekly and Monthly membership at the same time (Super Membership), you cannot buy two of the same membership to double your daily rewards; it will simply extend the duration.\n\nReset Time: Daily rewards reset every day at 03:00 (Server Time).\n\n\nWeekly\t80 - 100\t50 / day\t~430 - 450\t7 Days\nMonthly\t400 - 500\t50 / day\t~1,900 - 2,000\t30 Days\nNote: If you have both active, you unlock Super Membership benefits, which include extra daily Diamond rewards and a special \"Super Member\" icon.",
+    "faq": "Q: Can I buy a Membership for a friend?\n\nA: Yes. Since it is ID-based, you just need to enter your friend's Player ID during the checkout process on your site.\n\nQ: What happens if I forget to claim my Diamonds?\n\nA: You can usually reclaim missed daily rewards within 7 days via in-game mail or by using Gold for a \"make-up\" check-in.\n\nQ: Is there a \"Weekly Lite\" version?\n\nA: Yes, in some regions, a \"Weekly Lite\" exists which provides fewer total Diamonds (approx. 90) at a much lower price point.",
+    "createdAt": "2026-02-05T22:08:39.559Z",
+    "updatedAt": "2026-02-05T22:08:39.559Z"
+  },
+  {
+    "_id": "698513f503f94df5313f2adb",
+    "title": "Free Fire Diamonds",
+    "description": "Instantly recharge Free Fire Diamonds via Player ID to unlock the Booyah Pass and rare skins. Safe, secure, and fast delivery directly to your account—the best way to level up your game.",
+    "category": "Free Fire",
+    "subCategory": "6985134903f94df5313f2ad9",
+    "image": "https://i.redd.it/8c37jexvbrpb1.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "100 Diamond",
+        "price": 4.5,
+        "originalPrice": 5,
+        "stock": 9999999999,
+        "deliveryTime": "1 - 2 Hours"
+      },
+      {
+        "title": "210 Diamond",
+        "price": 10,
+        "originalPrice": 15,
+        "stock": 9999999998,
+        "deliveryTime": "1 - 2 Hours"
+      },
+      {
+        "title": "530 Diamond",
+        "price": 25,
+        "originalPrice": 30,
+        "stock": 9999999999,
+        "deliveryTime": "1 - 2 Hours"
+      },
+      {
+        "title": "1188 Diamond",
+        "price": 45,
+        "originalPrice": 60,
+        "stock": 9999999997,
+        "deliveryTime": "1 - 2 Hours"
+      },
+      {
+        "title": "2200 Diamond",
+        "price": 85,
+        "originalPrice": 100,
+        "stock": 9999999999,
+        "deliveryTime": "1 - 2 Hours"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Open Free Fire and tap your Avatar (top-left).\n\nIn the \"Gallery\" tab, find your Player ID (a string of 8–12 numbers) and click the Copy icon.\n\nOn MYOOREDOO or an authorized partner like Garena’s Shop2Game:\n\nSelect the Free Fire game icon.\n\nChoose Player ID Login and paste your ID.\n\nSelect your Diamond pack and complete the payment.\n\nDiamonds will appear in your in-game balance instantly.",
+    "terms": "Player ID Accuracy: Diamonds are delivered directly to the account associated with the Player ID provided. Once the recharge is processed, it is impossible to reverse the transaction or move the Diamonds to another account.\n\nRegion Restrictions: Most ID-based recharges are region-specific (e.g., MENA, India, Global). Ensure the recharge package matches the server your account is registered on.\n\nNon-Refundable: All digital Diamond top-ups are final and non-refundable.\n\nSafety Warning: Avoid using unofficial tools or \"hacks\" that promise free diamonds; only use authorized ID-based top-up services to prevent account suspension.",
+    "faq": "Q: How do I verify my ID is correct?\n\nA: Authorized top-up sites will display your In-Game Nickname after you enter your Player ID. Always check that the name matches yours before paying.\n\nQ: Can I get the \"First Top-Up\" bonus?\n\nA: Yes, ID-based recharges typically trigger in-game events like the \"First Top-Up Bonus\" or \"Cumulative Top-Up\" rewards.\n\nQ: Why are my diamonds not showing?\n\nA: It can take up to 15 minutes during peak times. If they don't appear, restart the game or check your in-game mail.",
+    "createdAt": "2026-02-05T22:04:37.077Z",
+    "updatedAt": "2026-02-05T22:05:18.885Z"
+  },
+  {
+    "_id": "6985128703f94df5313f2ad7",
+    "title": "PUBG Mobile UC ",
+    "description": "The premium currency for PUBG Mobile to unlock the Royale Pass and legendary weapon skins. Fast, secure top-ups via Player ID to get your UC and start opening crates immediately.",
+    "category": "PUBG Mobile",
+    "subCategory": "6985118803f94df5313f2ad6",
+    "image": "https://www.entreprises-magazine.com/wp-content/uploads/2019/07/PUBG-MOBILE.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "60 UC",
+        "price": 4.5,
+        "originalPrice": 5,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "325 UC",
+        "price": 18.5,
+        "originalPrice": 30,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "660 UC",
+        "price": 37,
+        "originalPrice": 50,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1800 UC",
+        "price": 83,
+        "originalPrice": 100,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "3850 UC",
+        "price": 177,
+        "originalPrice": 200,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Open PUBG Mobile and tap your Avatar (top-left). Copy your Player ID (a long string of numbers).\n\nIf you have a Digital Code (PIN): Visit the official redemption site (usually Midasbuy).\n\nLog in, enter your Player ID, and select Redeem.\n\nPaste your 16-character PIN and click OK. The UC will reflect in your in-game balance instantly.",
+    "terms": "Player ID (UID) Verification: UC is credited directly to your account via your Player ID. It is your responsibility to provide the correct ID; once UC is sent to an ID, it cannot be transferred or refunded.\n\nRegion Compatibility: While many UC codes are \"Global,\" some are region-locked (e.g., Turkey, Middle East). Always ensure the product matches your account's region to avoid redemption errors.\n\nNon-Refundable: Digital UC codes and direct top-ups are considered final sales.\n\nUsage Policy: UC cannot be exchanged for real money or transferred between different game accounts.",
+    "faq": "Q: Where can I find my Player ID?\n\nA: Tap your profile icon; your ID is listed right above your level. Use the \"Copy\" button to ensure accuracy.\n\nQ: Does UC expire?\n\nA: No, once UC is in your game account, it stays there until you spend it.\n\nQ: Can I use this for PUBG Mobile KR or VN?\n\nA: No. Global UC codes generally do not work on the Korean (KR) or Vietnamese (VN) versions of the game.\n\nQ: What is the \"Purchase Bonus\"?\n\nA: Frequent events in-game give extra items or UC for reaching certain top-up milestones. Direct top-ups usually count toward these events.",
+    "createdAt": "2026-02-05T21:58:31.021Z",
+    "updatedAt": "2026-02-05T21:58:31.021Z"
+  },
+  {
+    "_id": "6985111903f94df5313f2ad4",
+    "title": "Blood Strike Golds",
+    "description": "Premium currency for Blood Strike to unlock exclusive Strikers, Ultra-tier skins, and the Strike Pass. Fast and secure UID-based top-up to boost your Gold balance and dominate the battlefield.",
+    "category": "Blood Strike",
+    "subCategory": "69850ecd03f94df5313f2ad1",
+    "image": "https://imgur.com/ItlV4eK.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "56 Golds",
+        "price": 2.2,
+        "originalPrice": 3,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "116 Golds",
+        "price": 4.2,
+        "originalPrice": 5,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "352 Golds",
+        "price": 13,
+        "originalPrice": 15,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "594 Golds",
+        "price": 21,
+        "originalPrice": 25,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1210 Golds",
+        "price": 42,
+        "originalPrice": 50,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2486 Golds",
+        "price": 84,
+        "originalPrice": 100,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "6380 Golds",
+        "price": 210,
+        "originalPrice": 250,
+        "stock": 999999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Open Blood Strike and tap your Avatar (top-left) to find and copy your UID.\n\nGo to the in-game Gold Shop or an authorized web portal (like NetEase GamesClub).\n\nSelect the desired Gold amount (e.g., 100, 500, or 2500 Gold).\n\nEnter your UID and select your Server.\n\nComplete the payment. The Gold should appear in your in-game balance within 1–5 minutes.",
+    "terms": "UID-Based Top-up: Most Gold purchases are made using your User ID (UID). Ensure this is copied correctly, as top-ups to the wrong UID cannot be reversed or refunded.\n\nServer Specific: Gold is tied to your specific server (MENA, SEA, LATAM, etc.). If you play on the MENA server, ensure you are purchasing a global or MENA-compatible top-up.\n\nNon-Refundable: Once the Gold is credited to your account and reflects in your balance, it is non-refundable and cannot be converted back into cash.\n\nAuthorized Sellers: NetEase (the developer) strictly monitors third-party top-ups. Using unauthorized \"cheap\" top-up services can result in a \"Negative Gold\" balance or a permanent account ban.",
+    "faq": "Q: Where is the best place to find my UID?\n\nA: It is located on your profile page under your name. There is a small \"Copy\" icon next to the long string of numbers.\n\nQ: Why didn't I get my first-purchase bonus?\n\nA: First-purchase double-gold bonuses are usually only available for in-game purchases. Some third-party web shops do not support this specific event.\n\nQ: Can I send Gold directly to a friend?\n\nA: No, you cannot transfer Gold between accounts. However, you can use your friend's UID to buy Gold for them directly via a top-up shop.",
+    "createdAt": "2026-02-05T21:52:25.733Z",
+    "updatedAt": "2026-02-05T21:52:25.733Z"
+  },
+  {
+    "_id": "69850fcb03f94df5313f2ad3",
+    "title": "Blood Strike Strike Pass",
+    "description": "Unlock exclusive Ultra skins, executions, and weapon camos with the Blood Strike seasonal pass. Complete the Elite track to earn back your Gold and fund your next season for free!",
+    "category": "Blood Strike",
+    "subCategory": "69850f3003f94df5313f2ad2",
+    "image": "https://imgur.com/ItlV4eK.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Strike Pass Elite",
+        "price": 17,
+        "originalPrice": 20,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Strike Pass Premium",
+        "price": 38,
+        "originalPrice": 45,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Find your UID: Tap your Avatar in the top-left corner of the main lobby. Copy the User ID (UID) displayed.\n\nPurchase: Buy the \"Strike Pass Elite\" or \"Premium\" pack from the in-game shop or an authorized reseller like NetEase GamesClub.\n\nActivation:\n\nIf bought in-game: It activates instantly.\n\nIf bought via UID top-up: The pass will be credited directly to your account. Check your in-game Inbox or the Strike Pass tab to see the \"Elite\" status unlocked.\n\nLevel Up: Complete daily and weekly missions to earn XP and unlock the rewards.",
+    "terms": "Two Paid Tiers: There are two premium versions: Elite (standard premium rewards) and Premium (includes additional instant levels and exclusive \"Ultra\" rewards).\n\nGold Refund Policy: If you purchase the Elite Strike Pass (approx. 520 Gold), you can earn back your full 520 Gold by completing the pass milestones, essentially making the next season's pass \"free\" if you finish.\n\nNon-Refundable: Once a Strike Pass is activated on an account, it cannot be refunded or transferred.\n\nMENA Restrictions: As of early 2026, some third-party top-up sites have temporary restrictions for the MENA (Middle East and North Africa) server. Always check server compatibility before purchasing.",
+    "faq": "Q: What is the difference between Elite and Premium?\n\nA: Elite unlocks the premium reward track. Premium usually grants an instant +20 Level boost and exclusive Ultra-grade skins (like the \"Sea Wraith\" M4A1) not available in the Elite tier.\n\nQ: Can I upgrade from Elite to Premium later?\n\nA: Yes, you can usually pay the difference in Gold to upgrade to the Premium tier at any point during the season.\n\nQ: What happens if I don't finish the pass?\n\nA: You will only keep the rewards for the levels you reached. You will not receive the full Gold refund unless you reach the final \"Gold refund\" milestones.",
+    "createdAt": "2026-02-05T21:46:51.015Z",
+    "updatedAt": "2026-02-05T21:46:51.015Z"
+  },
+  {
+    "_id": "69850e4703f94df5313f2acf",
+    "title": "Xbox Gift Card (USD)",
+    "description": "The ultimate gift for gamers: add USD credit to your US Microsoft account for games, apps, and hardware. Instant digital delivery with no expiry—buy the latest titles or hardware directly from the Microsoft Store.",
+    "category": "Xbox",
+    "subCategory": "69850ab103f94df5313f2acc",
+    "image": "https://imgur.com/s2cu4j6.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "5 USD",
+        "price": 19,
+        "originalPrice": 30,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "10 USD",
+        "price": 37,
+        "originalPrice": 50,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "15 USD",
+        "price": 52,
+        "originalPrice": 70,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "20 USD",
+        "price": 70,
+        "originalPrice": 100,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "25 USD",
+        "price": 85,
+        "originalPrice": 100,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "50 USD",
+        "price": 160,
+        "originalPrice": 180,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Via Browser (Easiest): Go to microsoft.com/redeem and log into your US account.\n\nOn Xbox Series X|S or One: Open the Store app, press the View button (or navigate to the sidebar), and select Redeem.\n\nOn Windows PC: Open the Microsoft Store app, click your Profile icon, and select Redeem code or gift cards.\n\nEnter the 25-character code (it automatically adds dashes) and click Confirm.",
+    "terms": "Region Locked: This card is strictly for United States (US) Microsoft accounts. It will not work on accounts registered in other regions like the UK, Europe, or Tunisia.\n\nCurrency Match: The account's store currency must be in USD. Microsoft does not support automatic currency conversion for gift cards.\n\nNo Expiration: Funds added via retail gift cards do not expire. (Note: Promotional credits from Microsoft Rewards usually expire within 90 days).\n\nNon-Refundable: Once the 25-character code is redeemed, the balance cannot be refunded, transferred to another account, or exchanged for cash.\n\nUsage Limits: The balance can be used for games, DLC, movies, and apps, but some in-app subscriptions may still require a secondary credit card on file for recurring billing.",
+    "faq": "Q: Can I buy a physical Xbox Console with this?\n\nA: Yes. Once redeemed to your Microsoft account, you can use the balance at the online Microsoft Store to buy hardware like consoles, controllers, and Surface devices (US shipping addresses only).\n\nQ: Why does it say \"Code not found\"?\n\nA: Double-check that you are entering the 25-character PIN and not the Serial Number. Ensure your account region is set to the United States.\n\nQ: Can I use this for Xbox Game Pass?\n\nA: Yes, you can use your account balance to pay for Game Pass Ultimate, PC Game Pass, or Game Pass Core.",
+    "createdAt": "2026-02-05T21:40:23.182Z",
+    "updatedAt": "2026-02-05T21:40:23.182Z"
+  },
+  {
+    "_id": "69850ce103f94df5313f2ace",
+    "title": "Xbox Games Pass (Global)",
+    "description": "Instant access to hundreds of high-quality games on Xbox and PC, including new releases on day one. The \"Ultimate\" gaming subscription featuring online multiplayer, EA Play, and exclusive member discounts.",
+    "category": "Xbox",
+    "subCategory": "69850b5503f94df5313f2acd",
+    "image": "https://imgur.com/s2cu4j6.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Xbox Game Pass Premium 1 Month",
+        "price": 6,
+        "originalPrice": 10,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Xbox EA Play Membership 1 Month",
+        "price": 46,
+        "originalPrice": 50,
+        "stock": 9999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "Xbox Game Pass Ultimate 1 Month Trial",
+        "price": 56,
+        "originalPrice": 60,
+        "stock": 99999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Via Web (Recommended): Go to redeem.microsoft.com, log in, and enter the 25-character code.\n\nOn Xbox Console: Press the Xbox button > Store > Redeem.\n\nOn Windows PC: Open the Microsoft Store or Xbox App, click your profile, and select Redeem code or gift cards.\n\nConfirm the subscription details and ensure the \"Recurring Billing\" setting is to your preference before finishing.",
+    "terms": "Subscription Model: This is a digital code for a specific duration (e.g., 1, 3, or 12 months). It grants access to the Game Pass library for that period only.\n\nAuto-Renewal: Once the code expires, the subscription will automatically renew at the standard monthly rate unless Recurring Billing is turned off in the Microsoft account settings.\n\nNon-Stackable Trials: If a code is labeled as a \"Trial\" or \"New Customer Only,\" it cannot be redeemed on an account that has previously had Game Pass.\n\nConversion Rules: Redeeming an Ultimate code while you have an active \"Core\" (formerly Gold) or \"Standard\" subscription will convert your remaining time to Ultimate based on Microsoft’s current conversion ratio.",
+    "faq": "Q: Is \"Global\" truly work everywhere? * A: While the code is not region-locked, it can only be activated in countries where Xbox Live services are officially supported. (e.g., It may not work in unsupported regions like Tunisia without account adjustments).\n\nQ: Does it include EA Play?\n\nA: Yes, the Ultimate and PC versions include an EA Play membership at no extra cost.\n\nQ: Can I use this on both PC and Console?\n\nA: Only the Xbox Game Pass Ultimate tier allows you to play on both. The \"PC\" or \"Core\" tiers are restricted to their specific platforms.",
+    "createdAt": "2026-02-05T21:34:25.679Z",
+    "updatedAt": "2026-02-05T21:34:25.679Z"
+  },
+  {
+    "_id": "69850a1503f94df5313f2aca",
+    "title": "Itunes Gift Card (USD)",
+    "description": "One card for everything Apple: buy apps, games, music, and movies, or pay for iCloud+ and Apple Music. Instant digital delivery for the US App Store—the safest way to shop without a credit card.",
+    "category": "iTunes",
+    "subCategory": "6985090e03f94df5313f2ac9",
+    "image": "https://imgur.com/N48TNjr.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "2 USD",
+        "price": 8,
+        "originalPrice": 10,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "5 USD",
+        "price": 20,
+        "originalPrice": 25,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "10 USD",
+        "price": 39,
+        "originalPrice": 50,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "15 USD",
+        "price": 58,
+        "originalPrice": 70,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "20 USD",
+        "price": 77,
+        "originalPrice": 90,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "30 USD",
+        "price": 115,
+        "originalPrice": 130,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "On iPhone/iPad: Open the App Store, tap your Photo/Profile icon at the top, and select Redeem Gift Card or Code.\n\nOn Mac: Open the App Store, click your name/sign-in button in the sidebar, and select Redeem Gift Card.\n\nOn Windows: Open the Apple Music or Apple TV app, click your name at the bottom of the sidebar, and select Redeem.\n\nEnter the 16-digit code (starts with an \"X\") manually or use your camera to scan it.",
+    "terms": "Region Restricted: These cards are valid only for purchases made in the United States from Apple properties (App Store, iTunes, apple.com). They cannot be redeemed on accounts set to any other country.\n\nAccount Ownership: To redeem, you must have a valid Apple Account and be at least 13 years old.\n\nNon-Refundable: Once purchased, gift cards cannot be returned, refunded, or exchanged for cash (except where required by law).\n\nNo Expiration: Apple Gift Cards do not have an expiration date.\n\nPrivacy & Security: Apple is not responsible for lost or stolen cards. Beware of scams; Apple Gift Cards can only be used to buy Apple products and services.",
+    "faq": "Q: Can I use this for iCloud+ or Apple Music?\n\nA: Yes! Once redeemed, your balance is used automatically for any Apple subscriptions, including iCloud+, Apple Arcade, and Apple TV+.\n\nQ: Can I use a USD card in another country if I change my region?\n\nA: Apple generally requires a local payment method to change regions. It is highly recommended to use these only if your account is already set to the US.\n\nQ: What is the difference between this and an \"App Store & iTunes\" card?\n\nA: The newer \"Apple Gift Card\" (white logo) can be used for both digital content and physical hardware at the Apple Store. Older \"iTunes\" cards are typically for digital content only.",
+    "createdAt": "2026-02-05T21:22:29.519Z",
+    "updatedAt": "2026-02-05T21:22:29.519Z"
+  },
+  {
+    "_id": "698508b103f94df5313f2ac7",
+    "title": "PlayStation Gift Cards (TRY)",
+    "description": "The best way to fund your Turkish PSN account and access the store's regional deals and PS Plus. Instant digital delivery of TRY credit with no credit card required—perfect for all PS4 and PS5 players.",
+    "category": "PlayStation",
+    "subCategory": "6984f28003f94df5313f2ac5",
+    "image": "https://firebasestorage.googleapis.com/v0/b/topup-hub-t831o.firebasestorage.app/o/psstore_card_1500x950.png?alt=media&token=c75da10a-70a6-41c8-a90f-ec821210fcaa",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "250 TRY",
+        "price": 23,
+        "originalPrice": 30,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "500 TRY",
+        "price": 45,
+        "originalPrice": 60,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "750 TRY",
+        "price": 70,
+        "originalPrice": 80,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 TRY",
+        "price": 89,
+        "originalPrice": 100,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Log into your Turkish PSN account on your console or at store.playstation.com.\n\nOn PS5: Settings > Users and Accounts > Account > Payment and Subscriptions > Redeem Codes.\n\nOn PS4: Go to the PlayStation Store, scroll to the bottom of the sidebar, and select Redeem Codes.\n\nEnter the 12-digit PIN and confirm. The funds will appear in your wallet instantly.",
+    "terms": "Region Locked: These codes are strictly for PlayStation Network (PSN) accounts registered in Turkey. They will not work on accounts from any other country (e.g., US, UK, or EU).\n\nCurrency Requirement: The card must be in Turkish Lira (TRY) and can only be used in the Turkish PlayStation Store.\n\nNon-Refundable: Once the digital PIN is issued, it cannot be returned or exchanged.\n\nAccount Consistency: You cannot change the region of an existing account to Turkey. You must have a Turkish account from the start to use these cards.\n\n12-Month Validity: While many PSN cards don't expire, some Turkish vouchers are noted to have a 12-month validity from the date of purchase. It is best to redeem them immediately.",
+    "faq": "Q: Can I use these for PS Plus subscriptions in Turkey?\n\nA: Yes, once the TRY balance is in your wallet, you can use it to pay for PS Plus Essential, Extra, or Premium. Note that \"stacking\" multiple years of subscriptions is sometimes limited by Sony.\n\nQ: Why does my code show as \"invalid\"?\n\nA: This usually happens if your account is not set to Turkey. Check your \"Region of Residence\" in your account settings. Also, ensure you are entering the 12-digit code without dashes.\n\nQ: Can I play games bought on my Turkish account on my main (US/EU) account?\n\nA: Yes, as long as your console is set as the \"Primary Console\" (or \"Console Sharing and Offline Play\" is enabled) for the Turkish account.",
+    "createdAt": "2026-02-05T21:16:33.872Z",
+    "updatedAt": "2026-02-07T22:21:11.096Z",
+    "productImage": ""
+  },
+  {
+    "_id": "698507f803f94df5313f2ac6",
+    "title": "PlayStation Gift Cards (USD)",
+    "description": "The easiest way to fund your US PlayStation Store account for games, DLC, and PS Plus. Instant digital delivery for safe, credit-card-free shopping on all your favorite PlayStation titles.",
+    "category": "PlayStation",
+    "subCategory": "6984f26f03f94df5313f2ac4",
+    "image": "https://firebasestorage.googleapis.com/v0/b/topup-hub-t831o.firebasestorage.app/o/psstore_card_1500x950.png?alt=media&token=c75da10a-70a6-41c8-a90f-ec821210fcaa",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "5 USD",
+        "price": 18,
+        "originalPrice": 20,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "10 USD",
+        "price": 28,
+        "originalPrice": 40,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "25 USD",
+        "price": 88,
+        "originalPrice": 100,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "50 USD",
+        "price": 174,
+        "originalPrice": 200,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "On PS5: Go to Settings > Users and Accounts > Account > Payment and Subscriptions > Redeem Codes.\n\nOn PS4: Go to the PlayStation Store > scroll to the bottom of the sidebar > Redeem Codes.\n\nOn Web: Visit store.playstation.com, click your Avatar, and select Redeem Code.\n\nCarefully enter the 12-digit PIN and select Redeem. The funds are added instantly.",
+    "terms": "Region Restricted: This card is strictly for US PlayStation Network (PSN) accounts. It will not work on accounts registered in the UK, Europe, Turkey, or any other region.\n\nAccount Locking: Once you set the country of your PSN account during setup, it cannot be changed. To use this card, you must have an account specifically set to the United States.\n\nNo Expiration: The funds in your PSN wallet do not expire once redeemed.\n\nWallet Limits: There is a maximum limit on how much a PSN wallet can hold (typically $250 USD).\n\nNon-Refundable: Digital codes cannot be returned or exchanged once the PIN is revealed.",
+    "faq": "Q: Can I use this for PlayStation Plus?\n\nA: Yes! Once the funds are in your wallet, you can use them to subscribe to PS Plus (Essential, Extra, or Premium) or buy games and DLC.\n\nQ: Why does it say \"Code is invalid or already redeemed\"?\n\nA: First, double-check that your account region is definitely set to the US. Second, ensure you aren't confusing \"0\" (zero) with \"O\" (letter) or \"1\" (one) with \"I\" (letter).\n\nQ: Can I use this on a Child Account?\n\nA: Usually, no. Child accounts don't have their own wallets; they use the \"Family Manager's\" wallet funds. The manager must redeem the code.",
+    "createdAt": "2026-02-05T21:13:28.015Z",
+    "updatedAt": "2026-02-05T21:13:28.015Z"
+  },
+  {
+    "_id": "6984f17703f94df5313f2ac2",
+    "title": "Steam Gift Cards (CNY)",
+    "description": "The essential top-up for Steam accounts registered in the Mainland China region. Instant CNY credit for games and DLC with secure digital delivery and no expiration.",
+    "category": "Steam",
+    "subCategory": "6984edd003f94df5313f2abf",
+    "image": "https://cdn.dlcompare.com/others_jpg/upload/news/image/en-new-valve-guidelines-suggest-0fbf22a7-image-0fbf228a.jpg.webp",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "20 CNY",
+        "price": 15,
+        "originalPrice": 20,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "50 CNY",
+        "price": 33,
+        "originalPrice": 40,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "100 CNY",
+        "price": 61,
+        "originalPrice": 70,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Launch the Steam client or visit steampowered.com/redeem.\n\nLog into your account (ensure your region is set to China).\n\nNavigate to Account Details > Add funds to your Steam Wallet.\n\nSelect Redeem a Steam Gift Card or Wallet Code.\n\nEnter the CNY code precisely and click Continue.",
+    "terms": "Region Locked: These codes can only be redeemed on Steam accounts where the store region is set to Mainland China.\n\nCurrency Requirement: The account's wallet currency must be CNY. As of 2026, Steam prevents the redemption of physical or digital wallet codes if the currency of the code does not match the account's existing wallet currency.\n\nMainland vs. Global: These cards are typically intended for the global Steam client (often accessed in China via authorized methods) rather than the \"Steam China\" (Perfect World) version, which has its own separate library and rules.\n\nNo Expiration: Like other regions, CNY codes do not have an expiration date.\n\nNon-Refundable: Once the code is revealed or added to an account, it cannot be refunded or transferred.",
+    "faq": "Q: Can I use a CNY card to change my account region to China?\n\nA: No. Steam does not allow the use of gift cards to change your store region. You must have a local Chinese payment method and physical residency to switch your account to the China region.\n\nQ: I am outside China; can I use this card?\n\nA: Only if your account was previously established as a China-region account. If your account is US or EU, the code will be rejected with a \"Currency Mismatch\" error.\n\nQ: Does this work on \"Steam China\" (Perfect World)?\n\nA: Generally, yes, but users usually prefer these for the standard Steam client to access a wider library of games.",
+    "createdAt": "2026-02-05T19:37:27.488Z",
+    "updatedAt": "2026-02-05T19:37:27.488Z"
+  },
+  {
+    "_id": "6984efcb03f94df5313f2ac1",
+    "title": "Steam Gift Cards (EU)",
+    "description": "The perfect way to top up your Eurozone Steam Wallet for games, software, and hardware. Instant digital delivery with no expiration—ideal for EU players and seasonal Steam sales.",
+    "category": "Steam",
+    "subCategory": "6984eda403f94df5313f2abe",
+    "image": "https://cdn.dlcompare.com/others_jpg/upload/news/image/en-new-valve-guidelines-suggest-0fbf22a7-image-0fbf228a.jpg.webp",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "5 EU",
+        "price": 25,
+        "originalPrice": 30,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "10 EU",
+        "price": 48,
+        "originalPrice": 60,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "20 EU",
+        "price": 92,
+        "originalPrice": 110,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "30 EU",
+        "price": 140,
+        "originalPrice": 160,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Open the Steam app or visit steampowered.com/redeem.\n\nLog into your Europe-region account.\n\nEnter your 16-digit code into the \"Steam Wallet Code\" field.\n\nClick Continue. The balance will be added instantly to your Steam Wallet.",
+    "terms": "Currency Match: These cards are typically denominated in Euros (€). They can only be redeemed on Steam accounts where the store currency is also set to EUR.\n\nRegional Lock: Valid only for European Union/Eurozone accounts (e.g., France, Germany, Netherlands, etc.). They will not work on accounts set to the US, UK (GBP), or Turkey (TRY).\n\nNo Expiration: Steam Wallet funds and official gift cards do not expire.\n\nNon-Refundable: Once the code is redeemed or the digital PIN is revealed, it cannot be refunded or exchanged for cash.",
+    "faq": "Q: Can I use a €20 card in the UK? * A: No. UK accounts use GBP (£). Steam usually blocks redemptions if the card currency (EUR) does not match your account currency.\n\nQ: Can I use this to buy a Steam Deck? * A: Yes, Steam Wallet funds can be used for hardware like the Steam Deck or Valve Index, provided they are available for shipping to your EU address.\n\nQ: What if I have an EU account but I'm currently traveling? * A: As long as your Store Country remains set to an EU nation in your account settings, you can redeem the card from anywhere.",
+    "createdAt": "2026-02-05T19:30:19.631Z",
+    "updatedAt": "2026-02-05T19:37:37.496Z"
+  },
+  {
+    "_id": "6984ef0b03f94df5313f2ac0",
+    "title": "Steam Gift Cards (USD)",
+    "description": "The primary way to fund your US-region Steam Wallet for games, DLC, and hardware. Instant digital delivery with no expiration—perfect for securing the best deals during Steam Sales.",
+    "category": "Steam",
+    "subCategory": "6984ed2803f94df5313f2abd",
+    "image": "https://cdn.dlcompare.com/others_jpg/upload/news/image/en-new-valve-guidelines-suggest-0fbf22a7-image-0fbf228a.jpg.webp",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "5 USD",
+        "price": 22,
+        "originalPrice": 30,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "10 USD",
+        "price": 39,
+        "originalPrice": 60,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "20 USD",
+        "price": 80,
+        "originalPrice": 100,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "25 USD",
+        "price": 96,
+        "originalPrice": 120,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "30 USD",
+        "price": 120,
+        "originalPrice": 150,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Open the Steam client or go to steampowered.com/redeem.\n\nLog into your account.\n\nClick your Profile Name in the top right and select Account Details.\n\nClick Add funds to your Steam Wallet > Redeem a Steam Gift Card or Wallet Code.\n\nEnter the 16-digit code exactly and click Continue.",
+    "terms": "Currency Locking: As of 2026, Steam has significantly tightened its regional policies. A USD gift card can typically only be redeemed on accounts where the store currency is set to USD.\n\nRegion Match: If you are in a country where the store uses a different local currency (like EUR or TRY), a USD card will often result in a \"Currency Mismatch\" error.\n\nNo Expiration: Steam Wallet funds and Gift Cards do not expire.\n\nNon-Refundable: Once a code is redeemed, the funds are permanently tied to that account and cannot be withdrawn or transferred.",
+    "faq": "Q: Can I use a USD card if I’m traveling outside the US?\n\nA: Yes, as long as your account's Store Region is still set to the United States. Steam looks at your account's home region, not your current GPS location.\n\nQ: Will it convert USD to my local currency?\n\nA: In the past, Steam allowed this, but now they generally block redemptions if the card currency doesn't match the account currency to prevent \"region hopping\" for cheaper games.\n\nQ: Can I buy hardware (like a Steam Deck) with this?\n\nA: Yes! You can use your Steam Wallet balance to purchase games, DLC, and even Valve hardware if it's available in your region.",
+    "createdAt": "2026-02-05T19:27:07.524Z",
+    "updatedAt": "2026-02-05T19:27:07.524Z"
+  },
+  {
+    "_id": "6984ebf703f94df5313f2abb",
+    "title": "Razer Gold Global",
+    "description": "The universal currency for gamers: unlock content in over 42,000 games and earn Razer Silver rewards. Secure, instant digital delivery to top up your wallet and access exclusive in-game deals worldwide.",
+    "category": "Razer Gold",
+    "subCategory": "6984eaac03f94df5313f2aba",
+    "image": "https://assets2.razerzone.com/images/pnx.assets/77a3129a6bcbb490078654285d1bad1d/razer-gold-pin-hero-mobile.webp",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "1 USD",
+        "price": 4,
+        "originalPrice": 5,
+        "stock": 100000000000000000,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2 USD",
+        "price": 8,
+        "originalPrice": 10,
+        "stock": 100000000000000000,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "5 USD",
+        "price": 20,
+        "originalPrice": 30,
+        "stock": 100000000000000000,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "10 USD",
+        "price": 39,
+        "originalPrice": 50,
+        "stock": 100000000000000000,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "20 USD",
+        "price": 70,
+        "originalPrice": 100,
+        "stock": 100000000000000000,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "50 USD",
+        "price": 180,
+        "originalPrice": 200,
+        "stock": 100000000000000000,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Visit gold.razer.com and log into your Razer ID account.\n\nClick on the [Reload] button or the Gold tab and select Reload Now.\n\nChoose Razer Gold PIN as your payment method.\n\nEnter the 16-digit PIN provided (ensure there are no spaces) and click Next.\n\nComplete the 2-step authentication to finalize the top-up.",
+    "terms": "Currency & Region: While labeled \"Global,\" these codes are typically denominated in USD. They are most compatible with accounts set to \"Global,\" \"United States,\" or regions that use USD as their primary currency.\n\nNon-Refundable: Once the digital PIN is issued, it cannot be returned, exchanged, or refunded for cash.\n\nInactivity Fees: Many regions apply an inactivity fee (often 2 EUR/USD or equivalent) if the balance remains untouched for 12 consecutive months.\n\nNo Expiration on Gift Cards: Most Razer Gold PINs do not expire, but it is best to redeem them immediately to secure the funds to your account.",
+    "faq": "Q: Can I use Razer Gold to buy Razer hardware?\n\nA: No. Credits in your Razer Gold wallet are for digital content only (games, skins, etc.). If you want to buy hardware, you must use a separate Razer.com Gift Card.\n\nQ: What is Razer Silver?\n\nA: It is a loyalty program. Every time you spend Razer Gold, you earn Razer Silver, which can be redeemed for hardware, discount vouchers, or exclusive game keys.\n\nQ: Why is my code not working?\n\nA: Ensure you are entering the PIN, not the Serial Number. Also, check that your account region matches the card's currency (USD Global).",
+    "createdAt": "2026-02-05T19:13:59.813Z",
+    "updatedAt": "2026-02-05T19:14:23.202Z"
+  },
+  {
+    "_id": "6984e94403f94df5313f2ab8",
+    "title": "Epic Fortnite V Bucks",
+    "description": "The most flexible way to power up—recharge your Epic balance to buy V-Bucks, Packs, or the Fortnite Crew. Enjoy \"Shared Wallet\" benefits across PC, Mobile, and Console while earning Epic Rewards on every purchase.",
+    "category": "Fortnite",
+    "subCategory": "6984e4a303f94df5313f2ab4",
+    "image": "https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "1000 V-Bucks",
+        "price": 25,
+        "originalPrice": 40,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2800 V-Bucks",
+        "price": 55,
+        "originalPrice": 70,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "5000 V-Bucks",
+        "price": 77,
+        "originalPrice": 100,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "13500 V-Bucks",
+        "price": 170,
+        "originalPrice": 200,
+        "stock": 99999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Go to epicgames.com/account and log in.\n\nNavigate to the Payment Management section.\n\nSelect Add Funds or use a Fortnite/Epic Gift Card at epicgames.com/redeem.\n\nOnce the balance shows in your \"Epic Wallet,\" launch Fortnite.\n\nGo to the V-Bucks tab, select your pack, and choose Epic Account Balance as your payment method at checkout",
+    "terms": "Region Specific: Your Epic Account Balance is currency-locked. If you recharge in USD, your account must be set to the United States. You cannot use a balance in one currency to buy items in another.\n\nNon-Transferable: Funds added to an Epic Account cannot be moved to another account or withdrawn as cash.\n\nShared Wallet: V-Bucks purchased via account recharge on PC, Mobile, or Xbox are \"Shared.\" However, V-Bucks purchased or redeemed specifically on Nintendo Switch are locked to that device and won't show up on other platforms.\n\nWallet Limit: Your total Epic Account Balance cannot exceed $500 USD (or local equivalent) at any time.",
+    "faq": "Q: What is the \"Exact Amount\" feature?\n\nA: If you are short by a small amount of V-Bucks for a specific skin, Fortnite now allows you to \"top up\" the exact difference in increments of 50 V-Bucks during the checkout process.\n\nQ: Can I buy the Fortnite Crew with my account balance?\n\nA: Yes, but you must ensure you have enough balance to cover the recurring monthly cost, or the subscription will lapse.\n\nQ: Do I get rewards for recharging?\n\nA: Yes! Purchasing V-Bucks or content using your Epic Account Balance qualifies you for Epic Rewards (currently 5% to 20% back in credit, depending on active promotions).",
+    "createdAt": "2026-02-05T19:02:28.181Z",
+    "updatedAt": "2026-02-05T19:02:28.181Z"
+  },
+  {
+    "_id": "6984e60303f94df5313f2ab6",
+    "title": "Epic > Fortnite Crew",
+    "description": "The ultimate Fortnite bundle: Get the Battle Pass, 1,000 monthly V-Bucks, and an exclusive Outfit Pack. Enjoy premium rewards across Battle Royale, LEGO Fortnite, Rocket League, and Fortnite Festival.",
+    "category": "Fortnite",
+    "subCategory": "6984e53d03f94df5313f2ab5",
+    "image": "https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "Fortnite Crew Subscription",
+        "price": 22,
+        "originalPrice": 30,
+        "stock": 10000000,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Launch Fortnite on your preferred gaming device.\n\nNavigate to the Battle Pass tab in the top menu.\n\nClick on the Fortnite Crew icon.\n\nSelect Join the Fortnite Crew and follow the on-screen prompts to link your payment method.\n\nNote: If you have an Xbox Game Pass Ultimate subscription, Fortnite Crew is often included as a \"Perk\"—check your Xbox Perks gallery to activate it.",
+    "terms": "The Fortnite Crew Subscription is a premium monthly service that offers the best value for dedicated players, bundling several high-value items for a single recurring fee.\n\n1. Terms & Conditions\nRecurring Billing: This is a monthly subscription ($11.99/month or equivalent). It automatically renews unless canceled before the next billing date.\n\nPlatform Specific: You should purchase the subscription on your \"Primary Platform\" (the device you play on most). While items are shared across platforms, V-Bucks received from the subscription may be locked to the platform where you purchased it.\n\nCancellation Policy: You can cancel at any time. You keep all premium rewards you have already claimed, but you will lose access to the Battle Pass and the ability to claim future premium rewards once your current billing month ends.\n\nAge Requirement: You must be the legal age of majority in your country to manage the billing of this subscription.",
+    "faq": "Q: What happens if I already bought the Battle Pass?\n\nA: If you subscribe to the Crew after buying the current Battle Pass, you will receive a one-time grant of 950 V-Bucks back to your account.\n\nQ: Do I lose the \"Crew Pack\" skins if I cancel?\n\nA: No. Any Outfit or accessory from a monthly Crew Pack is yours to keep forever, even if you stop subscribing.\n\nQ: When do I get my 1,000 V-Bucks?\n\nA: You receive them on the day of your billing date each month. This might be different from the day the new \"Crew Pack\" skin is released.",
+    "createdAt": "2026-02-05T18:48:35.256Z",
+    "updatedAt": "2026-02-05T19:45:34.000Z"
+  },
+  {
+    "_id": "6983d1e98626c21d93a339c9",
+    "title": "League of Legends Europe",
+    "description": "Instantly unlock Champions, Skins, and Battle Passes on EUW/EUNE servers with a Riot RP Gift Card. Secure digital delivery with no expiration—the easiest way to level up your League of Legends experience.",
+    "category": "League of Legends",
+    "subCategory": "6983cff68626c21d93a339c8",
+    "image": "https://imgur.com/ROV92Yc.png",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "500 RP",
+        "price": 20,
+        "originalPrice": 30,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 RP",
+        "price": 40,
+        "originalPrice": 50,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1500 RP",
+        "price": 65,
+        "originalPrice": 80,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2000 RP",
+        "price": 81,
+        "originalPrice": 90,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2500 RP",
+        "price": 100,
+        "originalPrice": 120,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "3500 RP",
+        "price": 140,
+        "originalPrice": 150,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "5000 RP",
+        "price": 197,
+        "originalPrice": 220,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Launch the League of Legends client and log in.\n\nOpen the Store (coin stack icon) and click the Purchase RP button.\n\nSelect the Prepaid Cards & Codes payment method.\n\nEnter your 16-digit PIN exactly (no spaces) and click Submit.",
+    "terms": "Region Restricted: Codes can only be activated on accounts registered in Europe (EU West or EU Nordic & East). They will not function on NA, TR, or other regional servers.\n\nCurrency Match: The currency on the card (e.g., EUR or GBP) must match the currency setting of your Riot account to avoid redemption errors.\n\nMulti-Game Use: In Europe, these are \"Riot Access\" codes. While branded for LoL, the currency (Riot Points/RP) can also be used in Teamfight Tactics, Legends of Runeterra, and Valorant (though exchange rates vary).\n\nNon-Refundable: Once the digital PIN is issued or revealed, it is ineligible for return or cash exchange.",
+    "faq": "Q: Will this code work for both EUW and EUNE? A: Yes, usually \"Europe\" gift cards cover both major European shards, provided the currency matches.\n\nQ: Does the card expire? A: Official Riot gift cards for Europe do not have an expiration date.\n\nQ: Can I use part of the card? A: No. The full value of the card is deducted and converted to RP the moment you click submit.",
+    "createdAt": "2026-02-04T23:10:33.472Z",
+    "updatedAt": "2026-02-07T16:33:53.298Z",
+    "productImage": "https://imgur.com/ROV92Yc.png"
+  },
+  {
+    "_id": "6983ce3c8626c21d93a339c6",
+    "title": "Robux Global",
+    "description": "Redeemable worldwide, this gift card converts instantly to your local currency for Robux or Premium. Includes a free exclusive virtual item and provides the safest way to upgrade your Roblox avatar.",
+    "category": "Roblox",
+    "subCategory": "6983cb478626c21d93a339c5",
+    "image": "https://i0.wp.com/gameranx.com/wp-content/uploads/2023/06/Roblox-logo.jpg?fit=1200%2C630&ssl=1",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "500 Roblux",
+        "price": 22,
+        "originalPrice": 30,
+        "stock": 999999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 Roblux",
+        "price": 35,
+        "originalPrice": 40,
+        "stock": 999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1500 Roblux",
+        "price": 60,
+        "originalPrice": 70,
+        "stock": 999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2000 Roblux",
+        "price": 78,
+        "originalPrice": 90,
+        "stock": 999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2500 Roblux",
+        "price": 95,
+        "originalPrice": 110,
+        "stock": 999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "3000 Roblux",
+        "price": 118,
+        "originalPrice": 140,
+        "stock": 999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "5000 Roblux",
+        "price": 189,
+        "originalPrice": 200,
+        "stock": 999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Go to roblox.com/redeem in a web browser (you cannot redeem cards via the mobile app or consoles).\n\nLog into your Roblox account.\n\nEnter your PIN code into the white box.\n\nClick Redeem. The value will be added as Roblox Credit.\n\nClick Convert to Robux (or \"Use Credit\") to turn that balance into in-game currency.",
+    "terms": "Automatic Conversion: All Roblox Gift Cards can be redeemed worldwide. When you redeem a card, its value is converted from the original currency (e.g., USD) to your account's local currency based on current exchange rates.\n\nNo Expiration: Official Roblox Gift Cards do not have an expiration date and do not charge inactivity fees.\n\nNon-Refundable: Once a code is redeemed to an account, it cannot be transferred, refunded, or exchanged for cash.\n\nBonus Items: Redemption usually includes one free exclusive Virtual Item (limit one unique item per month per account).",
+    "faq": "Q: Can I use a US Dollar card on an EU account? A: Yes. The system will convert the USD value into Euros (or your local currency) automatically at the time of redemption.\n\nQ: Why can't I find the \"Redeem\" button in the app? A: Roblox requires gift card redemptions to be done through a browser for security and currency processing.\n\nQ: What is the difference between Credit and Robux? A: Credit is real-world money value (like $10) stored on your account. Robux is the virtual currency you buy using that credit.",
+    "createdAt": "2026-02-04T22:54:52.923Z",
+    "updatedAt": "2026-02-07T20:48:27.485Z",
+    "productImage": ""
+  },
+  {
+    "_id": "6983c8c88626c21d93a339c3",
+    "title": "Valorant Europe",
+    "description": "Instantly recharge your Europe-region account with Valorant Points for exclusive skins and Battle Passes. Secure digital delivery with no expiration—perfect for EU players looking to upgrade their arsenal",
+    "category": "Valorant",
+    "subCategory": "6983c7028626c21d93a339c2",
+    "image": "https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp",
+    "rating": 5,
+    "featured": true,
+    "subProducts": [
+      {
+        "title": "500 Points",
+        "price": 20,
+        "originalPrice": 30,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1000 Points",
+        "price": 39,
+        "originalPrice": 50,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1500 Points",
+        "price": 60,
+        "originalPrice": 80,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2000 Points",
+        "price": 74,
+        "originalPrice": 90,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2500 Points",
+        "price": 100,
+        "originalPrice": 120,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "3500 Points",
+        "price": 135,
+        "originalPrice": 150,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "5000 Points",
+        "price": 193,
+        "originalPrice": 220,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "showInstructions": true,
+    "showTerms": true,
+    "showFaq": true,
+    "instructions": "Log into your VALORANT account on the EU server.\n\nClick the VP icon (top right) next to the Store tab.\n\nChoose Prepaid Cards & Codes from the payment options.\n\nEnter your 16-digit PIN exactly (no spaces) and click Submit.",
+    "terms": "Region Locking: These cards are strictly for accounts registered in the Europe region. They will not work on NA, BR, AP, or KR accounts.\n\nCurrency Match: The card value (usually in EUR, GBP, or local European currencies) must match the currency of your account's Riot Store.\n\nNo Expiration: Official EU Riot Gift Cards generally do not expire, though some third-party retailers may list a \"validity period\" for their specific digital keys.\n\nNon-Refundable: Once the code is revealed or purchased, it cannot be returned, refunded, or exchanged for cash.",
+    "faq": "Q: Can I use a EUR card in the UK? * A: No. Accounts in the UK usually use GBP. The currency on the card must match your store’s currency.\n\nQ: Does it work for League of Legends? * A: Yes. Most EU \"Riot Games\" cards are multi-game and can be used for RP in League of Legends or Teamfight Tactics if redeemed in those clients.\n\nQ: What if I get a \"Not Valid in Your Region\" error? * A: This happens if your account is set to a different country (e.g., Turkey or USA). You must contact Riot Support to verify or change your region of residence.",
+    "createdAt": "2026-02-04T22:31:36.935Z",
+    "updatedAt": "2026-02-04T22:31:36.935Z"
+  },
+  {
+    "_id": "6981688d43683fc2d6fc1dfb",
+    "title": "Valorant Turkey",
+    "description": "Unlock Valorant Points instantly for skins and Battle Passes on your Turkey-region account. This digital code provides the best value for local TR players with immediate in-game delivery.",
+    "category": "Valorant",
+    "subCategory": "6981680243683fc2d6fc1dfa",
+    "image": "https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp",
+    "rating": 5,
+    "subProducts": [
+      {
+        "title": "375 Points",
+        "price": 11,
+        "originalPrice": 20,
+        "stock": 0,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "825 Points",
+        "price": 22,
+        "originalPrice": 30,
+        "stock": 9999999,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "1700 Points",
+        "price": 44,
+        "originalPrice": 60,
+        "stock": 9999998,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "2925 Points",
+        "price": 75,
+        "originalPrice": 100,
+        "stock": 9999998,
+        "deliveryTime": "Instant"
+      },
+      {
+        "title": "4325 Points",
+        "price": 110,
+        "originalPrice": 150,
+        "stock": 9999998,
+        "deliveryTime": "Instant"
+      }
+    ],
+    "createdAt": "2026-02-03T03:16:29.834Z",
+    "updatedAt": "2026-02-05T17:51:32.848Z",
+    "faq": "Q: Can I use this gift card on an EU or NA account? A: No. These cards are strictly region-locked to Turkey (TR). They will only work if your Riot account’s region of residence is set to Turkey and your in-game currency is Turkish Lira (TRY).\n\nQ: Does the code expire? A: Official Riot gift cards for Turkey generally do not expire. However, once the code is revealed or purchased, it is recommended to redeem it promptly to ensure security.\n\nQ: I received an \"Invalid Region\" error. What should I do? A: This error means your account region does not match the card's region. You must use a Turkey-based account. Riot Support typically cannot change a card’s region or provide a refund for regional mistakes.\n\nQ: Can I use this code for League of Legends or TFT? A: Yes. In the Turkey region, these are often \"Riot Access\" codes. You can redeem them in the League of Legends or TFT store for RP/Coins, provided the account is also on the Turkey server.",
+    "instructions": "Launch VALORANT and log into your Turkey-region account.\n\nClick the VP (Valorant Points) icon located next to the \"Store\" tab.\n\nSelect the Prepaid Cards & Codes payment method from the list.\n\nCarefully input your 16-digit code without spaces and press Submit.",
+    "showFaq": true,
+    "showInstructions": true,
+    "showTerms": true,
+    "terms": "Redeem your Turkish Valorant gift card only on TR-region accounts. Enter the 16-digit code in the \"Prepaid Cards & Codes\" store tab. Codes are non-refundable and cannot be exchanged for cash once issued. Ensure your account is set to Turkey to avoid regional lock errors.",
+    "featured": true
+  }
+]

@@ -1,0 +1,1514 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MYOOREDOO - Boutique Digitale Premium</title>
+    <meta name="description" content="Votre boutique de référence en Tunisie pour les cartes de jeux, recharges télécoms et abonnements streaming." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body class="dark-theme">
+    <!-- Background Glow Elements -->
+    <div class="background-glow">
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+      <div class="glow-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+      <div class="header-container">
+        <a href="#" class="logo" id="header-logo">
+          <img src="/gif.gif" alt="MYOOREDOO" style="height: 36px; width: auto;" />
+          <span style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 900; color: #fff; letter-spacing: 0.5px; margin-left: 6px;">MYOOREDOO</span>
+          <span class="store-emoji">🛒</span>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="#" class="nav-link active" data-view="home">Boutique</a>
+          <a href="#products" class="nav-link" data-view="products">Produits</a>
+          <a href="#categories" class="nav-link" data-view="categories">Catégories</a>
+          <a href="#orders" class="nav-link" data-view="orders">Mes Commandes</a>
+          <a href="#about" class="nav-link" data-view="about">À Propos</a>
+          <a href="#contact" class="nav-link" data-view="contact">Contact</a>
+          <a href="#support" class="nav-link" data-view="support">FAQ & Support</a>
+          <a href="#admin" class="nav-link admin-nav-link" data-view="admin">Admin</a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="search-container">
+            <input type="text" id="search-input" placeholder="Rechercher un produit..." />
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+
+          <div class="user-auth-status" id="user-auth-header-wrapper" style="display: flex; align-items: center; gap: 8px;">
+            <button class="btn btn-outline btn-login-trigger" id="btn-login-modal-trigger" style="height: 38px; padding: 0 14px; font-size: 12px; display: flex; align-items: center; gap: 6px;">Connexion 👤</button>
+          </div>
+
+          <button class="cart-trigger" id="cart-btn" aria-label="Open cart">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+            <span class="cart-badge" id="cart-count">0</span>
+          </button>
+
+          <button class="menu-burger-trigger" id="burger-menu-btn" aria-label="Open menu">
+            <span class="burger-bar bar-1"></span>
+            <span class="burger-bar bar-2"></span>
+            <span class="burger-bar bar-3"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+      <div class="mobile-drawer">
+        <div class="mobile-drawer-header">
+          <a href="#" class="logo">
+            <img src="/gif.gif" alt="MYOOREDOO" style="height: 28px; width: auto;" />
+            <span style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 900; color: #fff; letter-spacing: 0.5px; margin-left: 4px;">MYOOREDOO</span>
+          </a>
+          <button class="close-btn" id="close-burger-btn">&times;</button>
+        </div>
+        <div class="mobile-drawer-body" style="display: flex; flex-direction: column; height: 100%;">
+          <div style="display: flex; flex-direction: column;">
+            <a href="#" class="mobile-nav-link active" data-view="home">Boutique</a>
+            <a href="#products" class="mobile-nav-link" data-view="products">Produits</a>
+            <a href="#categories" class="mobile-nav-link" data-view="categories">Catégories</a>
+            <a href="#orders" class="mobile-nav-link" data-view="orders">Mes Commandes</a>
+            <a href="#about" class="mobile-nav-link" data-view="about">À Propos</a>
+            <a href="#contact" class="mobile-nav-link" data-view="contact">Contact</a>
+            <a href="#support" class="mobile-nav-link" data-view="support">FAQ & Support</a>
+            <a href="#admin" class="mobile-nav-link" data-view="admin">Espace Admin</a>
+          </div>
+          <div class="mobile-auth-section" id="mobile-auth-wrapper" style="padding: 20px 0; border-top: 1px solid var(--border-color); margin-top: auto;">
+            <button class="btn btn-primary w-full" id="btn-mobile-login-trigger" style="height: 42px;">Se Connecter 👤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="app-main" id="app-container">
+      
+      <!-- STORE/HOME VIEW -->
+      <section id="view-home" class="app-view active">
+        <!-- Hero Section Grid (3 columns) -->
+        <div class="hero-grid-container">
+          <div class="hero-hot-deal">
+            <div class="hero-glow"></div>
+            <div class="hero-content">
+              <span class="badge-hot">🔥 Hot Deal</span>
+              <h1>Rechargez vos Diamants <span class="text-gradient">Free Fire</span></h1>
+              <p>Obtenez vos produits digitaux avec livraison instantanée. Offres limitées disponibles. Payez en Tunisie avec votre <strong>Solde Ooredoo</strong>, application <strong>D17</strong> ou <strong>Binance Pay</strong>.</p>
+              <button class="btn btn-primary" id="hero-buy-btn">Acheter Maintenant &rarr;</button>
+            </div>
+          </div>
+          
+          <div class="hero-trending-box">
+            <div class="trending-header">
+              <div class="trending-title-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                <h3>Trending Now</h3>
+              </div>
+              <span class="trending-badge">🔥 HOT</span>
+            </div>
+            <div class="trending-items-list" id="sidebar-trending-list">
+              <!-- Dynamically rendered trending items in sidebar -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Infinite Scrolling Categories Marquee -->
+        <div class="categories-marquee-section">
+          <div class="marquee-header">
+            <div class="marquee-title-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M21 9H3M21 15H3M12 3v18"/></svg>
+              <span>Explore</span>
+            </div>
+            <h2>Parcourir par <span class="text-red">Catégorie</span></h2>
+          </div>
+          
+          <div class="marquee-wrapper">
+            <div class="marquee-fade fade-left"></div>
+            <div class="marquee-fade fade-right"></div>
+            <div class="marquee-scroll-container">
+              <div class="marquee-track" id="category-scroll-container">
+                <!-- Category elements rendered and duplicated here by main.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exact Ooredoo Glowing Neon Divider -->
+        <div class="ooredoo-neon-divider">
+          <div class="divider-glow-bar">
+            <div class="bar-ambient-glow"></div>
+            <div class="bar-laser-line"></div>
+            <div class="bar-blur-white"></div>
+            <div class="bar-blur-red"></div>
+          </div>
+          <div class="divider-radial-glow">
+            <div class="glow-radial-ellipse"></div>
+          </div>
+        </div>
+
+        <!-- Products Section -->
+        <div class="products-section" id="products-section">
+          <div class="products-header">
+            <h2 class="section-title">Nos <span>Produits</span></h2>
+            <button class="btn btn-outline" id="view-all-products-btn">Voir Tous les Produits &rarr;</button>
+          </div>
+          <div class="products-grid" id="trending-products-grid">
+            <!-- Trending Product Cards -->
+          </div>
+        </div>
+
+        <!-- Exact Ooredoo Glowing Neon Divider -->
+        <div class="ooredoo-neon-divider">
+          <div class="divider-glow-bar">
+            <div class="bar-ambient-glow"></div>
+            <div class="bar-laser-line"></div>
+            <div class="bar-blur-white"></div>
+            <div class="bar-blur-red"></div>
+          </div>
+          <div class="divider-radial-glow">
+            <div class="glow-radial-ellipse"></div>
+          </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+          <div class="stats-header">
+            <span class="badge-trust">🎖️ NOTRE ENGAGEMENT</span>
+            <h2>Faites confiance au leader digital</h2>
+            <p>Déjà des milliers de transactions sécurisées en Tunisie.</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              </div>
+              <h3 class="stat-number" data-target="2450">0</h3>
+              <p class="stat-label">Produits Live</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <h3 class="stat-number" data-target="99.9">0%</h3>
+              <p class="stat-label">Transactions</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-3-3.87"/><path d="M9 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/><circle cx="12" cy="7" r="4"/><circle cx="6" cy="7" r="3"/><circle cx="18" cy="7" r="3"/></svg>
+              </div>
+              <h3 class="stat-number" data-target="1500">0</h3>
+              <p class="stat-label">Happy Customers</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 class="stat-number" data-target="24">0/7</h3>
+              <p class="stat-label">Support Available</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Support Tickets Section -->
+        <div class="client-tickets-section" id="client-tickets-container" style="margin-top: 40px; display: none; border-top: 1px solid var(--border-color); padding-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Mes Tickets Support</h3>
+          <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Cliquez sur une conversation pour ouvrir le chat avec nos agents.</p>
+          
+          <div class="table-responsive">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>ID Ticket</th>
+                  <th>Date</th>
+                  <th>Dernier Message</th>
+                  <th>Statut</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-tickets-list-body">
+                <!-- Dynamically loaded client tickets -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATALOG/PRODUCTS VIEW -->
+      <section id="view-products" class="app-view">
+        <div class="catalog-layout">
+          <div class="catalog-sidebar">
+            <h3>Filtrer les produits</h3>
+            <div class="filter-group">
+              <label for="catalog-search">Recherche</label>
+              <input type="text" id="catalog-search" placeholder="Rechercher par nom..." />
+            </div>
+            <div class="filter-group">
+              <label for="catalog-category-select">Catégorie</label>
+              <select id="catalog-category-select">
+                <option value="all">Toutes les catégories</option>
+                <option value="Gaming & Cartes">Gaming & Cartes</option>
+                <option value="Streaming & TV">Streaming & TV</option>
+                <option value="Recharges & Flexi">Recharges & Flexi</option>
+                <option value="Cartes Cadeaux">Cartes Cadeaux</option>
+                <option value="Softwares">Logiciels & Softwares</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="catalog-sort">Trier par</label>
+              <select id="catalog-sort">
+                <option value="default">Pertinence</option>
+                <option value="price-asc">Prix croissant</option>
+                <option value="price-desc">Prix décroissant</option>
+                <option value="popular">Les plus populaires</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Fourchette de Prix (DT)</label>
+              <div class="price-range-inputs">
+                <span id="price-min-label">0 DT</span>
+                <input type="range" id="price-slider" min="0" max="9999" value="9999" />
+                <span id="price-max-label">9999 DT</span>
+              </div>
+              <p class="slider-val">Max: <span id="price-slider-value">9999</span> DT</p>
+            </div>
+          </div>
+          <div class="catalog-content">
+            <h2 class="section-title">Catalogue <span>Complet</span></h2>
+            <div class="products-grid" id="catalog-products-grid">
+              <!-- Dynamically rendered catalog products -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Support Tickets Section -->
+        <div class="client-tickets-section" id="client-tickets-container" style="margin-top: 40px; display: none; border-top: 1px solid var(--border-color); padding-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Mes Tickets Support</h3>
+          <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Cliquez sur une conversation pour ouvrir le chat avec nos agents.</p>
+          
+          <div class="table-responsive">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>ID Ticket</th>
+                  <th>Date</th>
+                  <th>Dernier Message</th>
+                  <th>Statut</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-tickets-list-body">
+                <!-- Dynamically loaded client tickets -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIES VIEW -->
+      <section id="view-categories" class="app-view">
+        <h2 class="section-title">Toutes nos <span>Catégories</span></h2>
+        <p class="categories-intro">Sélectionnez une catégorie pour afficher nos offres spécialisées.</p>
+        <div class="categories-grid" id="full-categories-grid">
+          <!-- Dynamically populated categories grid -->
+        </div>
+      </section>
+
+      <!-- DEDICATED PRODUCT DETAILS VIEW -->
+      <section id="view-product-details" class="app-view">
+        <div class="product-details-container" id="details-view-content">
+          <!-- Dynamically loaded on product click -->
+        </div>
+      </section>
+
+      <!-- ABOUT US VIEW -->
+      <section id="view-about" class="app-view">
+        <div class="about-container">
+          <div class="about-hero">
+            <h2>À propos de <span>MYOOREDOO STORE</span></h2>
+            <p>La première plateforme digitale de rechargement et de cartes de divertissement en Tunisie.</p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-text-card">
+              <h3>Notre Mission</h3>
+              <p>Faciliter l'accès aux biens et services numériques pour tous les Tunisiens. Que vous soyez gamer sur Free Fire ou PUBG, passionné de séries sur Netflix ou Shahid, ou que vous ayez besoin de recharger votre forfait Internet Flexi en urgence, nous vous garantissons une expérience d'achat sécurisée, rapide et automatisée.</p>
+              <p class="mt-4">Plus besoin de carte bancaire internationale : vous pouvez payer directement avec le solde de votre recharge mobile Ooredoo, ou utiliser D17 et Binance.</p>
+            </div>
+            <div class="about-image-card">
+              <div class="value-item">
+                <div class="val-num">01</div>
+                <div>
+                  <h4>Livraison Instantanée</h4>
+                  <p>Tous les codes et diamants sont livrés directement sur votre compte ou par SMS en moins de 2 minutes.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="val-num">02</div>
+                <div>
+                  <h4>Paiement Local Sécurisé</h4>
+                  <p>Pas de frais cachés. Débit direct de votre solde mobile tunisien ou virement D17.</p>
+                </div>
+              </div>
+              <div class="value-item">
+                <div class="val-num">03</div>
+                <div>
+                  <h4>Assistance Active 7j/7</h4>
+                  <p>Notre équipe client vous assiste en direct sur WhatsApp pour toutes vos questions et transactions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Reviews Section -->
+          <div class="reviews-section mt-4">
+            <h3 class="reviews-title">Avis de nos <span>Clients</span></h3>
+            <div class="reviews-grid">
+              <div class="review-card">
+                <div class="review-header">
+                  <strong>Khaled M.</strong>
+                  <span class="stars">⭐⭐⭐⭐⭐</span>
+                </div>
+                <p>"Super site ! Rechargement Free Fire ultra rapide par Player ID. Paiement avec Solde Ooredoo super pratique."</p>
+                <span class="review-date">Il y a 2 jours</span>
+              </div>
+              <div class="review-card">
+                <div class="review-header">
+                  <strong>Marwa T.</strong>
+                  <span class="stars">⭐⭐⭐⭐⭐</span>
+                </div>
+                <p>"J'ai acheté un compte Netflix premium. Code reçu par SMS dans la minute qui suit. Je recommande vivement !"</p>
+                <span class="review-date">Il y a 1 semaine</span>
+              </div>
+              <div class="review-card">
+                <div class="review-header">
+                  <strong>Yassine K.</strong>
+                  <span class="stars">⭐⭐⭐⭐⭐</span>
+                </div>
+                <p>"Excellent support sur WhatsApp. J'ai fait une erreur de numéro D17 et ils ont réglé le problème tout de suite."</p>
+                <span class="review-date">Il y a 3 jours</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Support Tickets Section -->
+        <div class="client-tickets-section" id="client-tickets-container" style="margin-top: 40px; display: none; border-top: 1px solid var(--border-color); padding-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Mes Tickets Support</h3>
+          <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Cliquez sur une conversation pour ouvrir le chat avec nos agents.</p>
+          
+          <div class="table-responsive">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>ID Ticket</th>
+                  <th>Date</th>
+                  <th>Dernier Message</th>
+                  <th>Statut</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-tickets-list-body">
+                <!-- Dynamically loaded client tickets -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT US VIEW -->
+      <section id="view-contact" class="app-view">
+        <div class="contact-layout-grid">
+          <div class="contact-form-container">
+            <h3>Contactez-nous</h3>
+            <p>Une question, un partenariat ou un problème avec une commande ? Écrivez-nous.</p>
+            <form id="contact-form" class="contact-page-form">
+              <div class="form-group">
+                <label for="contact-name">Nom Complet</label>
+                <input type="text" id="contact-name" required placeholder="Ex: Slimen Ben Ali" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-email">E-mail</label>
+                  <input type="email" id="contact-email" required placeholder="client@gmail.com" />
+                </div>
+                <div class="form-group">
+                  <label for="contact-phone">Téléphone</label>
+                  <input type="tel" id="contact-phone" required placeholder="22123456" maxlength="8" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="contact-subject">Sujet de votre message</label>
+                <input type="text" id="contact-subject" required placeholder="Ex: Problème de livraison de commande" />
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" required rows="5" placeholder="Saisissez votre message ici..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-full">Envoyer le message</button>
+            </form>
+          </div>
+
+          <div class="contact-info-container">
+            <h3>Nos Coordonnées</h3>
+            <p>Retrouvez-nous également sur nos canaux directs.</p>
+            
+            <div class="info-list">
+              <div class="info-item">
+                <div class="info-icon">📞</div>
+                <div>
+                  <h4>Téléphone & WhatsApp</h4>
+                  <p><a href="https://wa.me/21627005858" target="_blank">+216 27 005 858</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">✉️</div>
+                <div>
+                  <h4>E-mail</h4>
+                  <p><a href="mailto:support@myooredoo.store">support@myooredoo.store</a></p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div>
+                  <h4>Adresse Bureau</h4>
+                  <p>Tunisie, Nabeul 8000</p>
+                </div>
+              </div>
+              <div class="info-item">
+                <div class="info-icon">⏰</div>
+                <div>
+                  <h4>Horaires de Support</h4>
+                  <p>Lundi - Dimanche : 24h / 24</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-socials-box">
+              <h4>Suivez-nous</h4>
+              <div class="social-links mt-2">
+                <a href="https://www.facebook.com/myoo.redoo/" target="_blank" aria-label="Facebook">FB</a>
+                <a href="https://www.instagram.com/myooredoo.store/" target="_blank" aria-label="Instagram">IG</a>
+                <a href="https://wa.me/21627005858" target="_blank" aria-label="WhatsApp">WA</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Support Tickets Section -->
+        <div class="client-tickets-section" id="client-tickets-container" style="margin-top: 40px; display: none; border-top: 1px solid var(--border-color); padding-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Mes Tickets Support</h3>
+          <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Cliquez sur une conversation pour ouvrir le chat avec nos agents.</p>
+          
+          <div class="table-responsive">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>ID Ticket</th>
+                  <th>Date</th>
+                  <th>Dernier Message</th>
+                  <th>Statut</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-tickets-list-body">
+                <!-- Dynamically loaded client tickets -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUPPORT VIEW -->
+      <section id="view-support" class="app-view">
+        <div class="support-container">
+          <h2 class="section-title">Centre de <span>Support & FAQ</span></h2>
+          <p class="support-intro">Une question ? Un problème avec une commande ? Consultez notre foire aux questions ou contactez-nous directement.</p>
+          
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question">
+                Comment acheter en payant avec mon solde Ooredoo Tunisie ?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>C'est très simple ! Lors du paiement, choisissez "Solde Ooredoo". Entrez votre numéro de téléphone Ooredoo. Vous recevrez instantanément un code de vérification SMS à 4 chiffres sur votre téléphone (dans notre simulateur, un code vous sera affiché à l'écran). Saisissez ce code pour valider le débit direct sur votre solde de recharge.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Quelle est la durée de livraison de mes codes ou diamants ?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>La livraison est instantanée. Dès que la transaction est confirmée, votre code s'affiche à l'écran et vous est envoyé par SMS. Pour le rechargement direct (comme les diamants Free Fire par Player ID), le crédit est directement injecté sur votre compte de jeu en moins de 2 minutes.</p>
+              </div>
+            </div>
+            
+            <div class="faq-item">
+              <button class="faq-question">
+                Qu'est-ce que l'option de paiement D17 ?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>L'application D17 est l'application officielle de la Poste Tunisienne. Si vous choisissez cette option, notre site affichera les informations de transfert (numéro de téléphone ou QR code de la boutique). Une fois le virement effectué, notre système valide le paiement pour délivrer votre commande.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Est-ce que je peux être remboursé en cas d'erreur de Player ID ?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Malheureusement, les rechargements directs par Player ID (comme Free Fire ou PUBG) sont irréversibles une fois validés sur le serveur de jeu. Veuillez vérifier attentivement votre identifiant de joueur avant de soumettre la commande.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Besoin d'aide supplémentaire ?</h3>
+            <p>Notre équipe technique est disponible 7j/7 sur WhatsApp et par e-mail.</p>
+            <div class="contact-methods">
+              <a href="https://wa.me/21627005858" target="_blank" class="contact-btn whatsapp">
+                WhatsApp +216 27 005 858
+              </a>
+              <a href="mailto:support@myooredoo.store" class="contact-btn email">
+                Email Support
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Support Tickets Section -->
+        <div class="client-tickets-section" id="client-tickets-container" style="margin-top: 40px; display: none; border-top: 1px solid var(--border-color); padding-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Mes Tickets Support</h3>
+          <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Cliquez sur une conversation pour ouvrir le chat avec nos agents.</p>
+          
+          <div class="table-responsive">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>ID Ticket</th>
+                  <th>Date</th>
+                  <th>Dernier Message</th>
+                  <th>Statut</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-tickets-list-body">
+                <!-- Dynamically loaded client tickets -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLIENT ORDERS DASHBOARD VIEW -->
+      <section id="view-orders" class="app-view">
+        <div class="client-orders-container">
+          <div class="client-orders-header">
+            <h2 class="section-title" style="margin-bottom: 4px;">Purchase <span>Orders</span></h2>
+            <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-secondary);">Suivez l'état de traitement de vos commandes en temps réel.</p>
+          </div>
+
+          <!-- Order Status Tabs -->
+          <div class="orders-tabs-bar">
+            <button class="order-tab-btn active" data-status="to-pay">To Pay</button>
+            <button class="order-tab-btn" data-status="verify">Verify payment</button>
+            <button class="order-tab-btn" data-status="preparing">Preparing</button>
+            <button class="order-tab-btn" data-status="delivering">Delivering</button>
+            <button class="order-tab-btn" data-status="completed">Completed</button>
+            <button class="order-tab-btn" data-status="cancelled">Cancelled</button>
+            <button class="order-tab-btn" data-status="resolution">Resolution</button>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="orders-search-row">
+            <div class="orders-search-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); opacity: 0.4;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="client-orders-search" placeholder="Search order no." />
+            </div>
+            <div class="orders-date-box">
+              <span class="date-label">From - To</span>
+              <span class="calendar-icon">📅</span>
+            </div>
+          </div>
+
+          <!-- Orders Listings Area -->
+          <div class="client-orders-list" id="client-orders-list-wrapper">
+            <!-- Dynamically loaded orders or empty state -->
+          </div>
+        </div>
+      </section>
+
+      <!-- G2G STYLE ORDER DETAIL TRACKING VIEW -->
+      <section id="view-order-tracking" class="app-view">
+        <div class="order-tracking-container" style="max-width: 1000px; margin: 0 auto; padding: 20px 0;">
+          
+          <div class="tracking-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+            <div style="font-family: var(--font-secondary); font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <button class="btn-back-orders" id="btn-back-to-orders" style="background: none; border: none; color: var(--text-secondary); font-family: var(--font-secondary); font-size: 14px; display: flex; align-items: center; gap: 6px; cursor: pointer; transition: var(--transition); padding: 0;">
+                &larr; Order item
+              </button>
+              <span style="opacity: 0.3;">|</span>
+              <span>Order no. <strong id="track-order-no" style="color: #fff;">1780946001078L87Q</strong></span>
+              <span style="opacity: 0.3;">|</span>
+              <span id="track-order-date">Placed on 09 Jun 2026, 03:13 AM</span>
+            </div>
+            <!-- The 'X' Close button -->
+            <button class="close-btn" id="close-tracking-view-btn" style="background: none; border: none; color: var(--text-secondary); font-size: 24px; cursor: pointer; transition: var(--transition); line-height: 1; padding: 0;">&times;</button>
+          </div>
+
+          <!-- Stepper Progress Tracker -->
+          <div class="tracking-stepper-wrapper" style="margin: 40px 0; position: relative;">
+            <div class="stepper-progress-bar">
+              <div class="stepper-progress-line" id="track-stepper-line"></div>
+            </div>
+            <div class="stepper-nodes">
+              <div class="stepper-node" id="step-node-1">
+                <div class="node-circle">✔</div>
+                <div class="node-label">Order placed</div>
+              </div>
+              <div class="stepper-node" id="step-node-2">
+                <div class="node-circle">✔</div>
+                <div class="node-label">Paid</div>
+              </div>
+              <div class="stepper-node" id="step-node-3">
+                <div class="node-circle">✔</div>
+                <div class="node-label">Prepared</div>
+              </div>
+              <div class="stepper-node" id="step-node-4">
+                <div class="node-circle">✔</div>
+                <div class="node-label">Delivered</div>
+              </div>
+              <div class="stepper-node" id="step-node-5">
+                <div class="node-circle">✔</div>
+                <div class="node-label">Completed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tracking-status-summary" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 14px 20px; text-align: center; font-family: var(--font-secondary); font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 40px; display: inline-block;">
+            Total received <span style="color: var(--primary);" id="track-total-received">1/1</span>
+          </div>
+
+          <!-- History log entries -->
+          <div class="tracking-logs-wrapper" style="margin-bottom: 40px; border-left: 1.5px solid #39b54a; padding-left: 20px; position: relative;">
+            <div id="tracking-logs-list" style="display: flex; flex-direction: column; gap: 20px;">
+              <!-- Chronological order logs -->
+            </div>
+          </div>
+
+          <!-- Purchased Gift Cards Credentials Box -->
+          <div class="purchased-gift-cards-section" id="purchased-gift-cards-section" style="display: none;">
+            <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+              Purchased Gift Cards
+              <button class="btn-download-all" id="btn-download-voucher-keys" style="background: none; border: none; color: var(--text-secondary); font-family: var(--font-secondary); font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                ⬇ Download all
+              </button>
+            </h3>
+            <div class="voucher-keys-card" style="background-color: var(--bg-card); border: 1px solid #ffd700; border-radius: 8px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span style="font-size: 24px;">🎴</span>
+                <div>
+                  <h4 style="font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px;">Gift Cards #1</h4>
+                  <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted);">Viewed</p>
+                </div>
+              </div>
+              <button class="btn-view-voucher" id="btn-view-delivered-data" style="background-color: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 6px; padding: 8px 16px; font-family: var(--font-secondary); font-size: 12px; cursor: pointer; transition: var(--transition);">
+                View Details
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ADMIN DASHBOARD VIEW -->
+      <section id="view-admin" class="app-view">
+        <div class="admin-sidebar-layout-container">
+          
+          <!-- LEFT SIDEBAR -->
+          <aside class="admin-left-sidebar">
+            <div class="admin-sidebar-top-section">
+              <div class="admin-sidebar-logo" style="display: flex; align-items: center; gap: 8px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 4px var(--primary));"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span style="font-family: var(--font-primary); font-size: 16px; font-weight: 900; color: #fff; letter-spacing: 0.5px; text-transform: uppercase;">admin panel</span>
+              </div>
+              <button class="admin-sidebar-create-btn" id="btn-admin-add-product-trigger">
+                <span>+</span> Ajouter un Produit
+              </button>
+              <div class="admin-sidebar-nav-list">
+                <div class="admin-sidebar-nav-item active" data-admin-tab="dashboard">
+                  <span style="font-size: 16px; width: 20px; display: inline-block; text-align: center;">📊</span> Tableau de bord
+                </div>
+                <div class="admin-sidebar-nav-item" data-admin-tab="stock">
+                  <span style="font-size: 16px; width: 20px; display: inline-block; text-align: center;">📦</span> Gestion du Stock
+                </div>
+                <div class="admin-sidebar-nav-item" data-admin-tab="admins">
+                  <span style="font-size: 16px; width: 20px; display: inline-block; text-align: center;">🔑</span> Administrateurs
+                </div>
+                <div class="admin-sidebar-nav-item" data-admin-tab="tickets">
+                  <span style="font-size: 16px; width: 20px; display: inline-block; text-align: center;">💬</span> Tickets Support
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile bottom card -->
+            <div class="admin-sidebar-profile-widget">
+              <div class="admin-profile-user-card">
+                <div class="admin-profile-avatar" id="admin-profile-avatar-char">A</div>
+                <div class="admin-profile-info">
+                  <span class="admin-profile-username" id="admin-profile-username-label">adrix</span>
+                  <span class="admin-profile-badge">Super Admin</span>
+                </div>
+              </div>
+              <button class="btn btn-sm btn-outline w-full" id="btn-admin-logout" style="height: 34px; border-color: rgba(255,255,255,0.1); color: var(--text-secondary); font-size: 11px; font-weight: 700; margin-top: 8px;">
+                Déconnexion 🚪
+              </button>
+            </div>
+          </aside>
+
+          <!-- RIGHT MAIN CONTENT PANEL -->
+          <main class="admin-main-content-panel">
+            
+            <!-- Dynamic Section Header -->
+            <div class="admin-main-header-row" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 20px;">
+              <div>
+                <span style="font-family: var(--font-secondary); font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Infrastructure / Admin</span>
+                <h2 id="admin-subview-title" style="font-size: 24px; font-weight: 800; color: #fff; margin-top: 4px;">Tableau de bord</h2>
+              </div>
+              <button class="btn btn-outline btn-sm" id="reset-db-btn-new" style="border-color: rgba(255,255,255,0.1); color: var(--text-muted); font-size: 12px; height: 34px;">Réinitialiser</button>
+            </div>
+
+            <!-- Stats Overview Row (4 Horizontal cards) -->
+            <div class="admin-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 10px;">
+              <div class="admin-stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px;">
+                <h4 style="font-family: var(--font-secondary); font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Total Ventes</h4>
+                <p class="stat-val" id="admin-stat-revenue-new" style="font-size: 22px; font-weight: 900; color: #fff;">0.000 DT</p>
+              </div>
+              <div class="admin-stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px;">
+                <h4 style="font-family: var(--font-secondary); font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Commandes</h4>
+                <p class="stat-val" id="admin-stat-orders-new" style="font-size: 22px; font-weight: 900; color: #39b54a;">0</p>
+              </div>
+              <div class="admin-stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px;">
+                <h4 style="font-family: var(--font-secondary); font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Produits Actifs</h4>
+                <p class="stat-val" id="admin-stat-products-new" style="font-size: 22px; font-weight: 900; color: #ffd700;">0</p>
+              </div>
+              <div class="admin-stat-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px;">
+                <h4 style="font-family: var(--font-secondary); font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px;">Rôles Admin</h4>
+                <p class="stat-val" id="admin-stat-roles-new" style="font-size: 22px; font-weight: 900; color: #8a2be2;">0</p>
+              </div>
+            </div>
+
+            <!-- SUBVIEW 1: DASHBOARD OVERVIEW -->
+            <div class="admin-panel-subview active" id="admin-subview-dashboard">
+              <div class="admin-subview-dashboard-grid">
+                
+                <!-- Left column: Orders Table -->
+                <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                  <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">Dernières Commandes</h3>
+                  <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Supervisez les ventes et validez les paiements des clients.</p>
+                  
+                  <div class="table-responsive">
+                    <table class="orders-table">
+                      <thead>
+                        <tr>
+                          <th>ID Commande</th>
+                          <th>Produit</th>
+                          <th>Infos Client</th>
+                          <th>Paiement</th>
+                          <th>Total</th>
+                          <th>Statut</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="orders-list-body-new">
+                        <!-- Loaded dynamically -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Right column: Simulated Activity Timeline -->
+                <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                  <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 20px;">Activité Récente</h3>
+                  <div class="activity-timeline-wrapper" style="border-left: 1.5px solid #39b54a; padding-left: 16px; margin-left: 8px; display: flex; flex-direction: column; gap: 24px;" id="admin-activity-timeline-list">
+                    <!-- Dynamic simulated log entries -->
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SUBVIEW 2: GESTION DU STOCK & PRIX -->
+            <div class="admin-panel-subview" id="admin-subview-stock">
+              <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; max-width: 800px;">
+                <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">Gestion du Stock & Prix</h3>
+                <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 24px;">Modifiez instantanément les prix des packs et la disponibilité des produits.</p>
+                
+                <form id="admin-stock-price-form-new">
+                  <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <div class="form-group">
+                      <label for="stock-select-product-new" style="font-size: 13px; font-weight: 700; color: #fff;">Sélectionner un produit</label>
+                      <select id="stock-select-product-new" style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; margin-top: 6px;">
+                        <!-- Filled dynamically -->
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="stock-status-select-new" style="font-size: 13px; font-weight: 700; color: #fff;">Statut du Stock</label>
+                      <select id="stock-status-select-new" style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; margin-top: 6px;">
+                        <option value="in-stock">En Stock (Instantané)</option>
+                        <option value="out-of-stock">Rupture</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div id="stock-variants-editor-list-new" style="margin-bottom: 24px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                    <!-- Filled dynamically -->
+                  </div>
+
+                  <button type="submit" class="btn btn-primary w-full" style="height: 46px; font-size: 14px; font-weight: 700;">Enregistrer les modifications 💾</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- SUBVIEW 3: ADMINISTRATEURS -->
+            <div class="admin-panel-subview" id="admin-subview-admins">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+                
+                <!-- Left: Create Admin form -->
+                <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                  <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">Créer un Administrateur</h3>
+                  <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Enregistrez un nouveau compte ayant les pleins accès d'administration.</p>
+                  
+                  <form id="add-admin-form-new">
+                    <div class="form-group">
+                      <label for="admin-new-username-new">Nom d'utilisateur</label>
+                      <input type="text" id="admin-new-username-new" required placeholder="ex: anis_admin" style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; margin-top: 6px;" />
+                    </div>
+                    <div class="form-group mt-3">
+                      <label for="admin-new-password-new">Mot de passe</label>
+                      <input type="password" id="admin-new-password-new" required placeholder="••••••••" style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; margin-top: 6px;" />
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full mt-4" style="height: 44px; font-size: 13px; font-weight: 700;">Créer le compte Administrateur 🔑</button>
+                  </form>
+                </div>
+
+                <!-- Right: Admins List table -->
+                <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                  <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 20px;">Comptes Administrateurs</h3>
+                  <div class="table-responsive">
+                    <table class="orders-table">
+                      <thead>
+                        <tr>
+                          <th>Admin</th>
+                          <th>Rôle</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="admins-list-body-new">
+                        <!-- Loaded dynamically -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SUBVIEW 4: SUPPORT TICKETS -->
+            <div class="admin-panel-subview" id="admin-subview-tickets">
+              <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px;">
+                <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">Tickets de Support</h3>
+                <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Discutez en direct et aidez les clients du magasin.</p>
+                
+                <div class="table-responsive">
+                  <table class="orders-table">
+                    <thead>
+                      <tr>
+                        <th>ID Ticket</th>
+                        <th>Client</th>
+                        <th>Email</th>
+                        <th>Dernier Message</th>
+                        <th>Statut</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-tickets-list-body">
+                      <!-- Dynamically loaded tickets -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </main>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Shopping Cart Drawer (Right Side Overlay) -->
+    <div class="cart-overlay" id="cart-overlay">
+      <div class="cart-drawer">
+        <div class="cart-header">
+          <h3>Votre Panier <span>🛒</span></h3>
+          <button class="close-btn" id="close-cart-btn" aria-label="Close cart">&times;</button>
+        </div>
+        <div class="cart-items-container" id="cart-items">
+          <!-- Dynamically populated cart items -->
+        </div>
+        <div class="cart-footer">
+          <div class="cart-totals">
+            <span>Total :</span>
+            <span class="total-price" id="cart-total-price">0.000 DT</span>
+          </div>
+          <button class="btn btn-primary w-full checkout-btn" id="checkout-btn">Passer au Paiement</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Purchase Configuration Modal -->
+    <div class="modal-overlay" id="purchase-modal">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3 id="modal-product-title">Acheter le produit</h3>
+          <button class="close-btn" id="close-purchase-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-product-details">
+            <div class="modal-product-badge" id="modal-product-badge"></div>
+            <div>
+              <p class="modal-product-price" id="modal-product-price">0.000 DT</p>
+              <p class="modal-product-desc" id="modal-product-desc">Envoi par Player ID</p>
+            </div>
+          </div>
+          <form id="purchase-config-form">
+            <input type="hidden" id="modal-product-id" />
+            <div class="form-group" id="input-playerid-group">
+              <label for="purchase-playerid" id="purchase-input-label">ID du Joueur (Player ID)</label>
+              <input type="text" id="purchase-playerid" placeholder="Ex: 574218903" required />
+              <p class="input-tip" id="purchase-input-tip">Veillez à saisir le bon identifiant pour éviter les erreurs de livraison.</p>
+            </div>
+            
+            <div class="form-group quantity-group">
+              <label>Quantité</label>
+              <div class="quantity-controller">
+                <button type="button" class="qty-btn" id="qty-minus">-</button>
+                <input type="number" id="qty-input" value="1" min="1" max="10" readonly />
+                <button type="button" class="qty-btn" id="qty-plus">+</button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full mt-4">Ajouter au Panier</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Flow Wizard Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+      <div class="modal-card checkout-modal-card">
+        <div class="modal-header">
+          <h3>Paiement & Validation</h3>
+          <button class="close-btn" id="close-checkout-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!-- Step Indicators -->
+          <div class="checkout-steps">
+            <div class="step active" id="step-ind-1">1. Méthode</div>
+            <div class="step" id="step-ind-2">2. Détails</div>
+            <div class="step" id="step-ind-3">3. Validation</div>
+          </div>
+
+          <!-- step 1: Select payment method -->
+          <div class="checkout-step-content active" id="checkout-step-1">
+            <h4>Choisissez votre moyen de paiement :</h4>
+            <div class="payment-methods-grid">
+              
+              <div class="payment-card active" data-method="ooredoo">
+                <div class="payment-logo" style="background: none;">
+                  <img src="/ooredoo.png" alt="Ooredoo" style="width: 32px; height: 32px; object-fit: contain;" />
+                </div>
+                <h5>Solde Ooredoo</h5>
+                <p>Débit direct sur votre solde de recharge</p>
+                <span class="badge-method">Recommandé</span>
+              </div>
+
+              <div class="payment-card" data-method="d17">
+                <div class="payment-logo" style="background: none;">
+                  <img src="/d17.png" alt="D17" style="width: 32px; height: 32px; object-fit: contain;" />
+                </div>
+                <h5>D17 Tunisienne</h5>
+                <p>Transfert via l'application de la Poste</p>
+              </div>
+
+              <div class="payment-card" data-method="binance">
+                <div class="payment-logo" style="background: none;">
+                  <img src="/binance.webp" alt="Binance" style="width: 32px; height: 32px; object-fit: contain;" />
+                </div>
+                <h5>Binance Pay</h5>
+                <p>Paiement instantané en Crypto (USDT)</p>
+              </div>
+            </div>
+            
+            <div class="checkout-summary-mini">
+              <span>Montant Total à payer :</span>
+              <span id="checkout-amount-summary">0.000 DT</span>
+            </div>
+
+            <button class="btn btn-primary w-full mt-4" id="btn-next-step-1">Continuer</button>
+          </div>
+
+          <!-- step 2: Details input -->
+          <div class="checkout-step-content" id="checkout-step-2">
+            
+            <!-- OOREDOO FORM -->
+            <div class="payment-form-sub" id="form-pay-ooredoo">
+              <h4>Paiement par Solde Ooredoo</h4>
+              <div class="form-group">
+                <label for="pay-phone-ooredoo">Numéro de téléphone Ooredoo</label>
+                <div class="phone-input-wrapper">
+                  <span class="phone-prefix">+216</span>
+                  <input type="tel" id="pay-phone-ooredoo" placeholder="Numéro à 8 chiffres (ex: 22123456)" maxlength="8" pattern="[0-9]{8}" required />
+                </div>
+                <p class="form-tip">Entrez le numéro Ooredoo Tunisie sur lequel le montant sera prélevé.</p>
+              </div>
+            </div>
+
+            <!-- D17 INSTRUCTIONS -->
+            <div class="payment-form-sub" id="form-pay-d17" style="display:none;">
+              <h4>Paiement par application D17</h4>
+              <p class="instruction-text">Veuillez effectuer un transfert du montant exact vers le numéro de portefeuille D17 ci-dessous :</p>
+              <div class="d17-info-box">
+                <div class="info-row">
+                  <span>Numéro D17 :</span>
+                  <strong>+216 27 005 858</strong>
+                </div>
+                <div class="info-row">
+                  <span>Nom du destinataire :</span>
+                  <strong>MYOOREDOO STORE</strong>
+                </div>
+                <div class="info-row">
+                  <span>Montant exact :</span>
+                  <strong class="text-red" id="d17-exact-price">0.000 DT</strong>
+                </div>
+              </div>
+              <div class="qr-code-placeholder">
+                <svg viewBox="0 0 100 100" width="80" height="80">
+                  <path d="M0,0 h30 v10 h-20 v20 h-10 z M70,0 h30 v30 h-10 v-20 h-20 z M0,70 h10 v20 h20 v10 h-30 z M100,100 h-30 v-10 h20 v-20 h10 z M25,25 h15 v15 h-15 z M60,25 h15 v15 h-15 z M25,60 h15 v15 h-15 z M60,60 h10 v10 h-10 z M70,70 h10 v10 h-10 z" fill="#FFFFFF"/>
+                </svg>
+                <p>Scanner avec l'application D17</p>
+              </div>
+              <div class="form-group">
+                <label for="pay-phone-d17">Votre Numéro D17 pour validation</label>
+                <input type="tel" id="pay-phone-d17" placeholder="ex: 98765432" maxlength="8" />
+              </div>
+            </div>
+
+            <!-- BINANCE PAY INSTRUCTIONS -->
+            <div class="payment-form-sub" id="form-pay-binance" style="display:none;">
+              <h4>Paiement via Binance Pay</h4>
+              <p class="instruction-text">Payez en scannant le QR code ou en utilisant le Pay ID Binance ci-dessous :</p>
+              <div class="binance-info-box">
+                <div class="info-row">
+                  <span>Binance Pay ID :</span>
+                  <strong>983274092</strong>
+                </div>
+                <div class="info-row">
+                  <span>Montant (Crypto) :</span>
+                  <strong class="text-yellow" id="binance-converted-price">0.00 USDT</strong>
+                </div>
+                <p class="rate-indicator">Taux fixe simulé : 1 DT = 0.32 USDT</p>
+              </div>
+              <div class="form-group">
+                <label for="pay-binance-id">Votre ID de transaction Binance (TxID)</label>
+                <input type="text" id="pay-binance-id" placeholder="Ex: 84392019" />
+              </div>
+            </div>
+
+            <div class="checkout-actions-row">
+              <button class="btn btn-outline" id="btn-prev-step-2">Retour</button>
+              <button class="btn btn-primary" id="btn-next-step-2">Procéder à la validation</button>
+            </div>
+          </div>
+
+          <!-- step 3: Validation Simulation -->
+          <div class="checkout-step-content" id="checkout-step-3">
+            
+            <!-- SMS SIMULATION (FOR OOREDOO) -->
+            <div class="validation-wrapper" id="valid-ooredoo">
+              <div class="sms-phone-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <h4>Vérification par Code de Recharge</h4>
+              <p>Un SMS contenant un code de confirmation à 4 chiffres a été envoyé au numéro <strong id="valid-phone-label">+216 -- --- ---</strong>.</p>
+              
+              <div class="sms-simulation-alert">
+                <span>💬 <strong>SMS SIMULÉ :</strong> Votre code secret de validation MYOOREDOO est <strong id="simulated-otp-code">1234</strong></span>
+              </div>
+
+              <div class="otp-inputs-row">
+                <input type="text" class="otp-char" maxlength="1" pattern="[0-9]" required />
+                <input type="text" class="otp-char" maxlength="1" pattern="[0-9]" required />
+                <input type="text" class="otp-char" maxlength="1" pattern="[0-9]" required />
+                <input type="text" class="otp-char" maxlength="1" pattern="[0-9]" required />
+              </div>
+              
+              <button class="btn btn-primary w-full mt-4" id="btn-confirm-otp">Confirmer le code</button>
+            </div>
+
+            <!-- MANUAL PAYMENT SIMULATION (FOR D17 & BINANCE) -->
+            <div class="validation-wrapper" id="valid-manual" style="display:none;">
+              <div class="loading-pulse-logo">
+                <div class="pulse-ring"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E60000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <h4>Vérification en Cours</h4>
+              <p>Notre système attend la confirmation de la transaction.</p>
+              <div class="simulation-alert">
+                <p>Dans un environnement réel, le paiement est validé via API ou confirmation manuelle sous 5 minutes.</p>
+                <p><strong>Cliquez sur le bouton ci-dessous pour simuler l'approbation du paiement.</strong></p>
+              </div>
+              <button class="btn btn-primary w-full mt-4" id="btn-simulate-manual-success">Simuler la Confirmation du Paiement</button>
+            </div>
+
+            <!-- ORDER SUCCESS DISPLAY -->
+            <div class="validation-wrapper" id="valid-success" style="display:none;">
+              <div class="success-checkmark">
+                <div class="check-icon">
+                  <span class="icon-line line-tip"></span>
+                  <span class="icon-line line-long"></span>
+                  <div class="icon-circle"></div>
+                  <div class="icon-fix"></div>
+                </div>
+              </div>
+              <h3 class="success-title">Commande validée !</h3>
+              <p>Votre commande a été traitée avec succès.</p>
+              
+              <div class="invoice-box">
+                <div class="invoice-row">
+                  <span>Numéro de commande :</span>
+                  <strong id="success-order-id">#ORD-0000</strong>
+                </div>
+                <div class="invoice-row">
+                  <span>Méthode de paiement :</span>
+                  <strong id="success-pay-method">Ooredoo Solde</strong>
+                </div>
+                <div class="invoice-row">
+                  <span>Statut :</span>
+                  <span class="status-badge success">Livré par SMS / ID</span>
+                </div>
+              </div>
+              <p class="success-instructions">Vos diamants / codes ont été envoyés. Si vous avez des questions, contactez notre support client.</p>
+              <button class="btn btn-primary w-full" id="btn-close-checkout-success">Retour à la boutique</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Toast Element -->
+    <div id="toast" class="toast-notification">Notification message</div>
+
+    <!-- Footer Area -->
+    <footer class="main-footer">
+      <div class="footer-container">
+        
+        <div class="footer-col brand-col">
+          <a href="#" class="logo">
+            <img src="/gif.gif" alt="MYOOREDOO" style="height: 36px; width: auto;" />
+            <span style="font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 900; color: #fff; letter-spacing: 0.5px; margin-left: 6px;">MYOOREDOO</span>
+            <span class="store-emoji">🛒</span>
+          </a>
+          <p class="brand-desc">Le premier marché en ligne pour tous vos besoins en abonnements, cartes cadeaux de jeux et services numériques en Tunisie. Rapidité, confiance et sécurité 24h/24.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/myoo.redoo/" target="_blank" aria-label="Facebook">FB</a>
+            <a href="https://www.instagram.com/myooredoo.store/" target="_blank" aria-label="Instagram">IG</a>
+            <a href="https://wa.me/21627005858" target="_blank" aria-label="WhatsApp">WA</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Liens Utiles</h4>
+          <ul>
+            <li><a href="#" data-link-view="home">Boutique</a></li>
+            <li><a href="#products" data-link-view="products">Nos Produits</a></li>
+            <li><a href="#categories" data-link-view="categories">Toutes les Catégories</a></li>
+            <li><a href="#about" data-link-view="about">À Propos</a></li>
+            <li><a href="#support" data-link-view="support">Foire Aux Questions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Moyens de Paiement</h4>
+          <div class="payment-badges-row" style="display: flex; gap: 12px; align-items: center; margin-top: 8px;">
+            <div style="padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+              <img src="/ooredoo.png" alt="Ooredoo" style="width: 18px; height: 18px; object-fit: contain;" />
+              <span style="font-family: var(--font-secondary); font-size: 12px; font-weight: 600; color: #fff;">Ooredoo</span>
+            </div>
+            <div style="padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+              <img src="/binance.webp" alt="Binance" style="width: 18px; height: 18px; object-fit: contain;" />
+              <span style="font-family: var(--font-secondary); font-size: 12px; font-weight: 600; color: #fff;">Binance</span>
+            </div>
+            <div style="padding: 6px 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+              <img src="/d17.png" alt="D17" style="width: 18px; height: 18px; object-fit: contain;" />
+              <span style="font-family: var(--font-secondary); font-size: 12px; font-weight: 600; color: #fff;">D17</span>
+            </div>
+          </div>
+          <p class="payment-safety">🔒 Paiements 100% chiffrés et sécurisés. Les codes de recharge sont transmis instantanément.</p>
+        </div>
+
+        <div class="footer-col newsletter-col">
+          <h4>Notre Newsletter</h4>
+          <p>Recevez les promotions flash et les réductions par e-mail.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Votre adresse e-mail" required />
+            <button type="submit" class="btn btn-primary">S'abonner</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 MYOOREDOO - Boutique de Produits Digitaux en Tunisie. Fait avec passion.</p>
+        <p class="dev-tag">Projet Web Premium</p>
+      </div>
+    </footer>
+
+    <!-- App Initialization scripts -->
+    
+    <!-- Admin Order Edit & Fulfillment Modal -->
+    <div class="modal-overlay" id="admin-order-modal">
+      <div class="modal-card admin-modal-card" style="max-width: 480px;">
+        <div class="modal-header">
+          <h3>Gérer la Commande</h3>
+          <button class="close-btn" id="close-admin-order-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="admin-order-fulfill-form">
+            <input type="hidden" id="admin-modal-order-id" />
+            
+            <div class="form-group">
+              <label>Infos de la commande</label>
+              <p id="admin-modal-order-info" style="font-family: var(--font-secondary); font-size: 13px; font-weight: 600; color: #fff; margin-top: 4px; background-color: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 6px;"></p>
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="admin-order-status-select">Statut de livraison</label>
+              <select id="admin-order-status-select" style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; margin-top: 4px;">
+                <option value="to-pay">To Pay</option>
+                <option value="verify">Verify payment</option>
+                <option value="preparing">Preparing (En cours)</option>
+                <option value="delivering">Delivering (En livraison)</option>
+                <option value="completed">Completed (Terminé)</option>
+                <option value="cancelled">Cancelled (Annulé)</option>
+                <option value="resolution">Resolution</option>
+              </select>
+            </div>
+
+            <div class="form-group mt-4">
+              <label for="admin-order-delivered-data">Livrer le Produit (Code de recharge / Accès Netflix-Spotify)</label>
+              <textarea id="admin-order-delivered-data" rows="4" placeholder="Entrez le code de carte cadeau, le lien, ou les identifiants Netflix/Spotify à envoyer au client..." style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; resize: vertical; margin-top: 4px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full mt-4" style="height: 46px;">Mettre à jour & Livrer 🚀</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Authentication Modal (Login / Sign Up) -->
+    <div class="modal-overlay" id="auth-modal">
+      <div class="modal-card auth-modal-card" style="max-width: 400px;">
+        <div class="modal-header">
+          <div class="auth-tabs" style="display: flex; gap: 16px; border: none; padding: 0;">
+            <button class="auth-tab-btn active" id="tab-login" style="background: none; border: none; font-size: 16px; font-weight: 800; color: var(--primary); cursor: pointer; padding: 4px 0; position: relative;">Se connecter</button>
+            <button class="auth-tab-btn" id="tab-register" style="background: none; border: none; font-size: 16px; font-weight: 800; color: var(--text-secondary); cursor: pointer; padding: 4px 0; position: relative;">Créer un compte</button>
+          </div>
+          <button class="close-btn" id="close-auth-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!-- Login Form -->
+          <form id="auth-login-form" class="auth-form active">
+            <div class="form-group">
+              <label for="login-username">Nom d'utilisateur</label>
+              <input type="text" id="login-username" required placeholder="ex: anis123" style="width: 100%;" />
+            </div>
+            <div class="form-group mt-3">
+              <label for="login-password">Mot de passe</label>
+              <input type="password" id="login-password" required placeholder="••••••••" style="width: 100%;" />
+            </div>
+            <button type="submit" class="btn btn-primary w-full mt-4" style="height: 46px;">Connexion 🚀</button>
+          </form>
+
+          <!-- Register Form -->
+          <form id="auth-register-form" class="auth-form" style="display: none;">
+            <div class="form-group">
+              <label for="register-username">Nom d'utilisateur</label>
+              <input type="text" id="register-username" required placeholder="ex: anis123" style="width: 100%;" />
+            </div>
+            <div class="form-group mt-3">
+              <label for="register-password">Mot de passe</label>
+              <input type="password" id="register-password" required placeholder="••••••••" style="width: 100%;" />
+            </div>
+            <div class="form-group mt-3">
+              <label for="register-confirm-password">Confirmer le mot de passe</label>
+              <input type="password" id="register-confirm-password" required placeholder="••••••••" style="width: 100%;" />
+            </div>
+            <button type="submit" class="btn btn-primary w-full mt-4" style="height: 46px;">Créer mon compte 🎉</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delivered Data View Modal for Client -->
+    <div class="modal-overlay" id="client-view-code-modal">
+      <div class="modal-card" style="max-width: 440px;">
+        <div class="modal-header">
+          <h3>Code de Recharge Livré</h3>
+          <button class="close-btn" id="close-client-code-modal">&times;</button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">Veuillez copier et utiliser votre code ci-dessous :</p>
+          <div id="client-delivered-content-box" style="background-color: #ffd700; color: #000; font-family: var(--font-secondary); font-size: 16px; font-weight: 800; padding: 16px 20px; border-radius: 8px; word-break: break-all; margin-bottom: 20px;">
+            CODE-XYZ
+          </div>
+          <button class="btn btn-primary w-full" id="btn-copy-client-code">Copier le code 📋</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Ticket Reply Modal -->
+    <div class="modal-overlay" id="admin-ticket-reply-modal">
+      <div class="modal-card" style="max-width: 500px;">
+        <div class="modal-header">
+          <h3 id="admin-reply-modal-title">Ticket #TCK-XXXXXX</h3>
+          <button class="close-btn" id="close-admin-ticket-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="admin-active-ticket-id" />
+          <div class="chat-messages-container" id="admin-chat-messages-box">
+            <!-- Chat history bubbles -->
+          </div>
+          
+          <form id="admin-ticket-chat-form">
+            <div class="form-group">
+              <textarea id="admin-ticket-reply-text" rows="3" placeholder="Écrivez votre réponse ici..." required style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; resize: vertical;"></textarea>
+            </div>
+            <div style="display: flex; gap: 12px; margin-top: 12px;">
+               <select id="admin-ticket-status-select" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none;">
+                 <option value="open">Open (Ouvert)</option>
+                 <option value="resolved">Resolved (Résolu)</option>
+               </select>
+               <button type="submit" class="btn btn-primary" style="flex: 1; height: 40px; font-weight: 700;">Envoyer 🚀</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Ticket Chat Modal -->
+    <div class="modal-overlay" id="client-ticket-chat-modal">
+      <div class="modal-card" style="max-width: 500px;">
+        <div class="modal-header">
+          <h3 id="client-chat-modal-title">Ticket Support</h3>
+          <button class="close-btn" id="close-client-ticket-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="client-active-ticket-id" />
+          <div class="chat-messages-container" id="client-chat-messages-box">
+            <!-- Chat history bubbles -->
+          </div>
+          
+          <form id="client-ticket-chat-form">
+            <div class="form-group" id="client-chat-input-wrapper">
+              <textarea id="client-ticket-reply-text" rows="3" placeholder="Tapez un message..." required style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; resize: vertical;"></textarea>
+              <button type="submit" class="btn btn-primary w-full mt-3" style="height: 40px; font-weight: 700;">Envoyer au support 🚀</button>
+            </div>
+            <p id="client-ticket-resolved-notice" style="display: none; text-align: center; font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); padding: 10px 0; background-color: rgba(255,255,255,0.02); border-radius: 6px;">Ce ticket a été marqué comme résolu. 🔒</p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Add Product Modal -->
+    <div class="modal-overlay" id="add-product-modal">
+      <div class="modal-card" style="max-width: 480px;">
+        <div class="modal-header">
+          <h3>Ajouter un Produit</h3>
+          <button class="close-btn" id="close-add-product-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-product-form-new">
+            <div class="form-group">
+              <label for="prod-name-new">Nom du Produit</label>
+              <input type="text" id="prod-name-new" required placeholder="ex: 100 + 10 Diamants Free Fire" style="width: 100%;" />
+            </div>
+            
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
+              <div class="form-group">
+                <label for="prod-category-new">Catégorie</label>
+                <select id="prod-category-new" required style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; margin-top: 4px;">
+                  <option value="Gaming & Cartes">Gaming & Cartes</option>
+                  <option value="Streaming & TV">Streaming & TV</option>
+                  <option value="Recharges & Flexi">Recharges & Flexi</option>
+                  <option value="Cartes Cadeaux">Cartes Cadeaux</option>
+                  <option value="Softwares">Logiciels & Softwares</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="prod-price-new">Prix (DT)</label>
+                <input type="number" step="0.100" id="prod-price-new" required placeholder="Prix" style="width: 100%;" />
+              </div>
+            </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px;">
+              <div class="form-group">
+                <label for="prod-oldprice-new">Ancien Prix (DT)</label>
+                <input type="number" step="0.100" id="prod-oldprice-new" placeholder="Optionnel" style="width: 100%;" />
+              </div>
+              <div class="form-group">
+                <label for="prod-stock-new">Statut Stock</label>
+                <select id="prod-stock-new" style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; margin-top: 4px;">
+                  <option value="in-stock">En Stock (Instantané)</option>
+                  <option value="out-of-stock">Rupture</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 12px;">
+              <label for="prod-desc-new">Description courte / Instruction</label>
+              <input type="text" id="prod-desc-new" required placeholder="ex: Envoi direct par Player ID ou code" style="width: 100%;" />
+            </div>
+
+            <div class="form-group" style="margin-top: 12px;">
+              <label for="prod-theme-new">Couleur Thème (Hex)</label>
+              <input type="color" id="prod-theme-new" value="#E60000" style="width: 100%; height: 38px; border: none; padding: 0; background: none; cursor: pointer; margin-top: 4px;" />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full mt-4" style="height: 46px;">Créer le Produit 🚀</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

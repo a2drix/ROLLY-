@@ -1,0 +1,201 @@
+[
+  {
+    "_id": "69a3b077b65577421548b9cb",
+    "name": "eFootball",
+    "slug": "efootball",
+    "image": "https://i.ytimg.com/vi/FLqcJZjgJNc/maxresdefault.jpg",
+    "cardImage": "https://assets.promediateknologi.id/crop/0x0:0x0/0x0/webp/photo/p3/75/2024/09/09/20240909_192632-138883313.jpg",
+    "featured": true,
+    "createdAt": "2026-03-01T03:20:23.826Z",
+    "updatedAt": "2026-03-01T03:21:57.302Z"
+  },
+  {
+    "_id": "69a3a259c81d042c4524eb5b",
+    "name": "Youtube",
+    "slug": "youtube",
+    "image": "https://i.cbc.ca/ais/1.7560884,1749839379000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1919%2C1079%29%3B",
+    "cardImage": "https://img.championat.com/s/1200x630/news/big/f/p/youtube-testiruet-novyj-dizajn-veb-versii-pervye-polzovateli-negoduyut_1712835038369119827.jpg",
+    "featured": true,
+    "createdAt": "2026-03-01T02:20:09.390Z",
+    "updatedAt": "2026-03-01T02:20:55.278Z"
+  },
+  {
+    "_id": "69a39d698de4543ac2826d26",
+    "name": "Crunchyroll",
+    "slug": "crunchyroll",
+    "image": "https://assetsio.gnwcdn.com/E52E1E9C-AE41-4837-8FEA-1FF8147CE49E.webp?width=1600&height=900&fit=crop&quality=100&format=png&enable=upscale&auto=webp",
+    "cardImage": "https://a.storyblok.com/f/178900/1500x2000/ae65892f6c/cr-9.jpg/m/filters:quality(95)format(webp)",
+    "featured": true,
+    "createdAt": "2026-03-01T01:59:05.517Z",
+    "updatedAt": "2026-03-01T01:59:05.517Z"
+  },
+  {
+    "_id": "69a0e55f8d8eb71cd652a6e3",
+    "name": "Softwares",
+    "slug": "softwares",
+    "image": "https://media.istockphoto.com/id/1502289545/vector/technology-of-software-development-web-design-programming-concept-program-code-on-screen.jpg?s=612x612&w=0&k=20&c=IjkXl6uCuINBjLKmCq95TnhSQaHSAcJE2HzcNK42tv4=",
+    "cardImage": "https://media.istockphoto.com/id/1502289545/vector/technology-of-software-development-web-design-programming-concept-program-code-on-screen.jpg?s=612x612&w=0&k=20&c=IjkXl6uCuINBjLKmCq95TnhSQaHSAcJE2HzcNK42tv4=",
+    "featured": true,
+    "createdAt": "2026-02-27T00:29:19.469Z",
+    "updatedAt": "2026-02-27T00:29:19.469Z"
+  },
+  {
+    "_id": "69875fd43155184667394288",
+    "name": "Games Accounts",
+    "slug": "games-accounts",
+    "image": "https://igsglobal.com/wp-content/uploads/2025/03/Gaming-blog-banner-How-Functional-Testing-is-Revolutionizing-Gaming-in-2025-image-01.jpg",
+    "cardImage": "https://igsglobal.com/wp-content/uploads/2025/03/Gaming-blog-banner-How-Functional-Testing-is-Revolutionizing-Gaming-in-2025-image-01.jpg",
+    "featured": true,
+    "createdAt": "2026-02-07T15:52:52.886Z",
+    "updatedAt": "2026-02-10T21:40:02.291Z"
+  },
+  {
+    "_id": "6985211103f94df5313f2aea",
+    "name": "Social Media",
+    "slug": "social-media",
+    "image": "https://img.freepik.com/photos-premium/icones-plus-populaires-medias-sociaux-instagram-facebook-tiktok-youtube_1379-5395.jpg",
+    "featured": true,
+    "createdAt": "2026-02-05T23:00:33.532Z",
+    "updatedAt": "2026-02-05T23:00:33.532Z"
+  },
+  {
+    "_id": "69851c0203f94df5313f2ae7",
+    "name": "Spotify",
+    "slug": "spotify",
+    "image": "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/2024-spotify-brand-assets-media-kit.jpg",
+    "featured": true,
+    "createdAt": "2026-02-05T22:38:58.540Z",
+    "updatedAt": "2026-02-07T16:53:54.052Z",
+    "cardImage": "https://t2.tudocdn.net/733703?w=1920&h=1080"
+  },
+  {
+    "_id": "69851a8103f94df5313f2ae4",
+    "name": "Netflix",
+    "slug": "netflix",
+    "image": "https://images.squarespace-cdn.com/content/v1/567e05c4e0327cd48ad079f3/1549393275390-RR6JD669IX1AS8LWUE3U/NETFLIX_FORM_06_wes.jpg",
+    "featured": true,
+    "createdAt": "2026-02-05T22:32:33.108Z",
+    "updatedAt": "2026-02-05T22:32:33.108Z"
+  },
+  {
+    "_id": "6985154b03f94df5313f2add",
+    "name": "Discord",
+    "slug": "discord",
+    "image": "https://supportdevs.com/wp-content/uploads/2024/08/discord-features-review.jpg",
+    "featured": true,
+    "createdAt": "2026-02-05T22:10:19.773Z",
+    "updatedAt": "2026-02-07T16:49:43.043Z",
+    "cardImage": "https://i.pcmag.com/imagery/reviews/03hARBIw3QcYYxR6UAAc3f8-1.fit_lim.size_1050x591.v1634847928.png"
+  },
+  {
+    "_id": "698512f303f94df5313f2ad8",
+    "name": "Free Fire",
+    "slug": "free-fire",
+    "image": "https://i.redd.it/8c37jexvbrpb1.jpg",
+    "featured": true,
+    "createdAt": "2026-02-05T22:00:19.477Z",
+    "updatedAt": "2026-02-05T22:00:19.477Z"
+  },
+  {
+    "_id": "6985116803f94df5313f2ad5",
+    "name": "PUBG Mobile",
+    "slug": "pubg-mobile",
+    "image": "https://www.entreprises-magazine.com/wp-content/uploads/2019/07/PUBG-MOBILE.jpg",
+    "featured": true,
+    "createdAt": "2026-02-05T21:53:44.709Z",
+    "updatedAt": "2026-02-05T21:53:44.709Z"
+  },
+  {
+    "_id": "69850eb503f94df5313f2ad0",
+    "name": "Blood Strike",
+    "slug": "blood-strike",
+    "image": "https://imgur.com/ItlV4eK.png",
+    "featured": true,
+    "createdAt": "2026-02-05T21:42:13.460Z",
+    "updatedAt": "2026-02-05T21:42:13.460Z"
+  },
+  {
+    "_id": "69850a6e03f94df5313f2acb",
+    "name": "Xbox",
+    "slug": "xbox",
+    "image": "https://imgur.com/s2cu4j6.png",
+    "featured": true,
+    "createdAt": "2026-02-05T21:23:58.309Z",
+    "updatedAt": "2026-02-05T21:23:58.309Z"
+  },
+  {
+    "_id": "698508d703f94df5313f2ac8",
+    "name": "iTunes",
+    "slug": "itunes",
+    "image": "https://imgur.com/N48TNjr.png",
+    "featured": true,
+    "createdAt": "2026-02-05T21:17:11.162Z",
+    "updatedAt": "2026-02-05T21:17:11.162Z"
+  },
+  {
+    "_id": "6984f21003f94df5313f2ac3",
+    "name": "PlayStation",
+    "slug": "playstation",
+    "image": "https://firebasestorage.googleapis.com/v0/b/topup-hub-t831o.firebasestorage.app/o/news-playstation-logo-in-blue-hyperspace-glowing-1.avif?alt=media&token=0df14207-bba6-4e09-b226-6ac724a9d534",
+    "featured": true,
+    "createdAt": "2026-02-05T19:40:00.723Z",
+    "updatedAt": "2026-02-05T19:41:08.109Z"
+  },
+  {
+    "_id": "6984ed0003f94df5313f2abc",
+    "name": "Steam",
+    "slug": "steam",
+    "image": "https://cdn.dlcompare.com/others_jpg/upload/news/image/en-new-valve-guidelines-suggest-0fbf22a7-image-0fbf228a.jpg.webp",
+    "featured": true,
+    "createdAt": "2026-02-05T19:18:24.703Z",
+    "updatedAt": "2026-02-07T15:39:02.549Z",
+    "cardImage": "https://www.pcworld.com/wp-content/uploads/2025/09/Steam-logo-over-a-blurred-background-of-Steam-game-library-2.jpg?quality=50&strip=all"
+  },
+  {
+    "_id": "6984ea4e03f94df5313f2ab9",
+    "name": "Razer Gold",
+    "slug": "razer-gold",
+    "image": "https://assets2.razerzone.com/images/pnx.assets/77a3129a6bcbb490078654285d1bad1d/razer-gold-pin-hero-mobile.webp",
+    "featured": true,
+    "createdAt": "2026-02-05T19:06:54.211Z",
+    "updatedAt": "2026-02-07T15:47:25.213Z",
+    "cardImage": "https://d13ms5efar3wc5.cloudfront.net/eyJidWNrZXQiOiJpbWFnZXMtY2Fycnkxc3QtcHJvZHVjdHMiLCJrZXkiOiIzMjMyMTFjMy00OWY0LTRiYjgtYWExNy0yNjFlMjgwZWU5MTQucG5nLndlYnAiLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjQwMH19LCJ3ZWJwIjp7InF1YWxpdHkiOjc1fX0="
+  },
+  {
+    "_id": "6984e0d603f94df5313f2ab3",
+    "name": "Fortnite",
+    "slug": "fortnite",
+    "image": "https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg",
+    "featured": true,
+    "createdAt": "2026-02-05T18:26:30.261Z",
+    "updatedAt": "2026-02-05T18:26:30.261Z"
+  },
+  {
+    "_id": "6983cf688626c21d93a339c7",
+    "name": "League of Legends",
+    "slug": "league-of-legends",
+    "image": "https://imgur.com/ROV92Yc.png",
+    "featured": true,
+    "createdAt": "2026-02-04T22:59:52.569Z",
+    "updatedAt": "2026-02-07T16:34:07.228Z",
+    "cardImage": "https://imgur.com/r2AmLV0.png"
+  },
+  {
+    "_id": "6983ca768626c21d93a339c4",
+    "name": "Roblox",
+    "slug": "roblox",
+    "image": "https://i0.wp.com/gameranx.com/wp-content/uploads/2023/06/Roblox-logo.jpg?fit=1200%2C630&ssl=1",
+    "featured": true,
+    "createdAt": "2026-02-04T22:38:46.331Z",
+    "updatedAt": "2026-02-07T15:37:51.946Z",
+    "cardImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDV7RNSmGuSxT_bnUNP4L9z-oQ5FjgmKHMrQ&s"
+  },
+  {
+    "_id": "69779251cb97dfa5b151c631",
+    "name": "Valorant",
+    "image": "https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp",
+    "slug": "Points",
+    "featured": true,
+    "__v": 0
+  }
+]

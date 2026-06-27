@@ -1,0 +1,1442 @@
+[
+  {
+    "id": "69a3a506fe5878c1877bd59e",
+    "name": "Youtube Boost",
+    "category": "Youtube",
+    "price": 10,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Supercharge your channel's visibility and authority. Whether you're a new creator looking for your first 1,000 subscribe...",
+    "themeColor": "#ff0000",
+    "imageUrl": "https://i.cbc.ca/ais/1.7560884,1749839379000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1919%2C1079%29%3B",
+    "subProducts": [
+      {
+        "title": "Views",
+        "price": 10,
+        "originalPrice": 20
+      },
+      {
+        "title": "Likes",
+        "price": 5,
+        "originalPrice": 10
+      },
+      {
+        "title": "Comments",
+        "price": 20,
+        "originalPrice": 30
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a3a3d5fe5878c1877bd59d",
+    "name": "Youtube Premium",
+    "category": "Youtube",
+    "price": 10,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Unlock the ultimate YouTube experience. Watch your favorite creators without a single ad, play videos in the background ...",
+    "themeColor": "#ff0000",
+    "imageUrl": "https://i.cbc.ca/ais/1.7560884,1749839379000/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C1919%2C1079%29%3Bac",
+    "subProducts": [
+      {
+        "title": "Youtube Premium Month",
+        "price": 10,
+        "originalPrice": 20
+      },
+      {
+        "title": "Youtube Premium 3 Months",
+        "price": 20,
+        "originalPrice": 30
+      },
+      {
+        "title": "Youtube Premium Family Onwer",
+        "price": 25,
+        "originalPrice": 30
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a3a1a88de4543ac2826d29",
+    "name": "ChatGPT",
+    "category": "Softwares",
+    "price": 5,
+    "oldPrice": 10,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Experience the world's most advanced AI. Get priority access to GPT-5.2, including \"Thinking\" modes for complex reasonin...",
+    "themeColor": "#10b981",
+    "imageUrl": "https://cdn.neowin.com/news/images/uploaded/2023/05/1683188731_image-of-hand-holding-an-ai-face-looking-at-the-words-chatgpt-openai.jpg",
+    "subProducts": [
+      {
+        "title": "ChatGPT Plus",
+        "price": 5,
+        "originalPrice": 10
+      },
+      {
+        "title": "ChatGPT Business",
+        "price": 5,
+        "originalPrice": 10
+      },
+      {
+        "title": "ChatGPT Pro",
+        "price": 5,
+        "originalPrice": 10
+      },
+      {
+        "title": "ChatGPT Plus 3 Months",
+        "price": 18,
+        "originalPrice": 30
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a3a0afc81d042c4524eb59",
+    "name": "NordVPN",
+    "category": "Softwares",
+    "price": 15,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The industry leader in privacy. Secure up to 10 devices with ultra-fast 10Gbps+ servers in over 120 countries. Includes ...",
+    "themeColor": "#10b981",
+    "imageUrl": "https://techjioblog.com/wp-content/uploads/2020/03/nordvpn_cover.jpg",
+    "subProducts": [
+      {
+        "title": "NordVPN",
+        "price": 15,
+        "originalPrice": 30
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a3a04cfe5878c1877bd59a",
+    "name": "Duolingo Max",
+    "category": "Softwares",
+    "price": 5,
+    "oldPrice": 10,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Master a new language with the power of AI. Includes everything in Super Duolingo (Unlimited Hearts, No Ads) plus Video ...",
+    "themeColor": "#10b981",
+    "imageUrl": "https://cdn.slidesharecdn.com/ss_thumbnails/duolingo-230819152812-3a15b958-thumbnail.jpg?width=640&height=640&fit=bounds",
+    "subProducts": [
+      {
+        "title": "Duolingo Max",
+        "price": 5,
+        "originalPrice": 10
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a39fdefe5878c1877bd599",
+    "name": "Canva Pro",
+    "category": "Softwares",
+    "price": 8,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Design anything like a pro. Gain access to 100M+ premium photos, videos, and fonts. Use Magic Studio AI to resize design...",
+    "themeColor": "#10b981",
+    "imageUrl": "https://cegepgranby.ca/wp-content/uploads/2022/07/entete-sae-canva-pro.jpg",
+    "subProducts": [
+      {
+        "title": "Canva Pro",
+        "price": 8,
+        "originalPrice": 20
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a39f7a8de4543ac2826d28",
+    "name": "Capcut Pro",
+    "category": "Softwares",
+    "price": 8,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The professional's choice for social media editing. Unlock 4K HDR exports, remove all watermarks, and access premium AI ...",
+    "themeColor": "#10b981",
+    "imageUrl": "https://hustle.com.sg/wp-content/uploads/2023/10/Capcut.png",
+    "subProducts": [
+      {
+        "title": "Capcut Pro",
+        "price": 8,
+        "originalPrice": 20
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a39e9b8de4543ac2826d27",
+    "name": "Crunchyroll Premium",
+    "category": "Crunchyroll",
+    "price": 1,
+    "oldPrice": 5,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The ultimate destination for anime fans. Stream the world’s largest anime library ad-free, including exclusive simulcast...",
+    "themeColor": "#f78c25",
+    "imageUrl": "https://anitrendz.net/news/wp-content/uploads/2020/08/Crunchyroll-Banner.png",
+    "subProducts": [
+      {
+        "title": "Crunchyroll Random",
+        "price": 1,
+        "originalPrice": 5
+      },
+      {
+        "title": "Crunchyroll Premium",
+        "price": 11,
+        "originalPrice": 15
+      },
+      {
+        "title": "Crunchyroll Mega Fan",
+        "price": 15,
+        "originalPrice": 20
+      },
+      {
+        "title": "Crunchyroll Premium 3 Months",
+        "price": 26,
+        "originalPrice": 30
+      },
+      {
+        "title": "Crunchyroll Premium 1 Year",
+        "price": 55,
+        "originalPrice": 70
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69a0e44a8d8eb71cd652a6e2",
+    "name": "ARC Raiders",
+    "category": "Games Accounts",
+    "price": 85,
+    "oldPrice": 120,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Secure your survival in the Rust Belt with a Full Access ARC Raiders account.\nIncludes Original Email (OGE) for 100% sec...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://image.api.playstation.com/vulcan/ap/rnd/202504/1515/3ef1ea90a64952c060b797fde8602ee745c2e7c73277c4a5.png",
+    "subProducts": [
+      {
+        "title": "ARC Raiders",
+        "price": 85,
+        "originalPrice": 120
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698769153155184667394298",
+    "name": "Euro Truck Simulator 2",
+    "category": "Games Accounts",
+    "price": 10,
+    "oldPrice": 15,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Become the king of the road with a Full Access Euro Truck Simulator 2 Steam account. Includes Original Email (OGE) for 1...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://media.overclock3d.net/2023/10/Euro-Truck-Simulator-2-image.jpg",
+    "subProducts": [
+      {
+        "title": "Euro Truck Simulator 2",
+        "price": 10,
+        "originalPrice": 15
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698767ce3155184667394296",
+    "name": "Red Dead Redemption 2",
+    "category": "Games Accounts",
+    "price": 45,
+    "oldPrice": 50,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Experience the epic tale of the Wild West with a Full Access Red Dead Redemption 2 account. Includes original email (OGE...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://wallpapers.com/images/hd/red-dead-redemption-2-desktop-71j3tjqunmm3a25b.jpg",
+    "subProducts": [
+      {
+        "title": "Red Dead Redemption 2",
+        "price": 45,
+        "originalPrice": 50
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698766c93155184667394294",
+    "name": "Minecraft Java and Bedrock Edition",
+    "category": "Games Accounts",
+    "price": 35,
+    "oldPrice": 50,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Get the ultimate Minecraft experience with both Java and Bedrock Editions in one bundle. Play with friends across any de...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://kids.guinnessworldrecords.com/news/2025/4/images/minecraft-header-thumbnail-776652.jpg",
+    "subProducts": [
+      {
+        "title": "Minecraft Account",
+        "price": 35,
+        "originalPrice": 50
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698765df3155184667394292",
+    "name": "ARK: Survival Evolved Accounts",
+    "category": "Games Accounts",
+    "price": 7,
+    "oldPrice": 10,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Full Access ARK: Survival Evolved account with 100% control over email and password. Includes Original Email (OGE) for m...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://images.launchbox-app.com/7cdea627-b641-47bb-8894-3af22765b86b.jpg",
+    "subProducts": [
+      {
+        "title": "ARK: Survival Evolved",
+        "price": 7,
+        "originalPrice": 10
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6987650f3155184667394290",
+    "name": "EA Sport FC Account",
+    "category": "Games Accounts",
+    "price": 25,
+    "oldPrice": 40,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Get ahead of the competition with a Full Access EA Sports FC 25 or FC 26 account. Includes Original Email (OGE) for 100%...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://image.mux.com/T1HTP5SEXGemp9E7yLTtvgFxdfVffjYg502hcVKZeKLw/thumbnail.jpg?time=84.823593",
+    "subProducts": [
+      {
+        "title": "EA Sport FC 25",
+        "price": 25,
+        "originalPrice": 40
+      },
+      {
+        "title": "EA Sport FC 26",
+        "price": 50,
+        "originalPrice": 60
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69876392315518466739428e",
+    "name": "Forza Horizon 5",
+    "category": "Games Accounts",
+    "price": 40,
+    "oldPrice": 50,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Own Forza Horizon 5 permanently with a Full Access Microsoft/Xbox account. Includes original email for 100% security—cha...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://amazing.tn/wp-content/uploads/2022/11/forza-horizon-5-pc-xbox-one-xbox-series-xs-pc-xbox-one-xbox-series-x-s-jeu-microsoft-store-cover.jpg",
+    "subProducts": [
+      {
+        "title": "Forza Horizon 5 Account",
+        "price": 40,
+        "originalPrice": 50
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6987623b315518466739428c",
+    "name": "Grand Theft Auto V",
+    "category": "Games Accounts",
+    "price": 35,
+    "oldPrice": 50,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Full Access GTA V account with complete control over email and password settings. Includes the full game (Story Mode + G...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://i.redd.it/xghgr1kwvcee1.jpeg",
+    "subProducts": [
+      {
+        "title": "Grand Theft Auto V Account",
+        "price": 35,
+        "originalPrice": 50
+      },
+      {
+        "title": "FiveM Ready Key",
+        "price": 3,
+        "originalPrice": 5
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6987612e315518466739428a",
+    "name": "Rust Steam",
+    "category": "Games Accounts",
+    "price": 28,
+    "oldPrice": 40,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Get instant access to Rust with a brand new, Full Access Steam Account. Includes original email data for 100% security a...",
+    "themeColor": "#6366f1",
+    "imageUrl": "https://hone.gg/blog/wp-content/uploads/2025/05/rust-banner_1rust-banner.webp",
+    "subProducts": [
+      {
+        "title": "Rust Steam Account",
+        "price": 28,
+        "originalPrice": 40
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6985295803f94df5313f2af1",
+    "name": "Facebook Products",
+    "category": "Social Media",
+    "price": 10,
+    "oldPrice": 15,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Boost your Facebook Page or Post authority with fast Followers, Likes, and Views. Build instant social proof and improve...",
+    "themeColor": "#4f46e5",
+    "imageUrl": "https://images.unsplash.com/photo-1662947852129-ead669d746f0?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y291dmVydHVyZSUyMGZhY2Vib29rfGVufDB8fDB8fHww",
+    "subProducts": [
+      {
+        "title": "1000 Followers",
+        "price": 10,
+        "originalPrice": 15
+      },
+      {
+        "title": "1000 Likes",
+        "price": 1,
+        "originalPrice": 2.01
+      },
+      {
+        "title": "1000 Views",
+        "price": 0.5,
+        "originalPrice": 1
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698527f903f94df5313f2af0",
+    "name": "Instagram Products",
+    "category": "Social Media",
+    "price": 10,
+    "oldPrice": 15,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Give your Instagram profile an instant boost with high-speed Followers, Likes, and Views. The most affordable way to inc...",
+    "themeColor": "#4f46e5",
+    "imageUrl": "https://m-cdn.phonearena.com/images/article/106266-wide-two_1200/Instagram-gains-new-feature-to-help-users-read-all-posts-on-their-Feed.jpg",
+    "subProducts": [
+      {
+        "title": "1000 Followers",
+        "price": 10,
+        "originalPrice": 15
+      },
+      {
+        "title": "1000 Likes ",
+        "price": 1,
+        "originalPrice": 2
+      },
+      {
+        "title": "10000 Views",
+        "price": 1,
+        "originalPrice": 2
+      },
+      {
+        "title": "Meta Verify (6.5$)",
+        "price": 28,
+        "originalPrice": 40
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6985256803f94df5313f2aef",
+    "name": "Tiktok Products",
+    "category": "Social Media",
+    "price": 7,
+    "oldPrice": 10,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Boost your TikTok presence instantly with our high-speed Followers, Likes, and Views. Perfect for social proof and incre...",
+    "themeColor": "#4f46e5",
+    "imageUrl": "https://as1.ftcdn.net/jpg/05/17/14/18/1000_F_517141830_8sbSRYMP13ulFVV2wFy0e1W6dmN44bFq.jpg",
+    "subProducts": [
+      {
+        "title": "1000 Followers",
+        "price": 7,
+        "originalPrice": 10
+      },
+      {
+        "title": "1000 Likes",
+        "price": 0.5,
+        "originalPrice": 1
+      },
+      {
+        "title": "1000 Views",
+        "price": 0.5,
+        "originalPrice": 1
+      },
+      {
+        "title": "100 Tiktok Livestream Views (15 Mint)",
+        "price": 5,
+        "originalPrice": 7
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69851d5503f94df5313f2ae9",
+    "name": "Spotify Premium",
+    "category": "Spotify",
+    "price": 12,
+    "oldPrice": 15,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Upgrade your own Spotify account to Premium at a fraction of the official price. Keep all your playlists and liked songs...",
+    "themeColor": "#1DB954",
+    "imageUrl": "https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/2024-spotify-brand-assets-media-kit.jpg",
+    "subProducts": [
+      {
+        "title": "1 Month Individual",
+        "price": 12,
+        "originalPrice": 15
+      },
+      {
+        "title": "1 Month Duo",
+        "price": 20,
+        "originalPrice": 25
+      },
+      {
+        "title": "1 Month Family",
+        "price": 25,
+        "originalPrice": 30
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69851b7303f94df5313f2ae6",
+    "name": "Netflix",
+    "category": "Netflix",
+    "price": 16,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Instant access to a pre-activated Netflix Premium 4K HDR account. No gift card redemption required—just log in with the ...",
+    "themeColor": "#E50914",
+    "imageUrl": "https://images.squarespace-cdn.com/content/v1/567e05c4e0327cd48ad079f3/1549393275390-RR6JD669IX1AS8LWUE3U/NETFLIX_FORM_06_wes.jpg",
+    "subProducts": [
+      {
+        "title": "1 Month Basic",
+        "price": 16,
+        "originalPrice": 20
+      },
+      {
+        "title": "1 Month Standard",
+        "price": 32,
+        "originalPrice": 40
+      },
+      {
+        "title": "1 Month Premium",
+        "price": 39,
+        "originalPrice": 50
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698519cd03f94df5313f2ae3",
+    "name": "Discord Effects",
+    "category": "Discord",
+    "price": 7,
+    "oldPrice": 10,
+    "badge": "",
+    "stock": "in-stock",
+    "desc": "Personalize your profile forever with permanent Avatar Decorations and Profile Effects. Delivered as an instant Gift Lin...",
+    "themeColor": "#5865F2",
+    "imageUrl": "https://imgur.com/E8m1AVT.png",
+    "subProducts": [
+      {
+        "title": "Decoration & Effect 4.99$",
+        "price": 7,
+        "originalPrice": 10
+      },
+      {
+        "title": "Decoration & Effect 5.99$",
+        "price": 8,
+        "originalPrice": 10
+      },
+      {
+        "title": "Decoration & Effect 9.99$",
+        "price": 13,
+        "originalPrice": 15
+      },
+      {
+        "title": "Decoration & Effect 10.99$",
+        "price": 14,
+        "originalPrice": 16
+      },
+      {
+        "title": "Decoration & Effect 11.99$",
+        "price": 15,
+        "originalPrice": 18
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6985186703f94df5313f2ae2",
+    "name": "Discord Boosts",
+    "category": "Discord",
+    "price": 15,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Instantly upgrade any Discord server to Level 3 with a 14x Boost package. Unlock 384Kbps audio, 100MB uploads, and a cus...",
+    "themeColor": "#5865F2",
+    "imageUrl": "https://imgur.com/7Cjwkbg.png",
+    "subProducts": [
+      {
+        "title": "Boosts 1 Month X8",
+        "price": 15,
+        "originalPrice": 20
+      },
+      {
+        "title": "Boosts 1 Month X14",
+        "price": 30,
+        "originalPrice": 40
+      },
+      {
+        "title": "Boosts 3 Months X8",
+        "price": 25,
+        "originalPrice": 35
+      },
+      {
+        "title": "Boosts 3 Months X14",
+        "price": 50,
+        "originalPrice": 70
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6985174603f94df5313f2ae1",
+    "name": "Discord Nitro",
+    "category": "Discord",
+    "price": 27,
+    "oldPrice": 35,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Get the full Discord experience with Nitro Gaming or Basic. 1-Month and 3-Month Promo links are for new/eligible account...",
+    "themeColor": "#5865F2",
+    "imageUrl": "https://imgur.com/1HXnUNz.png",
+    "subProducts": [
+      {
+        "title": "Nitro Gaming Gift",
+        "price": 27,
+        "originalPrice": 35
+      },
+      {
+        "title": "Nitro Basic Gift",
+        "price": 10,
+        "originalPrice": 15
+      },
+      {
+        "title": "Nitro 3 Months Link",
+        "price": 10,
+        "originalPrice": 15
+      },
+      {
+        "title": "Visa Activation Link",
+        "price": 5,
+        "originalPrice": 7
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698514e703f94df5313f2adc",
+    "name": "Free Fire Member",
+    "category": "Free Fire",
+    "price": 10,
+    "oldPrice": 15,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The best value for Free Fire: Get up to 4x more Diamonds compared to standard top-ups. Choose Weekly for a quick boost o...",
+    "themeColor": "#FF4B2B",
+    "imageUrl": "https://i.redd.it/8c37jexvbrpb1.jpg",
+    "subProducts": [
+      {
+        "title": "Weekly Member",
+        "price": 10,
+        "originalPrice": 15
+      },
+      {
+        "title": "Monthly Member",
+        "price": 25,
+        "originalPrice": 30
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698513f503f94df5313f2adb",
+    "name": "Free Fire Diamonds",
+    "category": "Free Fire",
+    "price": 4.5,
+    "oldPrice": 5,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Instantly recharge Free Fire Diamonds via Player ID to unlock the Booyah Pass and rare skins. Safe, secure, and fast del...",
+    "themeColor": "#FF4B2B",
+    "imageUrl": "https://i.redd.it/8c37jexvbrpb1.jpg",
+    "subProducts": [
+      {
+        "title": "100 Diamond",
+        "price": 4.5,
+        "originalPrice": 5
+      },
+      {
+        "title": "210 Diamond",
+        "price": 10,
+        "originalPrice": 15
+      },
+      {
+        "title": "530 Diamond",
+        "price": 25,
+        "originalPrice": 30
+      },
+      {
+        "title": "1188 Diamond",
+        "price": 45,
+        "originalPrice": 60
+      },
+      {
+        "title": "2200 Diamond",
+        "price": 85,
+        "originalPrice": 100
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6985128703f94df5313f2ad7",
+    "name": "PUBG Mobile UC ",
+    "category": "PUBG Mobile",
+    "price": 4.5,
+    "oldPrice": 5,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The premium currency for PUBG Mobile to unlock the Royale Pass and legendary weapon skins. Fast, secure top-ups via Play...",
+    "themeColor": "#f3ba2f",
+    "imageUrl": "https://www.entreprises-magazine.com/wp-content/uploads/2019/07/PUBG-MOBILE.jpg",
+    "subProducts": [
+      {
+        "title": "60 UC",
+        "price": 4.5,
+        "originalPrice": 5
+      },
+      {
+        "title": "325 UC",
+        "price": 18.5,
+        "originalPrice": 30
+      },
+      {
+        "title": "660 UC",
+        "price": 37,
+        "originalPrice": 50
+      },
+      {
+        "title": "1800 UC",
+        "price": 83,
+        "originalPrice": 100
+      },
+      {
+        "title": "3850 UC",
+        "price": 177,
+        "originalPrice": 200
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6985111903f94df5313f2ad4",
+    "name": "Blood Strike Golds",
+    "category": "Blood Strike",
+    "price": 2.2,
+    "oldPrice": 3,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Premium currency for Blood Strike to unlock exclusive Strikers, Ultra-tier skins, and the Strike Pass. Fast and secure U...",
+    "themeColor": "#ff3b30",
+    "imageUrl": "https://imgur.com/ItlV4eK.png",
+    "subProducts": [
+      {
+        "title": "56 Golds",
+        "price": 2.2,
+        "originalPrice": 3
+      },
+      {
+        "title": "116 Golds",
+        "price": 4.2,
+        "originalPrice": 5
+      },
+      {
+        "title": "352 Golds",
+        "price": 13,
+        "originalPrice": 15
+      },
+      {
+        "title": "594 Golds",
+        "price": 21,
+        "originalPrice": 25
+      },
+      {
+        "title": "1210 Golds",
+        "price": 42,
+        "originalPrice": 50
+      },
+      {
+        "title": "2486 Golds",
+        "price": 84,
+        "originalPrice": 100
+      },
+      {
+        "title": "6380 Golds",
+        "price": 210,
+        "originalPrice": 250
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69850fcb03f94df5313f2ad3",
+    "name": "Blood Strike Strike Pass",
+    "category": "Blood Strike",
+    "price": 17,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Unlock exclusive Ultra skins, executions, and weapon camos with the Blood Strike seasonal pass. Complete the Elite track...",
+    "themeColor": "#ff3b30",
+    "imageUrl": "https://imgur.com/ItlV4eK.png",
+    "subProducts": [
+      {
+        "title": "Strike Pass Elite",
+        "price": 17,
+        "originalPrice": 20
+      },
+      {
+        "title": "Strike Pass Premium",
+        "price": 38,
+        "originalPrice": 45
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69850e4703f94df5313f2acf",
+    "name": "Xbox Gift Card (USD)",
+    "category": "Xbox",
+    "price": 19,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The ultimate gift for gamers: add USD credit to your US Microsoft account for games, apps, and hardware. Instant digital...",
+    "themeColor": "#107c10",
+    "imageUrl": "https://imgur.com/s2cu4j6.png",
+    "subProducts": [
+      {
+        "title": "5 USD",
+        "price": 19,
+        "originalPrice": 30
+      },
+      {
+        "title": "10 USD",
+        "price": 37,
+        "originalPrice": 50
+      },
+      {
+        "title": "15 USD",
+        "price": 52,
+        "originalPrice": 70
+      },
+      {
+        "title": "20 USD",
+        "price": 70,
+        "originalPrice": 100
+      },
+      {
+        "title": "25 USD",
+        "price": 85,
+        "originalPrice": 100
+      },
+      {
+        "title": "50 USD",
+        "price": 160,
+        "originalPrice": 180
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69850ce103f94df5313f2ace",
+    "name": "Xbox Games Pass (Global)",
+    "category": "Xbox",
+    "price": 6,
+    "oldPrice": 10,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Instant access to hundreds of high-quality games on Xbox and PC, including new releases on day one. The \"Ultimate\" gamin...",
+    "themeColor": "#107c10",
+    "imageUrl": "https://imgur.com/s2cu4j6.png",
+    "subProducts": [
+      {
+        "title": "Xbox Game Pass Premium 1 Month",
+        "price": 6,
+        "originalPrice": 10
+      },
+      {
+        "title": "Xbox EA Play Membership 1 Month",
+        "price": 46,
+        "originalPrice": 50
+      },
+      {
+        "title": "Xbox Game Pass Ultimate 1 Month Trial",
+        "price": 56,
+        "originalPrice": 60
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "69850a1503f94df5313f2aca",
+    "name": "Itunes Gift Card (USD)",
+    "category": "iTunes",
+    "price": 8,
+    "oldPrice": 10,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "One card for everything Apple: buy apps, games, music, and movies, or pay for iCloud+ and Apple Music. Instant digital d...",
+    "themeColor": "#ea4c89",
+    "imageUrl": "https://imgur.com/N48TNjr.png",
+    "subProducts": [
+      {
+        "title": "2 USD",
+        "price": 8,
+        "originalPrice": 10
+      },
+      {
+        "title": "5 USD",
+        "price": 20,
+        "originalPrice": 25
+      },
+      {
+        "title": "10 USD",
+        "price": 39,
+        "originalPrice": 50
+      },
+      {
+        "title": "15 USD",
+        "price": 58,
+        "originalPrice": 70
+      },
+      {
+        "title": "20 USD",
+        "price": 77,
+        "originalPrice": 90
+      },
+      {
+        "title": "30 USD",
+        "price": 115,
+        "originalPrice": 130
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698508b103f94df5313f2ac7",
+    "name": "PlayStation Gift Cards (TRY)",
+    "category": "PlayStation",
+    "price": 23,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The best way to fund your Turkish PSN account and access the store's regional deals and PS Plus. Instant digital deliver...",
+    "themeColor": "#003087",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/topup-hub-t831o.firebasestorage.app/o/psstore_card_1500x950.png?alt=media&token=c75da10a-70a6-41c8-a90f-ec821210fcaa",
+    "subProducts": [
+      {
+        "title": "250 TRY",
+        "price": 23,
+        "originalPrice": 30
+      },
+      {
+        "title": "500 TRY",
+        "price": 45,
+        "originalPrice": 60
+      },
+      {
+        "title": "750 TRY",
+        "price": 70,
+        "originalPrice": 80
+      },
+      {
+        "title": "1000 TRY",
+        "price": 89,
+        "originalPrice": 100
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "698507f803f94df5313f2ac6",
+    "name": "PlayStation Gift Cards (USD)",
+    "category": "PlayStation",
+    "price": 18,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The easiest way to fund your US PlayStation Store account for games, DLC, and PS Plus. Instant digital delivery for safe...",
+    "themeColor": "#003087",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/topup-hub-t831o.firebasestorage.app/o/psstore_card_1500x950.png?alt=media&token=c75da10a-70a6-41c8-a90f-ec821210fcaa",
+    "subProducts": [
+      {
+        "title": "5 USD",
+        "price": 18,
+        "originalPrice": 20
+      },
+      {
+        "title": "10 USD",
+        "price": 28,
+        "originalPrice": 40
+      },
+      {
+        "title": "25 USD",
+        "price": 88,
+        "originalPrice": 100
+      },
+      {
+        "title": "50 USD",
+        "price": 174,
+        "originalPrice": 200
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6984f17703f94df5313f2ac2",
+    "name": "Steam Gift Cards (CNY)",
+    "category": "Steam",
+    "price": 15,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The essential top-up for Steam accounts registered in the Mainland China region. Instant CNY credit for games and DLC wi...",
+    "themeColor": "#1b2838",
+    "imageUrl": "https://cdn.dlcompare.com/others_jpg/upload/news/image/en-new-valve-guidelines-suggest-0fbf22a7-image-0fbf228a.jpg.webp",
+    "subProducts": [
+      {
+        "title": "20 CNY",
+        "price": 15,
+        "originalPrice": 20
+      },
+      {
+        "title": "50 CNY",
+        "price": 33,
+        "originalPrice": 40
+      },
+      {
+        "title": "100 CNY",
+        "price": 61,
+        "originalPrice": 70
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6984efcb03f94df5313f2ac1",
+    "name": "Steam Gift Cards (EU)",
+    "category": "Steam",
+    "price": 25,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The perfect way to top up your Eurozone Steam Wallet for games, software, and hardware. Instant digital delivery with no...",
+    "themeColor": "#1b2838",
+    "imageUrl": "https://cdn.dlcompare.com/others_jpg/upload/news/image/en-new-valve-guidelines-suggest-0fbf22a7-image-0fbf228a.jpg.webp",
+    "subProducts": [
+      {
+        "title": "5 EU",
+        "price": 25,
+        "originalPrice": 30
+      },
+      {
+        "title": "10 EU",
+        "price": 48,
+        "originalPrice": 60
+      },
+      {
+        "title": "20 EU",
+        "price": 92,
+        "originalPrice": 110
+      },
+      {
+        "title": "30 EU",
+        "price": 140,
+        "originalPrice": 160
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6984ef0b03f94df5313f2ac0",
+    "name": "Steam Gift Cards (USD)",
+    "category": "Steam",
+    "price": 22,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The primary way to fund your US-region Steam Wallet for games, DLC, and hardware. Instant digital delivery with no expir...",
+    "themeColor": "#1b2838",
+    "imageUrl": "https://cdn.dlcompare.com/others_jpg/upload/news/image/en-new-valve-guidelines-suggest-0fbf22a7-image-0fbf228a.jpg.webp",
+    "subProducts": [
+      {
+        "title": "5 USD",
+        "price": 22,
+        "originalPrice": 30
+      },
+      {
+        "title": "10 USD",
+        "price": 39,
+        "originalPrice": 60
+      },
+      {
+        "title": "20 USD",
+        "price": 80,
+        "originalPrice": 100
+      },
+      {
+        "title": "25 USD",
+        "price": 96,
+        "originalPrice": 120
+      },
+      {
+        "title": "30 USD",
+        "price": 120,
+        "originalPrice": 150
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6984ebf703f94df5313f2abb",
+    "name": "Razer Gold Global",
+    "category": "Razer Gold",
+    "price": 4,
+    "oldPrice": 5,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The universal currency for gamers: unlock content in over 42,000 games and earn Razer Silver rewards. Secure, instant di...",
+    "themeColor": "#ffc000",
+    "imageUrl": "https://assets2.razerzone.com/images/pnx.assets/77a3129a6bcbb490078654285d1bad1d/razer-gold-pin-hero-mobile.webp",
+    "subProducts": [
+      {
+        "title": "1 USD",
+        "price": 4,
+        "originalPrice": 5
+      },
+      {
+        "title": "2 USD",
+        "price": 8,
+        "originalPrice": 10
+      },
+      {
+        "title": "5 USD",
+        "price": 20,
+        "originalPrice": 30
+      },
+      {
+        "title": "10 USD",
+        "price": 39,
+        "originalPrice": 50
+      },
+      {
+        "title": "20 USD",
+        "price": 70,
+        "originalPrice": 100
+      },
+      {
+        "title": "50 USD",
+        "price": 180,
+        "originalPrice": 200
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6984e94403f94df5313f2ab8",
+    "name": "Epic Fortnite V Bucks",
+    "category": "Fortnite",
+    "price": 25,
+    "oldPrice": 40,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The most flexible way to power up—recharge your Epic balance to buy V-Bucks, Packs, or the Fortnite Crew. Enjoy \"Shared ...",
+    "themeColor": "#fbe532",
+    "imageUrl": "https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg",
+    "subProducts": [
+      {
+        "title": "1000 V-Bucks",
+        "price": 25,
+        "originalPrice": 40
+      },
+      {
+        "title": "2800 V-Bucks",
+        "price": 55,
+        "originalPrice": 70
+      },
+      {
+        "title": "5000 V-Bucks",
+        "price": 77,
+        "originalPrice": 100
+      },
+      {
+        "title": "13500 V-Bucks",
+        "price": 170,
+        "originalPrice": 200
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6984e60303f94df5313f2ab6",
+    "name": "Epic > Fortnite Crew",
+    "category": "Fortnite",
+    "price": 22,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "The ultimate Fortnite bundle: Get the Battle Pass, 1,000 monthly V-Bucks, and an exclusive Outfit Pack. Enjoy premium re...",
+    "themeColor": "#fbe532",
+    "imageUrl": "https://i.ytimg.com/vi/adGdyCdvKz4/maxresdefault.jpg",
+    "subProducts": [
+      {
+        "title": "Fortnite Crew Subscription",
+        "price": 22,
+        "originalPrice": 30
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6983d1e98626c21d93a339c9",
+    "name": "League of Legends Europe",
+    "category": "League of Legends",
+    "price": 20,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Instantly unlock Champions, Skins, and Battle Passes on EUW/EUNE servers with a Riot RP Gift Card. Secure digital delive...",
+    "themeColor": "#00c8c8",
+    "imageUrl": "https://imgur.com/ROV92Yc.png",
+    "subProducts": [
+      {
+        "title": "500 RP",
+        "price": 20,
+        "originalPrice": 30
+      },
+      {
+        "title": "1000 RP",
+        "price": 40,
+        "originalPrice": 50
+      },
+      {
+        "title": "1500 RP",
+        "price": 65,
+        "originalPrice": 80
+      },
+      {
+        "title": "2000 RP",
+        "price": 81,
+        "originalPrice": 90
+      },
+      {
+        "title": "2500 RP",
+        "price": 100,
+        "originalPrice": 120
+      },
+      {
+        "title": "3500 RP",
+        "price": 140,
+        "originalPrice": 150
+      },
+      {
+        "title": "5000 RP",
+        "price": 197,
+        "originalPrice": 220
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6983ce3c8626c21d93a339c6",
+    "name": "Robux Global",
+    "category": "Roblox",
+    "price": 22,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Redeemable worldwide, this gift card converts instantly to your local currency for Robux or Premium. Includes a free exc...",
+    "themeColor": "#000000",
+    "imageUrl": "https://i0.wp.com/gameranx.com/wp-content/uploads/2023/06/Roblox-logo.jpg?fit=1200%2C630&ssl=1",
+    "subProducts": [
+      {
+        "title": "500 Roblux",
+        "price": 22,
+        "originalPrice": 30
+      },
+      {
+        "title": "1000 Roblux",
+        "price": 35,
+        "originalPrice": 40
+      },
+      {
+        "title": "1500 Roblux",
+        "price": 60,
+        "originalPrice": 70
+      },
+      {
+        "title": "2000 Roblux",
+        "price": 78,
+        "originalPrice": 90
+      },
+      {
+        "title": "2500 Roblux",
+        "price": 95,
+        "originalPrice": 110
+      },
+      {
+        "title": "3000 Roblux",
+        "price": 118,
+        "originalPrice": 140
+      },
+      {
+        "title": "5000 Roblux",
+        "price": 189,
+        "originalPrice": 200
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6983c8c88626c21d93a339c3",
+    "name": "Valorant Europe",
+    "category": "Valorant",
+    "price": 20,
+    "oldPrice": 30,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Instantly recharge your Europe-region account with Valorant Points for exclusive skins and Battle Passes. Secure digital...",
+    "themeColor": "#fa4454",
+    "imageUrl": "https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp",
+    "subProducts": [
+      {
+        "title": "500 Points",
+        "price": 20,
+        "originalPrice": 30
+      },
+      {
+        "title": "1000 Points",
+        "price": 39,
+        "originalPrice": 50
+      },
+      {
+        "title": "1500 Points",
+        "price": 60,
+        "originalPrice": 80
+      },
+      {
+        "title": "2000 Points",
+        "price": 74,
+        "originalPrice": 90
+      },
+      {
+        "title": "2500 Points",
+        "price": 100,
+        "originalPrice": 120
+      },
+      {
+        "title": "3500 Points",
+        "price": 135,
+        "originalPrice": 150
+      },
+      {
+        "title": "5000 Points",
+        "price": 193,
+        "originalPrice": 220
+      }
+    ],
+    "popularIndex": 80
+  },
+  {
+    "id": "6981688d43683fc2d6fc1dfb",
+    "name": "Valorant Turkey",
+    "category": "Valorant",
+    "price": 11,
+    "oldPrice": 20,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Unlock Valorant Points instantly for skins and Battle Passes on your Turkey-region account. This digital code provides t...",
+    "themeColor": "#fa4454",
+    "imageUrl": "https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp",
+    "subProducts": [
+      {
+        "title": "375 Points",
+        "price": 11,
+        "originalPrice": 20
+      },
+      {
+        "title": "825 Points",
+        "price": 22,
+        "originalPrice": 30
+      },
+      {
+        "title": "1700 Points",
+        "price": 44,
+        "originalPrice": 60
+      },
+      {
+        "title": "2925 Points",
+        "price": 75,
+        "originalPrice": 100
+      },
+      {
+        "title": "4325 Points",
+        "price": 110,
+        "originalPrice": 150
+      }
+    ],
+    "popularIndex": 80
+  }
+]
