@@ -1552,10 +1552,10 @@ let checkoutStep = 1;
 let simulatedOTP = "";
 
 // Initialize App safely with try-catch blocks for robust lifecycle execution
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   console.log("DOM content loaded. Starting initialization phases...");
   try {
-    loadDatabase();
+    await loadDatabase();
     console.log("Phase 1: Database initialized successfully.");
   } catch (e) {
     console.error("loadDatabase error details:", e);
@@ -1584,87 +1584,83 @@ document.addEventListener("DOMContentLoaded", () => {
   showToast("Boutique ROLLY chargée avec succès ! 🇹🇳");
 });
 
-// Load DB from LocalStorage safely with fallback overrides
-function loadDatabase() {
-  const localProds = localStorage.getItem("rolly_products");
-  const localOrders = localStorage.getItem("rolly_orders");
+
+// Cloud Saving wrappers calling Vercel serverless database APIs
+async function saveProductsToCloud() {
+  saveProductsToCloud();
+  try {
+    await fetch("/api/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(products)
+    });
+  } catch (e) {
+    console.warn("Products cloud sync failed, cached locally:", e);
+  }
+}
+
+async function saveOrdersToCloud() {
+  saveOrdersToCloud();
+  try {
+    await fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orders)
+    });
+  } catch (e) {
+    console.warn("Orders cloud sync failed, cached locally:", e);
+  }
+}
+
+async function saveUsersToCloud() {
+  saveUsersToCloud();
+  try {
+    await fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(users)
+    });
+  } catch (e) {
+    console.warn("Users cloud sync failed, cached locally:", e);
+  }
+}
+
+async function saveTicketsToCloud() {
+  saveTicketsToCloud();
+  try {
+    await fetch("/api/tickets", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(tickets)
+    });
+  } catch (e) {
+    console.warn("Tickets cloud sync failed, cached locally:", e);
+  }
+}
+
+// Load DB from Cloud with LocalStorage safely with fallback overrides
+async function loadDatabase() {
   const localCart = localStorage.getItem("rolly_cart");
-  const localUsers = localStorage.getItem("rolly_users");
   const sessionUser = sessionStorage.getItem("rolly_session_user");
 
+  // 1. Fetch products from Serverless Cloud DB
   try {
-    if (localUsers) {
-      users = JSON.parse(localUsers);
+    const res = await fetch("/api/products");
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (data && data.length > 0) {
+      products = data;
+    } else {
+      products = [...DEFAULT_PRODUCTS];
+      await saveProductsToCloud();
     }
   } catch (e) {
-    users = [];
-  }
-  if (!users) {
-    users = [];
-    localStorage.setItem("rolly_users", JSON.stringify(users));
+    console.warn("Fallback to local products cache.");
+    const local = localStorage.getItem("rolly_products");
+    products = local ? JSON.parse(local) : [...DEFAULT_PRODUCTS];
   }
 
-  // Seed default master admin if it doesn't exist
-  if (!users.some(u => u.username.toLowerCase() === "admin")) {
-    users.push({
-      id: "usr-admin-master",
-      username: "admin",
-      password: "admin",
-      role: "admin"
-    });
-    localStorage.setItem("rolly_users", JSON.stringify(users));
-  }
-
-  // Elevate or seed user 'adrix' to admin role
-  const adrixUser = users.find(u => u.username.toLowerCase() === "adrix");
-  if (adrixUser) {
-    if (adrixUser.role !== "admin") {
-      adrixUser.role = "admin";
-      localStorage.setItem("rolly_users", JSON.stringify(users));
-    }
-  } else {
-    users.push({
-      id: "usr-adrix-master",
-      username: "adrix",
-      password: "admin", // Default password for initial login
-      role: "admin"
-    });
-    localStorage.setItem("rolly_users", JSON.stringify(users));
-  }
-
-  // Update current session user role to admin dynamically if active session is 'adrix'
-  if (currentUser && currentUser.username.toLowerCase() === "adrix") {
-    if (currentUser.role !== "admin") {
-      currentUser.role = "admin";
-      sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
-    }
-  }
-
-  try {
-    if (sessionUser) {
-      currentUser = JSON.parse(sessionUser);
-    }
-  } catch (e) {
-    currentUser = null;
-  }
-
-  let parsedProds = null;
-  try {
-    if (localProds) {
-      parsedProds = JSON.parse(localProds);
-    }
-  } catch (e) {
-    parsedProds = null;
-  }
-
-  if (!parsedProds || parsedProds.length !== DEFAULT_PRODUCTS.length) {
-    products = [...DEFAULT_PRODUCTS];
-    localStorage.setItem("rolly_products", JSON.stringify(products));
-  } else {
-    products = parsedProds;
-  }
-
-  // Backwards compatibility/migration for featuredCarousel & featuredGrid flags
+  // Backwards compatibility migration checks
   let productsFeaturedModified = false;
   products.forEach(p => {
     if (p.featuredCarousel === undefined) {
@@ -1677,46 +1673,89 @@ function loadDatabase() {
     }
   });
   if (productsFeaturedModified) {
-    localStorage.setItem("rolly_products", JSON.stringify(products));
+    await saveProductsToCloud();
   }
 
-  let parsedOrders = null;
+  // 2. Fetch orders from Serverless Cloud DB
   try {
-    if (localOrders) {
-      parsedOrders = JSON.parse(localOrders);
+    const res = await fetch("/api/orders");
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (data && data.length > 0) {
+      orders = data;
+    } else {
+      orders = [...DEFAULT_ORDERS];
+      await saveOrdersToCloud();
     }
   } catch (e) {
-    parsedOrders = null;
+    console.warn("Fallback to local orders cache.");
+    const local = localStorage.getItem("rolly_orders");
+    orders = local ? JSON.parse(local) : [...DEFAULT_ORDERS];
   }
 
-  if (!parsedOrders || parsedOrders.length === 0) {
-    orders = [...DEFAULT_ORDERS];
-    localStorage.setItem("rolly_orders", JSON.stringify(orders));
+  // 3. Fetch users from Serverless Cloud DB
+  try {
+    const res = await fetch("/api/users");
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (data && data.length > 0) {
+      users = data;
+    } else {
+      users = [];
+      await saveUsersToCloud();
+    }
+  } catch (e) {
+    console.warn("Fallback to local users cache.");
+    const local = localStorage.getItem("rolly_users");
+    users = local ? JSON.parse(local) : [];
+  }
+
+  // Seed default master admin if it doesn't exist
+  if (!users.some(u => u.username.toLowerCase() === "admin")) {
+    users.push({
+      id: "usr-admin-master",
+      username: "admin",
+      password: "admin",
+      role: "admin"
+    });
+    await saveUsersToCloud();
+  }
+
+  // Elevate user 'adrix' to admin
+  const adrixUser = users.find(u => u.username.toLowerCase() === "adrix");
+  if (adrixUser) {
+    if (adrixUser.role !== "admin") {
+      adrixUser.role = "admin";
+      await saveUsersToCloud();
+    }
   } else {
-    orders = parsedOrders;
+    users.push({
+      id: "usr-adrix-master",
+      username: "adrix",
+      password: "admin",
+      role: "admin"
+    });
+    await saveUsersToCloud();
   }
 
+  // 4. Fetch support tickets from Serverless Cloud DB
   try {
-    if (localCart) {
-      cart = JSON.parse(localCart);
+    const res = await fetch("/api/tickets");
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (data && data.length > 0) {
+      tickets = data;
+    } else {
+      tickets = [];
+      await saveTicketsToCloud();
     }
   } catch (e) {
-    cart = [];
+    console.warn("Fallback to local tickets cache.");
+    const local = localStorage.getItem("rolly_tickets");
+    tickets = local ? JSON.parse(local) : [];
   }
-  updateCartBadge();
 
-  // Load support tickets
-  const localTickets = localStorage.getItem("rolly_tickets");
-  let parsedTickets = null;
-  try {
-    if (localTickets) {
-      parsedTickets = JSON.parse(localTickets);
-    }
-  } catch (e) {
-    parsedTickets = null;
-  }
-  
-  if (!parsedTickets || parsedTickets.length === 0) {
+  if (tickets.length === 0) {
     tickets = [
       {
         id: "#TCK-481029",
@@ -1744,10 +1783,32 @@ function loadDatabase() {
         ]
       }
     ];
-    localStorage.setItem("rolly_tickets", JSON.stringify(tickets));
-  } else {
-    tickets = parsedTickets;
+    await saveTicketsToCloud();
   }
+
+  // Load session user and cart locally
+  try {
+    if (sessionUser) {
+      currentUser = JSON.parse(sessionUser);
+      // Update session user role dynamically to match db changes
+      const updatedSelf = users.find(u => u.id === currentUser.id);
+      if (updatedSelf && updatedSelf.role !== currentUser.role) {
+        currentUser.role = updatedSelf.role;
+        sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
+      }
+    }
+  } catch (e) {
+    currentUser = null;
+  }
+
+  try {
+    if (localCart) {
+      cart = JSON.parse(localCart);
+    }
+  } catch (e) {
+    cart = [];
+  }
+  updateCartBadge();
 }
 
 // Setup Page Elements
@@ -1846,7 +1907,7 @@ function renderAdminUsers() {
       const targetUsername = btn.getAttribute("data-username");
       if (confirm(`Supprimer l'administrateur ${targetUsername} ?`)) {
         users = users.filter(u => u.username.toLowerCase() !== targetUsername.toLowerCase());
-        localStorage.setItem("rolly_users", JSON.stringify(users));
+        saveUsersToCloud();
         showToast(`Administrateur ${targetUsername} supprimé ! 🗑`);
         setupUI();
       }
@@ -1925,7 +1986,7 @@ function cloneProduct(prodId) {
   clone.name = clone.name + " (Copie)";
 
   products.push(clone);
-  localStorage.setItem("rolly_products", JSON.stringify(products));
+  saveProductsToCloud();
   showToast(`Produit ${prod.name} dupliqué avec succès ! 👥`);
   setupUI();
 }
@@ -1937,7 +1998,7 @@ function deleteProduct(prodId) {
 
   if (confirm(`Êtes-vous sûr de vouloir supprimer le produit ${prod.name} ?`)) {
     products = products.filter(p => p.id !== prodId);
-    localStorage.setItem("rolly_products", JSON.stringify(products));
+    saveProductsToCloud();
     showToast(`Produit ${prod.name} supprimé. 🗑️`);
     setupUI();
   }
@@ -2453,7 +2514,7 @@ function setupEventListeners() {
       orders.forEach(o => {
         if (!o.userId) o.userId = currentUser.id;
       });
-      localStorage.setItem("rolly_orders", JSON.stringify(orders));
+      saveOrdersToCloud();
 
       document.getElementById("auth-modal").classList.remove("active");
       document.getElementById("auth-login-form").reset();
@@ -2491,7 +2552,7 @@ function setupEventListeners() {
     };
 
     users.push(newUser);
-    localStorage.setItem("rolly_users", JSON.stringify(users));
+    saveUsersToCloud();
 
     currentUser = newUser;
     sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
@@ -2500,7 +2561,7 @@ function setupEventListeners() {
     orders.forEach(o => {
       if (!o.userId) o.userId = currentUser.id;
     });
-    localStorage.setItem("rolly_orders", JSON.stringify(orders));
+    saveOrdersToCloud();
 
     document.getElementById("auth-modal").classList.remove("active");
     document.getElementById("auth-register-form").reset();
@@ -2569,7 +2630,7 @@ function setupEventListeners() {
           });
         }
 
-        localStorage.setItem("rolly_orders", JSON.stringify(orders));
+        saveOrdersToCloud();
         document.getElementById("admin-order-modal").classList.remove("active");
         showToast(`Commande ${orderId} mise à jour ! 💾`);
         setupUI();
@@ -2656,7 +2717,7 @@ function setupEventListeners() {
       };
 
       products.push(newProd);
-      localStorage.setItem("rolly_products", JSON.stringify(products));
+      saveProductsToCloud();
       addProdFormNew.reset();
       document.getElementById("add-product-modal").classList.remove("active");
       
@@ -2686,7 +2747,7 @@ function setupEventListeners() {
       };
 
       users.push(newAdmin);
-      localStorage.setItem("rolly_users", JSON.stringify(users));
+      saveUsersToCloud();
       addAdminFormNew.reset();
       showToast(`Administrateur ${usernameVal} créé avec succès ! 🔑`);
       setupUI();
@@ -2755,7 +2816,7 @@ function setupEventListeners() {
           }
         });
 
-        localStorage.setItem("rolly_products", JSON.stringify(products));
+        saveProductsToCloud();
         showToast(`Produit ${prod.name} modifié avec succès ! 💾`);
         document.getElementById("edit-product-modal").classList.remove("active");
         setupUI();
@@ -3640,7 +3701,7 @@ function completeOrderSimulation() {
   };
 
   orders.push(newOrder);
-  localStorage.setItem("rolly_orders", JSON.stringify(orders));
+  saveOrdersToCloud();
 
   document.getElementById("success-order-id").innerText = orderId;
   
@@ -3731,7 +3792,7 @@ function renderAdminOrders() {
       const orderId = btn.getAttribute("data-order-id");
       if (confirm(`Supprimer la commande ${orderId} ?`)) {
         orders = orders.filter(o => o.id !== orderId);
-        localStorage.setItem("rolly_orders", JSON.stringify(orders));
+        saveOrdersToCloud();
         updateAdminStats();
         renderAdminOrders();
         showToast("Commande supprimée.");
@@ -4400,7 +4461,7 @@ function completeOrderWithDetails(orderId, dateStr, method, voucherCode) {
   };
 
   orders.push(newOrder);
-  localStorage.setItem("rolly_orders", JSON.stringify(orders));
+  saveOrdersToCloud();
 
   // Load layout success timeline
   document.getElementById("success-order-id").innerText = orderId;
