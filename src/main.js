@@ -1664,11 +1664,15 @@ function loadDatabase() {
     products = parsedProds;
   }
 
-  // Backwards compatibility/migration for featuredCarousel flag
+  // Backwards compatibility/migration for featuredCarousel & featuredGrid flags
   let productsFeaturedModified = false;
   products.forEach(p => {
     if (p.featuredCarousel === undefined) {
       p.featuredCarousel = (p.popularIndex >= 80);
+      productsFeaturedModified = true;
+    }
+    if (p.featuredGrid === undefined) {
+      p.featuredGrid = (p.popularIndex >= 80);
       productsFeaturedModified = true;
     }
   });
@@ -1950,6 +1954,7 @@ function openEditProductModal(prodId) {
   document.getElementById("edit-prod-image").value = prod.image || prod.imageUrl || "";
   document.getElementById("edit-prod-stock").value = prod.stock || "in-stock";
   document.getElementById("edit-prod-featured").checked = prod.featuredCarousel === true;
+  document.getElementById("edit-prod-featured-grid").checked = prod.featuredGrid === true;
 
   const varBox = document.getElementById("edit-prod-variants-box");
   if (varBox) {
@@ -2516,7 +2521,9 @@ function setupEventListeners() {
           "price": parseFloat(document.getElementById("prod-price-new").value),
           "originalPrice": document.getElementById("prod-oldprice-new").value ? parseFloat(document.getElementById("prod-oldprice-new").value) : null
         }],
-        popularIndex: 50
+        popularIndex: 50,
+        featuredCarousel: document.getElementById("prod-featured-new").checked,
+        featuredGrid: document.getElementById("prod-featured-grid-new").checked
       };
 
       products.push(newProd);
@@ -2602,6 +2609,9 @@ function setupEventListeners() {
         prod.imageUrl = newImage;
         prod.stock = newStock;
         prod.featuredCarousel = newFeatured;
+        
+        const newFeaturedGrid = document.getElementById("edit-prod-featured-grid").checked;
+        prod.featuredGrid = newFeaturedGrid;
 
         // Save variant prices
         const priceInputs = editProductForm.querySelectorAll(".edit-variant-price-input");
@@ -2776,9 +2786,19 @@ function renderTrendingProducts() {
   let filtered = products.filter(p => {
     const group = getCategoryGroup(p.category);
     const matchesCat = activeCategory === "all" || group === activeCategory;
-    const isTrending = p.popularIndex >= 80;
+    const isTrending = p.featuredGrid === true;
     return matchesCat && isTrending;
   });
+
+  // Fallback if no products are explicitly selected for home grid
+  if (filtered.length === 0) {
+    filtered = products.filter(p => {
+      const group = getCategoryGroup(p.category);
+      const matchesCat = activeCategory === "all" || group === activeCategory;
+      const isTrending = p.popularIndex >= 80;
+      return matchesCat && isTrending;
+    });
+  }
 
   filtered = filtered.slice(0, 8); // Render 8 products as requested by visual specs
 
