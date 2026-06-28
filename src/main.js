@@ -2815,6 +2815,8 @@ function switchView(viewId) {
       return;
     }
     document.body.classList.add("admin-mode-active");
+    // Automatically switch to the dashboard subview on entry so it's never empty
+    switchAdminSubview("dashboard");
   } else {
     document.body.classList.remove("admin-mode-active");
   }
