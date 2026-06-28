@@ -3655,7 +3655,7 @@ function completeOrderSimulation() {
   document.getElementById("valid-manual").style.display = "none";
 
   const orderId = "#ORD-" + Math.floor(100000 + Math.random() * 900000);
-  const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  const cartTotal = cart.length > 0 ? cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0) : 0;
   
   let customerDetails = "";
   if (checkoutPaymentMethod === "ooredoo") {
@@ -3667,7 +3667,7 @@ function completeOrderSimulation() {
     customerDetails = binanceEl ? "Binance: " + binanceEl.value.substring(0, 8) + "..." : "Binance Auto-pay";
   }
 
-  const itemsSummary = cart.map(item => `${item.product.name} (x${item.quantity}) [Info: ${item.playerInfo}]`).join(", ");
+  const itemsSummary = cart.length > 0 ? cart.map(item => `${item.product.name} (x${item.quantity}) [Info: ${item.playerInfo}]`).join(", ") : "Aucun article";
 
   // Map default status & stepper steps for new orders
   let initialStatus = "verify"; // verify payment by default for post/binance manual declares
@@ -3691,7 +3691,7 @@ function completeOrderSimulation() {
     total: cartTotal,
     status: initialStatus,
     date: orderTimeStr,
-    playerInfo: cart[0].playerInfo || "",
+    playerInfo: (cart.length > 0 && cart[0].playerInfo) ? cart[0].playerInfo : "",
     step: initialStep,
     deliveredData: checkoutPaymentMethod === "ooredoo" ? "Recharge Flexi: 22123456 / Code: flexi-ok" : "",
     timeline: [
