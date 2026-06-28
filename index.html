@@ -839,40 +839,26 @@
               </div>
             </div>
 
-            <!-- SUBVIEW 2: GESTION DU STOCK & PRIX -->
-            <div class="admin-panel-subview" id="admin-subview-stock">
-              <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; max-width: 800px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">Gestion du Stock & Prix</h3>
-                <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 24px;">Modifiez instantanément les prix des packs et la disponibilité des produits.</p>
-                
-                <form id="admin-stock-price-form-new">
-                  <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                    <div class="form-group">
-                      <label for="stock-select-product-new" style="font-size: 13px; font-weight: 700; color: #fff;">Sélectionner un produit</label>
-                      <select id="stock-select-product-new" style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; margin-top: 6px;">
-                        <!-- Filled dynamically -->
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="stock-status-select-new" style="font-size: 13px; font-weight: 700; color: #fff;">Statut du Stock</label>
-                      <select id="stock-status-select-new" style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none; margin-top: 6px;">
-                        <option value="in-stock">En Stock (Instantané)</option>
-                        <option value="out-of-stock">Rupture</option>
-                      </select>
-                    </div>
+            <!-- SUBVIEW 2: INVENTAIRE DES PRODUITS & CMS -->
+            <div class="admin-panel-subview" id="admin-subview-stock" style="width: 100%;">
+              <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; width: 100%;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                  <div>
+                    <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 4px;">Inventaire des Produits</h3>
+                    <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Gérez vos produits, modifiez les prix, dupliquez ou supprimez des éléments.</p>
                   </div>
+                  <button class="btn btn-primary" id="btn-admin-create-product-top" style="height: 40px; font-weight: 700; font-size: 13px; padding: 0 16px;">+ Créer un Produit</button>
+                </div>
 
-                  <div id="stock-variants-editor-list-new" style="margin-bottom: 24px; border-top: 1px solid var(--border-color); padding-top: 20px;">
-                    <!-- Filled dynamically -->
-                  </div>
+                <!-- Search box -->
+                <div style="margin-bottom: 24px; max-width: 320px;">
+                  <input type="text" id="admin-stock-search-input" placeholder="Rechercher par nom..." style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none;" />
+                </div>
 
-                  <div class="form-group" style="margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
-                    <input type="checkbox" id="stock-featured-carousel-new" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary);" />
-                    <label for="stock-featured-carousel-new" style="font-family: var(--font-secondary); font-size: 13px; font-weight: 700; color: #fff; cursor: pointer;">Afficher dans le Carrousel 3D (Page d'accueil)</label>
-                  </div>
-
-                  <button type="submit" class="btn btn-primary w-full" style="height: 46px; font-size: 14px; font-weight: 700;">Enregistrer les modifications 💾</button>
-                </form>
+                <!-- Product Grid -->
+                <div class="inventory-grid" id="admin-inventory-grid">
+                  <!-- Loaded dynamically by main.js -->
+                </div>
               </div>
             </div>
 
@@ -1434,6 +1420,64 @@
               <button type="submit" class="btn btn-primary w-full mt-3" style="height: 40px; font-weight: 700;">Envoyer au support 🚀</button>
             </div>
             <p id="client-ticket-resolved-notice" style="display: none; text-align: center; font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); padding: 10px 0; background-color: rgba(255,255,255,0.02); border-radius: 6px;">Ce ticket a été marqué comme résolu. 🔒</p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Edit Product Modal -->
+    <div class="modal-overlay" id="edit-product-modal">
+      <div class="modal-card" style="max-width: 540px;">
+        <div class="modal-header">
+          <h3>Modifier le Produit</h3>
+          <button class="close-btn" id="close-edit-product-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="admin-edit-product-form">
+            <input type="hidden" id="edit-prod-id" />
+            
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div class="form-group">
+                <label for="edit-prod-name">Nom du Produit</label>
+                <input type="text" id="edit-prod-name" required style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; margin-top: 4px;" />
+              </div>
+              <div class="form-group">
+                <label for="edit-prod-category">Catégorie</label>
+                <select id="edit-prod-category" required style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; margin-top: 4px;">
+                  <option value="Streaming & TV">Streaming & TV</option>
+                  <option value="Recharges & Flexi">Recharges & Flexi</option>
+                  <option value="Cartes Cadeaux">Cartes Cadeaux</option>
+                  <option value="Logiciels & Softs">Logiciels & Softs</option>
+                  <option value="Gaming & Cartes">Gaming & Cartes</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div class="form-group">
+                <label for="edit-prod-image">Lien Image (URL)</label>
+                <input type="text" id="edit-prod-image" required style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; margin-top: 4px;" />
+              </div>
+              <div class="form-group">
+                <label for="edit-prod-stock">Statut Stock</label>
+                <select id="edit-prod-stock" style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color: #fff; font-family: var(--font-secondary); font-size: 13px; outline: none; margin-top: 4px;">
+                  <option value="in-stock">En Stock</option>
+                  <option value="out-of-stock">Rupture</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+              <input type="checkbox" id="edit-prod-featured" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary);" />
+              <label for="edit-prod-featured" style="font-family: var(--font-secondary); font-size: 13px; font-weight: 700; color: #fff; cursor: pointer;">Afficher dans le Carrousel 3D (Page d'accueil)</label>
+            </div>
+
+            <!-- Price Editor Lists -->
+            <div id="edit-prod-variants-box" style="margin-bottom: 20px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+              <!-- Loaded dynamically -->
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full" style="height: 46px; font-size: 14px; font-weight: 700;">Enregistrer les modifications 💾</button>
           </form>
         </div>
       </div>

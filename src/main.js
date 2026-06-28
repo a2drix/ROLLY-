@@ -1760,7 +1760,7 @@ function setupUI() {
   updateAdminStats();
   renderAdminOrders();
   renderAdminUsers();
-  renderStockManagerOptions();
+  renderStockInventory();
   updateAdminSidebarProfile();
   renderAdminTickets();
   renderClientTickets();
@@ -1850,76 +1850,132 @@ function renderAdminUsers() {
   });
 }
 
-// Render options inside stock manager product dropdown selector
-function renderStockManagerOptions() {
-  const selectEl = document.getElementById("stock-select-product-new");
-  if (!selectEl) return;
+let adminInventorySearch = "";
 
-  // Keep the selected value if any
-  const prevVal = selectEl.value;
+// Render products in the visual CMS stock management view
+function renderStockInventory() {
+  const grid = document.getElementById("admin-inventory-grid");
+  if (!grid) return;
 
-  if (products.length === 0) {
-    selectEl.innerHTML = `<option value="">Aucun produit disponible</option>`;
+  const filtered = products.filter(p => p.name.toLowerCase().includes(adminInventorySearch.toLowerCase()));
+
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px 0; font-family: var(--font-secondary); font-size: 14px;">Aucun produit trouvé.</div>`;
     return;
   }
 
-  selectEl.innerHTML = products.map(p => {
-    return `<option value="${p.id}">${p.name} [${p.category}]</option>`;
+  grid.innerHTML = filtered.map(p => {
+    const isOutOfStock = p.stock === "out-of-stock";
+    const badgeClass = isOutOfStock ? "out-of-stock" : "in-stock";
+    const badgeText = isOutOfStock ? "Rupture" : "En Stock";
+    const coverImg = p.image || p.imageUrl || "/public/favicon.svg";
+
+    return `
+      <div class="inventory-card" data-product-id="${p.id}">
+        <div class="inventory-card-image-box">
+          <img src="${coverImg}" class="inventory-card-image" alt="${p.name}" />
+        </div>
+        <div class="inventory-card-info">
+          <span class="inventory-card-category">${p.category}</span>
+          <h4 class="inventory-card-name">${p.name}</h4>
+          <span class="inventory-card-price">${p.price.toFixed(3)} DT</span>
+          <span class="inventory-card-badge ${badgeClass}">${badgeText}</span>
+        </div>
+        <div class="inventory-card-actions">
+          <button class="inventory-action-btn edit btn-edit-inventory" data-id="${p.id}">Modifier</button>
+          <button class="inventory-action-btn clone btn-clone-inventory" data-id="${p.id}">Dupliquer</button>
+          <button class="inventory-action-btn delete btn-delete-inventory" data-id="${p.id}">Supprimer</button>
+        </div>
+      </div>
+    `;
   }).join("");
 
-  if (prevVal && products.some(p => p.id === prevVal)) {
-    selectEl.value = prevVal;
-  } else {
-    selectEl.value = products[0].id;
-  }
+  // Bind actions
+  grid.querySelectorAll(".btn-edit-inventory").forEach(btn => {
+    btn.addEventListener("click", () => {
+      openEditProductModal(btn.getAttribute("data-id"));
+    });
+  });
 
-  populateStockVariantsEditor();
+  grid.querySelectorAll(".btn-clone-inventory").forEach(btn => {
+    btn.addEventListener("click", () => {
+      cloneProduct(btn.getAttribute("data-id"));
+    });
+  });
+
+  grid.querySelectorAll(".btn-delete-inventory").forEach(btn => {
+    btn.addEventListener("click", () => {
+      deleteProduct(btn.getAttribute("data-id"));
+    });
+  });
 }
 
-// Render variant price input fields for the selected product inside stock manager
-function populateStockVariantsEditor() {
-  const selectEl = document.getElementById("stock-select-product-new");
-  const editorList = document.getElementById("stock-variants-editor-list-new");
-  const statusSelect = document.getElementById("stock-status-select-new");
-  if (!selectEl || !editorList || !statusSelect) return;
-
-  const prodId = selectEl.value;
+// Controller to clone product
+function cloneProduct(prodId) {
   const prod = products.find(p => p.id === prodId);
-  if (!prod) {
-    editorList.innerHTML = "";
-    return;
+  if (!prod) return;
+
+  // Deep clone
+  const clone = JSON.parse(JSON.stringify(prod));
+  clone.id = "prod-" + Math.floor(100000 + Math.random() * 900000);
+  clone.name = clone.name + " (Copie)";
+
+  products.push(clone);
+  localStorage.setItem("rolly_products", JSON.stringify(products));
+  showToast(`Produit ${prod.name} dupliqué avec succès ! 👥`);
+  setupUI();
+}
+
+// Controller to delete product
+function deleteProduct(prodId) {
+  const prod = products.find(p => p.id === prodId);
+  if (!prod) return;
+
+  if (confirm(`Êtes-vous sûr de vouloir supprimer le produit ${prod.name} ?`)) {
+    products = products.filter(p => p.id !== prodId);
+    localStorage.setItem("rolly_products", JSON.stringify(products));
+    showToast(`Produit ${prod.name} supprimé. 🗑️`);
+    setupUI();
+  }
+}
+
+// Open modal and prefill product edit form details
+function openEditProductModal(prodId) {
+  const prod = products.find(p => p.id === prodId);
+  if (!prod) return;
+
+  document.getElementById("edit-prod-id").value = prod.id;
+  document.getElementById("edit-prod-name").value = prod.name;
+  document.getElementById("edit-prod-category").value = prod.category || "Gaming & Cartes";
+  document.getElementById("edit-prod-image").value = prod.image || prod.imageUrl || "";
+  document.getElementById("edit-prod-stock").value = prod.stock || "in-stock";
+  document.getElementById("edit-prod-featured").checked = prod.featuredCarousel === true;
+
+  const varBox = document.getElementById("edit-prod-variants-box");
+  if (varBox) {
+    if (!prod.subProducts || prod.subProducts.length === 0) {
+      varBox.innerHTML = `<p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted);">Ce produit n'a pas de variantes de prix.</p>`;
+    } else {
+      varBox.innerHTML = `
+        <h4 style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 12px;">Prix des variantes (Packs) :</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          ${prod.subProducts.map((v, idx) => {
+            return `
+              <div class="form-row" style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items: center;">
+                <span style="font-family: var(--font-secondary); font-size: 12px; color: #fff; font-weight: 600;">${v.title}</span>
+                <div style="position: relative; display: flex; align-items: center;">
+                  <input type="number" step="0.100" class="edit-variant-price-input" data-idx="${idx}" value="${v.price}" required style="width: 100%; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 8px 12px; font-family: var(--font-secondary); font-size: 12px; color: #fff; outline: none; text-align: right; padding-right: 36px;" />
+                  <span style="position: absolute; right: 12px; font-family: var(--font-secondary); font-size: 11px; color: var(--text-muted); font-weight: 700;">DT</span>
+                </div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
   }
 
-  // Prefill main stock status
-  statusSelect.value = prod.stock || "in-stock";
-
-  // Prefill featured carousel checkbox status
-  const featuredCheckbox = document.getElementById("stock-featured-carousel-new");
-  if (featuredCheckbox) {
-    featuredCheckbox.checked = prod.featuredCarousel === true;
-  }
-
-  if (!prod.subProducts || prod.subProducts.length === 0) {
-    editorList.innerHTML = `<p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted);">Ce produit n'a pas de variantes.</p>`;
-    return;
-  }
-
-  editorList.innerHTML = `
-    <h4 style="font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 12px;">Prix des variantes (Packs) :</h4>
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      ${prod.subProducts.map((v, idx) => {
-        return `
-          <div class="form-row" style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items: center;">
-            <span style="font-family: var(--font-secondary); font-size: 12px; color: #fff; font-weight: 600;">${v.title}</span>
-            <div style="position: relative; display: flex; align-items: center;">
-              <input type="number" step="0.100" class="stock-variant-price-input" data-idx="${idx}" value="${v.price}" required style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 8px 12px; font-family: var(--font-secondary); font-size: 12px; color: #fff; outline: none; text-align: right; padding-right: 36px;" />
-              <span style="position: absolute; right: 12px; font-family: var(--font-secondary); font-size: 11px; color: var(--text-muted); font-weight: 700;">DT</span>
-            </div>
-          </div>
-        `;
-      }).join("")}
-    </div>
-  `;
+  document.getElementById("edit-product-modal").classList.add("active");
 }
 
 // Setup Event Listeners
@@ -2499,28 +2555,54 @@ function setupEventListeners() {
     });
   }
 
-  // 7. Submit stock & prices manager form
-  const stockFormNew = document.getElementById("admin-stock-price-form-new");
-  if (stockFormNew) {
-    const productSelectEl = document.getElementById("stock-select-product-new");
-    if (productSelectEl) {
-      productSelectEl.addEventListener("change", () => {
-        populateStockVariantsEditor();
-      });
-    }
+  // 7. Visual Product Inventory CMS controls
+  const searchInput = document.getElementById("admin-stock-search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      adminInventorySearch = e.target.value;
+      renderStockInventory();
+    });
+  }
 
-    stockFormNew.addEventListener("submit", (e) => {
+  // Bind top Create Product trigger button
+  const createProductTopBtn = document.getElementById("btn-admin-create-product-top");
+  if (createProductTopBtn) {
+    createProductTopBtn.addEventListener("click", () => {
+      document.getElementById("add-product-modal").classList.add("active");
+    });
+  }
+
+  // Close Edit modal button
+  const closeEditModalBtn = document.getElementById("close-edit-product-modal");
+  if (closeEditModalBtn) {
+    closeEditModalBtn.addEventListener("click", () => {
+      document.getElementById("edit-product-modal").classList.remove("active");
+    });
+  }
+
+  // Submit edit product form
+  const editProductForm = document.getElementById("admin-edit-product-form");
+  if (editProductForm) {
+    editProductForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const selectEl = document.getElementById("stock-select-product-new");
-      const statusSelect = document.getElementById("stock-status-select-new");
-      if (!selectEl || !statusSelect) return;
+      const prodId = document.getElementById("edit-prod-id").value;
+      const newName = document.getElementById("edit-prod-name").value.trim();
+      const newCategory = document.getElementById("edit-prod-category").value;
+      const newImage = document.getElementById("edit-prod-image").value.trim();
+      const newStock = document.getElementById("edit-prod-stock").value;
+      const newFeatured = document.getElementById("edit-prod-featured").checked;
 
-      const prodId = selectEl.value;
       const prod = products.find(p => p.id === prodId);
       if (prod) {
-        prod.stock = statusSelect.value;
+        prod.name = newName;
+        prod.category = newCategory;
+        prod.image = newImage;
+        prod.imageUrl = newImage;
+        prod.stock = newStock;
+        prod.featuredCarousel = newFeatured;
 
-        const priceInputs = stockFormNew.querySelectorAll(".stock-variant-price-input");
+        // Save variant prices
+        const priceInputs = editProductForm.querySelectorAll(".edit-variant-price-input");
         priceInputs.forEach(input => {
           const idx = parseInt(input.getAttribute("data-idx"));
           const newPrice = parseFloat(input.value);
@@ -2532,14 +2614,9 @@ function setupEventListeners() {
           }
         });
 
-        // Save featured carousel status
-        const featuredCheckbox = document.getElementById("stock-featured-carousel-new");
-        if (featuredCheckbox) {
-          prod.featuredCarousel = featuredCheckbox.checked;
-        }
-
         localStorage.setItem("rolly_products", JSON.stringify(products));
-        showToast(`Prix et stock mis à jour pour ${prod.name} ! 💾`);
+        showToast(`Produit ${prod.name} modifié avec succès ! 💾`);
+        document.getElementById("edit-product-modal").classList.remove("active");
         setupUI();
       }
     });
