@@ -2020,11 +2020,13 @@ function setupEventListeners() {
       e.stopPropagation();
       activeCarouselIndex = (activeCarouselIndex - 1 + carouselProducts.length) % carouselProducts.length;
       updateCarouselLayout();
+      startCarouselAutoSlide(); // Reset auto-slide timer
     });
     nextBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       activeCarouselIndex = (activeCarouselIndex + 1) % carouselProducts.length;
       updateCarouselLayout();
+      startCarouselAutoSlide(); // Reset auto-slide timer
     });
   }
 
@@ -4036,6 +4038,26 @@ function openClientTicketChat(ticketId) {
 
 let activeCarouselIndex = 0;
 let carouselProducts = [];
+let carouselInterval = null;
+
+// Start carousel automatic sliding every 5 seconds
+function startCarouselAutoSlide() {
+  stopCarouselAutoSlide();
+  if (carouselProducts.length > 1) {
+    carouselInterval = setInterval(() => {
+      activeCarouselIndex = (activeCarouselIndex + 1) % carouselProducts.length;
+      updateCarouselLayout();
+    }, 5000);
+  }
+}
+
+// Stop carousel automatic sliding
+function stopCarouselAutoSlide() {
+  if (carouselInterval) {
+    clearInterval(carouselInterval);
+    carouselInterval = null;
+  }
+}
 
 function renderHeroCarousel() {
   const track = document.getElementById("hero-carousel-track");
@@ -4051,18 +4073,21 @@ function renderHeroCarousel() {
   }
 
   track.innerHTML = carouselProducts.map((p, index) => {
+    // Resolve cover image safely using fallback overrides
+    const coverImg = p.image || p.imageUrl || "/public/favicon.svg";
     return `
       <div class="carousel-card" data-index="${index}" data-product-id="${p.id}">
-        <img src="${p.image}" class="carousel-card-img" alt="${p.name}" />
+        <img src="${coverImg}" class="carousel-card-img" alt="${p.name}" />
         <div class="carousel-card-overlay">
           <h4 class="carousel-card-title">${p.name}</h4>
-          <button class="carousel-card-btn">Acheter Maintenant 🛒</button>
+          <button class="carousel-card-btn" data-product-id="${p.id}">Acheter Maintenant 🛒</button>
         </div>
       </div>
     `;
   }).join("");
 
   updateCarouselLayout();
+  startCarouselAutoSlide();
 
   // Bind click listeners on cards
   track.querySelectorAll(".carousel-card").forEach(card => {
@@ -4076,7 +4101,17 @@ function renderHeroCarousel() {
         // Flanking card click -> pivots it to center focus
         activeCarouselIndex = idx;
         updateCarouselLayout();
+        startCarouselAutoSlide(); // Reset auto-slide timer on manual navigation
       }
+    });
+  });
+
+  // Explicitly bind click handler on button to ensure 100% responsiveness on mobile/desktop
+  track.querySelectorAll(".carousel-card-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Stop event bubbling to card
+      const prodId = btn.getAttribute("data-product-id");
+      openProductDetails(prodId);
     });
   });
 }
