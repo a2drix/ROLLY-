@@ -4096,7 +4096,7 @@ function renderHeroCarousel() {
       if (idx === activeCarouselIndex) {
         // Center card click -> opens product details wizard
         const prodId = card.getAttribute("data-product-id");
-        openProductDetails(prodId);
+        openProductDetailsView(prodId);
       } else {
         // Flanking card click -> pivots it to center focus
         activeCarouselIndex = idx;
@@ -4111,7 +4111,7 @@ function renderHeroCarousel() {
     btn.addEventListener("click", (e) => {
       e.stopPropagation(); // Stop event bubbling to card
       const prodId = btn.getAttribute("data-product-id");
-      openProductDetails(prodId);
+      openProductDetailsView(prodId);
     });
   });
 }
