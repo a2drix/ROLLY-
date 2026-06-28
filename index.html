@@ -1041,6 +1041,25 @@
                 </div>
                 <h5>Binance Pay</h5>
                 <p>Paiement instantané en Crypto (USDT)</p>
+                <span class="badge-method" style="background-color: rgba(57, 181, 74, 0.12); color: #39b54a; border: 1px solid rgba(57, 181, 74, 0.15);">Auto</span>
+              </div>
+
+              <div class="payment-card" data-method="crypto">
+                <div class="payment-logo" style="background: none;">
+                  <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=040" alt="Crypto" style="width: 32px; height: 32px; object-fit: contain;" />
+                </div>
+                <h5>Crypto USDT</h5>
+                <p>Frais bas sur Réseau TRC20 / ERC20</p>
+                <span class="badge-method" style="background-color: rgba(57, 181, 74, 0.12); color: #39b54a; border: 1px solid rgba(57, 181, 74, 0.15);">Auto</span>
+              </div>
+
+              <div class="payment-card" data-method="paypal">
+                <div class="payment-logo" style="background: none;">
+                  <img src="https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp" alt="PayPal" style="width: 32px; height: 32px; object-fit: cover; border-radius: 50%;" />
+                </div>
+                <h5>PayPal / Cartes</h5>
+                <p>Paiement sécurisé par PayPal ou Carte</p>
+                <span class="badge-method" style="background-color: rgba(57, 181, 74, 0.12); color: #39b54a; border: 1px solid rgba(57, 181, 74, 0.15);">Auto</span>
               </div>
             </div>
             
@@ -1098,24 +1117,52 @@
               </div>
             </div>
 
-            <!-- BINANCE PAY INSTRUCTIONS -->
+            <!-- BINANCE PAY REDIRECTION SUMMARY -->
             <div class="payment-form-sub" id="form-pay-binance" style="display:none;">
-              <h4>Paiement via Binance Pay</h4>
-              <p class="instruction-text">Payez en scannant le QR code ou en utilisant le Pay ID Binance ci-dessous :</p>
+              <h4>Redirection vers Binance Pay</h4>
+              <p class="instruction-text">Vous allez être redirigé vers l'interface sécurisée de Binance Pay pour effectuer votre transfert.</p>
               <div class="binance-info-box">
                 <div class="info-row">
-                  <span>Binance Pay ID :</span>
-                  <strong>983274092</strong>
+                  <span>Méthode de paiement :</span>
+                  <strong>Binance Pay (Automatique)</strong>
                 </div>
                 <div class="info-row">
-                  <span>Montant (Crypto) :</span>
+                  <span>Montant estimé :</span>
                   <strong class="text-yellow" id="binance-converted-price">0.00 USDT</strong>
                 </div>
-                <p class="rate-indicator">Taux fixe simulé : 1 DT = 0.32 USDT</p>
+                <p class="rate-indicator">Taux fixe : 1 DT = 0.32 USDT</p>
               </div>
-              <div class="form-group">
-                <label for="pay-binance-id">Votre ID de transaction Binance (TxID)</label>
-                <input type="text" id="pay-binance-id" placeholder="Ex: 84392019" />
+            </div>
+
+            <!-- CRYPTO USDT REDIRECTION SUMMARY -->
+            <div class="payment-form-sub" id="form-pay-crypto" style="display:none;">
+              <h4>Paiement Sécurisé en Crypto USDT</h4>
+              <p class="instruction-text">Une adresse de dépôt USDT (TRC20) unique va être générée pour votre commande.</p>
+              <div class="binance-info-box" style="border-color: #39b54a;">
+                <div class="info-row">
+                  <span>Méthode :</span>
+                  <strong style="color: #39b54a;">Crypto USDT (Automatique)</strong>
+                </div>
+                <div class="info-row">
+                  <span>Montant :</span>
+                  <strong id="crypto-converted-price" style="color:#fff;">0.00 USDT</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- PAYPAL REDIRECTION SUMMARY -->
+            <div class="payment-form-sub" id="form-pay-paypal" style="display:none;">
+              <h4>Paiement par PayPal / Cartes Bancaires</h4>
+              <p class="instruction-text">Vous allez effectuer le règlement sécurisé via PayPal ou votre carte de crédit.</p>
+              <div class="binance-info-box" style="border-color: #0070ba;">
+                <div class="info-row">
+                  <span>Méthode :</span>
+                  <strong style="color: #0070ba;">PayPal / Cartes (Automatique)</strong>
+                </div>
+                <div class="info-row">
+                  <span>Montant total :</span>
+                  <strong style="color: #fff;" id="paypal-converted-price">0.00 DT</strong>
+                </div>
               </div>
             </div>
 
@@ -1421,6 +1468,70 @@
             </div>
             <p id="client-ticket-resolved-notice" style="display: none; text-align: center; font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); padding: 10px 0; background-color: rgba(255,255,255,0.02); border-radius: 6px;">Ce ticket a été marqué comme résolu. 🔒</p>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout Payment Dialog Overlay -->
+    <div class="modal-overlay" id="checkout-payment-overlay" style="z-index: 2000;">
+      <div class="modal-card" style="max-width: 440px; text-align: center;">
+        <div class="modal-header" style="border: none; padding-bottom: 0;">
+          <h3 style="width: 100%; text-align: center;" id="payment-overlay-title">Paiement en cours...</h3>
+          <button class="close-btn" id="close-payment-overlay-btn" style="position: absolute; right: 16px; top: 16px;">&times;</button>
+        </div>
+        <div class="modal-body" style="padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+          
+          <!-- State 1: Loader -->
+          <div id="payment-state-loading" style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 20px 0;">
+            <div class="checkout-spinner"></div>
+            <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-muted);">Initialisation de la transaction sécurisée...</p>
+          </div>
+
+          <!-- State 2: Binance Pay -->
+          <div id="payment-state-binance" style="display: none; flex-direction: column; align-items: center; gap: 16px; width: 100%;">
+            <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-secondary);">Scannez ce QR Code avec votre application **Binance** pour payer :</p>
+            <div style="background-color: #fff; padding: 12px; border-radius: 16px; width: fit-content; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+              <img id="binance-qr-img" src="" alt="Binance QR Code" style="width: 180px; height: 180px; display: block;" />
+            </div>
+            <a href="#" id="binance-pay-link" target="_blank" class="btn btn-primary w-full" style="height: 42px; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; background-color: #F3BA2F; color: #000; box-shadow: 0 4px 15px rgba(243, 186, 47, 0.3); border: none;">
+              Ouvrir Binance Pay 💳
+            </a>
+            <p style="font-family: var(--font-secondary); font-size: 11px; color: var(--text-muted); animation: pulse 1.5s infinite;">Attente de confirmation du paiement (Auto-verif)... ⏳</p>
+          </div>
+
+          <!-- State 3: NOWPayments Crypto -->
+          <div id="payment-state-crypto" style="display: none; flex-direction: column; align-items: center; gap: 16px; width: 100%;">
+            <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-secondary);">Envoyez le montant exact en **USDT (TRC20)** à cette adresse :</p>
+            <div style="background-color: #fff; padding: 12px; border-radius: 16px; width: fit-content; margin: 0 auto;">
+              <img id="crypto-qr-img" src="" alt="Crypto QR Code" style="width: 180px; height: 180px; display: block;" />
+            </div>
+            
+            <div style="width: 100%; text-align: left;">
+              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted);">Adresse de Dépôt :</label>
+              <div style="display: flex; gap: 8px; margin-top: 4px;">
+                <input type="text" id="crypto-address-input" readonly value="" style="flex: 1; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 8px 10px; color: #fff; font-family: var(--font-secondary); font-size: 11px; outline: none;" />
+                <button class="btn btn-outline" id="btn-copy-crypto-address" type="button" style="padding: 0 12px; font-size: 11px;">Copier</button>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; width: 100%; border-top: 1px solid var(--border-color); padding-top: 12px; font-size: 12px;">
+              <span style="color: var(--text-muted);">Montant :</span>
+              <strong style="color: #fff;" id="crypto-exact-amount">0.00 USDT</strong>
+            </div>
+
+            <p style="font-family: var(--font-secondary); font-size: 11px; color: var(--text-muted); animation: pulse 1.5s infinite;">Attente de confirmation sur la Blockchain... ⏳</p>
+          </div>
+
+          <!-- State 4: Success -->
+          <div id="payment-state-success" style="display: none; flex-direction: column; align-items: center; gap: 16px; padding: 20px 0;">
+            <div class="success-checkmark-circle">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#39b54a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 0 8px #39b54a);"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h4 style="font-size: 18px; font-weight: 900; color: #39b54a; margin-top: 10px;">Paiement Réussi !</h4>
+            <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-secondary);">Votre commande a été traitée et validée automatiquement.</p>
+            <p style="font-family: var(--font-secondary); font-size: 11px; color: var(--text-muted);">Redirection vers le suivi de commande... ➔</p>
+          </div>
+
         </div>
       </div>
     </div>

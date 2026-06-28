@@ -2189,7 +2189,73 @@ function setupEventListeners() {
   });
 
   document.getElementById("btn-next-step-2").addEventListener("click", () => {
-    if (validateCheckoutStep2()) {
+    if (!validateCheckoutStep2()) return;
+
+    if (checkoutPaymentMethod === "binance" || checkoutPaymentMethod === "crypto" || checkoutPaymentMethod === "paypal") {
+      // Open overlay modal and show loader
+      const overlay = document.getElementById("checkout-payment-overlay");
+      overlay.classList.add("active");
+      document.getElementById("payment-state-loading").style.display = "flex";
+      document.getElementById("payment-state-binance").style.display = "none";
+      document.getElementById("payment-state-crypto").style.display = "none";
+      document.getElementById("payment-state-success").style.display = "none";
+
+      const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+
+      // Call serverless checkout-create API endpoint
+      fetch("/api/checkout-create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productId: cart[0].product.id,
+          variantIdx: 0,
+          paymentMethod: checkoutPaymentMethod,
+          email: currentUser ? currentUser.email : "guest@rolly.tn",
+          username: currentUser ? currentUser.username : "guest"
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          showToast(`Erreur API: ${data.error} ❌`);
+          overlay.classList.remove("active");
+          return;
+        }
+
+        // Hide Loading State
+        document.getElementById("payment-state-loading").style.display = "none";
+
+        // Display correct sub-state and initialize polling checks
+        if (checkoutPaymentMethod === "binance") {
+          document.getElementById("binance-qr-img").src = data.qrCodeUrl;
+          document.getElementById("binance-pay-link").href = data.paymentUrl;
+          document.getElementById("payment-state-binance").style.display = "flex";
+        } else if (checkoutPaymentMethod === "crypto") {
+          document.getElementById("crypto-qr-img").src = data.qrCodeUrl;
+          document.getElementById("crypto-address-input").value = data.address;
+          document.getElementById("crypto-exact-amount").innerText = data.amount.toFixed(2) + " USDT";
+          document.getElementById("payment-state-crypto").style.display = "flex";
+        } else if (checkoutPaymentMethod === "paypal") {
+          // Open Paypal in a new checkout tab
+          window.open(data.paymentUrl, "_blank");
+          // Re-use binance state template styled for Paypal
+          document.getElementById("binance-qr-img").src = "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" + encodeURIComponent(data.paymentUrl);
+          document.getElementById("binance-pay-link").href = data.paymentUrl;
+          document.getElementById("binance-pay-link").innerText = "Procéder sur PayPal 💳";
+          document.getElementById("binance-pay-link").style.backgroundColor = "#0070ba";
+          document.getElementById("binance-pay-link").style.color = "#fff";
+          document.getElementById("payment-state-binance").style.display = "flex";
+        }
+
+        // Start checking payment status
+        startPaymentPolling(data.orderId, Date.now(), checkoutPaymentMethod);
+      })
+      .catch(err => {
+        showToast("Erreur de connexion au serveur de paiement. ❌");
+        overlay.classList.remove("active");
+      });
+    } else {
+      // Direct manual declaration transitions
       checkoutStep = 3;
       updateCheckoutStepUI();
     }
@@ -2230,6 +2296,29 @@ function setupEventListeners() {
   document.getElementById("btn-simulate-manual-success").addEventListener("click", () => {
     completeOrderSimulation();
   });
+
+  // Copy crypto deposit address
+  const copyCryptoBtn = document.getElementById("btn-copy-crypto-address");
+  if (copyCryptoBtn) {
+    copyCryptoBtn.addEventListener("click", () => {
+      const addressInput = document.getElementById("crypto-address-input");
+      if (addressInput) {
+        addressInput.select();
+        addressInput.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(addressInput.value);
+        showToast("Adresse copiée dans le presse-papiers ! 📋");
+      }
+    });
+  }
+
+  // Close payment overlay manually
+  const closePaymentOverlayBtn = document.getElementById("close-payment-overlay-btn");
+  if (closePaymentOverlayBtn) {
+    closePaymentOverlayBtn.addEventListener("click", () => {
+      stopPaymentPolling();
+      document.getElementById("checkout-payment-overlay").classList.remove("active");
+    });
+  }
 
   document.getElementById("btn-close-checkout-success").addEventListener("click", () => {
     checkoutModal.classList.remove("active");
@@ -3393,12 +3482,27 @@ function updateCheckoutStepUI() {
 
   document.getElementById(`checkout-step-${checkoutStep}`).classList.add("active");
 
+  const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  const usdtTotal = cartTotal * 0.320;
+
   if (checkoutStep === 2) {
     document.getElementById("form-pay-ooredoo").style.display = "none";
     document.getElementById("form-pay-d17").style.display = "none";
     document.getElementById("form-pay-binance").style.display = "none";
+    document.getElementById("form-pay-crypto").style.display = "none";
+    document.getElementById("form-pay-paypal").style.display = "none";
 
     document.getElementById(`form-pay-${checkoutPaymentMethod}`).style.display = "block";
+
+    // Update converted prices labels
+    const binanceRateEl = document.getElementById("binance-converted-price");
+    if (binanceRateEl) binanceRateEl.innerText = usdtTotal.toFixed(2) + " USDT";
+
+    const cryptoRateEl = document.getElementById("crypto-converted-price");
+    if (cryptoRateEl) cryptoRateEl.innerText = usdtTotal.toFixed(2) + " USDT";
+
+    const paypalRateEl = document.getElementById("paypal-converted-price");
+    if (paypalRateEl) paypalRateEl.innerText = cartTotal.toFixed(3) + " DT";
   }
 
   if (checkoutStep === 3) {
@@ -3436,12 +3540,9 @@ function validateCheckoutStep2() {
       showToast("Veuillez saisir votre numéro D17 à 8 chiffres pour vérification. 💳");
       return false;
     }
-  } else if (checkoutPaymentMethod === "binance") {
-    const txId = document.getElementById("pay-binance-id").value.trim();
-    if (!txId) {
-      showToast("Veuillez renseigner votre ID de transaction Binance. 💰");
-      return false;
-    }
+  } else if (checkoutPaymentMethod === "binance" || checkoutPaymentMethod === "crypto" || checkoutPaymentMethod === "paypal") {
+    // Automated flow check, passes directly to validation
+    return true;
   }
   return true;
 }
@@ -4182,4 +4283,101 @@ function updateCarouselLayout() {
       }
     }
   });
+}
+
+
+// Polling interval controllers for Serverless payments checkups
+let paymentPollInterval = null;
+
+function startPaymentPolling(orderId, createdAt, method) {
+  stopPaymentPolling();
+  
+  paymentPollInterval = setInterval(() => {
+    fetch(`/api/checkout-status?orderId=${orderId}&paymentMethod=${method}&createdAt=${createdAt}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === "paid") {
+          stopPaymentPolling();
+          
+          // Switch to Success State
+          document.getElementById("payment-state-binance").style.display = "none";
+          document.getElementById("payment-state-crypto").style.display = "none";
+          document.getElementById("payment-state-success").style.display = "flex";
+
+          // Play a nice success beep if supported
+          try {
+            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+          } catch(e) {}
+
+          setTimeout(() => {
+            document.getElementById("checkout-payment-overlay").classList.remove("active");
+            completeOrderWithDetails(orderId, new Date().toLocaleString(), method, data.code);
+          }, 2000);
+        }
+      })
+      .catch(err => {
+        console.error("Polling error:", err);
+      });
+  }, 3000);
+}
+
+function stopPaymentPolling() {
+  if (paymentPollInterval) {
+    clearInterval(paymentPollInterval);
+    paymentPollInterval = null;
+  }
+}
+
+// Complete order with real backend validation details and generated code
+function completeOrderWithDetails(orderId, dateStr, method, voucherCode) {
+  const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  const itemsSummary = cart.map(item => `${item.product.name} (x${item.quantity}) [Info: ${item.playerInfo}]`).join(", ");
+
+  let methodLabel = "Binance Pay";
+  if (method === "crypto") methodLabel = "Crypto USDT";
+  if (method === "paypal") methodLabel = "PayPal / Cartes";
+
+  const newOrder = {
+    id: orderId,
+    userId: currentUser ? currentUser.id : "guest",
+    items: itemsSummary,
+    customer: `${methodLabel} Auto-pay`,
+    method: method,
+    total: cartTotal,
+    status: "completed",
+    date: dateStr,
+    playerInfo: cart[0].playerInfo || "",
+    step: 5, // Instant success
+    deliveredData: `Code de recharge : ${voucherCode}`,
+    timeline: [
+      { time: dateStr, text: "Livraison automatique effectuée. Code généré." },
+      { time: dateStr, text: `Paiement validé automatiquement via ${methodLabel}.` },
+      { time: dateStr, text: "Commande créée." }
+    ]
+  };
+
+  orders.push(newOrder);
+  localStorage.setItem("rolly_orders", JSON.stringify(orders));
+
+  // Load layout success timeline
+  document.getElementById("success-order-id").innerText = orderId;
+  document.getElementById("success-pay-method").innerText = methodLabel;
+  
+  document.getElementById("valid-ooredoo").style.display = "none";
+  document.getElementById("valid-manual").style.display = "none";
+  document.getElementById("valid-success").style.display = "block";
+
+  checkoutStep = 3;
+  updateCheckoutStepUI();
+
+  // Reset cart
+  cart = [];
+  localStorage.removeItem("rolly_cart");
+  updateCartBadge();
+  updateCartUI();
+
+  updateAdminStats();
+  renderAdminOrders();
+
+  showToast("Félicitations ! Commande livrée automatiquement. 🎉");
 }

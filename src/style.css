@@ -4350,3 +4350,45 @@ body.admin-mode-active #view-admin.app-view.active {
   background-color: var(--primary);
   color: #fff;
 }
+
+
+/* ==========================================================================
+   PHASE 16: AUTOMATIC CHECKOUT PAYMENT OVERLAY SPINNER & BADGES STYLES
+   ========================================================================== */
+.checkout-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.05);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 15px rgba(230, 0, 0, 0.15);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.success-checkmark-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: rgba(57, 181, 74, 0.1);
+  border: 2px solid rgba(57, 181, 74, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
