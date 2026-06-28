@@ -3458,9 +3458,9 @@ function openCheckoutWizard() {
   document.getElementById("d17-exact-price").innerText = cartTotal.toFixed(3) + " DT";
   document.getElementById("binance-converted-price").innerText = (cartTotal * 0.32).toFixed(2) + " USDT";
 
-  document.getElementById("pay-phone-ooredoo").value = "";
-  document.getElementById("pay-phone-d17").value = "";
-  document.getElementById("pay-binance-id").value = "";
+  if (document.getElementById("pay-phone-ooredoo")) document.getElementById("pay-phone-ooredoo").value = "";
+  if (document.getElementById("pay-phone-d17")) document.getElementById("pay-phone-d17").value = "";
+  if (document.getElementById("pay-binance-id")) document.getElementById("pay-binance-id").value = "";
 
   document.querySelectorAll(".otp-char").forEach(i => i.value = "");
 
@@ -3560,7 +3560,8 @@ function completeOrderSimulation() {
   } else if (checkoutPaymentMethod === "d17") {
     customerDetails = "D17: " + document.getElementById("pay-phone-d17").value;
   } else {
-    customerDetails = "Binance: " + document.getElementById("pay-binance-id").value.substring(0, 8) + "...";
+    const binanceEl = document.getElementById("pay-binance-id");
+    customerDetails = binanceEl ? "Binance: " + binanceEl.value.substring(0, 8) + "..." : "Binance Auto-pay";
   }
 
   const itemsSummary = cart.map(item => `${item.product.name} (x${item.quantity}) [Info: ${item.playerInfo}]`).join(", ");
