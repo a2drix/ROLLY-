@@ -1750,11 +1750,24 @@ async function loadDatabase() {
   try {
     const res = await fetch("/api/orders");
     if (!res.ok) throw new Error();
-    const data = await res.json();
-    if (data && data.length > 0) {
-      orders = data;
-    } else {
-      orders = [...DEFAULT_ORDERS];
+    const cloudOrders = await res.json();
+    
+    const local = localStorage.getItem("rolly_orders");
+    let localOrders = [];
+    try {
+      if (local) localOrders = JSON.parse(local);
+    } catch(err) {}
+
+    orders = cloudOrders || [];
+    let mergedAny = false;
+    localOrders.forEach(lo => {
+      if (!orders.some(co => co.id === lo.id)) {
+        orders.push(lo);
+        mergedAny = true;
+      }
+    });
+
+    if (mergedAny) {
       await saveOrdersToCloud();
     }
   } catch (e) {
@@ -1767,11 +1780,31 @@ async function loadDatabase() {
   try {
     const res = await fetch("/api/users");
     if (!res.ok) throw new Error();
-    const data = await res.json();
-    if (data && data.length > 0) {
-      users = data;
-    } else {
-      users = [];
+    const cloudUsers = await res.json();
+    
+    const local = localStorage.getItem("rolly_users");
+    let localUsers = [];
+    try {
+      if (local) localUsers = JSON.parse(local);
+    } catch(err) {}
+
+    users = cloudUsers || [];
+    let mergedAny = false;
+    localUsers.forEach(lu => {
+      const match = users.find(cu => cu.username.toLowerCase() === lu.username.toLowerCase());
+      if (!match) {
+        users.push(lu);
+        mergedAny = true;
+      } else {
+        // If the matching account in cloud DB has default password "admin" but local has a custom password, restore it!
+        if (match.password === "admin" && lu.password !== "admin") {
+          match.password = lu.password;
+          mergedAny = true;
+        }
+      }
+    });
+
+    if (mergedAny) {
       await saveUsersToCloud();
     }
   } catch (e) {
