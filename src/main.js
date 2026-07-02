@@ -1581,13 +1581,83 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (e) {
     console.error("runStatsAnimation error:", e);
   }
+    // Live Poll support tickets from database every 10 seconds
+  setInterval(async () => {
+    try {
+      const res = await fetch("/api/tickets");
+      if (res.ok) {
+        const cloudTickets = await res.json();
+        if (cloudTickets && cloudTickets.length > 0) {
+          const activeTicketIdEl = document.getElementById("support-chat-active-ticket-id");
+          const activeId = activeTicketIdEl ? activeTicketIdEl.value : null;
+
+          const adminActiveIdEl = document.getElementById("admin-active-ticket-id");
+          const adminActiveId = adminActiveIdEl ? adminActiveIdEl.value : null;
+
+          tickets = cloudTickets;
+
+          renderClientTickets();
+          renderAdminTickets();
+
+          if (activeId && document.getElementById("support-screen-chat").style.display === "flex") {
+            const t = tickets.find(o => o.id === activeId);
+            if (t) {
+              const chatBox = document.getElementById("support-chat-messages-box");
+              const oldScrollHeight = chatBox.scrollHeight;
+              
+              chatBox.innerHTML = t.replies.map(r => {
+                const typeClass = r.sender === "admin" ? "admin" : "client";
+                const senderName = r.sender === "admin" ? "Support ROLLY" : "Moi";
+                return `
+                  <div class="chat-bubble ${typeClass}">
+                    <span style="font-size: 10px; font-weight: 800; opacity: 0.8; margin-bottom: 2px;">${senderName}</span>
+                    <span>${r.text}</span>
+                    <span class="chat-bubble-time">${r.time}</span>
+                  </div>
+                `;
+              }).join("");
+
+              if (chatBox.scrollTop + chatBox.clientHeight >= oldScrollHeight - 50) {
+                chatBox.scrollTop = chatBox.scrollHeight;
+              }
+            }
+          }
+
+          if (adminActiveId && document.getElementById("admin-ticket-reply-modal").classList.contains("active")) {
+            const t = tickets.find(o => o.id === adminActiveId);
+            if (t) {
+              const chatBox = document.getElementById("admin-chat-messages-box");
+              const oldScrollHeight = chatBox.scrollHeight;
+              
+              chatBox.innerHTML = t.replies.map(r => {
+                const typeClass = r.sender === "admin" ? "admin" : "client";
+                const senderName = r.sender === "admin" ? "Support" : t.customerName;
+                return `
+                  <div class="chat-bubble ${typeClass}">
+                    <span style="font-size: 10px; font-weight: 800; opacity: 0.8; margin-bottom: 2px;">${senderName}</span>
+                    <span>${r.text}</span>
+                    <span class="chat-bubble-time">${r.time}</span>
+                  </div>
+                `;
+              }).join("");
+
+              if (chatBox.scrollTop + chatBox.clientHeight >= oldScrollHeight - 50) {
+                chatBox.scrollTop = chatBox.scrollHeight;
+              }
+            }
+          }
+        }
+      }
+    } catch(err) {}
+  }, 10000);
+
   showToast("Boutique ROLLY chargée avec succès ! 🇹🇳");
 });
 
 
 // Cloud Saving wrappers calling Vercel serverless database APIs
 async function saveProductsToCloud() {
-  saveProductsToCloud();
+  localStorage.setItem("rolly_products", JSON.stringify(products));
   try {
     await fetch("/api/products", {
       method: "POST",
@@ -1600,7 +1670,7 @@ async function saveProductsToCloud() {
 }
 
 async function saveOrdersToCloud() {
-  saveOrdersToCloud();
+  localStorage.setItem("rolly_orders", JSON.stringify(orders));
   try {
     await fetch("/api/orders", {
       method: "POST",
@@ -1613,7 +1683,7 @@ async function saveOrdersToCloud() {
 }
 
 async function saveUsersToCloud() {
-  saveUsersToCloud();
+  localStorage.setItem("rolly_users", JSON.stringify(users));
   try {
     await fetch("/api/users", {
       method: "POST",
@@ -1626,7 +1696,7 @@ async function saveUsersToCloud() {
 }
 
 async function saveTicketsToCloud() {
-  saveTicketsToCloud();
+  localStorage.setItem("rolly_tickets", JSON.stringify(tickets));
   try {
     await fetch("/api/tickets", {
       method: "POST",
@@ -2046,6 +2116,170 @@ function openEditProductModal(prodId) {
 
 // Setup Event Listeners
 function setupEventListeners() {
+  // Support chat page event bindings
+  const newChatBtn = document.getElementById("btn-support-new-chat");
+  if (newChatBtn) {
+    newChatBtn.addEventListener("click", () => {
+      document.getElementById("support-screen-welcome").style.display = "none";
+      document.getElementById("support-screen-chat").style.display = "none";
+      
+      const createScreen = document.getElementById("support-screen-create");
+      createScreen.style.display = "flex";
+
+      const guestFields = document.getElementById("support-guest-fields");
+      if (guestFields) {
+        if (!currentUser) {
+          guestFields.style.display = "flex";
+          document.getElementById("support-guest-name").required = true;
+          document.getElementById("support-guest-email").required = true;
+        } else {
+          guestFields.style.display = "none";
+          document.getElementById("support-guest-name").required = false;
+          document.getElementById("support-guest-email").required = false;
+        }
+      }
+    });
+  }
+
+  const startChatBtn = document.getElementById("btn-support-start-chat");
+  if (startChatBtn) {
+    startChatBtn.addEventListener("click", () => {
+      if (newChatBtn) newChatBtn.click();
+    });
+  }
+
+  const createForm = document.getElementById("support-create-ticket-form");
+  if (createForm) {
+    createForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const subject = document.getElementById("support-ticket-subject").value.trim();
+      const message = document.getElementById("support-ticket-message").value.trim();
+      
+      let name = "";
+      let email = "";
+      if (currentUser) {
+        name = currentUser.username;
+        email = currentUser.email || "client@rolly.store";
+      } else {
+        name = document.getElementById("support-guest-name").value.trim();
+        email = document.getElementById("support-guest-email").value.trim();
+      }
+
+      const ticketId = "#TCK-" + Math.floor(100000 + Math.random() * 900000);
+      const timeStr = new Date().toLocaleString();
+
+      const newTicket = {
+        id: ticketId,
+        userId: currentUser ? currentUser.id : "guest",
+        customerName: name,
+        customerEmail: email,
+        message: message,
+        status: "open",
+        date: timeStr,
+        replies: [
+          { sender: "client", text: message, time: timeStr }
+        ]
+      };
+
+      tickets.push(newTicket);
+
+      if (!currentUser) {
+        let guestSession = [];
+        try {
+          const stored = localStorage.getItem("rolly_guest_ticket_ids");
+          if (stored) guestSession = JSON.parse(stored);
+        } catch(err) {}
+        guestSession.push(ticketId);
+        localStorage.setItem("rolly_guest_ticket_ids", JSON.stringify(guestSession));
+      }
+
+      await saveTicketsToCloud();
+      createForm.reset();
+      
+      showToast("Ticket créé avec succès ! Nos agents vous répondrons bientôt. 💬");
+      
+      renderClientTickets();
+      renderAdminTickets();
+      openClientTicketChat(ticketId);
+    });
+  }
+
+  const inputForm = document.getElementById("support-chat-input-form");
+  if (inputForm) {
+    inputForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const ticketId = document.getElementById("support-chat-active-ticket-id").value;
+      const textInput = document.getElementById("support-chat-message-text");
+      const textVal = textInput.value.trim();
+      if (!textVal) return;
+
+      const t = tickets.find(o => o.id === ticketId);
+      if (t) {
+        const timeStr = new Date().toLocaleString();
+        t.replies.push({
+          sender: "client",
+          text: textVal,
+          time: timeStr
+        });
+        
+        textInput.value = "";
+        await saveTicketsToCloud();
+        
+        openClientTicketChat(ticketId);
+        renderClientTickets();
+      }
+    });
+  }
+
+  const adminChatForm = document.getElementById("admin-ticket-chat-form");
+  if (adminChatForm) {
+    adminChatForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const ticketId = document.getElementById("admin-active-ticket-id").value;
+      const replyTextEl = document.getElementById("admin-ticket-reply-text");
+      const replyTextVal = replyTextEl.value.trim();
+      const statusSelect = document.getElementById("admin-ticket-status-select").value;
+
+      const t = tickets.find(o => o.id === ticketId);
+      if (t) {
+        const timeStr = new Date().toLocaleString();
+        
+        if (replyTextVal) {
+          t.replies.push({
+            sender: "admin",
+            text: replyTextVal,
+            time: timeStr
+          });
+          replyTextEl.value = "";
+        }
+        
+        t.status = statusSelect;
+        
+        await saveTicketsToCloud();
+        showToast("Réponse envoyée et statut mis à jour ! 🚀");
+        
+        openAdminTicketChat(ticketId);
+        
+        if (statusSelect === "resolved") {
+          document.getElementById("admin-ticket-reply-modal").classList.remove("active");
+        }
+        
+        renderAdminTickets();
+        renderClientTickets();
+      }
+    });
+  }
+
+  const closeAdminTicketBtn = document.getElementById("close-admin-ticket-modal");
+  if (closeAdminTicketBtn) {
+    closeAdminTicketBtn.addEventListener("click", () => {
+      document.getElementById("admin-ticket-reply-modal").classList.remove("active");
+    });
+  }
+
   // Navigation Routing
   document.querySelectorAll(".nav-link").forEach(link => {
     link.addEventListener("click", (e) => {
@@ -4140,51 +4374,56 @@ function renderAdminTickets() {
   });
 }
 
-// Render active client's support tickets on contact page
+// Render active client's support tickets in the sidebar of the new chat page
 function renderClientTickets() {
-  const ticketsContainer = document.getElementById("client-tickets-container");
-  const listBody = document.getElementById("client-tickets-list-body");
-  if (!ticketsContainer || !listBody) return;
+  const sidebarList = document.getElementById("support-tickets-history-list");
+  if (!sidebarList) return;
 
-  if (!currentUser || currentUser.role === "admin") {
-    ticketsContainer.style.display = "none";
-    return;
-  }
+  const localGuestSession = localStorage.getItem("rolly_guest_ticket_ids");
+  let guestTicketIds = [];
+  try {
+    if (localGuestSession) guestTicketIds = JSON.parse(localGuestSession);
+  } catch(e) {}
 
-  const userTickets = tickets.filter(t => t.userId === currentUser.username);
+  const userTickets = tickets.filter(t => {
+    if (currentUser) {
+      return t.userId === currentUser.id || t.customerName.toLowerCase() === currentUser.username.toLowerCase();
+    } else {
+      return guestTicketIds.includes(t.id);
+    }
+  });
 
   if (userTickets.length === 0) {
-    ticketsContainer.style.display = "none";
+    sidebarList.innerHTML = `<div style="text-align: center; color: var(--text-muted); font-size: 12px; padding: 20px 0;">Aucune discussion active.</div>`;
     return;
   }
 
-  ticketsContainer.style.display = "block";
-  listBody.innerHTML = [...userTickets].reverse().map(t => {
-    let statusLabel = `<span class="ticket-status-badge open">Ouvert</span>`;
+  const activeTicketIdEl = document.getElementById("support-chat-active-ticket-id");
+  const activeId = activeTicketIdEl ? activeTicketIdEl.value : null;
+
+  sidebarList.innerHTML = [...userTickets].reverse().map(t => {
+    let statusBadge = `<span class="ticket-status-badge open" style="background: rgba(16,185,129,0.1); color: #10b981;">Ouvert</span>`;
     if (t.status === "resolved") {
-      statusLabel = `<span class="ticket-status-badge resolved">Résolu</span>`;
+      statusBadge = `<span class="ticket-status-badge resolved" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">Résolu</span>`;
     }
 
-    const lastReply = t.replies && t.replies.length > 0 ? t.replies[t.replies.length - 1].text : t.message;
-    const shortReply = lastReply.length > 50 ? lastReply.substring(0, 47) + "..." : lastReply;
+    const isActiveClass = t.id === activeId ? "active" : "";
 
     return `
-      <tr>
-        <td style="padding: 12px 10px;"><strong>${t.id}</strong></td>
-        <td style="padding: 12px 10px;">${t.date}</td>
-        <td style="padding: 12px 10px;">${shortReply}</td>
-        <td style="padding: 12px 10px;">${statusLabel}</td>
-        <td style="padding: 12px 10px;">
-          <button class="admin-action-btn fulfill-order-btn btn-client-view-ticket" data-ticket-id="${t.id}" style="background-color: var(--primary);">Ouvrir</button>
-        </td>
-      </tr>
+      <div class="support-ticket-item ${isActiveClass}" data-ticket-id="${t.id}">
+        <div class="support-ticket-meta">
+          <span class="support-ticket-id">${t.id}</span>
+          ${statusBadge}
+        </div>
+        <div class="support-ticket-title">${t.message.substring(0, 24)}${t.message.length > 24 ? '...' : ''}</div>
+        <div style="font-size: 10px; color: var(--text-muted); text-align: right; margin-top: 4px;">${t.date}</div>
+      </div>
     `;
   }).join("");
 
-  // Bind Open Ticket button for client
-  listBody.querySelectorAll(".btn-client-view-ticket").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const tckId = btn.getAttribute("data-ticket-id");
+  sidebarList.querySelectorAll(".support-ticket-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const tckId = item.getAttribute("data-ticket-id");
       openClientTicketChat(tckId);
     });
   });
@@ -4213,24 +4452,44 @@ function openAdminTicketChat(ticketId) {
     }).join("");
 
     document.getElementById("admin-ticket-reply-modal").classList.add("active");
-    
-    // Auto scroll to bottom
     setTimeout(() => { chatBox.scrollTop = chatBox.scrollHeight; }, 50);
   }
 }
 
-// Open client chat history modal
+// Open client chat history screen
 function openClientTicketChat(ticketId) {
   const t = tickets.find(o => o.id === ticketId);
   if (t) {
-    document.getElementById("client-active-ticket-id").value = t.id;
-    document.getElementById("client-chat-modal-title").innerText = `Ticket Support ${t.id}`;
-    document.getElementById("client-ticket-reply-text").value = "";
+    document.getElementById("support-screen-welcome").style.display = "none";
+    document.getElementById("support-screen-create").style.display = "none";
+    document.getElementById("support-screen-chat").style.display = "flex";
 
-    const chatBox = document.getElementById("client-chat-messages-box");
+    document.querySelectorAll(".support-ticket-item").forEach(item => {
+      item.classList.remove("active");
+      if (item.getAttribute("data-ticket-id") === t.id) {
+        item.classList.add("active");
+      }
+    });
+
+    document.getElementById("support-chat-active-ticket-id").value = t.id;
+    document.getElementById("support-chat-ticket-id").innerText = `Ticket ${t.id}`;
+    document.getElementById("support-chat-ticket-subject").innerText = `${t.customerName} - ${t.customerEmail}`;
+
+    const statusEl = document.getElementById("support-chat-ticket-status");
+    if (t.status === "resolved") {
+      statusEl.innerHTML = `<span class="ticket-status-badge resolved" style="background: rgba(255,255,255,0.05); color: var(--text-muted); padding: 4px 10px; border-radius: 6px; font-size:11px; font-weight:700;">Résolu 🔒</span>`;
+      document.getElementById("support-chat-input-form").style.display = "none";
+      document.getElementById("support-chat-resolved-banner").style.display = "flex";
+    } else {
+      statusEl.innerHTML = `<span class="ticket-status-badge open" style="background: rgba(16,185,129,0.1); color: #10b981; padding: 4px 10px; border-radius: 6px; font-size:11px; font-weight:700;">Ouvert 🟢</span>`;
+      document.getElementById("support-chat-input-form").style.display = "block";
+      document.getElementById("support-chat-resolved-banner").style.display = "none";
+    }
+
+    const chatBox = document.getElementById("support-chat-messages-box");
     chatBox.innerHTML = t.replies.map(r => {
       const typeClass = r.sender === "admin" ? "admin" : "client";
-      const senderName = r.sender === "admin" ? "Support" : "Moi";
+      const senderName = r.sender === "admin" ? "Support ROLLY" : "Moi";
       return `
         <div class="chat-bubble ${typeClass}">
           <span style="font-size: 10px; font-weight: 800; opacity: 0.8; margin-bottom: 2px;">${senderName}</span>
@@ -4240,18 +4499,6 @@ function openClientTicketChat(ticketId) {
       `;
     }).join("");
 
-    // Show/Hide input depending on ticket resolved status
-    if (t.status === "resolved") {
-      document.getElementById("client-chat-input-wrapper").style.display = "none";
-      document.getElementById("client-ticket-resolved-notice").style.display = "block";
-    } else {
-      document.getElementById("client-chat-input-wrapper").style.display = "block";
-      document.getElementById("client-ticket-resolved-notice").style.display = "none";
-    }
-
-    document.getElementById("client-ticket-chat-modal").classList.add("active");
-    
-    // Auto scroll to bottom
     setTimeout(() => { chatBox.scrollTop = chatBox.scrollHeight; }, 50);
   }
 }

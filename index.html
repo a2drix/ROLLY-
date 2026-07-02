@@ -412,105 +412,124 @@
         </div>
       </section>
 
-      <!-- CONTACT US VIEW -->
+      <!-- CONTACT US VIEW: SCARVAULT PREMIUM SUPPORT SYSTEM -->
       <section id="view-contact" class="app-view">
-        <div class="contact-layout-grid">
-          <div class="contact-form-container">
-            <h3>Contactez-nous</h3>
-            <p>Une question, un partenariat ou un problème avec une commande ? Écrivez-nous.</p>
-            <form id="contact-form" class="contact-page-form">
-              <div class="form-group">
-                <label for="contact-name">Nom Complet</label>
-                <input type="text" id="contact-name" required placeholder="Ex: Slimen Ben Ali" />
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="contact-email">E-mail</label>
-                  <input type="email" id="contact-email" required placeholder="client@gmail.com" />
-                </div>
-                <div class="form-group">
-                  <label for="contact-phone">Téléphone</label>
-                  <input type="tel" id="contact-phone" required placeholder="22123456" maxlength="8" />
+        <div class="support-chat-container">
+          <!-- Sidebar -->
+          <div class="support-sidebar">
+            <div class="support-sidebar-header">
+              <div class="support-brand">
+                <div class="support-brand-icon">📞</div>
+                <div>
+                  <h4 style="margin:0; line-height:1.2;">Support ROLLY</h4>
+                  <span class="support-online-badge"><span class="dot"></span> En ligne - réponse rapide</span>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="contact-subject">Sujet de votre message</label>
-                <input type="text" id="contact-subject" required placeholder="Ex: Problème de livraison de commande" />
-              </div>
-              <div class="form-group">
-                <label for="contact-message">Message</label>
-                <textarea id="contact-message" required rows="5" placeholder="Saisissez votre message ici..."></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary w-full">Envoyer le message</button>
-            </form>
-          </div>
-
-          <div class="contact-info-container">
-            <h3>Nos Coordonnées</h3>
-            <p>Retrouvez-nous également sur nos canaux directs.</p>
+            </div>
             
-            <div class="info-list">
-              <div class="info-item">
-                <div class="info-icon">📞</div>
-                <div>
-                  <h4>Téléphone & WhatsApp</h4>
-                  <p><a href="https://wa.me/21698742604" target="_blank">+216 98 742 604</a></p>
-                </div>
-              </div>
-              <div class="info-item">
-                <div class="info-icon">✉️</div>
-                <div>
-                  <h4>E-mail</h4>
-                  <p><a href="mailto:support@rolly.store">support@rolly.store</a></p>
-                </div>
-              </div>
-              <div class="info-item">
-                <div class="info-icon">📍</div>
-                <div>
-                  <h4>Adresse Bureau</h4>
-                  <p>Tunisie, Nabeul 8000</p>
-                </div>
-              </div>
-              <div class="info-item">
-                <div class="info-icon">⏰</div>
-                <div>
-                  <h4>Horaires de Support</h4>
-                  <p>Lundi - Dimanche : 24h / 24</p>
-                </div>
-              </div>
+            <button class="btn btn-primary support-new-chat-btn" id="btn-support-new-chat">
+              <span class="plus-icon">+</span> Nouvelle Discussion
+            </button>
+
+            <div class="support-tickets-history-list" id="support-tickets-history-list">
+              <!-- Rendered list of client's tickets -->
             </div>
 
-            <div class="contact-socials-box">
-              <h4>Suivez-nous</h4>
-              <div class="social-links mt-2">
-                <a href="https://www.facebook.com/rolly.store/" target="_blank" aria-label="Facebook">FB</a>
-                <a href="https://www.instagram.com/rolly.store/" target="_blank" aria-label="Instagram">IG</a>
-                <a href="https://wa.me/21698742604" target="_blank" aria-label="WhatsApp">WA</a>
+            <div class="support-sidebar-info">
+              <div class="info-item-mini">
+                <span class="icon">⏰</span>
+                <span>Disponible 8h - 23h</span>
+              </div>
+              <div class="info-item-mini">
+                <span class="icon">🔒</span>
+                <span>Discussion privée & sécurisée</span>
+              </div>
+              <div class="info-item-mini">
+                <span class="icon">⚡</span>
+                <span>Réponse rapide garantie</span>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Client Support Tickets Section -->
-        <div class="client-tickets-section" id="client-tickets-container" style="margin-top: 40px; display: none; border-top: 1px solid var(--border-color); padding-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
-          <h3 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Mes Tickets Support</h3>
-          <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Cliquez sur une conversation pour ouvrir le chat avec nos agents.</p>
-          
-          <div class="table-responsive">
-            <table class="orders-table">
-              <thead>
-                <tr>
-                  <th>ID Ticket</th>
-                  <th>Date</th>
-                  <th>Dernier Message</th>
-                  <th>Statut</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="client-tickets-list-body">
-                <!-- Dynamically loaded client tickets -->
-              </tbody>
-            </table>
+          <!-- Main Content Area -->
+          <div class="support-main-content">
+            <!-- Screen 1: Welcome Intro State -->
+            <div class="support-screen active" id="support-screen-welcome">
+              <div class="support-welcome-card">
+                <div class="support-headphones-glow">
+                  <svg viewBox="0 0 24 24" width="64" height="64" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12v7c0 1.1.9 2 2 2h4v-8H4v-1c0-4.41 3.59-8 8-8s8 3.59 8 8v1h-4v8h4c1.1 0 2-.9 2-2v-7c0-5.52-4.48-10-10-10z"/>
+                  </svg>
+                </div>
+                <h2>Discutez avec ROLLY</h2>
+                <p>Notre équipe de support est en ligne et prête à vous aider avec vos commandes, produits et questions.</p>
+                <button class="btn btn-primary" id="btn-support-start-chat" style="padding: 12px 30px; font-size: 15px; font-weight: 700; width:100%; border-radius:10px;">Démarrer la Discussion</button>
+              </div>
+            </div>
+
+            <!-- Screen 2: Create Ticket State -->
+            <div class="support-screen" id="support-screen-create" style="display:none; padding:40px; justify-content:center;">
+              <div class="support-create-card">
+                <h3>Créer une nouvelle conversation</h3>
+                <p>Veuillez préciser le sujet de votre message pour nous aider à vous répondre plus rapidement.</p>
+                <form id="support-create-ticket-form">
+                  <!-- Guest fields (shown dynamically in JS if currentUser is null) -->
+                  <div id="support-guest-fields" style="display: none; gap: 12px; margin-bottom: 12px;">
+                    <div class="form-group" style="flex: 1; margin:0;">
+                      <label for="support-guest-name">Nom Complet</label>
+                      <input type="text" id="support-guest-name" placeholder="Ex: Slimen Ben Ali" style="width: 100%; background-color: var(--bg-body); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color:#fff;" />
+                    </div>
+                    <div class="form-group" style="flex: 1; margin:0;">
+                      <label for="support-guest-email">E-mail</label>
+                      <input type="email" id="support-guest-email" placeholder="client@gmail.com" style="width: 100%; background-color: var(--bg-body); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color:#fff;" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="support-ticket-subject">Sujet du message</label>
+                    <input type="text" id="support-ticket-subject" required placeholder="Ex: Problème paiement D17, validation de compte..." style="width: 100%; background-color: var(--bg-body); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color:#fff;" />
+                  </div>
+                  <div class="form-group">
+                    <label for="support-ticket-message">Description de votre problème</label>
+                    <textarea id="support-ticket-message" required rows="5" placeholder="Décrivez en détail ce dont vous avez besoin..." style="width: 100%; background-color: var(--bg-body); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px 12px; color:#fff; resize:none;"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: 700; border-radius:10px;">Créer le ticket</button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Screen 3: Live Chat View State -->
+            <div class="support-screen" id="support-screen-chat" style="display:none;">
+              <div class="support-chat-header">
+                <div class="support-chat-header-details">
+                  <h3 id="support-chat-ticket-id" style="margin:0; font-size:16px;">Ticket #TCK-XXXXXX</h3>
+                  <p id="support-chat-ticket-subject" style="margin:2px 0 0 0; font-size:12px; color:var(--text-muted);">Sujet du ticket</p>
+                </div>
+                <div class="support-chat-header-status" id="support-chat-ticket-status">
+                  <!-- Status Badge -->
+                </div>
+              </div>
+
+              <div class="support-chat-messages-body" id="support-chat-messages-box">
+                <!-- Chat bubbles -->
+              </div>
+
+              <div class="support-chat-footer">
+                <form id="support-chat-input-form">
+                  <input type="hidden" id="support-chat-active-ticket-id" />
+                  <div class="support-chat-input-wrapper">
+                    <input type="text" id="support-chat-message-text" placeholder="Écrivez votre message..." required autocomplete="off" />
+                    <button type="submit" class="support-send-btn" aria-label="Envoyer">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+                <div class="support-chat-resolved-banner" id="support-chat-resolved-banner" style="display: none;">
+                  <span>🔒 Ce ticket a été marqué comme résolu.</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
