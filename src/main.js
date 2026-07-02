@@ -2694,11 +2694,13 @@ function setupEventListeners() {
 
   // Contact Page form simulated submit
   const contactForm = document.getElementById("contact-form");
-  contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    contactForm.reset();
-    showToast("Votre message a bien été envoyé ! Nous vous répondrons sous peu. ✉️");
-  });
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      contactForm.reset();
+      showToast("Votre message a bien été envoyé ! Nous vous répondrons sous peu. ✉️");
+    });
+  }
 
   // Client orders dashboard tab selectors
   document.querySelectorAll(".order-tab-btn").forEach(btn => {
