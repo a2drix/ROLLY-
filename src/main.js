@@ -4816,3 +4816,4 @@ function completeOrderWithDetails(orderId, dateStr, method, voucherCode) {
 
   showToast("Félicitations ! Commande livrée automatiquement. 🎉");
 }
+// Trigger Vercel Redeployment with Upstash linked
