@@ -2,13 +2,7 @@
 const KV_URL = process.env.KV_REST_API_URL;
 const KV_TOKEN = process.env.KV_REST_API_TOKEN;
 
-// Local in-memory cache database for offline/local simulation fallback
-let memoryDB = {
-  rolly_products: null,
-  rolly_orders: null,
-  rolly_users: null,
-  rolly_tickets: null
-};
+export const isDbConnected = (KV_URL && KV_TOKEN) ? true : false;
 
 // Generic CORS response helper headers
 export function setCorsHeaders(res) {
@@ -21,9 +15,9 @@ export function setCorsHeaders(res) {
   );
 }
 
-// Write a key to the cloud KV database or local memory cache
+// Write a key to the cloud KV database
 export async function dbSet(key, value) {
-  if (KV_URL && KV_TOKEN) {
+  if (isDbConnected) {
     try {
       const res = await fetch(`${KV_URL}/`, {
         method: 'POST',
@@ -36,17 +30,15 @@ export async function dbSet(key, value) {
       const data = await res.json();
       return data;
     } catch (e) {
-      console.error("Vercel KV Set Error, falling back to memory:", e);
+      console.error("Vercel KV Set Error:", e);
     }
   }
-  
-  memoryDB[key] = value;
-  return { result: "OK", source: "memory" };
+  return { result: "disconnected" };
 }
 
-// Read a key from the cloud KV database or local memory cache
+// Read a key from the cloud KV database
 export async function dbGet(key) {
-  if (KV_URL && KV_TOKEN) {
+  if (isDbConnected) {
     try {
       const res = await fetch(`${KV_URL}/get/${key}`, {
         headers: {
@@ -58,9 +50,8 @@ export async function dbGet(key) {
         return JSON.parse(data.result);
       }
     } catch (e) {
-      console.error("Vercel KV Get Error, falling back to memory:", e);
+      console.error("Vercel KV Get Error:", e);
     }
   }
-
-  return memoryDB[key] || null;
+  return null;
 }

@@ -1550,6 +1550,7 @@ let priceSliderMax = 9999; // Extended max price limit for high end games
 let checkoutPaymentMethod = "ooredoo";
 let checkoutStep = 1;
 let simulatedOTP = "";
+let isCloudDbConnected = true;
 
 // Initialize App safely with try-catch blocks for robust lifecycle execution
 document.addEventListener("DOMContentLoaded", async () => {
@@ -1718,6 +1719,10 @@ async function loadDatabase() {
     const res = await fetch("/api/products");
     if (!res.ok) throw new Error();
     const data = await res.json();
+    if (data && data.error === "database_disconnected") {
+      isCloudDbConnected = false;
+      throw new Error();
+    }
     if (data && data.length > 0) {
       products = data;
     } else {
@@ -1725,6 +1730,7 @@ async function loadDatabase() {
       await saveProductsToCloud();
     }
   } catch (e) {
+    isCloudDbConnected = false;
     console.warn("Fallback to local products cache.");
     const local = localStorage.getItem("rolly_products");
     products = local ? JSON.parse(local) : [...DEFAULT_PRODUCTS];
@@ -1771,6 +1777,7 @@ async function loadDatabase() {
       await saveOrdersToCloud();
     }
   } catch (e) {
+    isCloudDbConnected = false;
     console.warn("Fallback to local orders cache.");
     const local = localStorage.getItem("rolly_orders");
     orders = local ? JSON.parse(local) : [...DEFAULT_ORDERS];
@@ -1808,6 +1815,7 @@ async function loadDatabase() {
       await saveUsersToCloud();
     }
   } catch (e) {
+    isCloudDbConnected = false;
     console.warn("Fallback to local users cache.");
     const local = localStorage.getItem("rolly_users");
     users = local ? JSON.parse(local) : [];
@@ -1853,6 +1861,7 @@ async function loadDatabase() {
       await saveTicketsToCloud();
     }
   } catch (e) {
+    isCloudDbConnected = false;
     console.warn("Fallback to local tickets cache.");
     const local = localStorage.getItem("rolly_tickets");
     tickets = local ? JSON.parse(local) : [];
@@ -1916,6 +1925,10 @@ async function loadDatabase() {
 
 // Setup Page Elements
 function setupUI() {
+  const warningBanner = document.getElementById("admin-db-warning-banner");
+  if (warningBanner) {
+    warningBanner.style.display = isCloudDbConnected ? "none" : "flex";
+  }
   renderHeroCarousel();
   renderCategoryMarquee();
   renderSidebarTrending();

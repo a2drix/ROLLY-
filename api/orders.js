@@ -1,4 +1,4 @@
-import { dbGet, dbSet, setCorsHeaders } from './db.js';
+import { dbGet, dbSet, setCorsHeaders, isDbConnected } from './db.js';
 
 export default async function handler(req, res) {
   setCorsHeaders(res);
@@ -7,20 +7,24 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
+  if (!isDbConnected) {
+    return res.status(503).json({ error: 'database_disconnected' });
+  }
+
   try {
     if (req.method === 'GET') {
-      const orders = await dbGet('rolly_orders');
-      return res.status(200).json(orders || []);
+      const data = await dbGet('rolly_orders');
+      return res.status(200).json(data || []);
     }
 
     if (req.method === 'POST' || req.method === 'PUT') {
-      const updatedOrders = req.body;
-      if (!Array.isArray(updatedOrders)) {
-        return res.status(400).json({ error: 'Body must be an array of orders' });
+      const updatedData = req.body;
+      if (!Array.isArray(updatedData)) {
+        return res.status(400).json({ error: 'Body must be an array' });
       }
 
-      await dbSet('rolly_orders', updatedOrders);
-      return res.status(200).json({ success: true, count: updatedOrders.length });
+      await dbSet('rolly_orders', updatedData);
+      return res.status(200).json({ success: true, count: updatedData.length });
     }
 
     return res.status(405).json({ error: 'Method not allowed' });
