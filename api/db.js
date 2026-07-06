@@ -1,6 +1,6 @@
-// Server-side cloud database helper connecting to Vercel KV (Redis) REST API
-const KV_URL = process.env.KV_REST_API_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN;
+// Server-side cloud database helper connecting to Vercel KV (Redis) or Upstash Redis REST API
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 
 export const isDbConnected = (KV_URL && KV_TOKEN) ? true : false;
 
@@ -30,7 +30,7 @@ export async function dbSet(key, value) {
       const data = await res.json();
       return data;
     } catch (e) {
-      console.error("Vercel KV Set Error:", e);
+      console.error("Vercel KV/Upstash Set Error:", e);
     }
   }
   return { result: "disconnected" };
@@ -50,7 +50,7 @@ export async function dbGet(key) {
         return JSON.parse(data.result);
       }
     } catch (e) {
-      console.error("Vercel KV Get Error:", e);
+      console.error("Vercel KV/Upstash Get Error:", e);
     }
   }
   return null;
