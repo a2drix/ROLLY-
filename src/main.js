@@ -2153,6 +2153,10 @@ function setupEventListeners() {
   const newChatBtn = document.getElementById("btn-support-new-chat");
   if (newChatBtn) {
     newChatBtn.addEventListener("click", () => {
+      localStorage.removeItem("rolly_last_active_ticket_id");
+      document.querySelectorAll(".support-ticket-item").forEach(item => {
+        item.classList.remove("active");
+      });
       document.getElementById("support-screen-welcome").style.display = "none";
       document.getElementById("support-screen-chat").style.display = "none";
       
@@ -3165,6 +3169,37 @@ function switchView(viewId) {
   const targetView = document.getElementById(`view-${viewId}`);
   if (targetView) {
     targetView.classList.add("active");
+  }
+
+  // Auto-open last active or latest support ticket when entering contact view
+  if (viewId === "contact") {
+    renderClientTickets();
+    const lastActiveId = localStorage.getItem("rolly_last_active_ticket_id");
+    if (lastActiveId) {
+      const t = tickets.find(o => o.id === lastActiveId);
+      if (t) {
+        openClientTicketChat(lastActiveId);
+      }
+    } else {
+      const localGuestSession = localStorage.getItem("rolly_guest_ticket_ids");
+      let guestTicketIds = [];
+      try {
+        if (localGuestSession) guestTicketIds = JSON.parse(localGuestSession);
+      } catch(e) {}
+
+      const userTickets = tickets.filter(t => {
+        if (currentUser) {
+          return t.userId === currentUser.id || t.customerName.toLowerCase() === currentUser.username.toLowerCase();
+        } else {
+          return guestTicketIds.includes(t.id);
+        }
+      });
+
+      if (userTickets.length > 0) {
+        const latest = userTickets[userTickets.length - 1];
+        openClientTicketChat(latest.id);
+      }
+    }
   }
 
   const headerSearch = document.querySelector(".search-container");
@@ -4495,6 +4530,7 @@ function openAdminTicketChat(ticketId) {
 function openClientTicketChat(ticketId) {
   const t = tickets.find(o => o.id === ticketId);
   if (t) {
+    localStorage.setItem("rolly_last_active_ticket_id", t.id);
     document.getElementById("support-screen-welcome").style.display = "none";
     document.getElementById("support-screen-create").style.display = "none";
     document.getElementById("support-screen-chat").style.display = "flex";
