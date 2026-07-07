@@ -627,12 +627,12 @@
           <!-- Left Column: Sidebar Menu -->
           <aside class="client-dashboard-sidebar">
             <div class="client-sidebar-profile">
-              <div class="client-sidebar-avatar-wrapper">
+              <div class="client-sidebar-avatar-wrapper" id="client-sidebar-avatar-container">
+                <img id="client-sidebar-avatar-img" src="" alt="Profile" style="width:100%;height:100%;border-radius:50%;object-fit:cover;display:none;">
                 <div class="client-sidebar-avatar" id="client-avatar-initials">AD</div>
               </div>
               <div class="client-sidebar-profile-info">
                 <h4 id="client-sidebar-username">adrix</h4>
-                <span class="client-sidebar-rank" id="client-sidebar-rank-badge">Unranked 👤</span>
               </div>
             </div>
             
@@ -645,9 +645,6 @@
               </button>
               <button class="client-sidebar-nav-item" data-tab="wallet">
                 <span class="nav-icon">💳</span> Mon Portefeuille
-              </button>
-              <button class="client-sidebar-nav-item" data-tab="rewards">
-                <span class="nav-icon">🎁</span> Récompenses
               </button>
               <button class="client-sidebar-nav-item" data-tab="tickets">
                 <span class="nav-icon">💬</span> Tickets Support
@@ -666,19 +663,14 @@
               <!-- Profile Banner Card -->
               <div class="client-profile-banner">
                 <div class="banner-profile-info">
-                  <div class="banner-avatar-large" id="banner-avatar-large">AD</div>
+                  <div class="banner-avatar-large" id="banner-avatar-container" style="cursor:pointer;position:relative;" title="Changer la photo de profil">
+                    <img id="banner-avatar-img" src="" alt="Profile" style="width:100%;height:100%;border-radius:50%;object-fit:cover;display:none;position:absolute;top:0;left:0;">
+                    <div id="banner-avatar-large" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">AD</div>
+                    <input type="file" id="profile-picture-upload" accept="image/*" style="display:none;">
+                  </div>
                   <div class="banner-text-details">
                     <h2 id="banner-username">adrix</h2>
                     <p id="banner-joined-date">Membre depuis Juillet 2026</p>
-                  </div>
-                </div>
-                <div class="banner-xp-progress-wrapper">
-                  <div class="xp-progress-header">
-                    <span id="client-xp-label">0 XP</span>
-                    <span id="client-next-rank-label">50 XP to Bronze</span>
-                  </div>
-                  <div class="xp-progress-bar">
-                    <div class="xp-progress-line" id="client-xp-progress-line" style="width: 0%;"></div>
                   </div>
                 </div>
               </div>
@@ -692,13 +684,7 @@
                     <p>Solde Portefeuille</p>
                   </div>
                 </div>
-                <div class="client-stat-mini-card">
-                  <span class="stat-icon">⚡</span>
-                  <div class="stat-card-details">
-                    <h3 id="stat-total-xp">0</h3>
-                    <p>Total XP</p>
-                  </div>
-                </div>
+
                 <div class="client-stat-mini-card">
                   <span class="stat-icon">📦</span>
                   <div class="stat-card-details">
@@ -737,17 +723,6 @@
                 </div>
               </div>
 
-              <!-- Daily Reward Bottom Banner -->
-              <div class="daily-reward-banner">
-                <div class="reward-banner-left">
-                  <span class="reward-gift-icon">🎁</span>
-                  <div class="reward-banner-text">
-                    <h4>Votre récompense quotidienne est prête !</h4>
-                    <p id="reward-banner-streak-label">Série : 🔥 0 jour(s). Récupérez-la pour augmenter vos gains.</p>
-                  </div>
-                </div>
-                <button class="btn btn-primary" id="btn-claim-daily-reward" style="box-shadow: 0 4px 15px rgba(230,0,0,0.4);">Réclamer توا 🏆</button>
-              </div>
             </div>
 
             <!-- Subview: Orders List -->
@@ -824,43 +799,7 @@
               </div>
             </div>
 
-            <!-- Subview: Rewards -->
-            <div class="client-subview" id="client-subview-rewards">
-              <div class="rewards-subview-content">
-                <div class="rewards-banner-header">
-                  <span class="rewards-emoji">🏆</span>
-                  <h2>Récompenses & Rangs ROLLY</h2>
-                  <p>Augmentez votre rang d'acheteur pour débloquer des promotions et des cadeaux uniques.</p>
-                </div>
-                
-                <div class="rewards-ranks-grid">
-                  <div class="rank-card-premium unranked">
-                    <span class="rank-icon-badge">👤</span>
-                    <h4>Unranked</h4>
-                    <p>De 0 à 50 XP</p>
-                    <span class="rank-perk-badge">Aucun bonus</span>
-                  </div>
-                  <div class="rank-card-premium bronze">
-                    <span class="rank-icon-badge">🥉</span>
-                    <h4>Bronze</h4>
-                    <p>De 50 à 200 XP</p>
-                    <span class="rank-perk-badge">1% de réduction</span>
-                  </div>
-                  <div class="rank-card-premium silver">
-                    <span class="rank-icon-badge">🥈</span>
-                    <h4>Silver</h4>
-                    <p>De 200 à 500 XP</p>
-                    <span class="rank-perk-badge">3% de réduction</span>
-                  </div>
-                  <div class="rank-card-premium gold">
-                    <span class="rank-icon-badge">🥇</span>
-                    <h4>Gold</h4>
-                    <p>De 500+ XP</p>
-                    <span class="rank-perk-badge">5% de réduction + Support Prioritaire</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+
 
           </div>
         </div>

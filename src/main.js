@@ -3163,28 +3163,7 @@ function setupEventListeners() {
     });
   }
 
-  // 3. Claim Daily Reward Button click
-  const claimRewardBtn = document.getElementById("btn-claim-daily-reward");
-  if (claimRewardBtn) {
-    claimRewardBtn.addEventListener("click", () => {
-      const todayStr = new Date().toDateString();
-      if (currentUser && currentUser.lastClaimedReward !== todayStr) {
-        currentUser.xp += 10;
-        currentUser.streak += 1;
-        currentUser.lastClaimedReward = todayStr;
-        
-        // Add activity feed item
-        currentUser.activityFeed.push({
-          text: `Récompense quotidienne réclamée (+10 XP) 🎁`,
-          time: "À l'instant"
-        });
 
-        saveUsersToCloud();
-        showToast("Félicitations ! Récompense de 10 XP réclamée avec succès ! 🎉");
-        renderClientDashboardSummary();
-      }
-    });
-  }
 
   // 4. Wallet topup form submit
   const walletForm = document.getElementById("wallet-topup-form");
@@ -4338,8 +4317,6 @@ function switchClientDashboardTab(tabId) {
     renderClientOrders();
   } else if (tabId === "wallet") {
     renderClientWallet();
-  } else if (tabId === "rewards") {
-    renderClientRewards();
   } else if (tabId === "tickets") {
     // Automatically redirect to support page view
     switchView("contact");
@@ -4369,67 +4346,76 @@ function renderClientDashboardSummary() {
   // 1. Sidebar details
   const initials = currentUser.username.slice(0, 2).toUpperCase();
   const avatarInitialsEl = document.getElementById("client-avatar-initials");
-  if (avatarInitialsEl) avatarInitialsEl.innerText = initials;
+  const avatarImgEl = document.getElementById("client-sidebar-avatar-img");
+  
+  if (currentUser.avatar) {
+    if (avatarImgEl) {
+      avatarImgEl.src = currentUser.avatar;
+      avatarImgEl.style.display = "block";
+    }
+    if (avatarInitialsEl) avatarInitialsEl.style.display = "none";
+  } else {
+    if (avatarImgEl) avatarImgEl.style.display = "none";
+    if (avatarInitialsEl) {
+      avatarInitialsEl.innerText = initials;
+      avatarInitialsEl.style.display = "flex";
+    }
+  }
   
   const sidebarUsernameEl = document.getElementById("client-sidebar-username");
   if (sidebarUsernameEl) sidebarUsernameEl.innerText = currentUser.username;
   
-  // Rank calculations
-  let rankName = "Unranked 👤";
-  let nextRankName = "Bronze 🥉";
-  let targetXP = 50;
-  let prevXP = 0;
-  
-  if (currentUser.xp >= 500) {
-    rankName = "Gold 🥇";
-    nextRankName = "Max Level 🏆";
-    targetXP = 500;
-    prevXP = 500;
-  } else if (currentUser.xp >= 200) {
-    rankName = "Silver 🥈";
-    nextRankName = "Gold 🥇";
-    targetXP = 500;
-    prevXP = 200;
-  } else if (currentUser.xp >= 50) {
-    rankName = "Bronze 🥉";
-    nextRankName = "Silver 🥈";
-    targetXP = 200;
-    prevXP = 50;
-  }
-
-  const rankBadgeEl = document.getElementById("client-sidebar-rank-badge");
-  if (rankBadgeEl) rankBadgeEl.innerText = rankName;
-  
   // 2. Banner details
-  const avatarLargeEl = document.getElementById("banner-avatar-large");
-  if (avatarLargeEl) avatarLargeEl.innerText = initials;
+  const bannerAvatarInitialsEl = document.getElementById("banner-avatar-large");
+  const bannerAvatarImgEl = document.getElementById("banner-avatar-img");
+  
+  if (currentUser.avatar) {
+    if (bannerAvatarImgEl) {
+      bannerAvatarImgEl.src = currentUser.avatar;
+      bannerAvatarImgEl.style.display = "block";
+    }
+    if (bannerAvatarInitialsEl) bannerAvatarInitialsEl.style.display = "none";
+  } else {
+    if (bannerAvatarImgEl) bannerAvatarImgEl.style.display = "none";
+    if (bannerAvatarInitialsEl) {
+      bannerAvatarInitialsEl.innerText = initials;
+      bannerAvatarInitialsEl.style.display = "flex";
+    }
+  }
   
   const bannerUsernameEl = document.getElementById("banner-username");
   if (bannerUsernameEl) bannerUsernameEl.innerText = currentUser.username;
   
-  const xpLabelEl = document.getElementById("client-xp-label");
-  if (xpLabelEl) xpLabelEl.innerText = `${currentUser.xp} XP`;
+  // Setup file upload listener
+  const fileInput = document.getElementById("profile-picture-upload");
+  const bannerAvatarContainer = document.getElementById("banner-avatar-container");
   
-  const nextRankLabelEl = document.getElementById("client-next-rank-label");
-  const progressLineEl = document.getElementById("client-xp-progress-line");
-  
-  if (rankName === "Gold 🥇") {
-    if (nextRankLabelEl) nextRankLabelEl.innerText = "Rang Maximum Atteint !";
-    if (progressLineEl) progressLineEl.style.width = "100%";
-  } else {
-    const xpNeeded = targetXP - currentUser.xp;
-    if (nextRankLabelEl) nextRankLabelEl.innerText = `${xpNeeded} XP pour le rang ${nextRankName}`;
-    const percent = ((currentUser.xp - prevXP) / (targetXP - prevXP)) * 100;
-    if (progressLineEl) progressLineEl.style.width = `${Math.max(0, Math.min(100, percent))}%`;
+  if (bannerAvatarContainer && fileInput && !bannerAvatarContainer.hasAttribute("data-upload-bound")) {
+    bannerAvatarContainer.setAttribute("data-upload-bound", "true");
+    bannerAvatarContainer.addEventListener("click", () => {
+      fileInput.click();
+    });
+    
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          const base64String = event.target.result;
+          currentUser.avatar = base64String;
+          saveCurrentUser();
+          renderClientDashboardSummary();
+          showToast("Photo de profil mise à jour avec succès ! ✅");
+        };
+        reader.readAsDataURL(file);
+      }
+    });
   }
-
+  
   // 3. Stats details
   const statWalletEl = document.getElementById("stat-wallet-balance");
   if (statWalletEl) statWalletEl.innerText = `${currentUser.walletBalance.toFixed(3)} DT`;
   
-  const statXpEl = document.getElementById("stat-total-xp");
-  if (statXpEl) statXpEl.innerText = currentUser.xp;
-
   const userOrdersCount = orders.filter(o => o.userId === currentUser.id).length;
   const statOrdersEl = document.getElementById("stat-total-orders");
   if (statOrdersEl) statOrdersEl.innerText = userOrdersCount;
@@ -4500,31 +4486,7 @@ function renderClientDashboardSummary() {
     }).join("");
   }
 
-  // 6. Daily reward status check
-  const claimBtn = document.getElementById("btn-claim-daily-reward");
-  const streakLbl = document.getElementById("reward-banner-streak-label");
-  if (streakLbl) streakLbl.innerText = `Série : 🔥 ${currentUser.streak} jour(s). Récupérez-la pour augmenter vos gains.`;
 
-  if (claimBtn) {
-    const todayStr = new Date().toDateString();
-    if (currentUser.lastClaimedReward === todayStr) {
-      claimBtn.innerText = "Réclamé aujourd'hui 🏆";
-      claimBtn.disabled = true;
-      claimBtn.style.background = "var(--bg-secondary)";
-      claimBtn.style.borderColor = "var(--border-color)";
-      claimBtn.style.color = "var(--text-muted)";
-      claimBtn.style.boxShadow = "none";
-      claimBtn.style.cursor = "default";
-    } else {
-      claimBtn.innerText = "Réclamer توا 🏆";
-      claimBtn.disabled = false;
-      claimBtn.style.background = "";
-      claimBtn.style.borderColor = "";
-      claimBtn.style.color = "";
-      claimBtn.style.boxShadow = "";
-      claimBtn.style.cursor = "pointer";
-    }
-  }
 }
 
 function renderClientWallet() {
@@ -4536,26 +4498,7 @@ function renderClientWallet() {
   if (usernameEl) usernameEl.innerText = currentUser.username.toUpperCase();
 }
 
-function renderClientRewards() {
-  if (!currentUser) return;
-  // Highlights current rank card
-  const cards = document.querySelectorAll(".rank-card-premium");
-  cards.forEach(c => {
-    c.style.background = "rgba(255, 255, 255, 0.01)";
-    c.style.borderColor = "var(--border-color)";
-  });
 
-  let activeClass = "unranked";
-  if (currentUser.xp >= 500) activeClass = "gold";
-  else if (currentUser.xp >= 200) activeClass = "silver";
-  else if (currentUser.xp >= 50) activeClass = "bronze";
-
-  const targetCard = document.querySelector(`.rank-card-premium.${activeClass}`);
-  if (targetCard) {
-    targetCard.style.background = "rgba(230, 0, 0, 0.08)";
-    targetCard.style.borderColor = "var(--primary)";
-  }
-}
 
 // 12. Client orders list filter renderer
 function renderClientOrders() {
