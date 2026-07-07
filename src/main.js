@@ -161,7 +161,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Design anything like a pro. Gain access to 100M+ premium photos, videos, and fonts. Use Magic Studio AI to resize design...",
     "themeColor": "#10b981",
-    "imageUrl": "https://cegepgranby.ca/wp-content/uploads/2022/07/entete-sae-canva-pro.jpg",
+    "imageUrl": "/canva.png",
     "subProducts": [
       {
         "title": "Canva Pro",
