@@ -3987,14 +3987,14 @@ function completeOrderSimulation() {
   const itemsSummary = cart.length > 0 ? cart.map(item => `${item.product.name} (x${item.quantity}) [Info: ${item.playerInfo}]`).join(", ") : "Aucun article";
 
   // Map default status & stepper steps for new orders
-  let initialStatus = "verify"; // verify payment by default for post/binance manual declares
+  let initialStatus = "verify"; // verify payment by default
   let initialStep = 2; // Paid/Declared step
   let statusDesc = "PaymentDeclared. Awaiting payment validation review.";
 
   if (checkoutPaymentMethod === "ooredoo") {
-    initialStatus = "completed"; // instant complete for direct mobile balance OTP
-    initialStep = 5; // Completed step
-    statusDesc = "Order completed. Instant recharge voucher key generated.";
+    initialStatus = "verify"; 
+    initialStep = 2; 
+    statusDesc = "Payment OTP Submitted. Awaiting payment validation review.";
   }
 
   const orderTimeStr = new Date().toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true, day: '2-digit', month: 'short', year: 'numeric' });
@@ -4010,7 +4010,7 @@ function completeOrderSimulation() {
     date: orderTimeStr,
     playerInfo: (cart.length > 0 && cart[0].playerInfo) ? cart[0].playerInfo : "",
     step: initialStep,
-    deliveredData: checkoutPaymentMethod === "ooredoo" ? "Recharge Flexi: 22123456 / Code: flexi-ok" : "",
+    deliveredData: "",
     timeline: [
       { time: orderTimeStr, text: statusDesc },
       { time: orderTimeStr, text: "Order placed and pending for verification." }
