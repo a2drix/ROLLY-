@@ -3140,6 +3140,92 @@ function setupEventListeners() {
       }
     });
   });
+
+  // ==========================================================
+  // PHASE 14: CLIENT PREMIUM DASHBOARD INTERACTIONS
+  // ==========================================================
+
+  // 1. Sidebar nav tabs click bindings
+  document.querySelectorAll(".client-sidebar-nav-item").forEach(item => {
+    if (!item.classList.contains("logout")) {
+      item.addEventListener("click", () => {
+        const tabId = item.getAttribute("data-tab");
+        switchClientDashboardTab(tabId);
+      });
+    }
+  });
+
+  // 2. Widget "Voir tout" button
+  const switchOrdersBtn = document.getElementById("btn-switch-tab-orders");
+  if (switchOrdersBtn) {
+    switchOrdersBtn.addEventListener("click", () => {
+      switchClientDashboardTab("orders");
+    });
+  }
+
+  // 3. Claim Daily Reward Button click
+  const claimRewardBtn = document.getElementById("btn-claim-daily-reward");
+  if (claimRewardBtn) {
+    claimRewardBtn.addEventListener("click", () => {
+      const todayStr = new Date().toDateString();
+      if (currentUser && currentUser.lastClaimedReward !== todayStr) {
+        currentUser.xp += 10;
+        currentUser.streak += 1;
+        currentUser.lastClaimedReward = todayStr;
+        
+        // Add activity feed item
+        currentUser.activityFeed.push({
+          text: `Récompense quotidienne réclamée (+10 XP) 🎁`,
+          time: "À l'instant"
+        });
+
+        saveUsersToCloud();
+        showToast("Félicitations ! Récompense de 10 XP réclamée avec succès ! 🎉");
+        renderClientDashboardSummary();
+      }
+    });
+  }
+
+  // 4. Wallet topup form submit
+  const walletForm = document.getElementById("wallet-topup-form");
+  if (walletForm) {
+    walletForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const amount = parseFloat(document.getElementById("topup-amount").value);
+      const method = document.getElementById("topup-method").value;
+      
+      let methodLabel = "D17";
+      if (method === "postal") methodLabel = "Virement Postal";
+      if (method === "ooredoo") methodLabel = "Solde Ooredoo";
+
+      if (currentUser && amount > 0) {
+        currentUser.walletBalance += amount;
+        currentUser.xp += Math.floor(amount * 1.5); // Add XP for wallet deposits!
+        
+        currentUser.activityFeed.push({
+          text: `Portefeuille rechargé de ${amount.toFixed(3)} DT via ${methodLabel} 💳`,
+          time: "À l'instant"
+        });
+
+        saveUsersToCloud();
+        showToast(`Dépôt de ${amount.toFixed(3)} DT effectué avec succès ! 🚀`);
+        
+        // Reset form
+        walletForm.reset();
+        
+        // Redirect back to dashboard to see new balance
+        switchClientDashboardTab("dashboard");
+      }
+    });
+  }
+
+  // 5. Logout inside client dashboard sidebar
+  const clientLogoutBtn = document.getElementById("btn-client-dashboard-logout");
+  if (clientLogoutBtn) {
+    clientLogoutBtn.addEventListener("click", () => {
+      logoutClient();
+    });
+  }
 }
 
 // Router switcher logic
@@ -3178,6 +3264,10 @@ function switchView(viewId) {
   const targetView = document.getElementById(`view-${viewId}`);
   if (targetView) {
     targetView.classList.add("active");
+  }
+
+  if (viewId === "orders") {
+    renderClientDashboard();
   }
 
   // Auto-open last active or latest support ticket when entering contact view
@@ -4220,6 +4310,251 @@ function showToast(message) {
   setTimeout(() => {
     toast.classList.remove("active");
   }, 4000);
+}
+
+// Premium Client Dashboard Subview Switching
+function switchClientDashboardTab(tabId) {
+  // Toggle active subviews
+  document.querySelectorAll(".client-subview").forEach(view => {
+    view.classList.remove("active");
+  });
+  const targetView = document.getElementById(`client-subview-${tabId}`);
+  if (targetView) {
+    targetView.classList.add("active");
+  }
+
+  // Toggle active sidebar navigation items
+  document.querySelectorAll(".client-sidebar-nav-item").forEach(item => {
+    item.classList.remove("active");
+    if (item.getAttribute("data-tab") === tabId) {
+      item.classList.add("active");
+    }
+  });
+
+  // Handle specific tab loading triggers
+  if (tabId === "dashboard") {
+    renderClientDashboardSummary();
+  } else if (tabId === "orders") {
+    renderClientOrders();
+  } else if (tabId === "wallet") {
+    renderClientWallet();
+  } else if (tabId === "rewards") {
+    renderClientRewards();
+  } else if (tabId === "tickets") {
+    // Automatically redirect to support page view
+    switchView("contact");
+  }
+}
+
+// Master Dashboard Initialization
+function renderClientDashboard() {
+  if (!currentUser) return;
+
+  // Initialize simulated user dashboard stats safely if undefined
+  currentUser.walletBalance = currentUser.walletBalance !== undefined ? parseFloat(currentUser.walletBalance) : 0.000;
+  currentUser.xp = currentUser.xp !== undefined ? parseInt(currentUser.xp) : 0;
+  currentUser.streak = currentUser.streak !== undefined ? parseInt(currentUser.streak) : 0;
+  currentUser.lastClaimedReward = currentUser.lastClaimedReward || null;
+  currentUser.activityFeed = currentUser.activityFeed || [
+    { text: "Bienvenue sur ROLLY Store ! 🛒", time: "Aujourd'hui" }
+  ];
+
+  // Set default active tab
+  switchClientDashboardTab("dashboard");
+}
+
+function renderClientDashboardSummary() {
+  if (!currentUser) return;
+
+  // 1. Sidebar details
+  const initials = currentUser.username.slice(0, 2).toUpperCase();
+  const avatarInitialsEl = document.getElementById("client-avatar-initials");
+  if (avatarInitialsEl) avatarInitialsEl.innerText = initials;
+  
+  const sidebarUsernameEl = document.getElementById("client-sidebar-username");
+  if (sidebarUsernameEl) sidebarUsernameEl.innerText = currentUser.username;
+  
+  // Rank calculations
+  let rankName = "Unranked 👤";
+  let nextRankName = "Bronze 🥉";
+  let targetXP = 50;
+  let prevXP = 0;
+  
+  if (currentUser.xp >= 500) {
+    rankName = "Gold 🥇";
+    nextRankName = "Max Level 🏆";
+    targetXP = 500;
+    prevXP = 500;
+  } else if (currentUser.xp >= 200) {
+    rankName = "Silver 🥈";
+    nextRankName = "Gold 🥇";
+    targetXP = 500;
+    prevXP = 200;
+  } else if (currentUser.xp >= 50) {
+    rankName = "Bronze 🥉";
+    nextRankName = "Silver 🥈";
+    targetXP = 200;
+    prevXP = 50;
+  }
+
+  const rankBadgeEl = document.getElementById("client-sidebar-rank-badge");
+  if (rankBadgeEl) rankBadgeEl.innerText = rankName;
+  
+  // 2. Banner details
+  const avatarLargeEl = document.getElementById("banner-avatar-large");
+  if (avatarLargeEl) avatarLargeEl.innerText = initials;
+  
+  const bannerUsernameEl = document.getElementById("banner-username");
+  if (bannerUsernameEl) bannerUsernameEl.innerText = currentUser.username;
+  
+  const xpLabelEl = document.getElementById("client-xp-label");
+  if (xpLabelEl) xpLabelEl.innerText = `${currentUser.xp} XP`;
+  
+  const nextRankLabelEl = document.getElementById("client-next-rank-label");
+  const progressLineEl = document.getElementById("client-xp-progress-line");
+  
+  if (rankName === "Gold 🥇") {
+    if (nextRankLabelEl) nextRankLabelEl.innerText = "Rang Maximum Atteint !";
+    if (progressLineEl) progressLineEl.style.width = "100%";
+  } else {
+    const xpNeeded = targetXP - currentUser.xp;
+    if (nextRankLabelEl) nextRankLabelEl.innerText = `${xpNeeded} XP pour le rang ${nextRankName}`;
+    const percent = ((currentUser.xp - prevXP) / (targetXP - prevXP)) * 100;
+    if (progressLineEl) progressLineEl.style.width = `${Math.max(0, Math.min(100, percent))}%`;
+  }
+
+  // 3. Stats details
+  const statWalletEl = document.getElementById("stat-wallet-balance");
+  if (statWalletEl) statWalletEl.innerText = `${currentUser.walletBalance.toFixed(3)} DT`;
+  
+  const statXpEl = document.getElementById("stat-total-xp");
+  if (statXpEl) statXpEl.innerText = currentUser.xp;
+
+  const userOrdersCount = orders.filter(o => o.userId === currentUser.id).length;
+  const statOrdersEl = document.getElementById("stat-total-orders");
+  if (statOrdersEl) statOrdersEl.innerText = userOrdersCount;
+
+  const userTicketsCount = tickets.filter(t => t.userId === currentUser.id || t.customerName.toLowerCase() === currentUser.username.toLowerCase()).length;
+  const statTicketsEl = document.getElementById("stat-total-tickets");
+  if (statTicketsEl) statTicketsEl.innerText = userTicketsCount;
+
+  // 4. Recent Purchases List (Widget)
+  const recentTable = document.getElementById("recent-purchases-widget-table");
+  if (recentTable) {
+    const userOrders = orders.filter(o => o.userId === currentUser.id);
+    if (userOrders.length === 0) {
+      recentTable.innerHTML = `<div style="text-align: center; color: var(--text-muted); font-size: 13px; padding: 20px 0;">Aucune commande récente. <a href="#" onclick="switchView('products')" style="color: var(--primary); text-decoration: none;">Acheter maintenant &rarr;</a></div>`;
+    } else {
+      const recent = [...userOrders].reverse().slice(0, 3);
+      recentTable.innerHTML = `
+        <table class="orders-table" style="font-size: 12px; width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-color); text-align: left;">
+              <th style="padding: 8px 0;">N° Commande</th>
+              <th style="padding: 8px 0;">Articles</th>
+              <th style="padding: 8px 0;">Statut</th>
+              <th style="padding: 8px 0;">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${recent.map(o => {
+              let statusBadge = `<span class="order-status-badge pending">En cours</span>`;
+              if (o.status === "completed") statusBadge = `<span class="order-status-badge completed">Livrée</span>`;
+              if (o.status === "cancelled") statusBadge = `<span class="order-status-badge" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border-radius: 4px; padding: 2px 6px;">Annulée</span>`;
+              return `
+                <tr style="cursor: pointer; border-bottom: 1px solid rgba(255,255,255,0.02);" data-order-id="${o.id}" class="widget-row-item">
+                  <td style="padding: 8px 0;"><strong>${o.id.substring(0, 8)}...</strong></td>
+                  <td style="padding: 8px 0;">${o.items.length > 20 ? o.items.substring(0, 18) + '...' : o.items}</td>
+                  <td style="padding: 8px 0;">${statusBadge}</td>
+                  <td style="padding: 8px 0;">${o.total.toFixed(3)} DT</td>
+                </tr>
+              `;
+            }).join("")}
+          </tbody>
+        </table>
+      `;
+
+      recentTable.querySelectorAll(".widget-row-item").forEach(row => {
+        row.addEventListener("click", () => {
+          const oId = row.getAttribute("data-order-id");
+          openOrderTrackingView(oId);
+        });
+      });
+    }
+  }
+
+  // 5. Activity Feed List (Widget)
+  const feedContainer = document.getElementById("client-activity-feed-list");
+  if (feedContainer) {
+    const feed = currentUser.activityFeed || [];
+    feedContainer.innerHTML = [...feed].reverse().slice(0, 4).map(item => {
+      return `
+        <div class="activity-item">
+          <span class="activity-item-dot"></span>
+          <div class="activity-item-details">
+            <span style="color: #fff; font-weight: 500;">${item.text}</span>
+            <span class="activity-time-lbl">${item.time}</span>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // 6. Daily reward status check
+  const claimBtn = document.getElementById("btn-claim-daily-reward");
+  const streakLbl = document.getElementById("reward-banner-streak-label");
+  if (streakLbl) streakLbl.innerText = `Série : 🔥 ${currentUser.streak} jour(s). Récupérez-la pour augmenter vos gains.`;
+
+  if (claimBtn) {
+    const todayStr = new Date().toDateString();
+    if (currentUser.lastClaimedReward === todayStr) {
+      claimBtn.innerText = "Réclamé aujourd'hui 🏆";
+      claimBtn.disabled = true;
+      claimBtn.style.background = "var(--bg-secondary)";
+      claimBtn.style.borderColor = "var(--border-color)";
+      claimBtn.style.color = "var(--text-muted)";
+      claimBtn.style.boxShadow = "none";
+      claimBtn.style.cursor = "default";
+    } else {
+      claimBtn.innerText = "Réclamer توا 🏆";
+      claimBtn.disabled = false;
+      claimBtn.style.background = "";
+      claimBtn.style.borderColor = "";
+      claimBtn.style.color = "";
+      claimBtn.style.boxShadow = "";
+      claimBtn.style.cursor = "pointer";
+    }
+  }
+}
+
+function renderClientWallet() {
+  if (!currentUser) return;
+  const balanceEl = document.getElementById("wallet-premium-balance");
+  if (balanceEl) balanceEl.innerText = `${currentUser.walletBalance.toFixed(3)} DT`;
+  
+  const usernameEl = document.getElementById("wallet-username-premium");
+  if (usernameEl) usernameEl.innerText = currentUser.username.toUpperCase();
+}
+
+function renderClientRewards() {
+  if (!currentUser) return;
+  // Highlights current rank card
+  const cards = document.querySelectorAll(".rank-card-premium");
+  cards.forEach(c => {
+    c.style.background = "rgba(255, 255, 255, 0.01)";
+    c.style.borderColor = "var(--border-color)";
+  });
+
+  let activeClass = "unranked";
+  if (currentUser.xp >= 500) activeClass = "gold";
+  else if (currentUser.xp >= 200) activeClass = "silver";
+  else if (currentUser.xp >= 50) activeClass = "bronze";
+
+  const targetCard = document.querySelector(`.rank-card-premium.${activeClass}`);
+  if (targetCard) {
+    targetCard.style.background = "rgba(230, 0, 0, 0.08)";
+    targetCard.style.borderColor = "var(--primary)";
+  }
 }
 
 // 12. Client orders list filter renderer

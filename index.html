@@ -621,39 +621,247 @@
       </section>
 
       <!-- CLIENT ORDERS DASHBOARD VIEW -->
+      <!-- CLIENT ORDERS DASHBOARD VIEW -->
       <section id="view-orders" class="app-view">
-        <div class="client-orders-container">
-          <div class="client-orders-header">
-            <h2 class="section-title" style="margin-bottom: 4px;">Purchase <span>Orders</span></h2>
-            <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-secondary);">Suivez l'état de traitement de vos commandes en temps réel.</p>
-          </div>
-
-          <!-- Order Status Tabs -->
-          <div class="orders-tabs-bar">
-            <button class="order-tab-btn active" data-status="to-pay">To Pay</button>
-            <button class="order-tab-btn" data-status="verify">Verify payment</button>
-            <button class="order-tab-btn" data-status="preparing">Preparing</button>
-            <button class="order-tab-btn" data-status="delivering">Delivering</button>
-            <button class="order-tab-btn" data-status="completed">Completed</button>
-            <button class="order-tab-btn" data-status="cancelled">Cancelled</button>
-            <button class="order-tab-btn" data-status="resolution">Resolution</button>
-          </div>
-
-          <!-- Search & Filter Controls -->
-          <div class="orders-search-row">
-            <div class="orders-search-box">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); opacity: 0.4;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" id="client-orders-search" placeholder="Search order no." />
+        <div class="client-dashboard-layout">
+          <!-- Left Column: Sidebar Menu -->
+          <aside class="client-dashboard-sidebar">
+            <div class="client-sidebar-profile">
+              <div class="client-sidebar-avatar-wrapper">
+                <div class="client-sidebar-avatar" id="client-avatar-initials">AD</div>
+              </div>
+              <div class="client-sidebar-profile-info">
+                <h4 id="client-sidebar-username">adrix</h4>
+                <span class="client-sidebar-rank" id="client-sidebar-rank-badge">Unranked 👤</span>
+              </div>
             </div>
-            <div class="orders-date-box">
-              <span class="date-label">From - To</span>
-              <span class="calendar-icon">📅</span>
-            </div>
-          </div>
+            
+            <nav class="client-sidebar-nav">
+              <button class="client-sidebar-nav-item active" data-tab="dashboard">
+                <span class="nav-icon">📊</span> Tableau de bord
+              </button>
+              <button class="client-sidebar-nav-item" data-tab="orders">
+                <span class="nav-icon">📦</span> Mes Commandes
+              </button>
+              <button class="client-sidebar-nav-item" data-tab="wallet">
+                <span class="nav-icon">💳</span> Mon Portefeuille
+              </button>
+              <button class="client-sidebar-nav-item" data-tab="rewards">
+                <span class="nav-icon">🎁</span> Récompenses
+              </button>
+              <button class="client-sidebar-nav-item" data-tab="tickets">
+                <span class="nav-icon">💬</span> Tickets Support
+              </button>
+              <div class="sidebar-nav-divider"></div>
+              <button class="client-sidebar-nav-item logout" id="btn-client-dashboard-logout">
+                <span class="nav-icon">🚪</span> Déconnexion
+              </button>
+            </nav>
+          </aside>
 
-          <!-- Orders Listings Area -->
-          <div class="client-orders-list" id="client-orders-list-wrapper">
-            <!-- Dynamically loaded orders or empty state -->
+          <!-- Right Column: Main content wrapper -->
+          <div class="client-dashboard-main">
+            <!-- Subview: Dashboard Summary -->
+            <div class="client-subview active" id="client-subview-dashboard">
+              <!-- Profile Banner Card -->
+              <div class="client-profile-banner">
+                <div class="banner-profile-info">
+                  <div class="banner-avatar-large" id="banner-avatar-large">AD</div>
+                  <div class="banner-text-details">
+                    <h2 id="banner-username">adrix</h2>
+                    <p id="banner-joined-date">Membre depuis Juillet 2026</p>
+                  </div>
+                </div>
+                <div class="banner-xp-progress-wrapper">
+                  <div class="xp-progress-header">
+                    <span id="client-xp-label">0 XP</span>
+                    <span id="client-next-rank-label">50 XP to Bronze</span>
+                  </div>
+                  <div class="xp-progress-bar">
+                    <div class="xp-progress-line" id="client-xp-progress-line" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Stats Cards Row -->
+              <div class="client-stats-row">
+                <div class="client-stat-mini-card">
+                  <span class="stat-icon">💰</span>
+                  <div class="stat-card-details">
+                    <h3 id="stat-wallet-balance">0.00 TND</h3>
+                    <p>Solde Portefeuille</p>
+                  </div>
+                </div>
+                <div class="client-stat-mini-card">
+                  <span class="stat-icon">⚡</span>
+                  <div class="stat-card-details">
+                    <h3 id="stat-total-xp">0</h3>
+                    <p>Total XP</p>
+                  </div>
+                </div>
+                <div class="client-stat-mini-card">
+                  <span class="stat-icon">📦</span>
+                  <div class="stat-card-details">
+                    <h3 id="stat-total-orders">0</h3>
+                    <p>Commandes</p>
+                  </div>
+                </div>
+                <div class="client-stat-mini-card">
+                  <span class="stat-icon">💬</span>
+                  <div class="stat-card-details">
+                    <h3 id="stat-total-tickets">0</h3>
+                    <p>Tickets Support</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Two Column Widgets Grid -->
+              <div class="client-widgets-grid">
+                <!-- Recent Purchases Widget -->
+                <div class="client-widget-card recent-purchases-widget">
+                  <div class="widget-header-row">
+                    <h3>Achats récents</h3>
+                    <button class="btn-widget-all" id="btn-switch-tab-orders">Voir tout &rarr;</button>
+                  </div>
+                  <div class="widget-table-wrapper" id="recent-purchases-widget-table">
+                    <!-- Loaded dynamically via JS -->
+                  </div>
+                </div>
+
+                <!-- Activity Feed Widget -->
+                <div class="client-widget-card activity-feed-widget">
+                  <h3>Flux d'activité</h3>
+                  <div class="activity-feed-list" id="client-activity-feed-list">
+                    <!-- Loaded dynamically -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Daily Reward Bottom Banner -->
+              <div class="daily-reward-banner">
+                <div class="reward-banner-left">
+                  <span class="reward-gift-icon">🎁</span>
+                  <div class="reward-banner-text">
+                    <h4>Votre récompense quotidienne est prête !</h4>
+                    <p id="reward-banner-streak-label">Série : 🔥 0 jour(s). Récupérez-la pour augmenter vos gains.</p>
+                  </div>
+                </div>
+                <button class="btn btn-primary" id="btn-claim-daily-reward" style="box-shadow: 0 4px 15px rgba(230,0,0,0.4);">Réclamer توا 🏆</button>
+              </div>
+            </div>
+
+            <!-- Subview: Orders List -->
+            <div class="client-subview" id="client-subview-orders">
+              <div class="client-orders-header">
+                <h2 style="font-family: var(--font-primary); font-size: 24px; font-weight: 800; margin-bottom: 8px;">Mes <span>Commandes</span></h2>
+                <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-secondary);">Suivez l'état de traitement de vos commandes en temps réel.</p>
+              </div>
+
+              <!-- Order Status Tabs -->
+              <div class="orders-tabs-bar">
+                <button class="order-tab-btn active" data-status="to-pay">À payer</button>
+                <button class="order-tab-btn" data-status="verify">Vérification paiement</button>
+                <button class="order-tab-btn" data-status="preparing">En préparation</button>
+                <button class="order-tab-btn" data-status="delivering">En livraison</button>
+                <button class="order-tab-btn" data-status="completed">Complétée</button>
+                <button class="order-tab-btn" data-status="cancelled">Annulée</button>
+                <button class="order-tab-btn" data-status="resolution">Litige</button>
+              </div>
+
+              <!-- Search & Filter Controls -->
+              <div class="orders-search-row">
+                <div class="orders-search-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); opacity: 0.4;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" id="client-orders-search" placeholder="Rechercher par N° de commande..." />
+                </div>
+              </div>
+
+              <!-- Orders Listings Area -->
+              <div class="client-orders-list" id="client-orders-list-wrapper">
+                <!-- Dynamically loaded orders or empty state -->
+              </div>
+            </div>
+
+            <!-- Subview: Wallet -->
+            <div class="client-subview" id="client-subview-wallet">
+              <div class="wallet-subview-content">
+                <div class="wallet-card-premium">
+                  <div class="wallet-card-glow"></div>
+                  <div class="wallet-card-header">
+                    <h4>ROLLY WALLET</h4>
+                    <span class="wallet-card-chip"></span>
+                  </div>
+                  <div class="wallet-card-balance">
+                    <span class="balance-label">SOLDE DISPONIBLE</span>
+                    <h2 id="wallet-premium-balance">0.000 DT</h2>
+                  </div>
+                  <div class="wallet-card-footer">
+                    <span id="wallet-username-premium">ADRIX</span>
+                    <span class="wallet-card-brand">ROLLY Pay 💳</span>
+                  </div>
+                </div>
+
+                <div class="wallet-deposit-form-card">
+                  <h3>Recharger le portefeuille</h3>
+                  <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-secondary); margin-bottom: 20px;">Déposez des fonds instantanément via D17 ou virement postal.</p>
+                  
+                  <form id="wallet-topup-form" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <label for="topup-amount">Montant à recharger (DT)</label>
+                      <input type="number" id="topup-amount" min="5" step="5" value="10" required style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 12px; border-radius: 8px;" />
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <label for="topup-method">Méthode de dépôt</label>
+                      <select id="topup-method" style="background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); color: #fff; padding: 12px; border-radius: 8px; width: 100%;">
+                        <option value="d17">D17 (Transfert instantané)</option>
+                        <option value="postal">Virement Postal (Sob Flouss)</option>
+                        <option value="ooredoo">Solde Ooredoo Tunisie</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="height: 46px; font-weight: 700; box-shadow: 0 4px 15px rgba(230,0,0,0.4);">Procéder au rechargement 💳</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subview: Rewards -->
+            <div class="client-subview" id="client-subview-rewards">
+              <div class="rewards-subview-content">
+                <div class="rewards-banner-header">
+                  <span class="rewards-emoji">🏆</span>
+                  <h2>Récompenses & Rangs ROLLY</h2>
+                  <p>Augmentez votre rang d'acheteur pour débloquer des promotions et des cadeaux uniques.</p>
+                </div>
+                
+                <div class="rewards-ranks-grid">
+                  <div class="rank-card-premium unranked">
+                    <span class="rank-icon-badge">👤</span>
+                    <h4>Unranked</h4>
+                    <p>De 0 à 50 XP</p>
+                    <span class="rank-perk-badge">Aucun bonus</span>
+                  </div>
+                  <div class="rank-card-premium bronze">
+                    <span class="rank-icon-badge">🥉</span>
+                    <h4>Bronze</h4>
+                    <p>De 50 à 200 XP</p>
+                    <span class="rank-perk-badge">1% de réduction</span>
+                  </div>
+                  <div class="rank-card-premium silver">
+                    <span class="rank-icon-badge">🥈</span>
+                    <h4>Silver</h4>
+                    <p>De 200 à 500 XP</p>
+                    <span class="rank-perk-badge">3% de réduction</span>
+                  </div>
+                  <div class="rank-card-premium gold">
+                    <span class="rank-icon-badge">🥇</span>
+                    <h4>Gold</h4>
+                    <p>De 500+ XP</p>
+                    <span class="rank-perk-badge">5% de réduction + Support Prioritaire</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
