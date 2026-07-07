@@ -5042,6 +5042,22 @@ function openOrderTrackingView(orderId) {
     cardSection.style.display = "none";
   }
 
+  // Show/Hide Special Done card for completed orders
+  const completedCardEl = document.getElementById("track-completed-card");
+  if (completedCardEl) {
+    if (order.status === "completed") {
+      completedCardEl.style.display = "block";
+      const completedBtn = document.getElementById("btn-completed-view-code");
+      if (completedBtn) {
+        completedBtn.onclick = () => {
+          document.getElementById("btn-view-delivered-data").click();
+        };
+      }
+    } else {
+      completedCardEl.style.display = "none";
+    }
+  }
+
   switchView("order-tracking");
 }
 
