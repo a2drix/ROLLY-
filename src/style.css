@@ -5629,3 +5629,21 @@ body.admin-mode-active #view-admin.app-view.active {
   font-weight: 800;
   font-size: 14px;
 }
+
+/* Full Width Client Dashboard Panel */
+body.client-mode-active .app-main {
+  max-width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+body.client-mode-active .client-dashboard-layout {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  body.client-mode-active .app-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

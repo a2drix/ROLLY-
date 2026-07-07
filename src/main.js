@@ -3274,7 +3274,10 @@ function switchView(viewId) {
   }
 
   if (viewId === "orders") {
+    document.body.classList.add("client-mode-active");
     renderClientDashboard();
+  } else {
+    document.body.classList.remove("client-mode-active");
   }
 
   // Auto-open last active or latest support ticket when entering contact view
