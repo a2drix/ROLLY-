@@ -4779,14 +4779,14 @@ function completeOrderWithDetails(orderId, dateStr, method, voucherCode) {
     customer: `${methodLabel} Auto-pay`,
     method: method,
     total: cartTotal,
-    status: "completed",
+    status: "verify",
     date: dateStr,
     playerInfo: cart[0].playerInfo || "",
-    step: 5, // Instant success
-    deliveredData: `Code de recharge : ${voucherCode}`,
+    step: 2, 
+    deliveredData: "",
     timeline: [
-      { time: dateStr, text: "Livraison automatique effectuée. Code généré." },
-      { time: dateStr, text: `Paiement validé automatiquement via ${methodLabel}.` },
+      { time: dateStr, text: "Awaiting admin manual payment validation." },
+      { time: dateStr, text: `Paiement déclaré via ${methodLabel}.` },
       { time: dateStr, text: "Commande créée." }
     ]
   };
