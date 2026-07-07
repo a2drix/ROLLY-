@@ -3984,12 +3984,14 @@ function openCheckoutWizard() {
   const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
   document.getElementById("checkout-amount-summary").innerText = cartTotal.toFixed(3) + " DT";
 
+  document.getElementById("ooredoo-exact-price").innerText = cartTotal.toFixed(3) + " DT";
   document.getElementById("d17-exact-price").innerText = cartTotal.toFixed(3) + " DT";
   document.getElementById("binance-converted-price").innerText = (cartTotal * 0.32).toFixed(2) + " USDT";
 
   if (document.getElementById("pay-phone-ooredoo")) document.getElementById("pay-phone-ooredoo").value = "";
   if (document.getElementById("pay-phone-d17")) document.getElementById("pay-phone-d17").value = "";
   if (document.getElementById("pay-binance-id")) document.getElementById("pay-binance-id").value = "";
+  if (document.getElementById("pay-paypal-email")) document.getElementById("pay-paypal-email").value = "";
 
   document.querySelectorAll(".otp-char").forEach(i => i.value = "");
 
@@ -4018,17 +4020,16 @@ function updateCheckoutStepUI() {
     document.getElementById("form-pay-ooredoo").style.display = "none";
     document.getElementById("form-pay-d17").style.display = "none";
     document.getElementById("form-pay-binance").style.display = "none";
-    document.getElementById("form-pay-crypto").style.display = "none";
     document.getElementById("form-pay-paypal").style.display = "none";
 
     document.getElementById(`form-pay-${checkoutPaymentMethod}`).style.display = "block";
 
     // Update converted prices labels
+    const ooredooRateEl = document.getElementById("ooredoo-exact-price");
+    if (ooredooRateEl) ooredooRateEl.innerText = cartTotal.toFixed(3) + " DT";
+
     const binanceRateEl = document.getElementById("binance-converted-price");
     if (binanceRateEl) binanceRateEl.innerText = usdtTotal.toFixed(2) + " USDT";
-
-    const cryptoRateEl = document.getElementById("crypto-converted-price");
-    if (cryptoRateEl) cryptoRateEl.innerText = usdtTotal.toFixed(2) + " USDT";
 
     const paypalRateEl = document.getElementById("paypal-converted-price");
     if (paypalRateEl) paypalRateEl.innerText = cartTotal.toFixed(3) + " DT";
@@ -4069,9 +4070,18 @@ function validateCheckoutStep2() {
       showToast("Veuillez saisir votre numéro D17 à 8 chiffres pour vérification. 💳");
       return false;
     }
-  } else if (checkoutPaymentMethod === "binance" || checkoutPaymentMethod === "crypto" || checkoutPaymentMethod === "paypal") {
-    // Automated flow check, passes directly to validation
-    return true;
+  } else if (checkoutPaymentMethod === "binance") {
+    const binanceId = document.getElementById("pay-binance-id").value.trim();
+    if (!binanceId) {
+      showToast("Veuillez saisir votre ID de transaction ou pseudo Binance. 💳");
+      return false;
+    }
+  } else if (checkoutPaymentMethod === "paypal") {
+    const paypalEmail = document.getElementById("pay-paypal-email").value.trim();
+    if (!paypalEmail || !paypalEmail.includes("@")) {
+      showToast("Veuillez saisir une adresse email PayPal valide. ✉️");
+      return false;
+    }
   }
   return true;
 }
@@ -4085,12 +4095,15 @@ function completeOrderSimulation() {
   
   let customerDetails = "";
   if (checkoutPaymentMethod === "ooredoo") {
-    customerDetails = "Tél: " + document.getElementById("pay-phone-ooredoo").value;
+    customerDetails = "Tél Ooredoo: " + document.getElementById("pay-phone-ooredoo").value;
   } else if (checkoutPaymentMethod === "d17") {
     customerDetails = "D17: " + document.getElementById("pay-phone-d17").value;
+  } else if (checkoutPaymentMethod === "binance") {
+    customerDetails = "Binance Pay ID/Pseudo: " + document.getElementById("pay-binance-id").value;
+  } else if (checkoutPaymentMethod === "paypal") {
+    customerDetails = "PayPal Email: " + document.getElementById("pay-paypal-email").value;
   } else {
-    const binanceEl = document.getElementById("pay-binance-id");
-    customerDetails = binanceEl ? "Binance: " + binanceEl.value.substring(0, 8) + "..." : "Binance Auto-pay";
+    customerDetails = "Automatique";
   }
 
   const itemsSummary = cart.length > 0 ? cart.map(item => `${item.product.name} (x${item.quantity}) [Info: ${item.playerInfo}]`).join(", ") : "Aucun article";

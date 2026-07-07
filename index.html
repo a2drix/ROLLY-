@@ -1375,26 +1375,15 @@
                   <img src="/binance.webp" alt="Binance" style="width: 32px; height: 32px; object-fit: contain;" />
                 </div>
                 <h5>Binance Pay</h5>
-                <p>Paiement instantané en Crypto (USDT)</p>
-                <span class="badge-method" style="background-color: rgba(57, 181, 74, 0.12); color: #39b54a; border: 1px solid rgba(57, 181, 74, 0.15);">Auto</span>
-              </div>
-
-              <div class="payment-card" data-method="crypto">
-                <div class="payment-logo" style="background: none;">
-                  <img src="https://cryptologos.cc/logos/tether-usdt-logo.svg?v=040" alt="Crypto" style="width: 32px; height: 32px; object-fit: contain;" />
-                </div>
-                <h5>Crypto USDT</h5>
-                <p>Frais bas sur Réseau TRC20 / ERC20</p>
-                <span class="badge-method" style="background-color: rgba(57, 181, 74, 0.12); color: #39b54a; border: 1px solid rgba(57, 181, 74, 0.15);">Auto</span>
+                <p>Transfert instantané en USDT</p>
               </div>
 
               <div class="payment-card" data-method="paypal">
                 <div class="payment-logo" style="background: none;">
                   <img src="https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp" alt="PayPal" style="width: 32px; height: 32px; object-fit: cover; border-radius: 50%;" />
                 </div>
-                <h5>PayPal / Cartes</h5>
-                <p>Paiement sécurisé par PayPal ou Carte</p>
-                <span class="badge-method" style="background-color: rgba(57, 181, 74, 0.12); color: #39b54a; border: 1px solid rgba(57, 181, 74, 0.15);">Auto</span>
+                <h5>PayPal</h5>
+                <p>Paiement sécurisé par PayPal</p>
               </div>
             </div>
             
@@ -1411,14 +1400,28 @@
             
             <!-- OOREDOO FORM -->
             <div class="payment-form-sub" id="form-pay-ooredoo">
-              <h4>Paiement par Solde Ooredoo</h4>
-              <div class="form-group">
-                <label for="pay-phone-ooredoo">Numéro de téléphone Ooredoo</label>
+              <h4>Paiement par transfert Solde Ooredoo</h4>
+              <p class="instruction-text">Veuillez effectuer un transfert de recharge (Karsel) du montant exact vers le numéro Ooredoo ci-dessous :</p>
+              <div class="d17-info-box" style="border-color: #e60000; background: rgba(230, 0, 0, 0.02);">
+                <div class="info-row">
+                  <span>Numéro Ooredoo :</span>
+                  <strong>+216 25 542 079</strong>
+                </div>
+                <div class="info-row">
+                  <span>Format de transfert :</span>
+                  <strong style="color: #fff; font-family: monospace;">*120*25542079*Montant*0000#</strong>
+                </div>
+                <div class="info-row">
+                  <span>Montant exact :</span>
+                  <strong class="text-red" id="ooredoo-exact-price">0.000 DT</strong>
+                </div>
+              </div>
+              <div class="form-group" style="margin-top: 15px;">
+                <label for="pay-phone-ooredoo">Votre Numéro Ooredoo (depuis lequel vous avez transféré)</label>
                 <div class="phone-input-wrapper">
                   <span class="phone-prefix">+216</span>
-                  <input type="tel" id="pay-phone-ooredoo" placeholder="Numéro à 8 chiffres (ex: 22123456)" maxlength="8" pattern="[0-9]{8}" required />
+                  <input type="tel" id="pay-phone-ooredoo" placeholder="ex: 25542079" maxlength="8" pattern="[0-9]{8}" required />
                 </div>
-                <p class="form-tip">Entrez le numéro Ooredoo Tunisie sur lequel le montant sera prélevé.</p>
               </div>
             </div>
 
@@ -1452,52 +1455,44 @@
               </div>
             </div>
 
-            <!-- BINANCE PAY REDIRECTION SUMMARY -->
+            <!-- BINANCE PAY INSTRUCTIONS -->
             <div class="payment-form-sub" id="form-pay-binance" style="display:none;">
-              <h4>Redirection vers Binance Pay</h4>
-              <p class="instruction-text">Vous allez être redirigé vers l'interface sécurisée de Binance Pay pour effectuer votre transfert.</p>
-              <div class="binance-info-box">
+              <h4>Paiement par Binance Pay</h4>
+              <p class="instruction-text">Veuillez effectuer un transfert USDT (Pay) du montant exact vers le Pay ID ci-dessous :</p>
+              <div class="binance-info-box" style="border-color: #f3ba2f; background: rgba(243, 186, 47, 0.02);">
                 <div class="info-row">
-                  <span>Méthode de paiement :</span>
-                  <strong>Binance Pay (Automatique)</strong>
+                  <span>Binance Pay ID :</span>
+                  <strong style="color: #f3ba2f; font-size: 15px;">1080972410</strong>
                 </div>
                 <div class="info-row">
-                  <span>Montant estimé :</span>
+                  <span>Montant exact :</span>
                   <strong class="text-yellow" id="binance-converted-price">0.00 USDT</strong>
                 </div>
                 <p class="rate-indicator">Taux fixe : 1 DT = 0.32 USDT</p>
               </div>
-            </div>
-
-            <!-- CRYPTO USDT REDIRECTION SUMMARY -->
-            <div class="payment-form-sub" id="form-pay-crypto" style="display:none;">
-              <h4>Paiement Sécurisé en Crypto USDT</h4>
-              <p class="instruction-text">Une adresse de dépôt USDT (TRC20) unique va être générée pour votre commande.</p>
-              <div class="binance-info-box" style="border-color: #39b54a;">
-                <div class="info-row">
-                  <span>Méthode :</span>
-                  <strong style="color: #39b54a;">Crypto USDT (Automatique)</strong>
-                </div>
-                <div class="info-row">
-                  <span>Montant :</span>
-                  <strong id="crypto-converted-price" style="color:#fff;">0.00 USDT</strong>
-                </div>
+              <div class="form-group" style="margin-top: 15px;">
+                <label for="pay-binance-id">Votre ID de transaction / Pseudo Binance (pour vérification)</label>
+                <input type="text" id="pay-binance-id" placeholder="ex: 1080972410" required />
               </div>
             </div>
 
-            <!-- PAYPAL REDIRECTION SUMMARY -->
+            <!-- PAYPAL INSTRUCTIONS -->
             <div class="payment-form-sub" id="form-pay-paypal" style="display:none;">
-              <h4>Paiement par PayPal / Cartes Bancaires</h4>
-              <p class="instruction-text">Vous allez effectuer le règlement sécurisé via PayPal ou votre carte de crédit.</p>
-              <div class="binance-info-box" style="border-color: #0070ba;">
+              <h4>Paiement par PayPal</h4>
+              <p class="instruction-text">Veuillez envoyer le paiement (mode Proches/Famille recommandé) à l'adresse e-mail PayPal ci-dessous :</p>
+              <div class="binance-info-box" style="border-color: #0070ba; background: rgba(0, 112, 186, 0.02);">
                 <div class="info-row">
-                  <span>Méthode :</span>
-                  <strong style="color: #0070ba;">PayPal / Cartes (Automatique)</strong>
+                  <span>Adresse PayPal :</span>
+                  <strong style="color: #0070ba;">haddochilouay830@gmail.com</strong>
                 </div>
                 <div class="info-row">
                   <span>Montant total :</span>
                   <strong style="color: #fff;" id="paypal-converted-price">0.00 DT</strong>
                 </div>
+              </div>
+              <div class="form-group" style="margin-top: 15px;">
+                <label for="pay-paypal-email">Votre adresse e-mail PayPal (depuis laquelle vous avez payé)</label>
+                <input type="email" id="pay-paypal-email" placeholder="ex: client@gmail.com" required />
               </div>
             </div>
 
