@@ -63,7 +63,35 @@ export default async function handler(req, res) {
       return res.status(userResponse.status).json({ error: 'Failed to fetch user profile' });
     }
 
-    // 3. Return user profile details
+    // 3. Automatically add user to the Discord Server (Guild) if Bot Token and Guild ID are set
+    const botToken = process.env.DISCORD_BOT_TOKEN;
+    const guildId = process.env.DISCORD_GUILD_ID;
+
+    if (botToken && guildId) {
+      try {
+        const joinResponse = await fetch(`https://discord.com/api/v10/guilds/${guildId}/members/${userData.id}`, {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bot ${botToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            access_token: access_token,
+          }),
+        });
+
+        if (joinResponse.ok) {
+          console.log(`Successfully added user ${userData.username} to guild ${guildId}`);
+        } else {
+          const joinError = await joinResponse.json();
+          console.error(`Failed to add user to guild:`, joinError);
+        }
+      } catch (err) {
+        console.error('Error adding user to guild:', err);
+      }
+    }
+
+    // 4. Return user profile details
     return res.status(200).json({
       id: userData.id,
       username: userData.username,

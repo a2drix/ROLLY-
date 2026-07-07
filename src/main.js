@@ -5177,7 +5177,7 @@ function initiateDiscordLogin() {
     return;
   }
   const redirectUri = window.location.origin + '/';
-  const url = `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify`;
+  const url = `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify%20guilds.join`;
   window.location.href = url;
 }
 
