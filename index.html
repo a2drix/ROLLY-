@@ -1273,6 +1273,250 @@
         </div>
       </section>
 
+      <!-- Secure Checkout Section (Full Page) -->
+      <section id="view-checkout" class="app-view">
+        <div class="checkout-layout-container">
+          
+          <!-- Left Column: Checkout flow -->
+          <div class="checkout-main-content">
+            <h1 class="checkout-title">Payment instructions</h1>
+            <div class="checkout-method-badge-row">
+              <span>Method:</span>
+              <div id="checkout-method-badge" class="method-badge">
+                <img id="checkout-method-icon" src="/ooredoo.png" alt="Method" style="width: 16px; height: 16px; object-fit: contain;" />
+                <span id="checkout-method-name">Solde Ooredoo</span>
+              </div>
+            </div>
+
+            <!-- STEP 1: Select Payment Method -->
+            <div class="checkout-flow-step active" id="full-checkout-step-1">
+              <h3>Choisissez votre moyen de paiement :</h3>
+              <div class="payment-methods-grid">
+                
+                <div class="payment-card active" data-method="ooredoo">
+                  <div class="payment-logo" style="background: none;">
+                    <img src="/ooredoo.png" alt="Ooredoo" style="width: 32px; height: 32px; object-fit: contain;" />
+                  </div>
+                  <h5>Solde Ooredoo</h5>
+                  <p>Débit direct sur votre solde de recharge</p>
+                  <span class="badge-method">Recommandé</span>
+                </div>
+
+                <div class="payment-card" data-method="d17">
+                  <div class="payment-logo" style="background: none;">
+                    <img src="/d17.png" alt="D17" style="width: 32px; height: 32px; object-fit: contain;" />
+                  </div>
+                  <h5>D17 Tunisienne</h5>
+                  <p>Transfert via l'application de la Poste</p>
+                </div>
+
+                <div class="payment-card" data-method="binance">
+                  <div class="payment-logo" style="background: none;">
+                    <img src="/binance.webp" alt="Binance" style="width: 32px; height: 32px; object-fit: contain;" />
+                  </div>
+                  <h5>Binance Pay</h5>
+                  <p>Transfert instantané en USDT</p>
+                </div>
+
+                <div class="payment-card" data-method="paypal">
+                  <div class="payment-logo" style="background: none;">
+                    <img src="https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp" alt="PayPal" style="width: 32px; height: 32px; object-fit: cover; border-radius: 50%;" />
+                  </div>
+                  <h5>PayPal</h5>
+                  <p>Paiement sécurisé par PayPal</p>
+                </div>
+
+              </div>
+              <button class="btn btn-primary btn-next-step" id="full-btn-next-1" style="margin-top: 30px; width: auto; min-width: 180px; align-self: flex-end;">Continuer -></button>
+            </div>
+
+            <!-- STEP 2: Instructions & Inputs -->
+            <div class="checkout-flow-step" id="full-checkout-step-2" style="display: none;">
+              <div class="instructions-container">
+                
+                <!-- Ooredoo Instructions -->
+                <div class="method-instruction-block" id="inst-ooredoo">
+                  <div class="instruction-row">
+                    <span class="inst-label">Recipient Number:</span>
+                    <strong class="inst-value">+216 25 542 079</strong>
+                  </div>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">HOW TO PAY</h4>
+                  <ol class="inst-list">
+                    <li>Faites une recharge de solde (Karsel) vers le numéro ci-dessus.</li>
+                    <li>Code USSD de transfert : <strong>*120*25542079*Montant*0000#</strong>.</li>
+                    <li>Saisissez le montant exact de votre commande.</li>
+                    <li>Confirmez le transfert.</li>
+                  </ol>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">REQUIRED</h4>
+                  <p class="inst-tip">• Votre numéro de téléphone Ooredoo pour valider le transfert.</p>
+                </div>
+
+                <!-- D17 Instructions -->
+                <div class="method-instruction-block" id="inst-d17" style="display: none;">
+                  <div class="instruction-row">
+                    <span class="inst-label">Recipient Number:</span>
+                    <strong class="inst-value">+216 98 742 604</strong>
+                  </div>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">HOW TO PAY</h4>
+                  <ol class="inst-list">
+                    <li>Open the D17 app.</li>
+                    <li>Tap Transfer.</li>
+                    <li>Enter the recipient number above.</li>
+                    <li>Enter the payment amount.</li>
+                    <li>Confirm the transfer.</li>
+                  </ol>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">REQUIRED</h4>
+                  <p class="inst-tip">• Authorization Number (Numéro d'autorisation)</p>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">IMPORTANT</h4>
+                  <ul class="inst-bullet-list">
+                    <li>D17 charges a 1% fee.</li>
+                    <li>If you don't have D17, you must own an E-Dinar card to create an account.</li>
+                    <li>You can find the Authorization Number inside Journal D17 after completing the payment.</li>
+                  </ul>
+                </div>
+
+                <!-- Binance Pay Instructions -->
+                <div class="method-instruction-block" id="inst-binance" style="display: none;">
+                  <div class="instruction-row">
+                    <span class="inst-label">Binance Pay ID:</span>
+                    <strong class="inst-value" style="color: #f3ba2f;">1080972410</strong>
+                  </div>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">HOW TO PAY</h4>
+                  <ol class="inst-list">
+                    <li>Ouvrez l'application Binance et allez dans "Pay".</li>
+                    <li>Cliquez sur "Envoyer" et choisissez "Pay ID".</li>
+                    <li>Saisissez l'ID de paiement ci-dessus.</li>
+                    <li>Entrez le montant exact de votre commande en USDT.</li>
+                    <li>Confirmez le transfert de fonds.</li>
+                  </ol>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">REQUIRED</h4>
+                  <p class="inst-tip">• Votre ID de transaction ou pseudo Binance.</p>
+                </div>
+
+                <!-- PayPal Instructions -->
+                <div class="method-instruction-block" id="inst-paypal" style="display: none;">
+                  <div class="instruction-row">
+                    <span class="inst-label">Recipient Email:</span>
+                    <strong class="inst-value" style="color: #0070ba; text-transform: none;">haddochilouay830@gmail.com</strong>
+                  </div>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">HOW TO PAY</h4>
+                  <ol class="inst-list">
+                    <li>Connectez-vous à votre compte PayPal.</li>
+                    <li>Envoyez le montant en choisissant le mode "Proches / Famille" si possible.</li>
+                    <li>Entrez l'adresse email du destinataire ci-dessus.</li>
+                    <li>Confirmez le paiement PayPal.</li>
+                  </ol>
+                  <div class="instruction-divider"></div>
+                  <h4 class="inst-section-title">REQUIRED</h4>
+                  <p class="inst-tip">• L'adresse email PayPal utilisée pour effectuer le paiement.</p>
+                </div>
+
+              </div>
+
+              <!-- Input Reference Field -->
+              <div class="form-group checkout-reference-group" style="margin-top: 25px;">
+                <label id="full-ref-label">Transaction / Authorization ID *</label>
+                <input type="text" id="full-checkout-ref-input" placeholder="Enter your reference" required />
+                <p class="ref-input-desc">Our team uses this to confirm your payment before releasing your order.</p>
+              </div>
+
+              <div class="review-warning-banner">
+                <span>⚡ Orders are reviewed by our team – usually approved within minutes.</span>
+              </div>
+
+              <div class="checkout-actions-row">
+                <button class="btn btn-outline" id="full-btn-back-2">← Back</button>
+                <button class="btn btn-primary" id="full-btn-next-2" style="background: #f3ba2f; color: #000; font-weight: 700; border-color: #f3ba2f;">Pay <span class="full-pay-total">0.000 DT</span> →</button>
+              </div>
+            </div>
+
+            <!-- STEP 3: Verification Simulation -->
+            <div class="checkout-flow-step" id="full-checkout-step-3" style="display: none;">
+              
+              <!-- SMS Simulation for Ooredoo -->
+              <div class="sms-validation-block" id="full-sms-block" style="display: none;">
+                <div class="sms-icon-wrapper" style="font-size: 32px; text-align: center; margin-bottom: 15px;">💬</div>
+                <h4>Vérification par Code de Confirmation</h4>
+                <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Un SMS de sécurité contenant votre code à 4 chiffres a été envoyé.</p>
+                <div class="sms-simulation-box" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px dashed var(--border-color); border-radius: 8px; margin-bottom: 20px; font-size: 12.5px; text-align: center;">
+                  <span>💬 <strong>SMS SIMULÉ :</strong> Votre code secret de validation ROLLY est <strong id="full-simulated-otp" style="color: var(--primary);">1234</strong></span>
+                </div>
+                <div class="otp-inputs-row" style="display: flex; gap: 12px; justify-content: center; margin-bottom: 25px;">
+                  <input type="text" class="full-otp-char" maxlength="1" pattern="[0-9]" style="width: 48px; height: 48px; text-align: center; font-size: 20px; font-weight: 700; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; color: #fff;" required />
+                  <input type="text" class="full-otp-char" maxlength="1" pattern="[0-9]" style="width: 48px; height: 48px; text-align: center; font-size: 20px; font-weight: 700; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; color: #fff;" required />
+                  <input type="text" class="full-otp-char" maxlength="1" pattern="[0-9]" style="width: 48px; height: 48px; text-align: center; font-size: 20px; font-weight: 700; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; color: #fff;" required />
+                  <input type="text" class="full-otp-char" maxlength="1" pattern="[0-9]" style="width: 48px; height: 48px; text-align: center; font-size: 20px; font-weight: 700; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; color: #fff;" required />
+                </div>
+                <button class="btn btn-primary w-full" id="full-btn-confirm-otp">Confirmer le code</button>
+              </div>
+
+              <!-- Manual verification simulation -->
+              <div class="sms-validation-block" id="full-manual-block" style="display: none;">
+                <div class="loading-ring-wrapper" style="position: relative; width: 64px; height: 64px; margin: 0 auto 20px;">
+                  <div class="pulse-ring" style="position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--primary); animation: ripple 1.6s ease-out infinite;"></div>
+                </div>
+                <h4>Vérification en Cours</h4>
+                <p style="font-family: var(--font-secondary); font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Notre équipe valide votre paiement. Le processus prend généralement moins de 5 minutes.</p>
+                <div class="sms-simulation-box" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px dashed var(--primary); border-radius: 8px; margin-bottom: 20px; font-size: 12.5px; text-align: center;">
+                  <p>Simulation active : Cliquez sur le bouton ci-dessous pour approuver instantanément.</p>
+                </div>
+                <button class="btn btn-primary w-full" id="full-btn-simulate-success">Confirmer manuellement le paiement</button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right Column: Order Summary -->
+          <div class="checkout-sidebar">
+            <h3 class="sidebar-title">Order summary</h3>
+            
+            <div class="checkout-items-list" id="full-checkout-items">
+              <!-- Dynamically populated in main.js -->
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="summary-details">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="full-sum-subtotal">0.000 DT</span>
+              </div>
+              <div class="summary-row" id="full-sum-fee-row" style="display: none;">
+                <span>Payment Method (1%)</span>
+                <span id="full-sum-fee">+0.000 DT</span>
+              </div>
+              <div class="summary-row">
+                <span>Instant digital delivery</span>
+                <span style="color: #10b981; font-weight: 600;">Instant • Free</span>
+              </div>
+              <div class="summary-row">
+                <span>XP reward</span>
+                <span style="color: #f3ba2f; font-weight: 600;" id="full-sum-xp">+8 XP</span>
+              </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="summary-total-row">
+              <span>Total to pay</span>
+              <span id="full-sum-total">0.000 DT</span>
+            </div>
+
+            <p class="secured-badge">🔒 Secured by ROLLY Guarantee</p>
+          </div>
+
+        </div>
+      </section>
+
     </main>
 
     <!-- Shopping Cart Drawer (Right Side Overlay) -->

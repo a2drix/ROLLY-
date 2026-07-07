@@ -2536,7 +2536,79 @@ function setupEventListeners() {
       return;
     }
     cartOverlay.classList.remove("active");
-    openCheckoutWizard();
+    openFullCheckout();
+  });
+
+  // Full-page Checkout bindings
+  document.querySelectorAll("#view-checkout .payment-card").forEach(card => {
+    card.addEventListener("click", () => {
+      document.querySelectorAll("#view-checkout .payment-card").forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      fullCheckoutMethod = card.getAttribute("data-method");
+      updateFullCheckoutUI();
+    });
+  });
+
+  const fullBtnNext1 = document.getElementById("full-btn-next-1");
+  if (fullBtnNext1) {
+    fullBtnNext1.addEventListener("click", () => {
+      fullCheckoutStep = 2;
+      updateFullCheckoutUI();
+    });
+  }
+
+  const fullBtnBack2 = document.getElementById("full-btn-back-2");
+  if (fullBtnBack2) {
+    fullBtnBack2.addEventListener("click", () => {
+      fullCheckoutStep = 1;
+      updateFullCheckoutUI();
+    });
+  }
+
+  const fullBtnNext2 = document.getElementById("full-btn-next-2");
+  if (fullBtnNext2) {
+    fullBtnNext2.addEventListener("click", () => {
+      if (!validateFullCheckoutStep2()) return;
+      transitionToFullStep3();
+    });
+  }
+
+  const fullBtnConfirmOtp = document.getElementById("full-btn-confirm-otp");
+  if (fullBtnConfirmOtp) {
+    fullBtnConfirmOtp.addEventListener("click", () => {
+      const code = Array.from(document.querySelectorAll(".full-otp-char")).map(input => input.value).join("");
+      if (code.length !== 4) {
+        showToast("Veuillez saisir le code OTP à 4 chiffres. ⚠️");
+        return;
+      }
+      if (code !== fullSimulatedOTP) {
+        showToast("Code OTP invalide. Veuillez réessayer. ❌");
+        return;
+      }
+      submitFullCheckoutOrder();
+    });
+  }
+
+  const fullBtnSimulateSuccess = document.getElementById("full-btn-simulate-success");
+  if (fullBtnSimulateSuccess) {
+    fullBtnSimulateSuccess.addEventListener("click", () => {
+      submitFullCheckoutOrder();
+    });
+  }
+
+  // Setup full-page OTP inputs auto-focus logic
+  const fullOtpInputs = document.querySelectorAll(".full-otp-char");
+  fullOtpInputs.forEach((input, index) => {
+    input.addEventListener("input", (e) => {
+      if (input.value.length === 1 && index < fullOtpInputs.length - 1) {
+        fullOtpInputs[index + 1].focus();
+      }
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace" && input.value.length === 0 && index > 0) {
+        fullOtpInputs[index - 1].focus();
+      }
+    });
   });
 
 
@@ -3967,6 +4039,256 @@ function updateCartUI() {
       removeFromCart(idx);
     });
   });
+}
+
+// Global checkout state for full-page checkout
+let fullCheckoutStep = 1;
+let fullCheckoutMethod = "ooredoo";
+let fullSimulatedOTP = "";
+
+function openFullCheckout() {
+  fullCheckoutStep = 1;
+  fullCheckoutMethod = "ooredoo";
+
+  // Reset payment card active states in full checkout page
+  document.querySelectorAll("#view-checkout .payment-card").forEach(card => {
+    card.classList.remove("active");
+    if (card.getAttribute("data-method") === fullCheckoutMethod) {
+      card.classList.add("active");
+    }
+  });
+
+  // Reset inputs
+  document.getElementById("full-checkout-ref-input").value = "";
+  document.querySelectorAll(".full-otp-char").forEach(input => input.value = "");
+
+  // Update step visual state
+  updateFullCheckoutUI();
+
+  // Switch view to checkout
+  switchView("checkout");
+}
+
+function updateFullCheckoutUI() {
+  // Hide all steps, show active
+  document.getElementById("full-checkout-step-1").style.display = "none";
+  document.getElementById("full-checkout-step-2").style.display = "none";
+  document.getElementById("full-checkout-step-3").style.display = "none";
+
+  document.getElementById(`full-checkout-step-${fullCheckoutStep}`).style.display = "flex";
+
+  const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  const fee = fullCheckoutMethod === "d17" ? (cartTotal * 0.01) : 0;
+  const totalToPay = cartTotal + fee;
+  const xpReward = Math.floor(totalToPay / 10);
+
+  // Update Method Badge
+  const methodIconEl = document.getElementById("checkout-method-icon");
+  const methodNameEl = document.getElementById("checkout-method-name");
+  let formattedMethod = "Solde Ooredoo";
+  let methodIcon = "/ooredoo.png";
+
+  if (fullCheckoutMethod === "d17") {
+    formattedMethod = "D17";
+    methodIcon = "/d17.png";
+  } else if (fullCheckoutMethod === "binance") {
+    formattedMethod = "Binance Pay";
+    methodIcon = "/binance.webp";
+  } else if (fullCheckoutMethod === "paypal") {
+    formattedMethod = "PayPal";
+    methodIcon = "https://images-ext-1.discordapp.net/external/7f-FBeWit4lkymHieeOuuB87iPsR2WQRxreII_Wq1sA/https/i.pinimg.com/736x/b7/cf/62/b7cf62846ae6ae5e96b35cf9d5e05a7c.jpg?format=webp";
+  }
+
+  if (methodIconEl) methodIconEl.src = methodIcon;
+  if (methodNameEl) methodNameEl.innerText = formattedMethod;
+
+  // Sidebar Updates
+  const subtotalEl = document.getElementById("full-sum-subtotal");
+  const feeRowEl = document.getElementById("full-sum-fee-row");
+  const feeEl = document.getElementById("full-sum-fee");
+  const xpEl = document.getElementById("full-sum-xp");
+  const totalEl = document.getElementById("full-sum-total");
+
+  if (subtotalEl) subtotalEl.innerText = cartTotal.toFixed(3) + " DT";
+  if (xpEl) xpEl.innerText = `+${xpReward} XP`;
+  if (totalEl) totalEl.innerText = totalToPay.toFixed(3) + " DT";
+
+  if (fullCheckoutMethod === "d17") {
+    if (feeRowEl) feeRowEl.style.display = "flex";
+    if (feeEl) feeEl.innerText = `+${fee.toFixed(3)} DT`;
+  } else {
+    if (feeRowEl) feeRowEl.style.display = "none";
+  }
+
+  // Update the instructions displays
+  document.getElementById("inst-ooredoo").style.display = "none";
+  document.getElementById("inst-d17").style.display = "none";
+  document.getElementById("inst-binance").style.display = "none";
+  document.getElementById("inst-paypal").style.display = "none";
+
+  if (fullCheckoutStep === 2) {
+    document.getElementById(`inst-${fullCheckoutMethod}`).style.display = "block";
+
+    // Set the inputs & label text
+    const refLabel = document.getElementById("full-ref-label");
+    const refInput = document.getElementById("full-checkout-ref-input");
+
+    if (fullCheckoutMethod === "d17") {
+      refLabel.innerText = "Transaction / Authorization ID *";
+      refInput.placeholder = "Enter your reference";
+      refInput.type = "text";
+    } else if (fullCheckoutMethod === "ooredoo") {
+      refLabel.innerText = "Votre Numéro Ooredoo (depuis lequel vous avez transféré) *";
+      refInput.placeholder = "ex: 25542079";
+      refInput.type = "tel";
+    } else if (fullCheckoutMethod === "binance") {
+      refLabel.innerText = "Pseudo / Binance Pay ID *";
+      refInput.placeholder = "ex: 1080972410";
+      refInput.type = "text";
+    } else if (fullCheckoutMethod === "paypal") {
+      refLabel.innerText = "Votre adresse e-mail PayPal *";
+      refInput.placeholder = "ex: client@gmail.com";
+      refInput.type = "email";
+    }
+
+    document.querySelectorAll(".full-pay-total").forEach(el => {
+      if (fullCheckoutMethod === "binance") {
+        el.innerText = (totalToPay * 0.32).toFixed(2) + " USDT";
+      } else {
+        el.innerText = totalToPay.toFixed(3) + " DT";
+      }
+    });
+  }
+
+  // Update Cart Items List in Sidebar
+  const itemsContainer = document.getElementById("full-checkout-items");
+  if (itemsContainer) {
+    itemsContainer.innerHTML = cart.map(item => {
+      const img = item.product.image || "https://placehold.co/44";
+      return `
+        <div class="checkout-item-row">
+          <div class="checkout-item-info">
+            <img src="${img}" alt="${item.product.name}" class="checkout-item-img" />
+            <div>
+              <div class="checkout-item-name">${item.product.name}</div>
+              <div class="checkout-item-qty">Qty: ${item.quantity} | ${item.playerInfo}</div>
+            </div>
+          </div>
+          <div class="checkout-item-price">${(item.product.price * item.quantity).toFixed(3)} DT</div>
+        </div>
+      `;
+    }).join("");
+  }
+}
+
+function validateFullCheckoutStep2() {
+  const refInput = document.getElementById("full-checkout-ref-input").value.trim();
+  if (!refInput) {
+    showToast("Veuillez remplir le champ requis pour la validation. ⚠️");
+    return false;
+  }
+
+  if (fullCheckoutMethod === "ooredoo") {
+    if (refInput.length !== 8 || isNaN(refInput)) {
+      showToast("Veuillez saisir un numéro Ooredoo valide (8 chiffres). 📱");
+      return false;
+    }
+  } else if (fullCheckoutMethod === "d17") {
+    if (refInput.length < 4) {
+      showToast("Veuillez entrer une référence de transaction D17 valide. 💳");
+      return false;
+    }
+  } else if (fullCheckoutMethod === "paypal") {
+    if (!refInput.includes("@")) {
+      showToast("Veuillez saisir une adresse email PayPal valide. ✉️");
+      return false;
+    }
+  }
+  return true;
+}
+
+function transitionToFullStep3() {
+  fullCheckoutStep = 3;
+  updateFullCheckoutUI();
+
+  // Hide both, show relevant
+  document.getElementById("full-sms-block").style.display = "none";
+  document.getElementById("full-manual-block").style.display = "none";
+
+  if (fullCheckoutMethod === "ooredoo") {
+    document.getElementById("full-sms-block").style.display = "block";
+    fullSimulatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+    document.getElementById("full-simulated-otp").innerText = fullSimulatedOTP;
+    setTimeout(() => {
+      const firstInput = document.querySelectorAll(".full-otp-char")[0];
+      if (firstInput) firstInput.focus();
+    }, 300);
+  } else {
+    document.getElementById("full-manual-block").style.display = "block";
+  }
+}
+
+function submitFullCheckoutOrder() {
+  const orderId = "#ORD-" + Math.floor(100000 + Math.random() * 900000);
+  const cartTotal = cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  const fee = fullCheckoutMethod === "d17" ? (cartTotal * 0.01) : 0;
+  const totalPaid = cartTotal + fee;
+
+  const refVal = document.getElementById("full-checkout-ref-input").value.trim();
+
+  let customerDetails = "";
+  if (fullCheckoutMethod === "ooredoo") {
+    customerDetails = "Tél Ooredoo: " + refVal;
+  } else if (fullCheckoutMethod === "d17") {
+    customerDetails = "D17 Réf: " + refVal;
+  } else if (fullCheckoutMethod === "binance") {
+    customerDetails = "Binance Pay ID: " + refVal;
+  } else if (fullCheckoutMethod === "paypal") {
+    customerDetails = "PayPal Email: " + refVal;
+  }
+
+  const itemsSummary = cart.map(item => `${item.product.name} (x${item.quantity}) [Info: ${item.playerInfo}]`).join(", ");
+  const orderTimeStr = new Date().toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true, day: '2-digit', month: 'short', year: 'numeric' });
+
+  // Map initial status for order
+  let initialStatus = "verify"; // verify payment by default
+  let initialStep = 2; // Declared step
+  let statusDesc = `Payment declared via ${fullCheckoutMethod.toUpperCase()}. Reference: ${refVal}. Awaiting payment validation review.`;
+
+  const newOrder = {
+    id: orderId,
+    userId: currentUser ? currentUser.id : "guest",
+    items: itemsSummary,
+    customer: customerDetails,
+    method: fullCheckoutMethod,
+    total: totalPaid,
+    status: initialStatus,
+    date: orderTimeStr,
+    playerInfo: cart[0].playerInfo || "",
+    step: initialStep,
+    deliveredData: "",
+    timeline: [
+      { time: orderTimeStr, text: statusDesc },
+      { time: orderTimeStr, text: "Order placed and pending for verification." }
+    ]
+  };
+
+  orders.push(newOrder);
+  saveOrdersToCloud();
+
+  // Clear cart
+  cart = [];
+  localStorage.removeItem("rolly_cart");
+  updateCartBadge();
+  updateCartUI();
+
+  updateAdminStats();
+  renderAdminOrders();
+
+  showToast("Commande payée et envoyée avec succès ! 🎉");
+
+  // Redirect to orders view
+  switchView("orders");
 }
 
 // Checkout flow
