@@ -2,6 +2,18 @@
    ROLLY STORE - Main Application Logic
    ========================================== */
 
+// Wrap window.fetch to automatically redirect /api/ calls on localhost to Vercel production deployment
+const originalFetch = window.fetch;
+window.fetch = function (url, options) {
+  if (typeof url === "string" && url.startsWith("/api/")) {
+    const apiBase = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+      ? "https://rolly-beta.vercel.app"
+      : "";
+    url = apiBase + url;
+  }
+  return originalFetch(url, options);
+};
+
 // 1. Live Products Database from API (45 products)
 const DEFAULT_PRODUCTS = [
   {
