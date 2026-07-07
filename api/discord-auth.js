@@ -68,7 +68,7 @@ export default async function handler(req, res) {
     const guildId = process.env.DISCORD_GUILD_ID;
     const roleId = process.env.DISCORD_ROLE_ID;
 
-    let joinStatusMessage = "Not attempted";
+    let joinStatusMessage = "Not attempted (Scopes: " + (tokenData.scope || "none") + ")";
 
     if (botToken && guildId) {
       try {
@@ -89,10 +89,10 @@ export default async function handler(req, res) {
         });
 
         if (joinResponse.status === 201) {
-          joinStatusMessage = "Successfully joined server";
+          joinStatusMessage = "Successfully joined server (Scopes: " + tokenData.scope + ")";
           console.log(`Successfully added user ${userData.username} to guild ${guildId}`);
         } else if (joinResponse.status === 204) {
-          joinStatusMessage = "Already in server";
+          joinStatusMessage = "Already in server (Scopes: " + tokenData.scope + ")";
           console.log(`User ${userData.username} is already in guild ${guildId}`);
           
           // If already in server and roleId is set, add role separately
@@ -115,7 +115,7 @@ export default async function handler(req, res) {
           }
         } else {
           const joinError = await joinResponse.json();
-          joinStatusMessage = `Failed to join: ${JSON.stringify(joinError)}`;
+          joinStatusMessage = `Failed to join: ${JSON.stringify(joinError)} (Scopes: ${tokenData.scope})`;
           console.error(`Failed to add user to guild:`, joinError);
         }
       } catch (err) {
