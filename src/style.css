@@ -5647,3 +5647,27 @@ body.client-mode-active .client-dashboard-layout {
     padding-right: 16px;
   }
 }
+
+/* Client Dashboard SVG Icons Styling */
+.client-sidebar-nav-item .nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.client-sidebar-nav-item:hover .nav-icon,
+.client-sidebar-nav-item.active .nav-icon {
+  color: var(--primary);
+}
+
+.client-sidebar-nav-item.logout .nav-icon {
+  color: #ef4444;
+}
+
+.client-stat-mini-card .stat-icon svg {
+  color: var(--primary);
+  width: 22px;
+  height: 22px;
+}
