@@ -816,6 +816,49 @@ body.user-is-admin .admin-nav-link {
   100% { transform: translateX(-50%); }
 }
 
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.category-btn span {
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.category-btn:hover {
+  background: rgba(230, 0, 0, 0.08);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(230, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.category-btn:hover span {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.category-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+}
+
 /* Exact Ooredoo Glowing Neon Divider */
 .ooredoo-neon-divider {
   width: 100%;

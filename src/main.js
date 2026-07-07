@@ -3233,8 +3233,9 @@ function renderCategoryMarquee() {
   const categoriesList = CATEGORIES.filter(c => c.id !== "all");
 
   const listHTML = categoriesList.map(cat => {
+    const activeClass = cat.id === activeCategory ? "active" : "";
     return `
-      <div class="category-btn" data-category-id="${cat.id}">
+      <div class="category-btn ${activeClass}" data-category-id="${cat.id}">
         <span>${cat.icon}</span>
         ${cat.name}
       </div>
