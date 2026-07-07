@@ -331,12 +331,12 @@ body.dark-theme {
   }
 }
 
-.nav-link.admin-nav-link {
-  display: none;
+.admin-nav-link {
+  display: none !important;
 }
 
-body.admin-mode-active .nav-link.admin-nav-link {
-  display: block;
+body.user-is-admin .admin-nav-link {
+  display: block !important;
 }
 
 .nav-link {

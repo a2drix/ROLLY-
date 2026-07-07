@@ -4351,6 +4351,11 @@ function updateAuthUI() {
   if (!headerWrapper || !mobileWrapper) return;
 
   if (currentUser) {
+    if (currentUser.role === "admin") {
+      document.body.classList.add("user-is-admin");
+    } else {
+      document.body.classList.remove("user-is-admin");
+    }
     // Header Logged-In Badge
     headerWrapper.innerHTML = `
       <div class="user-badge-header">
@@ -4398,6 +4403,8 @@ function updateAuthUI() {
 
 function logoutClient() {
   currentUser = null;
+  document.body.classList.remove("user-is-admin");
+  document.body.classList.remove("admin-mode-active");
   sessionStorage.removeItem("rolly_session_user");
   showToast("Vous vous êtes déconnecté. À bientôt ! 👋");
   
