@@ -1821,14 +1821,9 @@ async function loadDatabase() {
     users = local ? JSON.parse(local) : [];
   }
 
-  // Seed default master admin if it doesn't exist
-  if (!users.some(u => u.username.toLowerCase() === "admin")) {
-    users.push({
-      id: "usr-admin-master",
-      username: "admin",
-      password: "admin",
-      role: "admin"
-    });
+  // Delete default master admin "admin" if it exists
+  if (users.some(u => u.username.toLowerCase() === "admin")) {
+    users = users.filter(u => u.username.toLowerCase() !== "admin");
     await saveUsersToCloud();
   }
 
