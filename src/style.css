@@ -5671,3 +5671,136 @@ body.client-mode-active .client-dashboard-layout {
   width: 22px;
   height: 22px;
 }
+
+/* Reviews Infinite Marquee CSS */
+.reviews-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+
+.reviews-marquee-wrapper::before,
+.reviews-marquee-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.reviews-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+.reviews-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.reviews-marquee {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 24px;
+  animation: reviews-scroll 40s linear infinite;
+}
+
+/* Pause scroll on hover */
+.reviews-marquee:hover .reviews-track {
+  animation-play-state: paused;
+}
+
+@keyframes reviews-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 24px));
+  }
+}
+
+/* Review Card Styling */
+.review-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 20px;
+  width: 330px;
+  flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.review-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(230, 0, 0, 0.1);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.review-username {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.review-date {
+  font-family: var(--font-secondary);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.review-stars {
+  font-size: 11px;
+  color: #ffaa00;
+}
+
+.review-text {
+  font-family: var(--font-secondary);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Adjust footer column template for 3 columns */
+@media (min-width: 992px) {
+  .footer-container {
+    grid-template-columns: 2.5fr 1.5fr 2fr !important;
+  }
+}
