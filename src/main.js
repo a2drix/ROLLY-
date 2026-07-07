@@ -1546,6 +1546,7 @@ let clientOrdersSearchVal = "";
 let activeTrackingOrderId = "";
 let users = [];
 let currentUser = null;
+let discordClientId = "";
 let priceSliderMax = 9999; // Extended max price limit for high end games
 let checkoutPaymentMethod = "ooredoo";
 let checkoutStep = 1;
@@ -1555,6 +1556,25 @@ let isCloudDbConnected = true;
 // Initialize App safely with try-catch blocks for robust lifecycle execution
 document.addEventListener("DOMContentLoaded", async () => {
   console.log("DOM content loaded. Starting initialization phases...");
+  
+  // Fetch Discord Client ID
+  try {
+    const res = await fetch("/api/discord-client-id");
+    if (res.ok) {
+      const data = await res.json();
+      discordClientId = data.clientId;
+    }
+  } catch (e) {
+    console.error("Failed to load Discord Client ID:", e);
+  }
+
+  // Check Discord OAuth Callback
+  const urlParams = new URLSearchParams(window.location.search);
+  const discordCode = urlParams.get('code');
+  if (discordCode) {
+    await handleDiscordCallback(discordCode);
+  }
+
   try {
     await loadDatabase();
     console.log("Phase 1: Database initialized successfully.");
@@ -2780,6 +2800,14 @@ function setupEventListeners() {
     document.getElementById("auth-register-form").style.display = "block";
     document.getElementById("auth-login-form").style.display = "none";
   });
+
+  // Handle Discord Sign In click
+  const discordLoginBtn = document.getElementById("btn-discord-login");
+  if (discordLoginBtn) {
+    discordLoginBtn.addEventListener("click", () => {
+      initiateDiscordLogin();
+    });
+  }
 
   // Handle Sign In submission
   document.getElementById("auth-login-form").addEventListener("submit", (e) => {
@@ -4364,6 +4392,39 @@ function renderClientDashboardSummary() {
   
   const sidebarUsernameEl = document.getElementById("client-sidebar-username");
   if (sidebarUsernameEl) sidebarUsernameEl.innerText = currentUser.username;
+
+  const discordStatusEl = document.getElementById("client-sidebar-discord-status");
+  if (discordStatusEl) {
+    if (currentUser.discordUsername) {
+      discordStatusEl.innerHTML = `
+        <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:#5865F2;background:rgba(88,101,242,0.1);padding:4px 8px;border-radius:4px;width:fit-content;margin:4px 0 0 0;">
+          <svg width="12" height="12" viewBox="0 0 127.14 96.36" fill="currentColor" style="display:inline-block;vertical-align:middle;">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.88-.65,1.72-1.34,2.51-2a75.58,75.58,0,0,0,66,0c.79.71,1.63,1.4,2.51,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31-18.83C129.87,49.25,123.63,26.43,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+          </svg>
+          @${currentUser.discordUsername}
+        </div>
+      `;
+    } else {
+      discordStatusEl.innerHTML = `
+        <button id="btn-link-discord" style="display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:#fff;background:#5865F2;border:none;padding:5px 8px;border-radius:4px;cursor:pointer;margin:4px 0 0 0;transition:opacity 0.2s;outline:none;">
+          <svg width="10" height="10" viewBox="0 0 127.14 96.36" fill="currentColor" style="display:inline-block;vertical-align:middle;">
+            <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.88-.65,1.72-1.34,2.51-2a75.58,75.58,0,0,0,66,0c.79.71,1.63,1.4,2.51,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31-18.83C129.87,49.25,123.63,26.43,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
+          </svg>
+          Lier Discord
+        </button>
+      `;
+      // Bind click event
+      setTimeout(() => {
+        const linkBtn = document.getElementById("btn-link-discord");
+        if (linkBtn) {
+          linkBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            initiateDiscordLogin();
+          });
+        }
+      }, 50);
+    }
+  }
   
   // 2. Banner details
   const bannerAvatarInitialsEl = document.getElementById("banner-avatar-large");
@@ -5097,5 +5158,143 @@ function completeOrderWithDetails(orderId, dateStr, method, voucherCode) {
   renderAdminOrders();
 
   showToast("Félicitations ! Commande livrée automatiquement. 🎉");
+}
+
+function saveCurrentUser() {
+  if (currentUser) {
+    sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
+    const idx = users.findIndex(u => u.id === currentUser.id);
+    if (idx !== -1) {
+      users[idx] = currentUser;
+    }
+    saveUsersToCloud();
+  }
+}
+
+function initiateDiscordLogin() {
+  if (!discordClientId) {
+    showToast("ID Client Discord non configuré. Veuillez configurer DISCORD_CLIENT_ID dans Vercel. ❌");
+    return;
+  }
+  const redirectUri = window.location.origin + '/';
+  const url = `https://discord.com/api/oauth2/authorize?client_id=${discordClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=identify`;
+  window.location.href = url;
+}
+
+async function handleDiscordCallback(code) {
+  const redirectUri = window.location.origin + '/';
+  showToast("Authentification avec Discord en cours... ⏳");
+  try {
+    const res = await fetch("/api/discord-auth", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code, redirectUri })
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Erreur de connexion Discord");
+    }
+    const discordUser = await res.json();
+    
+    // Clean code param from URL
+    const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
+    window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+
+    await handleDiscordLoginOrLink(discordUser);
+  } catch (e) {
+    console.error("Discord Auth Callback Error:", e);
+    showToast(`Échec de l'authentification Discord : ${e.message} ❌`);
+  }
+}
+
+async function handleDiscordLoginOrLink(discordUser) {
+  // Reload users from cloud
+  try {
+    const res = await fetch("/api/users");
+    if (res.ok) {
+      users = await res.json();
+    }
+  } catch (e) {}
+
+  const discordAvatarUrl = discordUser.avatar 
+    ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png`
+    : "";
+
+  if (currentUser) {
+    // Link Discord to current user
+    const existingLink = users.find(u => u.discordId === discordUser.id && u.id !== currentUser.id);
+    if (existingLink) {
+      showToast("Ce compte Discord est déjà lié à un autre utilisateur. ❌");
+      return;
+    }
+
+    const userInDb = users.find(u => u.id === currentUser.id);
+    if (userInDb) {
+      userInDb.discordId = discordUser.id;
+      userInDb.discordUsername = discordUser.username;
+      userInDb.discordAvatar = discordAvatarUrl;
+      
+      if (!userInDb.avatar) {
+        userInDb.avatar = discordAvatarUrl;
+      }
+
+      currentUser = userInDb;
+      saveCurrentUser();
+      showToast("Compte Discord lié avec succès ! ✅");
+      setupUI();
+      if (currentView === "orders") {
+        renderClientDashboardSummary();
+      }
+    }
+    return;
+  }
+
+  // Login/Register
+  let matchedUser = users.find(u => u.discordId === discordUser.id);
+  if (matchedUser) {
+    currentUser = matchedUser;
+    sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
+    showToast(`Bienvenue, ${currentUser.username} (via Discord) ! 👋`);
+    setupUI();
+    switchView("orders");
+  } else {
+    // Generate unique username
+    let targetUsername = discordUser.username;
+    let suffix = 1;
+    while (users.some(u => u.username.toLowerCase() === targetUsername.toLowerCase())) {
+      targetUsername = discordUser.username + suffix;
+      suffix++;
+    }
+
+    const newUser = {
+      id: "usr-" + Date.now(),
+      username: targetUsername,
+      password: Math.random().toString(36).slice(-8),
+      role: "client",
+      discordId: discordUser.id,
+      discordUsername: discordUser.username,
+      discordAvatar: discordAvatarUrl,
+      avatar: discordAvatarUrl,
+      walletBalance: 0.000,
+      activityFeed: [
+        { text: "Compte créé via Discord ! 🎉", time: "À l'instant" }
+      ]
+    };
+
+    users.push(newUser);
+    saveUsersToCloud();
+
+    currentUser = newUser;
+    sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
+
+    orders.forEach(o => {
+      if (!o.userId) o.userId = currentUser.id;
+    });
+    saveOrdersToCloud();
+
+    showToast(`Compte créé via Discord ! Bienvenue ${currentUser.username} 🎉`);
+    setupUI();
+    switchView("orders");
+  }
 }
 // Trigger Vercel Redeployment with Upstash linked
