@@ -5212,6 +5212,13 @@ async function handleDiscordCallback(code) {
     const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
     window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
 
+    if (discordUser.discordJoinStatus) {
+      console.log("Discord Guild Join/Role status:", discordUser.discordJoinStatus);
+      if (discordUser.discordJoinStatus.includes("Failed")) {
+        showToast("Erreur lors de l'ajout automatique au serveur Discord. ⚠️");
+      }
+    }
+
     await handleDiscordLoginOrLink(discordUser);
   } catch (e) {
     console.error("Discord Auth Callback Error:", e);

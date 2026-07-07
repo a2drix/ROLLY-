@@ -66,27 +66,60 @@ export default async function handler(req, res) {
     // 3. Automatically add user to the Discord Server (Guild) if Bot Token and Guild ID are set
     const botToken = process.env.DISCORD_BOT_TOKEN;
     const guildId = process.env.DISCORD_GUILD_ID;
+    const roleId = process.env.DISCORD_ROLE_ID;
+
+    let joinStatusMessage = "Not attempted";
 
     if (botToken && guildId) {
       try {
+        const bodyPayload = {
+          access_token: access_token,
+        };
+        if (roleId) {
+          bodyPayload.roles = [roleId];
+        }
+
         const joinResponse = await fetch(`https://discord.com/api/v10/guilds/${guildId}/members/${userData.id}`, {
           method: 'PUT',
           headers: {
             Authorization: `Bot ${botToken}`,
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            access_token: access_token,
-          }),
+          body: JSON.stringify(bodyPayload),
         });
 
-        if (joinResponse.ok) {
+        if (joinResponse.status === 201) {
+          joinStatusMessage = "Successfully joined server";
           console.log(`Successfully added user ${userData.username} to guild ${guildId}`);
+        } else if (joinResponse.status === 204) {
+          joinStatusMessage = "Already in server";
+          console.log(`User ${userData.username} is already in guild ${guildId}`);
+          
+          // If already in server and roleId is set, add role separately
+          if (roleId) {
+            const roleResponse = await fetch(`https://discord.com/api/v10/guilds/${guildId}/members/${userData.id}/roles/${roleId}`, {
+              method: 'PUT',
+              headers: {
+                Authorization: `Bot ${botToken}`,
+              },
+            });
+
+            if (roleResponse.ok) {
+              joinStatusMessage += " (Role assigned)";
+              console.log(`Successfully assigned role ${roleId} to user ${userData.username}`);
+            } else {
+              const roleError = await roleResponse.json();
+              joinStatusMessage += ` (Failed to assign role: ${JSON.stringify(roleError)})`;
+              console.error(`Failed to assign role:`, roleError);
+            }
+          }
         } else {
           const joinError = await joinResponse.json();
+          joinStatusMessage = `Failed to join: ${JSON.stringify(joinError)}`;
           console.error(`Failed to add user to guild:`, joinError);
         }
       } catch (err) {
+        joinStatusMessage = `Join error: ${err.message}`;
         console.error('Error adding user to guild:', err);
       }
     }
@@ -99,6 +132,7 @@ export default async function handler(req, res) {
       global_name: userData.global_name,
       avatar: userData.avatar,
       email: userData.email,
+      discordJoinStatus: joinStatusMessage,
     });
   } catch (error) {
     console.error('Discord Auth Handler Error:', error);
