@@ -4285,10 +4285,31 @@ function submitFullCheckoutOrder() {
   updateAdminStats();
   renderAdminOrders();
 
-  showToast("Commande payée et envoyée avec succès ! 🎉");
+  showToast("Commande envoyée avec succès ! 🎉");
 
-  // Redirect to orders view
-  switchView("orders");
+  // Set up success review page information
+  const xpReward = Math.floor(totalPaid / 10);
+  const successXpAmountEl = document.getElementById("success-xp-amount");
+  if (successXpAmountEl) successXpAmountEl.innerText = `+${xpReward} XP`;
+
+  // Bind track order button dynamically for this order
+  const btnSuccessTrack = document.getElementById("btn-success-track");
+  if (btnSuccessTrack) {
+    btnSuccessTrack.onclick = () => {
+      openOrderTrackingView(orderId);
+    };
+  }
+
+  // Bind continue shopping button
+  const btnSuccessContinue = document.getElementById("btn-success-continue");
+  if (btnSuccessContinue) {
+    btnSuccessContinue.onclick = () => {
+      switchView("home");
+    };
+  }
+
+  // Redirect to success screen view
+  switchView("checkout-success");
 }
 
 // Checkout flow

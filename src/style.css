@@ -6110,3 +6110,118 @@ body.client-mode-active .client-dashboard-layout {
   color: var(--text-muted);
   margin-top: 15px;
 }
+
+/* Checkout Success Page CSS */
+.checkout-success-container {
+  max-width: 700px;
+  margin: 80px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.search-pulse-icon-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.search-pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #2563eb;
+  animation: pulse-ring-animation 2s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring-animation {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.review-status-heading {
+  font-family: var(--font-primary);
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+
+.review-status-desc {
+  font-family: var(--font-secondary);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-bottom: 35px;
+}
+
+.review-alert-box {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.review-alert-box.info-alert {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.review-alert-box.gift-alert {
+  background: rgba(243, 186, 47, 0.03);
+  border: 1px solid rgba(243, 186, 47, 0.08);
+}
+
+.review-alert-box .alert-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.review-alert-box .alert-content {
+  font-family: var(--font-secondary);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.review-alert-box .alert-content strong {
+  font-family: var(--font-primary);
+  color: #fff;
+  display: block;
+  font-size: 13.5px;
+  margin-bottom: 2px;
+}
+
+.success-actions-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 35px;
+  justify-content: center;
+  flex-wrap: wrap;
+}

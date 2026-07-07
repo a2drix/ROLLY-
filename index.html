@@ -1517,6 +1517,42 @@
         </div>
       </section>
 
+      <!-- Checkout Success / Under Review Page -->
+      <section id="view-checkout-success" class="app-view">
+        <div class="checkout-success-container">
+          
+          <!-- Animated pulse loop search icon -->
+          <div class="search-pulse-icon-wrapper">
+            <div class="search-pulse-ring"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+
+          <h1 class="review-status-heading">Your Order Is Under Review</h1>
+          <p class="review-status-desc">Thank you for your purchase. Your payment is currently being reviewed by our team. Once the verification is complete, your codes will be delivered.</p>
+
+          <div class="review-alert-box info-alert">
+            <div class="alert-icon">⏱️</div>
+            <div class="alert-content">
+              <strong>Estimated verification time</strong>
+              <p>Usually between 5 and 30 minutes.</p>
+            </div>
+          </div>
+
+          <div class="review-alert-box gift-alert">
+            <div class="alert-icon">🎁</div>
+            <div class="alert-content">
+              <span>Payment pending: <strong id="success-xp-amount" style="color: #f3ba2f;">+8 XP</strong> will be added after your payment is approved.</span>
+            </div>
+          </div>
+
+          <div class="success-actions-row">
+            <button class="btn btn-primary" id="btn-success-track" style="background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%); border: none; padding: 14px 32px; font-weight: 700;">Track Order →</button>
+            <button class="btn btn-outline" id="btn-success-continue" style="border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); color: #fff; padding: 14px 32px;">Continue Shopping</button>
+          </div>
+
+        </div>
+      </section>
+
     </main>
 
     <!-- Shopping Cart Drawer (Right Side Overlay) -->
