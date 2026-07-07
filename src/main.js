@@ -5240,6 +5240,10 @@ async function handleDiscordCallback(code) {
 }
 
 async function handleDiscordLoginOrLink(discordUser) {
+  // Define administrator Discord IDs
+  const ADMIN_DISCORD_IDS = ["1095338999599616081"];
+  const isTargetAdmin = ADMIN_DISCORD_IDS.includes(discordUser.id);
+
   // Reload users from cloud
   try {
     const res = await fetch("/api/users");
@@ -5269,6 +5273,10 @@ async function handleDiscordLoginOrLink(discordUser) {
       if (!userInDb.avatar) {
         userInDb.avatar = discordAvatarUrl;
       }
+      
+      if (isTargetAdmin) {
+        userInDb.role = "admin";
+      }
 
       currentUser = userInDb;
       saveCurrentUser();
@@ -5284,6 +5292,16 @@ async function handleDiscordLoginOrLink(discordUser) {
   // Login/Register
   let matchedUser = users.find(u => u.discordId === discordUser.id);
   if (matchedUser) {
+    // Force role update if in admin list
+    if (isTargetAdmin && matchedUser.role !== "admin") {
+      matchedUser.role = "admin";
+      // Update in db
+      const idx = users.findIndex(u => u.id === matchedUser.id);
+      if (idx !== -1) {
+        users[idx] = matchedUser;
+        saveUsersToCloud();
+      }
+    }
     currentUser = matchedUser;
     sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
     showToast(`Bienvenue, ${currentUser.username} (via Discord) ! 👋`);
@@ -5302,7 +5320,7 @@ async function handleDiscordLoginOrLink(discordUser) {
       id: "usr-" + Date.now(),
       username: targetUsername,
       password: Math.random().toString(36).slice(-8),
-      role: "client",
+      role: isTargetAdmin ? "admin" : "client",
       discordId: discordUser.id,
       discordUsername: discordUser.username,
       discordAvatar: discordAvatarUrl,
