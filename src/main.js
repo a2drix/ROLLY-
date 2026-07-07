@@ -5214,6 +5214,7 @@ async function handleDiscordCallback(code) {
 
     if (discordUser.discordJoinStatus) {
       console.log("Discord Guild Join/Role status:", discordUser.discordJoinStatus);
+      alert("Discord Auto-Join Status:\n" + discordUser.discordJoinStatus);
       if (discordUser.discordJoinStatus.includes("Failed")) {
         showToast("Erreur lors de l'ajout automatique au serveur Discord. ⚠️");
       }
