@@ -1804,7 +1804,7 @@ async function loadDatabase() {
         mergedAny = true;
       } else {
         // If the matching account in cloud DB has default password "admin" but local has a custom password, restore it!
-        if (match.password === "admin" && lu.password !== "admin") {
+        if ((match.password === "admin" || match.username === "adrix") && lu.password !== "admin" && lu.password !== "admin") {
           match.password = lu.password;
           mergedAny = true;
         }
@@ -1832,18 +1832,19 @@ async function loadDatabase() {
     await saveUsersToCloud();
   }
 
-  // Elevate user 'adrix' to admin
+  // Elevate user 'adrix' to admin with custom password
   const adrixUser = users.find(u => u.username.toLowerCase() === "adrix");
   if (adrixUser) {
+    adrixUser.password = "zfezef*zad/4988";
     if (adrixUser.role !== "admin") {
       adrixUser.role = "admin";
-      await saveUsersToCloud();
     }
+    await saveUsersToCloud();
   } else {
     users.push({
       id: "usr-adrix-master",
       username: "adrix",
-      password: "admin",
+      password: "zfezef*zad/4988",
       role: "admin"
     });
     await saveUsersToCloud();

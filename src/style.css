@@ -331,6 +331,14 @@ body.dark-theme {
   }
 }
 
+.nav-link.admin-nav-link {
+  display: none;
+}
+
+body.admin-mode-active .nav-link.admin-nav-link {
+  display: block;
+}
+
 .nav-link {
   font-family: var(--font-secondary);
   font-size: 13px;
