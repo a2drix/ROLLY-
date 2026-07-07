@@ -5594,3 +5594,38 @@ body.admin-mode-active #view-admin.app-view.active {
   font-size: 10px;
   color: var(--text-muted);
 }
+
+/* Header Avatar Trigger Button */
+.header-avatar-trigger {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition);
+  padding: 0;
+  overflow: hidden;
+}
+
+.header-avatar-trigger:hover {
+  border-color: var(--primary);
+  background-color: rgba(230, 0, 0, 0.03);
+}
+
+.header-avatar-trigger img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-avatar-trigger span {
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 14px;
+}

@@ -4691,27 +4691,36 @@ function updateAuthUI() {
     } else {
       document.body.classList.remove("user-is-admin");
     }
-    // Header Logged-In Badge
+    
+    // Header Logged-In Avatar Badge
+    let avatarHTML = "";
+    if (currentUser.avatar) {
+      avatarHTML = `<img src="${currentUser.avatar}" alt="Avatar">`;
+    } else {
+      const initials = currentUser.username.slice(0, 2).toUpperCase();
+      avatarHTML = `<span>${initials}</span>`;
+    }
+
     headerWrapper.innerHTML = `
-      <div class="user-badge-header">
-        👤 <strong>${currentUser.username}</strong>
-        <span style="opacity: 0.3;">|</span>
-        <button class="btn-logout" id="btn-logout-action">Déconnexion</button>
-      </div>
+      <button class="header-avatar-trigger" id="header-avatar-btn" title="Mon Compte">
+        ${avatarHTML}
+      </button>
     `;
     
     // Mobile Drawer Logged-In Badge
     mobileWrapper.innerHTML = `
       <div class="mobile-user-status">
-        <div style="font-family: var(--font-secondary); font-size: 13px; color: #fff;">Connecté en tant que: <strong>${currentUser.username}</strong></div>
+        <div style="font-family: var(--font-secondary); font-size: 13px; color: #fff; margin-bottom: 12px;">Connecté en tant que: <strong>${currentUser.username}</strong></div>
         <button class="btn btn-outline w-full" id="btn-mobile-logout-action" style="height: 40px;">Se Déconnecter 🚪</button>
       </div>
     `;
 
-    // Bind Logout action clicks
-    document.getElementById("btn-logout-action").addEventListener("click", () => {
-      logoutClient();
+    // Bind Avatar click to open client panel (dashboard tab)
+    document.getElementById("header-avatar-btn").addEventListener("click", () => {
+      switchView("orders");
+      switchClientDashboardTab("dashboard");
     });
+    
     document.getElementById("btn-mobile-logout-action").addEventListener("click", () => {
       logoutClient();
     });
