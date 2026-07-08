@@ -322,7 +322,8 @@ body.dark-theme {
 .nav-menu {
   display: none;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  gap: 20px;
 }
 
 @media (min-width: 992px) {
@@ -336,30 +337,39 @@ body.dark-theme {
 }
 
 body.user-is-admin .admin-nav-link {
-  display: block !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-link {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-secondary);
   text-decoration: none;
   transition: var(--transition);
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
 }
 
 .nav-link:hover {
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link.active {
   color: var(--primary);
-  background-color: rgba(230, 0, 0, 0.05);
+  background-color: rgba(230, 0, 0, 0.08);
+  border-color: rgba(230, 0, 0, 0.2);
+  box-shadow: 0 0 12px rgba(230, 0, 0, 0.15);
 }
 
 .header-actions {
