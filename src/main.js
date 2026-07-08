@@ -2188,8 +2188,84 @@ function openEditProductModal(prodId) {
   document.getElementById("edit-product-modal").classList.add("active");
 }
 
+// Currency Conversion System
+let currentCurrency = localStorage.getItem("rolly_currency") || "TND";
+const CURRENCY_CONVERSION_RATES = {
+  TND: 1.0,
+  USD: 0.32,
+  EUR: 0.30
+};
+const CURRENCY_SYMBOLS = {
+  TND: "TND",
+  USD: "USD",
+  EUR: "EUR"
+};
+
+function formatPrice(amountInTND) {
+  const rate = CURRENCY_CONVERSION_RATES[currentCurrency] || 1.0;
+  const converted = amountInTND * rate;
+  if (currentCurrency === "TND") {
+    return converted.toFixed(3) + " TND";
+  } else {
+    return converted.toFixed(2) + " " + CURRENCY_SYMBOLS[currentCurrency];
+  }
+}
+
+function setCurrency(curr) {
+  currentCurrency = curr;
+  localStorage.setItem("rolly_currency", curr);
+  
+  // Update dropdown button text
+  const labelEl = document.getElementById("selected-currency-label");
+  if (labelEl) {
+    labelEl.innerText = `${curr} ${curr}`;
+  }
+  
+  // Re-render UI components that display prices
+  renderTrendingProducts();
+  renderCatalogProducts();
+  renderSidebarTrending();
+  updateCartUI();
+  updateCartBadge();
+  renderClientWallet();
+  renderClientOrders();
+  
+  // If details view is open, re-render it
+  const activeDetailsId = document.getElementById("modal-product-id")?.value;
+  if (activeDetailsId) {
+        openProductDetailsView(activeDetailsId);
+  }
+}
+
 // Setup Event Listeners
 function setupEventListeners() {
+  // Initialize Currency Dropdown Selectors
+  const currTrigger = document.getElementById("currency-dropdown-trigger");
+  const currMenu = document.getElementById("currency-dropdown-menu");
+  const currLabel = document.getElementById("selected-currency-label");
+
+  if (currLabel) {
+    currLabel.innerText = `${currentCurrency} ${currentCurrency}`;
+  }
+
+  if (currTrigger && currMenu) {
+    currTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currMenu.classList.toggle("active");
+    });
+
+    document.addEventListener("click", () => {
+      currMenu.classList.remove("active");
+    });
+
+    currMenu.querySelectorAll(".currency-option").forEach(option => {
+      option.addEventListener("click", () => {
+        const selectedCurr = option.getAttribute("data-currency");
+        setCurrency(selectedCurr);
+      });
+    });
+  }
+
   // Support chat page event bindings
   const newChatBtn = document.getElementById("btn-support-new-chat");
   if (newChatBtn) {
