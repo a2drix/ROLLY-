@@ -3003,22 +3003,32 @@ function setupEventListeners() {
 
   // Auth Tab Toggles
   document.getElementById("tab-login").addEventListener("click", () => {
-    document.getElementById("tab-login").classList.add("active");
-    document.getElementById("tab-login").style.color = "var(--primary)";
-    document.getElementById("tab-register").classList.remove("active");
-    document.getElementById("tab-register").style.color = "var(--text-secondary)";
-    document.getElementById("auth-login-form").style.display = "block";
+    document.getElementById("auth-login-form").style.display = "flex";
     document.getElementById("auth-register-form").style.display = "none";
+    document.getElementById("auth-login-header").style.display = "block";
+    document.getElementById("auth-register-header").style.display = "none";
   });
 
   document.getElementById("tab-register").addEventListener("click", () => {
-    document.getElementById("tab-register").classList.add("active");
-    document.getElementById("tab-register").style.color = "var(--primary)";
-    document.getElementById("tab-login").classList.remove("active");
-    document.getElementById("tab-login").style.color = "var(--text-secondary)";
-    document.getElementById("auth-register-form").style.display = "block";
+    document.getElementById("auth-register-form").style.display = "flex";
     document.getElementById("auth-login-form").style.display = "none";
+    document.getElementById("auth-register-header").style.display = "block";
+    document.getElementById("auth-login-header").style.display = "none";
   });
+
+  const switchToRegister = document.getElementById("switch-to-register");
+  if (switchToRegister) {
+    switchToRegister.addEventListener("click", () => {
+      document.getElementById("tab-register").click();
+    });
+  }
+
+  const switchToLogin = document.getElementById("switch-to-login");
+  if (switchToLogin) {
+    switchToLogin.addEventListener("click", () => {
+      document.getElementById("tab-login").click();
+    });
+  }
 
   // Handle Discord Sign In click
   const discordLoginBtn = document.getElementById("btn-discord-login");
@@ -5249,8 +5259,14 @@ function openOrderTrackingView(orderId) {
 }
 
 // 14. Authentication System Helper functions
-function openAuthModal() {
-  document.getElementById("tab-login").click();
+function openAuthModal(defaultTab = "login") {
+  if (defaultTab === "register") {
+    const tabReg = document.getElementById("tab-register");
+    if (tabReg) tabReg.click();
+  } else {
+    const tabLog = document.getElementById("tab-login");
+    if (tabLog) tabLog.click();
+  }
   document.getElementById("auth-modal").classList.add("active");
 }
 
@@ -5299,22 +5315,40 @@ function updateAuthUI() {
       logoutClient();
     });
   } else {
-    // Header Logged-Out Trigger button
+    // Header Logged-Out Trigger buttons
     headerWrapper.innerHTML = `
-      <button class="btn btn-outline btn-login-trigger" id="btn-login-modal-trigger" style="height: 38px; padding: 0 14px; font-size: 12px; display: flex; align-items: center; gap: 6px;">Connexion 👤</button>
+      <button class="header-login-btn" id="btn-login-modal-trigger" style="background: none; border: 1px solid rgba(255,255,255,0.08); color: #fff; height: 38px; padding: 0 16px; font-family: var(--font-secondary); font-size: 13px; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Login
+      </button>
+      <button class="header-register-btn" id="btn-register-modal-trigger" style="background: #7C3AED; border: none; color: #fff; height: 38px; padding: 0 18px; font-family: var(--font-secondary); font-size: 13px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);">
+        Register
+      </button>
     `;
 
-    // Mobile Drawer Logged-Out Trigger button
+    // Mobile Drawer Logged-Out Trigger buttons
     mobileWrapper.innerHTML = `
-      <button class="btn btn-primary w-full" id="btn-mobile-login-trigger" style="height: 42px;">Se Connecter 👤</button>
+      <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+        <button class="btn btn-outline w-full" id="btn-mobile-login-trigger" style="height: 42px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Login
+        </button>
+        <button class="btn btn-primary w-full" id="btn-mobile-register-trigger" style="height: 42px; background: #7C3AED; border: none; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);">Register</button>
+      </div>
     `;
 
-    // Rebind Login Modal Triggers
+    // Rebind Login/Register Modal Triggers
     document.getElementById("btn-login-modal-trigger").addEventListener("click", () => {
-      openAuthModal();
+      openAuthModal("login");
+    });
+    document.getElementById("btn-register-modal-trigger").addEventListener("click", () => {
+      openAuthModal("register");
     });
     document.getElementById("btn-mobile-login-trigger").addEventListener("click", () => {
-      openAuthModal();
+      openAuthModal("login");
+    });
+    document.getElementById("btn-mobile-register-trigger").addEventListener("click", () => {
+      openAuthModal("register");
     });
   }
 }
