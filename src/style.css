@@ -6653,8 +6653,8 @@ body.client-mode-active .client-dashboard-layout {
 }
 
 .auth-input-new:focus {
-  border-color: #7C3AED !important;
-  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2) !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 2px rgba(230, 0, 0, 0.2) !important;
 }
 
 .header-login-btn:hover {
@@ -6663,7 +6663,7 @@ body.client-mode-active .client-dashboard-layout {
 }
 
 .header-register-btn:hover {
-  background: #6D28D9 !important;
+  background: #b30000 !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4) !important;
+  box-shadow: 0 6px 16px rgba(230, 0, 0, 0.4) !important;
 }

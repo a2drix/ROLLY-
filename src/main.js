@@ -5321,7 +5321,7 @@ function updateAuthUI() {
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.8;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         Login
       </button>
-      <button class="header-register-btn" id="btn-register-modal-trigger" style="background: #7C3AED; border: none; color: #fff; height: 38px; padding: 0 18px; font-family: var(--font-secondary); font-size: 13px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);">
+      <button class="header-register-btn" id="btn-register-modal-trigger" style="background: var(--primary); border: none; color: #fff; height: 38px; padding: 0 18px; font-family: var(--font-secondary); font-size: 13px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 12px rgba(230, 0, 0, 0.25);">
         Register
       </button>
     `;
@@ -5333,7 +5333,7 @@ function updateAuthUI() {
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           Login
         </button>
-        <button class="btn btn-primary w-full" id="btn-mobile-register-trigger" style="height: 42px; background: #7C3AED; border: none; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);">Register</button>
+        <button class="btn btn-primary w-full" id="btn-mobile-register-trigger" style="height: 42px; background: var(--primary); border: none; box-shadow: 0 4px 12px rgba(230, 0, 0, 0.25);">Register</button>
       </div>
     `;
 
