@@ -5443,6 +5443,13 @@ function renderHeroCarousel() {
     carouselProducts = products.slice(0, 5);
   }
 
+  // Place Red Dead Redemption 2 first so it centers immediately on load
+  const rdrIdx = carouselProducts.findIndex(p => p.name.includes("Red Dead Redemption 2"));
+  if (rdrIdx !== -1) {
+    const rdr2 = carouselProducts.splice(rdrIdx, 1)[0];
+    carouselProducts.unshift(rdr2);
+  }
+
   track.innerHTML = carouselProducts.map((p, index) => {
     // Resolve cover image safely using fallback overrides
     const coverImg = p.image || p.imageUrl || "/public/favicon.svg";
