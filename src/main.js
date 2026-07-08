@@ -2218,7 +2218,7 @@ function setCurrency(curr) {
   // Update dropdown button text
   const labelEl = document.getElementById("selected-currency-label");
   if (labelEl) {
-    labelEl.innerText = `${curr} ${curr}`;
+    labelEl.innerText = curr;
   }
   
   // Re-render UI components that display prices
@@ -2245,7 +2245,7 @@ function setupEventListeners() {
   const currLabel = document.getElementById("selected-currency-label");
 
   if (currLabel) {
-    currLabel.innerText = `${currentCurrency} ${currentCurrency}`;
+    currLabel.innerText = currentCurrency;
   }
 
   if (currTrigger && currMenu) {
