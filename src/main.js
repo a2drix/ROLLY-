@@ -1564,6 +1564,8 @@ let checkoutPaymentMethod = "ooredoo";
 let checkoutStep = 1;
 let simulatedOTP = "";
 let isCloudDbConnected = true;
+let activeDeal = null;
+let dealCountdownInterval = null;
 
 // Initialize App safely with try-catch blocks for robust lifecycle execution
 document.addEventListener("DOMContentLoaded", async () => {
@@ -1685,6 +1687,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   }, 10000);
 
   showToast("Boutique ROLLY chargée avec succès ! 🇹🇳");
+  // 6. Deep linking product query URL parsing & history states sync
+  const productUrlParams = new URLSearchParams(window.location.search);
+  const deepProduct = productUrlParams.get("product");
+  if (deepProduct) {
+    setTimeout(() => {
+      openProductDetailsView(deepProduct);
+    }, 300);
+  }
+
+  window.addEventListener("popstate", (e) => {
+    const params = new URLSearchParams(window.location.search);
+    const prodId = params.get("product");
+    if (prodId) {
+      openProductDetailsView(prodId);
+    } else {
+      switchView("home");
+    }
+  });
 });
 
 
@@ -1949,6 +1969,16 @@ async function loadDatabase() {
     cart = [];
   }
   updateCartBadge();
+
+  // 5. Fetch Deal of the Day configuration
+  try {
+    const res = await fetch("/api/deal");
+    if (res.ok) {
+      activeDeal = await res.json();
+    }
+  } catch (e) {
+    console.warn("Failed to load Deal of the Day configuration.", e);
+  }
 }
 
 // Setup Page Elements
@@ -1957,6 +1987,7 @@ function setupUI() {
   if (warningBanner) {
     warningBanner.style.display = isCloudDbConnected ? "none" : "flex";
   }
+  renderDealOfTheDay();
   renderHeroCarousel();
   renderCategoryMarquee();
   renderSidebarTrending();
@@ -2008,6 +2039,33 @@ function switchAdminSubview(subviewId) {
     renderAdminTickets();
   }
 
+  if (subviewId === "deal") {
+    // Populate select dropdown with products
+    const selectEl = document.getElementById("deal-product-select");
+    if (selectEl) {
+      selectEl.innerHTML = products.map(p => `<option value="${p.id}">${p.name} (${p.category})</option>`).join("");
+    }
+    
+    // Load current deal config into form if active
+    if (activeDeal) {
+      const activeEl = document.getElementById("deal-active");
+      const selectProdEl = document.getElementById("deal-product-select");
+      const priceEl = document.getElementById("deal-price");
+      const originalPriceEl = document.getElementById("deal-original-price");
+      const badgeEl = document.getElementById("deal-badge");
+      const platformEl = document.getElementById("deal-platform");
+      const durationEl = document.getElementById("deal-duration");
+
+      if (activeEl) activeEl.checked = activeDeal.active === true;
+      if (selectProdEl) selectProdEl.value = activeDeal.productId || "";
+      if (priceEl) priceEl.value = activeDeal.dealPrice || "";
+      if (originalPriceEl) originalPriceEl.value = activeDeal.originalPrice || "";
+      if (badgeEl) badgeEl.value = activeDeal.badge || "";
+      if (platformEl) platformEl.value = activeDeal.platform || "";
+      if (durationEl) durationEl.value = activeDeal.duration || "24";
+    }
+  }
+
   // Update section header title text
   const titleEl = document.getElementById("admin-subview-title");
   if (titleEl) {
@@ -2015,6 +2073,7 @@ function switchAdminSubview(subviewId) {
     else if (subviewId === "stock") titleEl.innerText = "Gestion du Stock & Prix";
     else if (subviewId === "admins") titleEl.innerText = "Gestion des Administrateurs";
     else if (subviewId === "tickets") titleEl.innerText = "Tickets Support";
+    else if (subviewId === "deal") titleEl.innerText = "Configuration du Flash Deal";
   }
 }
 
@@ -3160,6 +3219,46 @@ function setupEventListeners() {
     });
   }
 
+  // 5. Admin Deal of the Day configuration form submission
+  const dealForm = document.getElementById("admin-deal-config-form");
+  if (dealForm) {
+    dealForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const newDeal = {
+        active: document.getElementById("deal-active").checked,
+        productId: document.getElementById("deal-product-select").value,
+        dealPrice: parseFloat(document.getElementById("deal-price").value),
+        originalPrice: parseFloat(document.getElementById("deal-original-price").value),
+        badge: document.getElementById("deal-badge").value.trim(),
+        platform: document.getElementById("deal-platform").value.trim(),
+        duration: parseInt(document.getElementById("deal-duration").value) || 24
+      };
+
+      try {
+        const res = await fetch("/api/deal", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newDeal)
+        });
+
+        if (res.ok) {
+          activeDeal = newDeal;
+          renderDealOfTheDay();
+          showToast("Deal of the Day mis à jour avec succès ! ⚡");
+        } else {
+          throw new Error();
+        }
+      } catch (err) {
+        activeDeal = newDeal;
+        renderDealOfTheDay();
+        showToast("Deal mis à jour localement. 🔄");
+      }
+    });
+  }
+
   // 5. Submit product creation form
   const addProdFormNew = document.getElementById("add-product-form-new");
   if (addProdFormNew) {
@@ -3397,6 +3496,14 @@ function setupEventListeners() {
 
 // Router switcher logic
 function switchView(viewId) {
+  // Update URL for deep linking
+  if (viewId !== "product-details") {
+    const homeUrl = `${window.location.origin}${window.location.pathname}`;
+    if (window.location.search.includes("product=")) {
+      window.history.pushState({}, "", homeUrl);
+    }
+  }
+
   // Auth Route Guard for Mes Commandes view
   if (viewId === "orders" && !currentUser) {
     openAuthModal();
@@ -4034,6 +4141,10 @@ function openProductDetailsView(productId) {
   });
 
   switchView("product-details");
+
+  // Update URL for deep linking
+  const newUrl = `${window.location.origin}${window.location.pathname}?product=${productId}`;
+  window.history.pushState({ productId }, "", newUrl);
 }
 
 // Shopping Cart Management
@@ -5404,6 +5515,146 @@ function openClientTicketChat(ticketId) {
 
 
 // ==========================================================
+// DEAL OF THE DAY CONTROLLER
+// ==========================================================
+function renderDealOfTheDay() {
+  const container = document.getElementById("deal-of-the-day-section");
+  if (!container) return;
+
+  if (dealCountdownInterval) {
+    clearInterval(dealCountdownInterval);
+    dealCountdownInterval = null;
+  }
+
+  if (!activeDeal || activeDeal.active === false) {
+    container.style.display = "none";
+    return;
+  }
+
+  const prod = products.find(p => p.id === activeDeal.productId);
+  if (!prod) {
+    container.style.display = "none";
+    return;
+  }
+
+  const dealPrice = parseFloat(activeDeal.dealPrice);
+  const originalPrice = parseFloat(activeDeal.originalPrice);
+  const discountPercent = activeDeal.discountPercent || Math.round(((originalPrice - dealPrice) / originalPrice) * 100);
+  const badgeText = activeDeal.badge || `-${discountPercent}% OFF`;
+  const platformText = activeDeal.platform || prod.category;
+  
+  // Resolve platform icon overlay
+  let platformIconHTML = "";
+  const catLower = prod.category.toLowerCase();
+  if (catLower.includes("steam") || catLower.includes("pc")) {
+    platformIconHTML = `<div class="deal-platform-badge"><img src="/steam.jpg" alt="Steam" /></div>`;
+  } else if (catLower.includes("playstation") || catLower.includes("psn")) {
+    platformIconHTML = `<div class="deal-platform-badge"><img src="/playstation.jpg" alt="PlayStation" /></div>`;
+  } else if (catLower.includes("ooredoo") || catLower.includes("telecom")) {
+    platformIconHTML = `<div class="deal-platform-badge"><img src="/ooredoo.png" alt="Ooredoo" /></div>`;
+  }
+
+  // Cover image fallback
+  const coverImg = prod.image || prod.imageUrl || "/public/favicon.svg";
+
+  container.innerHTML = `
+    <div class="deal-card">
+      <div class="deal-left-column">
+        <div class="deal-image-wrapper">
+          ${platformIconHTML}
+          <img src="${coverImg}" class="deal-product-img" alt="${prod.name}" />
+        </div>
+      </div>
+      <div class="deal-right-column">
+        <span class="deal-tagline">⚡ Deal of the Day</span>
+        <h2 class="deal-title">${prod.name}</h2>
+        <div class="deal-badges-row">
+          <span class="deal-badge">${platformText}</span>
+          <span class="deal-badge discount">${badgeText}</span>
+        </div>
+        <div class="deal-prices-row">
+          <span class="deal-current-price">${formatPrice(dealPrice)}</span>
+          <span class="deal-old-price">${formatPrice(originalPrice)}</span>
+        </div>
+        <div class="deal-timer-container">
+          <span class="deal-timer-label">Deal resets in</span>
+          <div class="deal-countdown-box">
+            <div class="time-segment">
+              <span class="time-val" id="deal-hrs">00</span>
+              <span class="time-lbl">Hrs</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-segment">
+              <span class="time-val" id="deal-mins">00</span>
+              <span class="time-lbl">Min</span>
+            </div>
+            <span class="time-colon">:</span>
+            <div class="time-segment">
+              <span class="time-val" id="deal-secs">00</span>
+              <span class="time-lbl">Sec</span>
+            </div>
+          </div>
+        </div>
+        <button class="deal-btn" id="deal-grab-btn" data-prod-id="${prod.id}">
+          ⚡ Grab This Deal
+        </button>
+      </div>
+    </div>
+  `;
+
+  container.style.display = "block";
+
+  // Bind button to open product details modal
+  document.getElementById("deal-grab-btn").addEventListener("click", () => {
+    // Override product price temporarily in detail views to reflect deal price
+    const originalProdPrice = prod.price;
+    prod.price = dealPrice;
+    openProductDetailsView(prod.id);
+    
+    // Restore original product price after detail modal closes to keep store list state clean
+    const detailsModalClose = document.getElementById("details-modal-close");
+    if (detailsModalClose) {
+      detailsModalClose.addEventListener("click", () => {
+        prod.price = originalProdPrice;
+      }, { once: true });
+    }
+  });
+
+  // Calculate Target End Time
+  function updateCountdown() {
+    const now = new Date();
+    const midnight = new Date();
+    midnight.setHours(24, 0, 0, 0); // Next midnight
+
+    const diff = midnight.getTime() - now.getTime();
+    if (diff <= 0) {
+      document.getElementById("deal-hrs").innerText = "00";
+      document.getElementById("deal-mins").innerText = "00";
+      document.getElementById("deal-secs").innerText = "00";
+      return;
+    }
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const pad = (n) => n.toString().padStart(2, "0");
+
+    const hrsEl = document.getElementById("deal-hrs");
+    const minsEl = document.getElementById("deal-mins");
+    const secsEl = document.getElementById("deal-secs");
+
+    if (hrsEl) hrsEl.innerText = pad(hours);
+    if (minsEl) minsEl.innerText = pad(minutes);
+    if (secsEl) secsEl.innerText = pad(seconds);
+  }
+
+  updateCountdown();
+  dealCountdownInterval = setInterval(updateCountdown, 1000);
+}
+
+
+// ==========================================================
 // PHASE 13: 3D COVER FLOW HERO CAROUSEL CONTROLLER
 // ==========================================================
 
@@ -5463,15 +5714,10 @@ function renderHeroCarousel() {
   }
 
   track.innerHTML = carouselProducts.map((p, index) => {
-    // Resolve cover image safely using fallback overrides
     const coverImg = p.image || p.imageUrl || "/public/favicon.svg";
     return `
       <div class="carousel-card" data-index="${index}" data-product-id="${p.id}">
-        <img src="${coverImg}" class="carousel-card-img" alt="${p.name}" />
-        <div class="carousel-card-overlay">
-          <h4 class="carousel-card-title">${p.name}</h4>
-          <button class="carousel-card-btn" data-product-id="${p.id}">Acheter Maintenant 🛒</button>
-        </div>
+        <img src="${coverImg}" class="carousel-card-img" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;" />
       </div>
     `;
   }).join("");
@@ -5484,24 +5730,13 @@ function renderHeroCarousel() {
     card.addEventListener("click", () => {
       const idx = parseInt(card.getAttribute("data-index"));
       if (idx === activeCarouselIndex) {
-        // Center card click -> opens product details wizard
         const prodId = card.getAttribute("data-product-id");
         openProductDetailsView(prodId);
       } else {
-        // Flanking card click -> pivots it to center focus
         activeCarouselIndex = idx;
         updateCarouselLayout();
-        startCarouselAutoSlide(); // Reset auto-slide timer on manual navigation
+        startCarouselAutoSlide();
       }
-    });
-  });
-
-  // Explicitly bind click handler on button to ensure 100% responsiveness on mobile/desktop
-  track.querySelectorAll(".carousel-card-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Stop event bubbling to card
-      const prodId = btn.getAttribute("data-product-id");
-      openProductDetailsView(prodId);
     });
   });
 }
@@ -5510,15 +5745,19 @@ function updateCarouselLayout() {
   const cards = document.querySelectorAll(".carousel-card");
   if (cards.length === 0) return;
 
+  const isMobile = window.innerWidth <= 768;
+  const xOffset = isMobile ? 120 : 240;
+  const zTranslationCenter = isMobile ? 60 : 120;
+  const zTranslationSides = isMobile ? 20 : 40;
+
   cards.forEach((card, index) => {
     let offset = index - activeCarouselIndex;
     let absOffset = Math.abs(offset);
 
     if (absOffset > 2) {
-      // Hide far away cards
       card.style.opacity = "0";
       card.style.visibility = "hidden";
-      card.style.transform = `translateX(${offset * 160}px) scale(0.5) rotateY(0deg)`;
+      card.style.transform = `translateX(${offset * xOffset}px) scale(0.5) rotateY(0deg)`;
       card.style.zIndex = "0";
     } else {
       card.style.opacity = "1";
@@ -5528,30 +5767,27 @@ function updateCarouselLayout() {
       let zIndex = 5 - absOffset;
 
       if (offset === 0) {
-        // Center card: facing front with z-depth translation
-        transformStr = `translateX(0px) translateZ(180px) scale(1.05) rotateY(0deg)`;
+        transformStr = `translateX(0px) translateZ(${zTranslationCenter}px) scale(1) rotateY(0deg)`;
+        card.style.filter = "none";
       } else if (offset > 0) {
-        // Right side cards: angled back with offset translations
-        transformStr = `translateX(${offset * 190}px) translateZ(${80 - absOffset * 50}px) scale(${1 - absOffset * 0.12}) rotateY(-30deg)`;
+        transformStr = `translateX(${offset * xOffset}px) translateZ(${zTranslationSides - absOffset * 10}px) scale(${0.85 - absOffset * 0.05}) rotateY(-25deg)`;
+        card.style.filter = "brightness(0.4)";
       } else {
-        // Left side cards: angled back with offset translations
-        transformStr = `translateX(${offset * 190}px) translateZ(${80 - absOffset * 50}px) scale(${1 - absOffset * 0.12}) rotateY(30deg)`;
+        transformStr = `translateX(${offset * xOffset}px) translateZ(${zTranslationSides - absOffset * 10}px) scale(${0.85 - absOffset * 0.05}) rotateY(25deg)`;
+        card.style.filter = "brightness(0.4)";
       }
 
       card.style.transform = transformStr;
       card.style.zIndex = zIndex.toString();
-
-      // Dim overlays for inactive flanking cards
-      const overlay = card.querySelector(".carousel-card-overlay");
-      if (offset === 0) {
-        overlay.style.background = "linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%)";
-        card.style.filter = "none";
-      } else {
-        overlay.style.background = "rgba(0, 0, 0, 0.7)";
-        card.style.filter = "brightness(0.5)";
-      }
     }
   });
+
+  // Update bottom category badge
+  const activeProd = carouselProducts[activeCarouselIndex];
+  const catBadge = document.getElementById("carousel-active-category");
+  if (catBadge && activeProd) {
+    catBadge.innerText = activeProd.category;
+  }
 }
 
 
