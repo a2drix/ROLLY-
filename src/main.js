@@ -3576,8 +3576,8 @@ function renderProductCardHTML(prod) {
   const discountBadge = hasDiscount ? `<span class="product-badge discount">${prod.badge || "PROMO"}</span>` : "";
   const badgeMarkup = prod.badge && !hasDiscount ? `<span class="product-badge">${prod.badge}</span>` : discountBadge;
   
-  const formattedPrice = prod.price.toFixed(3) + " DT";
-  const formattedOldPrice = hasDiscount ? prod.oldPrice.toFixed(3) + " DT" : "";
+  const formattedPrice = formatPrice(prod.price);
+  const formattedOldPrice = hasDiscount ? formatPrice(prod.oldPrice) : "";
 
   const btnMarkup = prod.stock === "out-of-stock" 
     ? `<span class="out-of-stock-label">Rupture</span>` 
@@ -3648,7 +3648,7 @@ function openPurchaseModal(productId) {
 
   document.getElementById("modal-product-id").value = prod.id;
   document.getElementById("modal-product-title").innerText = prod.name;
-  document.getElementById("modal-product-price").innerText = prod.price.toFixed(3) + " DT";
+  document.getElementById("modal-product-price").innerText = formatPrice(prod.price);
   document.getElementById("modal-product-desc").innerText = prod.desc;
   
   const inputLabel = document.getElementById("purchase-input-label");
@@ -3687,7 +3687,7 @@ function openPurchaseModal(productId) {
       <div class="form-group">
         <label for="purchase-variant-select">Choisir l'offre (Option)</label>
         <select id="purchase-variant-select" style="width: 100%; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 16px; font-family: var(--font-secondary); font-size: 14px; color: #fff; outline: none;">
-          ${prod.subProducts.map((v, i) => `<option value="${i}">${v.title} - ${v.price.toFixed(3)} DT</option>`).join("")}
+          ${prod.subProducts.map((v, i) => `<option value="${i}">${v.title} - ${formatPrice(v.price)}</option>`).join("")}
         </select>
       </div>
     `;
@@ -3696,7 +3696,7 @@ function openPurchaseModal(productId) {
     selectEl.addEventListener("change", () => {
       const selectedIdx = parseInt(selectEl.value);
       const variant = prod.subProducts[selectedIdx];
-      document.getElementById("modal-product-price").innerText = variant.price.toFixed(3) + " DT";
+      document.getElementById("modal-product-price").innerText = formatPrice(variant.price);
     });
   } else {
     variantWrapper.innerHTML = "";
@@ -3746,8 +3746,8 @@ function openProductDetailsView(productId) {
         <div class="variant-grid-card-new ${activeClass}" data-variant-idx="${i}">
           <span class="variant-card-title-new">${v.title}</span>
           <div class="variant-card-prices-new">
-            <span class="variant-card-price-new">${v.price.toFixed(3)} DT</span>
-            ${v.originalPrice ? `<span class="variant-card-oldprice-new">${v.originalPrice.toFixed(3)} DT</span>` : ""}
+            <span class="variant-card-price-new">${formatPrice(v.price)}</span>
+            ${v.originalPrice ? `<span class="variant-card-oldprice-new">${formatPrice(v.originalPrice)}</span>` : ""}
           </div>
         </div>
       `;
@@ -4005,7 +4005,7 @@ function updateCartUI() {
         <p>Votre panier est vide</p>
       </div>
     `;
-    totalPriceLabel.innerText = "0.000 DT";
+    totalPriceLabel.innerText = formatPrice(0);
     return;
   }
 
@@ -4021,7 +4021,7 @@ function updateCartUI() {
           <div class="cart-item-playerid">Infos: ${item.playerInfo}</div>
           <div class="cart-item-meta">
             <span class="cart-item-qty">Qté : ${item.quantity}</span>
-            <span class="cart-item-price">${itemTotal.toFixed(3)} DT</span>
+            <span class="cart-item-price">${formatPrice(itemTotal)}</span>
           </div>
         </div>
         <button class="cart-item-remove" data-index="${idx}" aria-label="Remove item">
@@ -4031,7 +4031,7 @@ function updateCartUI() {
     `;
   }).join("");
 
-  totalPriceLabel.innerText = total.toFixed(3) + " DT";
+  totalPriceLabel.innerText = formatPrice(total);
 
   container.querySelectorAll(".cart-item-remove").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -4109,13 +4109,13 @@ function updateFullCheckoutUI() {
   const xpEl = document.getElementById("full-sum-xp");
   const totalEl = document.getElementById("full-sum-total");
 
-  if (subtotalEl) subtotalEl.innerText = cartTotal.toFixed(3) + " DT";
+  if (subtotalEl) subtotalEl.innerText = formatPrice(cartTotal);
   if (xpEl) xpEl.innerText = `+${xpReward} XP`;
-  if (totalEl) totalEl.innerText = totalToPay.toFixed(3) + " DT";
+  if (totalEl) totalEl.innerText = formatPrice(totalToPay);
 
   if (fullCheckoutMethod === "d17") {
     if (feeRowEl) feeRowEl.style.display = "flex";
-    if (feeEl) feeEl.innerText = `+${fee.toFixed(3)} DT`;
+    if (feeEl) feeEl.innerText = `+${formatPrice(fee)}`;
   } else {
     if (feeRowEl) feeRowEl.style.display = "none";
   }
@@ -4155,7 +4155,7 @@ function updateFullCheckoutUI() {
       if (fullCheckoutMethod === "binance") {
         el.innerText = (totalToPay * 0.32).toFixed(2) + " USDT";
       } else {
-        el.innerText = totalToPay.toFixed(3) + " DT";
+        el.innerText = formatPrice(totalToPay);
       }
     });
   }
@@ -4174,7 +4174,7 @@ function updateFullCheckoutUI() {
               <div class="checkout-item-qty">Qty: ${item.quantity} | ${item.playerInfo}</div>
             </div>
           </div>
-          <div class="checkout-item-price">${(item.product.price * item.quantity).toFixed(3)} DT</div>
+          <div class="checkout-item-price">${formatPrice(item.product.price * item.quantity)}</div>
         </div>
       `;
     }).join("");
@@ -5434,13 +5434,13 @@ function updateCarouselLayout() {
 
       if (offset === 0) {
         // Center card: facing front with z-depth translation
-        transformStr = `translateX(0px) translateZ(120px) scale(1) rotateY(0deg)`;
+        transformStr = `translateX(0px) translateZ(180px) scale(1.05) rotateY(0deg)`;
       } else if (offset > 0) {
         // Right side cards: angled back with offset translations
-        transformStr = `translateX(${offset * 140}px) translateZ(${60 - absOffset * 40}px) scale(${1 - absOffset * 0.15}) rotateY(-35deg)`;
+        transformStr = `translateX(${offset * 190}px) translateZ(${80 - absOffset * 50}px) scale(${1 - absOffset * 0.12}) rotateY(-30deg)`;
       } else {
         // Left side cards: angled back with offset translations
-        transformStr = `translateX(${offset * 140}px) translateZ(${60 - absOffset * 40}px) scale(${1 - absOffset * 0.15}) rotateY(35deg)`;
+        transformStr = `translateX(${offset * 190}px) translateZ(${80 - absOffset * 50}px) scale(${1 - absOffset * 0.12}) rotateY(30deg)`;
       }
 
       card.style.transform = transformStr;

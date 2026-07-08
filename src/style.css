@@ -4089,8 +4089,8 @@ body.admin-mode-active #view-admin.app-view.active {
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 1100px;
-  height: 430px;
+  max-width: 1200px;
+  height: 520px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4109,8 +4109,8 @@ body.admin-mode-active #view-admin.app-view.active {
 
 .carousel-card {
   position: absolute;
-  width: 310px;
-  height: 380px;
+  width: 380px;
+  height: 460px;
   border-radius: 28px;
   overflow: hidden;
   background-color: var(--bg-card);
@@ -4157,10 +4157,10 @@ body.admin-mode-active #view-admin.app-view.active {
 
 .carousel-card-title {
   font-family: var(--font-primary);
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 900;
   color: #fff;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   letter-spacing: 0.5px;
   text-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }
@@ -4169,10 +4169,10 @@ body.admin-mode-active #view-admin.app-view.active {
   background-color: var(--primary);
   color: #fff;
   border: none;
-  padding: 10px 22px;
+  padding: 12px 28px;
   border-radius: 30px;
   font-family: var(--font-secondary);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition);
@@ -6268,4 +6268,69 @@ body.client-mode-active .client-dashboard-layout {
   margin-top: 35px;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Currency Converter CSS Styles */
+.currency-dropdown-container {
+  position: relative;
+  font-family: var(--font-primary);
+}
+
+.currency-dropdown-trigger {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #f3ba2f; /* gold color like TND TND in the screenshot */
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.currency-dropdown-trigger:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.currency-dropdown-trigger .chevron-arrow {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.currency-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #0d0e12;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 6px;
+  width: 180px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: none;
+  z-index: 100;
+}
+
+.currency-dropdown-menu.active {
+  display: block;
+}
+
+.currency-option {
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.currency-option:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
 }
