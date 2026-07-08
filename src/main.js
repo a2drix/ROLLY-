@@ -5443,6 +5443,18 @@ function renderHeroCarousel() {
     carouselProducts = products.slice(0, 5);
   }
 
+  // Ensure we have at least 5 products in the carousel to show 2 on each side
+  if (carouselProducts.length < 5) {
+    const existingIds = new Set(carouselProducts.map(p => p.id));
+    const extraProds = products
+      .filter(p => !existingIds.has(p.id))
+      .sort((a, b) => b.popularIndex - a.popularIndex);
+    for (const p of extraProds) {
+      if (carouselProducts.length >= 5) break;
+      carouselProducts.push(p);
+    }
+  }
+
   // Place Red Dead Redemption 2 first so it centers immediately on load
   const rdrIdx = carouselProducts.findIndex(p => p.name.includes("Red Dead Redemption 2"));
   if (rdrIdx !== -1) {
