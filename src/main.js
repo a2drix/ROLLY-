@@ -3368,10 +3368,13 @@ function setupEventListeners() {
   // 6. Submit admin creation form
   const addAdminFormNew = document.getElementById("add-admin-form-new");
   if (addAdminFormNew) {
-    addAdminFormNew.addEventListener("submit", (e) => {
+    addAdminFormNew.addEventListener("submit", async (e) => {
       e.preventDefault();
       const usernameVal = document.getElementById("admin-new-username-new").value.trim();
       const passwordVal = document.getElementById("admin-new-password-new").value;
+      const discordIdVal = document.getElementById("admin-new-discord-id") 
+        ? document.getElementById("admin-new-discord-id").value.trim() 
+        : "";
 
       if (users.some(u => u.username.toLowerCase() === usernameVal.toLowerCase())) {
         showToast("Ce nom d'utilisateur est déjà utilisé. ❌");
@@ -3385,11 +3388,24 @@ function setupEventListeners() {
         role: "admin"
       };
 
+      if (discordIdVal) {
+        newAdmin.discordId = discordIdVal;
+        
+        // Also register it dynamically in adminDiscordIds array
+        if (!adminDiscordIds.includes(discordIdVal)) {
+          adminDiscordIds.push(discordIdVal);
+          await saveAdminDiscordIdsToCloud();
+        }
+      }
+
       users.push(newAdmin);
       saveUsersToCloud();
       addAdminFormNew.reset();
       showToast(`Administrateur ${usernameVal} créé avec succès ! 🔑`);
       setupUI();
+      if (document.getElementById("discord-admins-list-body")) {
+        renderAdminDiscordIds();
+      }
     });
   }
 
