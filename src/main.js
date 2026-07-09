@@ -5978,7 +5978,7 @@ async function handleDiscordCallback(code) {
 
 async function handleDiscordLoginOrLink(discordUser) {
   // Define administrator Discord IDs
-  const ADMIN_DISCORD_IDS = ["1095338999599616081"];
+  const ADMIN_DISCORD_IDS = ["1095338999599616081", "1242545920998904044"];
   const isTargetAdmin = ADMIN_DISCORD_IDS.includes(discordUser.id);
 
   // Reload users from cloud
