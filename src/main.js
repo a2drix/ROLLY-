@@ -1566,6 +1566,7 @@ let simulatedOTP = "";
 let isCloudDbConnected = true;
 let activeDeal = null;
 let dealCountdownInterval = null;
+let adminDiscordIds = ["1095338999599616081", "1242545920998904044"];
 
 // Initialize App safely with try-catch blocks for robust lifecycle execution
 document.addEventListener("DOMContentLoaded", async () => {
@@ -1979,6 +1980,16 @@ async function loadDatabase() {
   } catch (e) {
     console.warn("Failed to load Deal of the Day configuration.", e);
   }
+
+  // 6. Fetch Admin Discord IDs
+  try {
+    const res = await fetch("/api/admin-discord-ids");
+    if (res.ok) {
+      adminDiscordIds = await res.json();
+    }
+  } catch (e) {
+    console.warn("Failed to load Admin Discord IDs.", e);
+  }
 }
 
 // Setup Page Elements
@@ -2037,6 +2048,10 @@ function switchAdminSubview(subviewId) {
 
   if (subviewId === "tickets") {
     renderAdminTickets();
+  }
+
+  if (subviewId === "admins") {
+    renderAdminDiscordIds();
   }
 
   if (subviewId === "deal") {
@@ -2116,6 +2131,51 @@ function renderAdminUsers() {
       }
     });
   });
+}
+
+function renderAdminDiscordIds() {
+  const container = document.getElementById("discord-admins-list-body");
+  if (!container) return;
+
+  if (adminDiscordIds.length === 0) {
+    container.innerHTML = `<tr><td colspan="2" style="text-align: center; color: var(--text-muted); padding: 12px 0;">Aucun ID Discord configuré.</td></tr>`;
+    return;
+  }
+
+  container.innerHTML = adminDiscordIds.map(id => `
+    <tr>
+      <td style="font-family: var(--font-secondary); font-size: 13px; font-weight: 700; color: #fff; padding: 12px;">${id}</td>
+      <td style="padding: 12px;">
+        <button class="btn btn-sm btn-outline btn-delete-discord-admin" data-id="${id}" style="color: var(--primary); border-color: rgba(230,0,0,0.2); height: 28px; padding: 0 10px; font-size: 11px; cursor: pointer; transition: var(--transition);">Supprimer</button>
+      </td>
+    </tr>
+  `).join("");
+
+  // Bind delete triggers
+  container.querySelectorAll(".btn-delete-discord-admin").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const idToDelete = btn.getAttribute("data-id");
+      if (confirm(`Voulez-vous supprimer l'ID ${idToDelete} de la liste des administrateurs ?`)) {
+        adminDiscordIds = adminDiscordIds.filter(id => id !== idToDelete);
+        await saveAdminDiscordIdsToCloud();
+        renderAdminDiscordIds();
+        showToast("ID Discord supprimé de la liste admin. 🗑");
+      }
+    });
+  });
+}
+
+async function saveAdminDiscordIdsToCloud() {
+  localStorage.setItem("rolly_admin_discord_ids", JSON.stringify(adminDiscordIds));
+  try {
+    await fetch("/api/admin-discord-ids", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(adminDiscordIds)
+    });
+  } catch (e) {
+    console.warn("Failed to sync Discord admin IDs to cloud DB:", e);
+  }
 }
 
 let adminInventorySearch = "";
@@ -3330,6 +3390,28 @@ function setupEventListeners() {
       addAdminFormNew.reset();
       showToast(`Administrateur ${usernameVal} créé avec succès ! 🔑`);
       setupUI();
+    });
+  }
+
+  // 6b. Submit Discord admin creation form
+  const addDiscordAdminBtn = document.getElementById("btn-add-discord-admin");
+  if (addDiscordAdminBtn) {
+    addDiscordAdminBtn.addEventListener("click", async () => {
+      const input = document.getElementById("discord-admin-id-input");
+      const idToAdd = input.value.trim();
+      if (!idToAdd) {
+        showToast("Veuillez saisir un ID Discord valide. ✏");
+        return;
+      }
+      if (adminDiscordIds.includes(idToAdd)) {
+        showToast("Cet ID Discord est déjà administrateur. ⚠️");
+        return;
+      }
+      adminDiscordIds.push(idToAdd);
+      await saveAdminDiscordIdsToCloud();
+      input.value = "";
+      renderAdminDiscordIds();
+      showToast("ID Discord ajouté comme Administrateur ! 🔑");
     });
   }
 
@@ -5977,9 +6059,7 @@ async function handleDiscordCallback(code) {
 }
 
 async function handleDiscordLoginOrLink(discordUser) {
-  // Define administrator Discord IDs
-  const ADMIN_DISCORD_IDS = ["1095338999599616081", "1242545920998904044"];
-  const isTargetAdmin = ADMIN_DISCORD_IDS.includes(discordUser.id);
+  const isTargetAdmin = adminDiscordIds.includes(discordUser.id);
 
   // Reload users from cloud
   try {

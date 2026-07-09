@@ -1380,6 +1380,29 @@
                       </tbody>
                     </table>
                   </div>
+                <!-- Discord Admins Management -->
+                <div class="admin-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; margin-top: 24px; grid-column: 1 / -1;">
+                  <h3 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">🔑 Discord IDs Administrateurs</h3>
+                  <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">Ajoutez ou supprimez les ID Discord qui auront automatiquement accès aux fonctions d'administrateur en se connectant avec Discord.</p>
+                  
+                  <div style="display: flex; gap: 16px; margin-bottom: 24px; max-width: 600px;">
+                    <input type="text" id="discord-admin-id-input" placeholder="ID Discord (Ex: 1242545920998904044)" style="flex: 1; background-color: #0d0e12; border: 1px solid var(--border-color); border-radius: 8px; padding: 12px 14px; font-family: var(--font-secondary); font-size: 13px; color: #fff; outline: none;" />
+                    <button id="btn-add-discord-admin" class="btn btn-primary" style="height: 44px; font-size: 13px; font-weight: 700; white-space: nowrap; padding: 0 20px;">Ajouter l'ID ➕</button>
+                  </div>
+
+                  <div class="table-responsive">
+                    <table class="orders-table">
+                      <thead>
+                        <tr>
+                          <th>ID Discord</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="discord-admins-list-body">
+                        <!-- Loaded dynamically -->
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
 
               </div>
