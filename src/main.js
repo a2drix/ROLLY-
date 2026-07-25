@@ -5794,133 +5794,58 @@ let activeCarouselIndex = 0;
 let carouselProducts = [];
 let carouselInterval = null;
 
-// Start carousel automatic sliding every 5 seconds
-function startCarouselAutoSlide() {
-  stopCarouselAutoSlide();
-  if (carouselProducts.length > 1) {
-    carouselInterval = setInterval(() => {
-      activeCarouselIndex = (activeCarouselIndex + 1) % carouselProducts.length;
-      updateCarouselLayout();
-    }, 5000);
-  }
-}
-
-// Stop carousel automatic sliding
-function stopCarouselAutoSlide() {
-  if (carouselInterval) {
-    clearInterval(carouselInterval);
-    carouselInterval = null;
-  }
-}
+// Start carousel automatic sliding (no-op for vertical nextsystem layout)
+function startCarouselAutoSlide() {}
+function stopCarouselAutoSlide() {}
+function updateCarouselLayout() {}
 
 function renderHeroCarousel() {
-  const track = document.getElementById("hero-carousel-track");
-  if (!track) return;
+  const track1 = document.getElementById("hero-vertical-track-1");
+  const track2 = document.getElementById("hero-vertical-track-2");
+  if (!track1 || !track2) return;
 
-  // Filter top featured products selected by the admin
-  carouselProducts = products.filter(p => p.featuredCarousel === true);
-  if (carouselProducts.length === 0) {
-    carouselProducts = products.filter(p => p.popularIndex >= 80).slice(0, 5);
+  // Filter top featured products
+  let activeProducts = products.filter(p => p.featuredCarousel === true);
+  if (activeProducts.length === 0) {
+    activeProducts = products.filter(p => p.popularIndex >= 80).slice(0, 10);
   }
-  if (carouselProducts.length === 0) {
-    carouselProducts = products.slice(0, 5);
-  }
-
-  // Ensure we have at least 5 products in the carousel to show 2 on each side
-  if (carouselProducts.length < 5) {
-    const existingIds = new Set(carouselProducts.map(p => p.id));
-    const extraProds = products
-      .filter(p => !existingIds.has(p.id))
-      .sort((a, b) => b.popularIndex - a.popularIndex);
-    for (const p of extraProds) {
-      if (carouselProducts.length >= 5) break;
-      carouselProducts.push(p);
-    }
+  if (activeProducts.length === 0) {
+    activeProducts = products.slice(0, 10);
   }
 
-  // Place Red Dead Redemption 2 first so it centers immediately on load
-  const rdrIdx = carouselProducts.findIndex(p => p.name.includes("Red Dead Redemption 2"));
-  if (rdrIdx !== -1) {
-    const rdr2 = carouselProducts.splice(rdrIdx, 1)[0];
-    carouselProducts.unshift(rdr2);
+  // Ensure we have at least 10 products
+  while (activeProducts.length < 10 && products.length > 0) {
+    activeProducts.push(products[activeProducts.length % products.length]);
   }
+  
+  // Split products between first column and second column
+  const col1Prods = activeProducts.slice(0, 5);
+  const col2Prods = activeProducts.slice(5, 10);
 
-  track.innerHTML = carouselProducts.map((p, index) => {
-    const coverImg = p.image || p.imageUrl || "/public/favicon.svg";
-    return `
-      <div class="carousel-card" data-index="${index}" data-product-id="${p.id}">
-        <img src="${coverImg}" class="carousel-card-img" alt="${p.name}" style="width: 100%; height: 100%; object-fit: cover;" />
-      </div>
-    `;
+  // Duplicate items to make the animation continuous
+  const col1HTML = [...col1Prods, ...col1Prods].map(p => {
+    const imgUrl = p.image || p.imageUrl || "/rolly-logo.png";
+    return `<div class="vertical-item" data-product-id="${p.id}" style="cursor: pointer;"><img src="${imgUrl}" alt="${p.name}" /></div>`;
   }).join("");
 
-  updateCarouselLayout();
-  startCarouselAutoSlide();
+  const col2HTML = [...col2Prods, ...col2Prods].map(p => {
+    const imgUrl = p.image || p.imageUrl || "/rolly-logo.png";
+    return `<div class="vertical-item" data-product-id="${p.id}" style="cursor: pointer;"><img src="${imgUrl}" alt="${p.name}" /></div>`;
+  }).join("");
 
-  // Bind click listeners on cards
-  track.querySelectorAll(".carousel-card").forEach(card => {
-    card.addEventListener("click", () => {
-      const idx = parseInt(card.getAttribute("data-index"));
-      if (idx === activeCarouselIndex) {
-        const prodId = card.getAttribute("data-product-id");
-        openProductDetailsView(prodId);
-      } else {
-        activeCarouselIndex = idx;
-        updateCarouselLayout();
-        startCarouselAutoSlide();
-      }
+  track1.innerHTML = col1HTML;
+  track2.innerHTML = col2HTML;
+
+  // Bind click listeners
+  document.querySelectorAll(".vertical-item").forEach(item => {
+    item.addEventListener("click", () => {
+      const prodId = item.getAttribute("data-product-id");
+      openProductDetailsView(prodId);
     });
   });
 }
 
-function updateCarouselLayout() {
-  const cards = document.querySelectorAll(".carousel-card");
-  if (cards.length === 0) return;
 
-  const isMobile = window.innerWidth <= 768;
-  const xOffset = isMobile ? 120 : 240;
-  const zTranslationCenter = isMobile ? 60 : 120;
-  const zTranslationSides = isMobile ? 20 : 40;
-
-  cards.forEach((card, index) => {
-    let offset = index - activeCarouselIndex;
-    let absOffset = Math.abs(offset);
-
-    if (absOffset > 2) {
-      card.style.opacity = "0";
-      card.style.visibility = "hidden";
-      card.style.transform = `translateX(${offset * xOffset}px) scale(0.5) rotateY(0deg)`;
-      card.style.zIndex = "0";
-    } else {
-      card.style.opacity = "1";
-      card.style.visibility = "visible";
-
-      let transformStr = "";
-      let zIndex = 5 - absOffset;
-
-      if (offset === 0) {
-        transformStr = `translateX(0px) translateZ(${zTranslationCenter}px) scale(1) rotateY(0deg)`;
-        card.style.filter = "none";
-      } else if (offset > 0) {
-        transformStr = `translateX(${offset * xOffset}px) translateZ(${zTranslationSides - absOffset * 10}px) scale(${0.85 - absOffset * 0.05}) rotateY(-25deg)`;
-        card.style.filter = "brightness(0.4)";
-      } else {
-        transformStr = `translateX(${offset * xOffset}px) translateZ(${zTranslationSides - absOffset * 10}px) scale(${0.85 - absOffset * 0.05}) rotateY(25deg)`;
-        card.style.filter = "brightness(0.4)";
-      }
-
-      card.style.transform = transformStr;
-      card.style.zIndex = zIndex.toString();
-    }
-  });
-
-  // Update bottom category badge
-  const activeProd = carouselProducts[activeCarouselIndex];
-  const catBadge = document.getElementById("carousel-active-category");
-  if (catBadge && activeProd) {
-    catBadge.innerText = activeProd.category;
-  }
-}
 
 
 // Polling interval controllers for Serverless payments checkups

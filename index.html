@@ -20,6 +20,11 @@
       <div class="glow-orb orb-3"></div>
     </div>
 
+    <!-- Top Announcement Bar -->
+    <a id="top-announce" class="top-announcement-bar" href="https://discord.gg/rly" target="_blank">
+      <p>CLIQUEZ ICI ET OBTENEZ DES RÉDUCTIONS EXCLUSIVES ! 🎁</p>
+    </a>
+
     <!-- Navigation Header -->
     <header class="main-header">
       <div class="header-container">
@@ -105,15 +110,46 @@
       
       <!-- STORE/HOME VIEW -->
       <section id="view-home" class="app-view active">
-        <!-- Premium 3D Cover Flow Carousel Hero Section -->
-        <div class="hero-carousel-section">
-          <div class="carousel-container">
-            <button class="carousel-control prev-btn" id="carousel-prev-btn">&lt;</button>
-            <div class="carousel-track" id="hero-carousel-track">
-              <!-- Dynamically rendered 3D product cards -->
+        <!-- New nextsystem-style Hero Section -->
+        <div class="nextsystem-hero-section">
+          <!-- Left side: Text content & Actions -->
+          <div class="hero-content">
+            <div class="trustpilot-rating">
+              <span class="stars">★★★★★</span>
+              <span class="platform">Trustpilot</span>
+              <span class="verified-badge">✔ Évalué 5/5</span>
             </div>
-             <button class="carousel-control next-btn" id="carousel-next-btn">&gt;</button>
-             <div class="carousel-category-badge" id="carousel-active-category">Jeux PC</div>
+            
+            <h1 class="hero-title">
+              Bienvenue sur <span class="text-highlight">ROLLY</span> !
+            </h1>
+            
+            <p class="hero-desc">
+              Votre boutique de référence en Tunisie pour les abonnements premium, jeux et recharges. Achat instantané, 100% sécurisé et livraison ultra-rapide.
+            </p>
+            
+            <div class="hero-actions">
+              <a href="https://discord.gg/rly" target="_blank" class="btn btn-primary btn-hero" style="height: 48px; padding: 0 24px; text-decoration: none;">
+                <span>Rejoindre le Discord</span> 💬
+              </a>
+              <button class="btn btn-secondary btn-hero" id="hero-support-btn" style="height: 48px; padding: 0 24px;">
+                <span>Support en ligne</span> 🛠️
+              </button>
+            </div>
+          </div>
+
+          <!-- Right side: Vertical scrolling product gallery -->
+          <div class="hero-visual-gallery">
+            <div class="vertical-carousel-column col-1">
+              <div class="vertical-carousel-track" id="hero-vertical-track-1">
+                <!-- Dynamically populated product cards -->
+              </div>
+            </div>
+            <div class="vertical-carousel-column col-2">
+              <div class="vertical-carousel-track reverse" id="hero-vertical-track-2">
+                <!-- Dynamically populated product cards -->
+              </div>
+            </div>
           </div>
         </div>
 
