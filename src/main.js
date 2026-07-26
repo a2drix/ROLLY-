@@ -5694,15 +5694,58 @@ function openOrderTrackingView(orderId) {
 
 // 14. Authentication System Helper functions
 function openAuthModal(defaultTab = "login") {
+  const modal = document.getElementById("auth-modal");
+  if (!modal) return;
+
+  const loginForm = document.getElementById("auth-login-form");
+  const regForm = document.getElementById("auth-register-form");
+  const loginHeader = document.getElementById("auth-login-header");
+  const regHeader = document.getElementById("auth-register-header");
+
   if (defaultTab === "register") {
-    const tabReg = document.getElementById("tab-register");
-    if (tabReg) tabReg.click();
+    if (loginForm) loginForm.style.display = "none";
+    if (regForm) regForm.style.display = "flex";
+    if (loginHeader) loginHeader.style.display = "none";
+    if (regHeader) regHeader.style.display = "block";
   } else {
-    const tabLog = document.getElementById("tab-login");
-    if (tabLog) tabLog.click();
+    if (loginForm) loginForm.style.display = "flex";
+    if (regForm) regForm.style.display = "none";
+    if (loginHeader) loginHeader.style.display = "block";
+    if (regHeader) regHeader.style.display = "none";
   }
-  document.getElementById("auth-modal").classList.add("active");
+
+  modal.classList.add("active");
 }
+
+// Global delegated click handler for Auth triggers & Modal closers
+document.addEventListener("click", (e) => {
+  const loginTrigger = e.target.closest("#btn-login-modal-trigger, #btn-mobile-login-trigger, .btn-login-trigger, .header-login-btn");
+  if (loginTrigger) {
+    e.preventDefault();
+    openAuthModal("login");
+    return;
+  }
+
+  const registerTrigger = e.target.closest("#btn-register-modal-trigger, #btn-mobile-register-trigger, .btn-register-trigger, .header-register-btn");
+  if (registerTrigger) {
+    e.preventDefault();
+    openAuthModal("register");
+    return;
+  }
+
+  const closeAuthBtn = e.target.closest("#close-auth-modal");
+  if (closeAuthBtn) {
+    const modal = document.getElementById("auth-modal");
+    if (modal) modal.classList.remove("active");
+    return;
+  }
+
+  const authModal = document.getElementById("auth-modal");
+  if (authModal && e.target === authModal) {
+    authModal.classList.remove("active");
+    return;
+  }
+});
 
 function updateAuthUI() {
   const headerWrapper = document.getElementById("user-auth-header-wrapper");
