@@ -6966,6 +6966,7 @@ body.client-mode-active .client-dashboard-layout {
   width: 100%;
   padding: 0 40px;
   margin-bottom: 40px;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -6977,15 +6978,22 @@ body.client-mode-active .client-dashboard-layout {
 .categories-scroll-grid {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
+  width: max-content;
+  animation: categoryInfiniteMarquee 22s linear infinite;
   padding: 10px 0;
 }
 
-.categories-scroll-grid::-webkit-scrollbar {
-  display: none;
+.categories-scroll-grid:hover {
+  animation-play-state: paused;
+}
+
+@keyframes categoryInfiniteMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .categories-arrow {

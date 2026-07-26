@@ -3714,7 +3714,9 @@ function renderCategoryMarquee() {
     { id: "softwares", name: "Softs & IA", tag: "AI TOOLS", image: "https://nextsystem.site/cdn/stores/12403/packages/23fe27bd-51df-402e-8401-359512c67321.png" }
   ];
 
-  container.innerHTML = POSTER_CATEGORIES.map(cat => {
+  const displayCategories = [...POSTER_CATEGORIES, ...POSTER_CATEGORIES, ...POSTER_CATEGORIES];
+
+  container.innerHTML = displayCategories.map(cat => {
     return `
       <div class="category-poster-card shine-effect" data-category-id="${cat.id}">
         <div class="poster-card-image" style="background-image: url('${cat.image}');"></div>
