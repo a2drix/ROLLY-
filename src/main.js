@@ -26,7 +26,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Abonnement Discord Nitro Boost officiel. Profitez de 2 Boosts de serveur, emojis personnalisés partout et qualité vidéo HD.",
     "themeColor": "#e60000",
-    "imageUrl": "/rolly-discord-nitro.jpg",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/b27fe84a-4ea7-4da0-9f25-26f558c0eabf.png",
     "featuredCarousel": true,
     "featuredGrid": true,
     "popularIndex": 99
@@ -41,7 +41,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Comptes Discord neufs et vérifiés par email, prêts à l'emploi avec accès total (Mail OGE inclus).",
     "themeColor": "#e60000",
-    "imageUrl": "/rolly-comptes-vierges.jpg",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/a4ca0a1c-8325-45bf-a0aa-17eb007817eb.png",
     "featuredCarousel": true,
     "featuredGrid": true,
     "popularIndex": 95
@@ -56,7 +56,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Boostez votre serveur Discord au niveau 3 instantanément. Durée garantie de 1 à 3 mois.",
     "themeColor": "#e60000",
-    "imageUrl": "/rolly-boosts-discord.jpg",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/32446b29-0c34-4cf6-84eb-0701c16a646d.png",
     "featuredCarousel": true,
     "featuredGrid": true,
     "popularIndex": 98
@@ -71,7 +71,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Compte Discord prêt avec abonnement Nitro déjà activé et accès complet à l'adresse e-mail.",
     "themeColor": "#e60000",
-    "imageUrl": "/rolly-comptes-nitro.jpg",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/dbeffdf1-1fce-4b3c-ba13-b34316eece46.png",
     "featuredCarousel": true,
     "featuredGrid": true,
     "popularIndex": 96
@@ -86,7 +86,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Décorations de profil et effets d'avatar Discord exclusifs pour personnaliser votre profil.",
     "themeColor": "#e60000",
-    "imageUrl": "/rolly-decorations-discord.jpg",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/bf6c86aa-6017-4c76-a773-e0444900ca5f.png",
     "featuredCarousel": true,
     "featuredGrid": true,
     "popularIndex": 94
@@ -101,7 +101,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Comptes Discord anciens (Aged accounts 2016-2022) vérifiés avec accès complet OGE.",
     "themeColor": "#e60000",
-    "imageUrl": "/rolly-comptes-anciens.jpg",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/6007ecfb-fa64-44ed-ab7a-0d86b6a0665f.png",
     "featuredCarousel": true,
     "featuredGrid": true,
     "popularIndex": 92
@@ -116,7 +116,7 @@ const DEFAULT_PRODUCTS = [
     "stock": "in-stock",
     "desc": "Membres réels et actifs pour votre serveur Discord. Augmentez la visibilité et l'activité de votre communauté.",
     "themeColor": "#e60000",
-    "imageUrl": "/rolly-membres-discord.jpg",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/ea83fe7d-14a5-4e7a-bd06-d2bc5fc2356c.png",
     "featuredCarousel": true,
     "featuredGrid": true,
     "popularIndex": 91
