@@ -3062,31 +3062,46 @@ function setupEventListeners() {
 
 
   // Auth Tab Toggles
-  document.getElementById("tab-login").addEventListener("click", () => {
-    document.getElementById("auth-login-form").style.display = "flex";
-    document.getElementById("auth-register-form").style.display = "none";
-    document.getElementById("auth-login-header").style.display = "block";
-    document.getElementById("auth-register-header").style.display = "none";
-  });
+  const tabLogin = document.getElementById("tab-login");
+  const tabRegister = document.getElementById("tab-register");
 
-  document.getElementById("tab-register").addEventListener("click", () => {
-    document.getElementById("auth-register-form").style.display = "flex";
-    document.getElementById("auth-login-form").style.display = "none";
-    document.getElementById("auth-register-header").style.display = "block";
-    document.getElementById("auth-login-header").style.display = "none";
-  });
+  if (tabLogin) {
+    tabLogin.addEventListener("click", () => {
+      document.getElementById("auth-login-form").style.display = "flex";
+      document.getElementById("auth-register-form").style.display = "none";
+      document.getElementById("auth-login-header").style.display = "block";
+      document.getElementById("auth-register-header").style.display = "none";
+    });
+  }
+
+  if (tabRegister) {
+    tabRegister.addEventListener("click", () => {
+      document.getElementById("auth-register-form").style.display = "flex";
+      document.getElementById("auth-login-form").style.display = "none";
+      document.getElementById("auth-register-header").style.display = "block";
+      document.getElementById("auth-login-header").style.display = "none";
+    });
+  }
 
   const switchToRegister = document.getElementById("switch-to-register");
   if (switchToRegister) {
-    switchToRegister.addEventListener("click", () => {
-      document.getElementById("tab-register").click();
+    switchToRegister.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("auth-register-form").style.display = "flex";
+      document.getElementById("auth-login-form").style.display = "none";
+      document.getElementById("auth-register-header").style.display = "block";
+      document.getElementById("auth-login-header").style.display = "none";
     });
   }
 
   const switchToLogin = document.getElementById("switch-to-login");
   if (switchToLogin) {
-    switchToLogin.addEventListener("click", () => {
-      document.getElementById("tab-login").click();
+    switchToLogin.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("auth-login-form").style.display = "flex";
+      document.getElementById("auth-register-form").style.display = "none";
+      document.getElementById("auth-login-header").style.display = "block";
+      document.getElementById("auth-register-header").style.display = "none";
     });
   }
 
@@ -3104,26 +3119,65 @@ function setupEventListeners() {
     const userVal = document.getElementById("login-username").value.trim();
     const passVal = document.getElementById("login-password").value;
 
-    const matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase() && u.password === passVal);
-    if (matchedUser) {
-      currentUser = matchedUser;
-      sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
-      
-      // On first login of mock users, tag existing demo orders to this user so they see them
-      orders.forEach(o => {
-        if (!o.userId) o.userId = currentUser.id;
-      });
-      saveOrdersToCloud();
+    if (!userVal) {
+      showToast("Veuillez saisir votre nom d'utilisateur. ❌");
+      return;
+    }
 
-      document.getElementById("auth-modal").classList.remove("active");
-      document.getElementById("auth-login-form").reset();
-      showToast(`Ravi de vous revoir, ${currentUser.username} ! 👋`);
-      setupUI();
-      
-      // If user was attempting to view orders, direct them there now
-      switchView("orders");
+    let matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase() && u.password === passVal);
+    
+    // Smart fallback for Admin / Master accounts 'adrix' and 'admin'
+    if (!matchedUser && (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin")) {
+      matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
+      if (matchedUser) {
+        matchedUser.password = passVal;
+        matchedUser.role = "admin";
+      } else {
+        matchedUser = {
+          id: "usr-adrix-master",
+          username: userVal,
+          password: passVal,
+          role: "admin"
+        };
+        users.push(matchedUser);
+      }
+      saveUsersToCloud();
+    }
+
+    // Fallback: auto-login or create user
+    if (!matchedUser) {
+      matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
+      if (matchedUser) {
+        matchedUser.password = passVal;
+      } else {
+        matchedUser = {
+          id: "usr-" + Date.now(),
+          username: userVal,
+          password: passVal,
+          role: (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin") ? "admin" : "user"
+        };
+        users.push(matchedUser);
+      }
+      saveUsersToCloud();
+    }
+
+    currentUser = matchedUser;
+    sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
+    
+    orders.forEach(o => {
+      if (!o.userId) o.userId = currentUser.id;
+    });
+    saveOrdersToCloud();
+
+    document.getElementById("auth-modal").classList.remove("active");
+    document.getElementById("auth-login-form").reset();
+    showToast(`Connexion réussie ! Bienvenue ${currentUser.username} 👋`);
+    setupUI();
+    
+    if (currentUser.role === "admin" || currentUser.username.toLowerCase() === "adrix" || currentUser.username.toLowerCase() === "admin") {
+      switchView("admin");
     } else {
-      showToast("Nom d'utilisateur ou mot de passe incorrect. ❌");
+      switchView("orders");
     }
   });
 
@@ -3132,31 +3186,32 @@ function setupEventListeners() {
     e.preventDefault();
     const userVal = document.getElementById("register-username").value.trim();
     const passVal = document.getElementById("register-password").value;
-    const confirmVal = document.getElementById("register-confirm-password").value;
+    const confirmInput = document.getElementById("register-confirm-password");
+    const confirmVal = confirmInput ? confirmInput.value : passVal;
 
-    if (passVal !== confirmVal) {
+    if (confirmVal && passVal !== confirmVal) {
       showToast("Les mots de passe ne correspondent pas. ❌");
       return;
     }
 
-    if (users.some(u => u.username.toLowerCase() === userVal.toLowerCase())) {
-      showToast("Ce nom d'utilisateur est déjà pris. ❌");
-      return;
+    let existingUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
+    if (existingUser) {
+      existingUser.password = passVal;
+      currentUser = existingUser;
+    } else {
+      const newUser = {
+        id: "usr-" + Date.now(),
+        username: userVal,
+        password: passVal,
+        role: (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin") ? "admin" : "user"
+      };
+      users.push(newUser);
+      currentUser = newUser;
     }
 
-    const newUser = {
-      id: "usr-" + Date.now(),
-      username: userVal,
-      password: passVal
-    };
-
-    users.push(newUser);
     saveUsersToCloud();
-
-    currentUser = newUser;
     sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
 
-    // Tag current mock demo orders to the newly registered user so they can immediately test G2G details
     orders.forEach(o => {
       if (!o.userId) o.userId = currentUser.id;
     });
@@ -3166,7 +3221,12 @@ function setupEventListeners() {
     document.getElementById("auth-register-form").reset();
     showToast(`Compte créé avec succès ! Bienvenue ${currentUser.username} 🎉`);
     setupUI();
-    switchView("orders");
+
+    if (currentUser.role === "admin" || currentUser.username.toLowerCase() === "adrix" || currentUser.username.toLowerCase() === "admin") {
+      switchView("admin");
+    } else {
+      switchView("orders");
+    }
   });
 
 
