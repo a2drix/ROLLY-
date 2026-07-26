@@ -1873,7 +1873,7 @@ async function saveTicketsToCloud() {
 // Load DB from Cloud with LocalStorage safely with fallback overrides
 async function loadDatabase() {
   const localCart = localStorage.getItem("rolly_cart");
-  const sessionUser = sessionStorage.getItem("rolly_session_user");
+  const sessionUser = sessionStorage.getItem("rolly_session_user") || localStorage.getItem("rolly_session_user") || localStorage.getItem("rolly_current_user");
 
   // 1. Fetch products from Serverless Cloud DB
   try {
@@ -3232,46 +3232,26 @@ function setupEventListeners() {
       return;
     }
 
-    let matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase() && u.password === passVal);
-    
-    // Smart fallback for Admin / Master accounts 'adrix' and 'admin'
-    if (!matchedUser && (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin")) {
-      matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
-      if (matchedUser) {
-        matchedUser.password = passVal;
+    let matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
+    if (matchedUser) {
+      matchedUser.password = passVal;
+      if (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin") {
         matchedUser.role = "admin";
-      } else {
-        matchedUser = {
-          id: "usr-adrix-master",
-          username: userVal,
-          password: passVal,
-          role: "admin"
-        };
-        users.push(matchedUser);
       }
-      saveUsersToCloud();
+    } else {
+      matchedUser = {
+        id: "usr-" + Date.now(),
+        username: userVal,
+        password: passVal,
+        role: (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin") ? "admin" : "user"
+      };
+      users.push(matchedUser);
     }
-
-    // Fallback: auto-login or create user
-    if (!matchedUser) {
-      matchedUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
-      if (matchedUser) {
-        matchedUser.password = passVal;
-      } else {
-        matchedUser = {
-          id: "usr-" + Date.now(),
-          username: userVal,
-          password: passVal,
-          role: (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin") ? "admin" : "user"
-        };
-        users.push(matchedUser);
-      }
-      saveUsersToCloud();
-    }
-
-    currentUser = matchedUser;
-    sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
     
+    saveUsersToCloud();
+    currentUser = matchedUser;
+    saveCurrentUser();
+
     orders.forEach(o => {
       if (!o.userId) o.userId = currentUser.id;
     });
@@ -3285,7 +3265,7 @@ function setupEventListeners() {
     if (currentUser.role === "admin" || currentUser.username.toLowerCase() === "adrix" || currentUser.username.toLowerCase() === "admin") {
       switchView("admin");
     } else {
-      switchView("orders");
+      switchView("home");
     }
   });
 
@@ -3297,6 +3277,16 @@ function setupEventListeners() {
     const confirmInput = document.getElementById("register-confirm-password");
     const confirmVal = confirmInput ? confirmInput.value : passVal;
 
+    if (!userVal) {
+      showToast("Veuillez choisir un nom d'utilisateur. ❌");
+      return;
+    }
+
+    if (!passVal) {
+      showToast("Veuillez saisir un mot de passe. ❌");
+      return;
+    }
+
     if (confirmVal && passVal !== confirmVal) {
       showToast("Les mots de passe ne correspondent pas. ❌");
       return;
@@ -3305,6 +3295,9 @@ function setupEventListeners() {
     let existingUser = users.find(u => u.username.toLowerCase() === userVal.toLowerCase());
     if (existingUser) {
       existingUser.password = passVal;
+      if (userVal.toLowerCase() === "adrix" || userVal.toLowerCase() === "admin") {
+        existingUser.role = "admin";
+      }
       currentUser = existingUser;
     } else {
       const newUser = {
@@ -3318,7 +3311,7 @@ function setupEventListeners() {
     }
 
     saveUsersToCloud();
-    sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
+    saveCurrentUser();
 
     orders.forEach(o => {
       if (!o.userId) o.userId = currentUser.id;
@@ -3333,7 +3326,7 @@ function setupEventListeners() {
     if (currentUser.role === "admin" || currentUser.username.toLowerCase() === "adrix" || currentUser.username.toLowerCase() === "admin") {
       switchView("admin");
     } else {
-      switchView("orders");
+      switchView("home");
     }
   });
 
