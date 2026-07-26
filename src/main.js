@@ -92,6 +92,36 @@ const DEFAULT_PRODUCTS = [
     "popularIndex": 94
   },
   {
+    "id": "prod-anciens-comptes-discord",
+    "name": "Anciens Comptes Discord",
+    "category": "Comptes",
+    "price": 8.90,
+    "oldPrice": 15.00,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Comptes Discord anciens (Aged accounts 2016-2022) vérifiés avec accès complet OGE.",
+    "themeColor": "#e60000",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/6007ecfb-fa64-44ed-ab7a-0d86b6a0665f.png",
+    "featuredCarousel": true,
+    "featuredGrid": true,
+    "popularIndex": 92
+  },
+  {
+    "id": "prod-membres-reels-discord",
+    "name": "Membres Discord Réels",
+    "category": "Services",
+    "price": 5.97,
+    "oldPrice": 12.00,
+    "badge": "Featured",
+    "stock": "in-stock",
+    "desc": "Membres réels et actifs pour votre serveur Discord. Augmentez la visibilité et l'activité de votre communauté.",
+    "themeColor": "#e60000",
+    "imageUrl": "https://nextsystem.site/cdn/stores/12403/packages/ea83fe7d-14a5-4e7a-bd06-d2bc5fc2356c.png",
+    "featuredCarousel": true,
+    "featuredGrid": true,
+    "popularIndex": 91
+  },
+  {
     "id": "69a3a506fe5878c1877bd59e",
     "name": "Youtube Boost",
     "category": "Youtube",
@@ -1548,17 +1578,20 @@ const CATEGORIES = [
 function getCategoryGroup(prodCat) {
   if (!prodCat) return "Softwares";
   const cat = prodCat.toLowerCase();
+  if (cat.includes("discord")) {
+    return "discord";
+  }
   if (["free fire", "pubg mobile", "valorant", "roblox", "league of legends", "blood strike", "efootball"].some(c => cat.includes(c))) {
     return "Gaming & Cartes";
   }
-  if (["netflix", "spotify", "crunchyroll", "shahid", "youtube", "discord"].some(c => cat.includes(c))) {
-    return "Streaming & TV";
+  if (["netflix", "spotify", "crunchyroll", "shahid", "youtube"].some(c => cat.includes(c))) {
+    return "streaming";
   }
   if (["telecom", "ooredoo", "flexi"].some(c => cat.includes(c))) {
     return "Recharges & Flexi";
   }
   if (["steam", "playstation", "xbox", "itunes", "razer gold", "google play"].some(c => cat.includes(c))) {
-    return "Cartes Cadeaux";
+    return "jeux";
   }
   return "Softwares";
 }
@@ -3964,9 +3997,64 @@ function renderCatalogProducts() {
   const grid = document.getElementById("catalog-products-grid");
   if (!grid) return;
 
+  // Update Category Header Banner according to activeCategory
+  const bannerContainer = document.getElementById("category-header-banner");
+  const bannerCard = document.getElementById("category-banner-card");
+  const bannerTitle = document.getElementById("category-banner-title");
+  const bannerSubtitle = document.getElementById("category-banner-subtitle");
+
+  const CATEGORY_BANNERS = {
+    "discord": {
+      title: "DISCORD",
+      sub: "VOIR NOTRE CATALOGUE DE PRODUITS",
+      img: "https://nextsystem.site/cdn/stores/12403/categories/59489569-42b7-4c4f-bfa9-1ca3775f0a00.png"
+    },
+    "streaming": {
+      title: "STREAMING & TV",
+      sub: "ABONNEMENTS NETFLIX, SPOTIFY & SHAHID VIP",
+      img: "https://nextsystem.site/cdn/stores/12403/categories/7e89e083-d5d1-419b-a0ca-927161b9e1eb.png"
+    },
+    "jeux": {
+      title: "JEUX PC & STEAM",
+      sub: "CLEFS CD & COMPTES STEAM OFFICIELS",
+      img: "https://nextsystem.site/cdn/stores/12403/categories/4e5e7769-dfdf-4bc9-bbbe-5d1e8ef902b4.png"
+    },
+    "accounts": {
+      title: "COMPTES FA",
+      sub: "COMPTES FULL ACCESS VÉRIFIÉS OGE",
+      img: "https://nextsystem.site/cdn/stores/12403/categories/7036a4f9-db04-4fa9-a417-64ec4d57c2a7.png"
+    }
+  };
+
+  const currentCatKey = (activeCategory || "all").toLowerCase();
+  const matchedBanner = CATEGORY_BANNERS[currentCatKey] || (currentCatKey.includes("discord") ? CATEGORY_BANNERS["discord"] : null);
+
+  if (matchedBanner && bannerContainer && bannerCard) {
+    bannerContainer.style.display = "block";
+    bannerCard.style.backgroundImage = `url('${matchedBanner.img}')`;
+    if (bannerTitle) bannerTitle.innerText = matchedBanner.title;
+    if (bannerSubtitle) bannerSubtitle.innerText = matchedBanner.sub;
+  } else if (bannerContainer) {
+    bannerContainer.style.display = "none";
+  }
+
   let filtered = products.filter(p => {
     const group = getCategoryGroup(p.category);
-    const matchesCat = activeCategory === "all" || group === activeCategory;
+    const prodCatLower = (p.category || "").toLowerCase();
+    const prodNameLower = (p.name || "").toLowerCase();
+    const prodIdLower = (p.id || "").toLowerCase();
+
+    let matchesCat = activeCategory === "all";
+    if (currentCatKey.includes("discord")) {
+      matchesCat = group === "discord" || prodCatLower.includes("discord") || prodNameLower.includes("discord") || prodIdLower.includes("discord");
+    } else if (currentCatKey.includes("streaming")) {
+      matchesCat = group === "streaming" || prodCatLower.includes("streaming") || prodCatLower.includes("tv");
+    } else if (currentCatKey.includes("jeux")) {
+      matchesCat = group === "jeux" || prodCatLower.includes("jeux") || prodCatLower.includes("steam");
+    } else {
+      matchesCat = matchesCat || group === activeCategory || prodCatLower.includes(currentCatKey);
+    }
+
     const matchesSearch = p.name.toLowerCase().includes(currentSearch) || p.desc.toLowerCase().includes(currentSearch);
     const matchesPrice = p.price <= priceSliderMax;
     return matchesCat && matchesSearch && matchesPrice;
