@@ -3951,6 +3951,7 @@ function renderSidebarTrending() {
 // Render Categorized Product Grids on Home
 function renderTrendingProducts() {
   const gridAbonnements = document.getElementById("grid-abonnements");
+  const gridDiscord = document.getElementById("grid-discord");
   const gridJeux = document.getElementById("grid-jeux");
 
   // Filter Streaming / Abonnements products
@@ -3963,6 +3964,20 @@ function renderTrendingProducts() {
     gridAbonnements.innerHTML = (streamingProds.length > 0 ? streamingProds : products.slice(0, 10))
       .map(prod => renderProductCardHTML(prod)).join("");
     bindProductCardsTriggers(gridAbonnements);
+  }
+
+  // Filter Discord products
+  if (gridDiscord) {
+    const discordProds = products.filter(p => {
+      const group = getCategoryGroup(p.category);
+      const cat = (p.category || "").toLowerCase();
+      const name = (p.name || "").toLowerCase();
+      const id = (p.id || "").toLowerCase();
+      return group === "discord" || cat.includes("discord") || name.includes("discord") || id.includes("discord");
+    });
+
+    gridDiscord.innerHTML = discordProds.map(prod => renderProductCardHTML(prod)).join("");
+    bindProductCardsTriggers(gridDiscord);
   }
 
   // Filter Gaming / Steam products
