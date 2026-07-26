@@ -4012,6 +4012,55 @@ function renderCatalogProducts() {
   const grid = document.getElementById("catalog-products-grid");
   if (!grid) return;
 
+  const currentCatKey = (activeCategory || "all").toLowerCase();
+
+  // Category Names Map
+  const CATEGORY_NAMES = {
+    "all": "Tous les articles",
+    "discord": "Discord",
+    "streaming": "Abonnements & Streaming",
+    "jeux": "Jeux PC & Steam",
+    "fortnite": "Fortnite",
+    "accounts": "Comptes Full Access",
+    "keys": "Steam Keys",
+    "softwares": "Logiciels & IA"
+  };
+
+  const displayName = CATEGORY_NAMES[currentCatKey] || activeCategory;
+
+  // Update Topbar Info
+  const topbarTitle = document.getElementById("cat-topbar-title");
+  const selectedLabel = document.getElementById("cat-picker-selected-label");
+  const catDropdown = document.getElementById("nextsystem-category-select");
+
+  if (topbarTitle) topbarTitle.innerText = displayName;
+  if (selectedLabel) selectedLabel.innerText = `Sélectionnée: ${displayName}`;
+  if (catDropdown) catDropdown.value = currentCatKey;
+
+  // Bind Back Button
+  const backBtn = document.getElementById("cat-back-to-home");
+  if (backBtn) {
+    backBtn.onclick = () => switchView("home");
+  }
+
+  // Bind Category Dropdown change
+  if (catDropdown) {
+    catDropdown.onchange = (e) => {
+      activeCategory = e.target.value;
+      renderCatalogProducts();
+    };
+  }
+
+  // Bind Sorting Pills
+  document.querySelectorAll(".sort-pill").forEach(pill => {
+    pill.onclick = () => {
+      document.querySelectorAll(".sort-pill").forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      currentSort = pill.getAttribute("data-sort");
+      renderCatalogProducts();
+    };
+  });
+
   // Update Category Header Banner according to activeCategory
   const bannerContainer = document.getElementById("category-header-banner");
   const bannerCard = document.getElementById("category-banner-card");
@@ -4041,7 +4090,6 @@ function renderCatalogProducts() {
     }
   };
 
-  const currentCatKey = (activeCategory || "all").toLowerCase();
   const matchedBanner = CATEGORY_BANNERS[currentCatKey] || (currentCatKey.includes("discord") ? CATEGORY_BANNERS["discord"] : null);
 
   if (matchedBanner && bannerContainer && bannerCard) {
@@ -4079,6 +4127,10 @@ function renderCatalogProducts() {
     filtered.sort((a, b) => a.price - b.price);
   } else if (currentSort === "price-desc") {
     filtered.sort((a, b) => b.price - a.price);
+  } else if (currentSort === "name-asc") {
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (currentSort === "name-desc") {
+    filtered.sort((a, b) => b.name.localeCompare(a.name));
   } else if (currentSort === "popular") {
     filtered.sort((a, b) => b.popularIndex - a.popularIndex);
   }

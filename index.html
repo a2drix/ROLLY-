@@ -606,66 +606,76 @@
         </div>
       </section>
 
-      <!-- CATALOG/PRODUCTS VIEW -->
+      <!-- NEXTSYSTEM CATEGORY / CATALOG VIEW -->
       <section id="view-products" class="app-view">
+        <div class="nextsystem-category-container">
 
-        <!-- Dynamic Nextsystem Category Header Banner -->
-        <div class="category-header-banner-wrapper" id="category-header-banner">
-          <div class="category-banner-card" id="category-banner-card" style="background-image: url('https://nextsystem.site/cdn/stores/12403/categories/59489569-42b7-4c4f-bfa9-1ca3775f0a00.png');">
-            <div class="category-banner-content">
-              <span class="category-banner-badge">ROLLY STORE</span>
-              <h1 class="category-banner-title" id="category-banner-title">DISCORD</h1>
-              <p class="category-banner-subtitle" id="category-banner-subtitle">VOIR NOTRE CATALOGUE DE PRODUITS</p>
-            </div>
-          </div>
-        </div>
+          <!-- 1. Top Category Header Control Bar -->
+          <div class="nextsystem-cat-topbar">
+            <button class="cat-back-btn" id="cat-back-to-home">
+              <span class="arrow">&lsaquo;</span>
+              <span class="title" id="cat-topbar-title">Discord</span>
+            </button>
 
-        <div class="catalog-layout">
-          <div class="catalog-sidebar">
-            <h3>Filtrer les produits</h3>
-            <div class="filter-group">
-              <label for="catalog-search">Recherche</label>
-              <input type="text" id="catalog-search" placeholder="Rechercher par nom..." />
-            </div>
-            <div class="filter-group">
-              <label for="catalog-category-select">Catégorie</label>
-              <select id="catalog-category-select">
+            <div class="cat-picker-shell">
+              <div class="cat-picker-info">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <div class="info-text">
+                  <span class="sub">Parcourir par catégorie</span>
+                  <span class="selected" id="cat-picker-selected-label">Sélectionnée: Discord</span>
+                </div>
+              </div>
+
+              <select class="cat-picker-dropdown" id="nextsystem-category-select">
                 <option value="all">Toutes les catégories</option>
-                <option value="discord">Discord</option>
+                <option value="discord" selected>Discord</option>
                 <option value="streaming">Abonnements & Streaming</option>
                 <option value="jeux">Jeux PC & Steam</option>
-                <option value="Gaming & Cartes">Gaming & Cartes</option>
-                <option value="Recharges & Flexi">Recharges & Flexi</option>
-                <option value="Cartes Cadeaux">Cartes Cadeaux</option>
-                <option value="Softwares">Logiciels & Softwares</option>
+                <option value="fortnite">Fortnite</option>
+                <option value="accounts">Comptes Full Access</option>
+                <option value="keys">Steam Keys</option>
+                <option value="softwares">Logiciels & IA</option>
               </select>
             </div>
-            <div class="filter-group">
-              <label for="catalog-sort">Trier par</label>
-              <select id="catalog-sort">
-                <option value="default">Pertinence</option>
-                <option value="price-asc">Prix croissant</option>
-                <option value="price-desc">Prix décroissant</option>
-                <option value="popular">Les plus populaires</option>
-              </select>
-            </div>
-            <div class="filter-group">
-              <label>Fourchette de Prix (DT)</label>
-              <div class="price-range-inputs">
-                <span id="price-min-label">0 DT</span>
-                <input type="range" id="price-slider" min="0" max="9999" value="9999" />
-                <span id="price-max-label">9999 DT</span>
+          </div>
+
+          <!-- 2. Dynamic Nextsystem Category Header Banner -->
+          <div class="category-header-banner-wrapper" id="category-header-banner">
+            <div class="category-banner-card" id="category-banner-card" style="background-image: url('https://nextsystem.site/cdn/stores/12403/categories/59489569-42b7-4c4f-bfa9-1ca3775f0a00.png');">
+              <div class="category-banner-content">
+                <span class="category-banner-badge">ROLLY STORE</span>
+                <h1 class="category-banner-title" id="category-banner-title">DISCORD</h1>
+                <p class="category-banner-subtitle" id="category-banner-subtitle">VOIR NOTRE CATALOGUE DE PRODUITS</p>
               </div>
-              <p class="slider-val">Max: <span id="price-slider-value">9999</span> DT</p>
             </div>
           </div>
-          <div class="catalog-content">
-            <h2 class="section-title">Catalogue <span>Complet</span></h2>
-            <div class="products-grid" id="catalog-products-grid">
-              <!-- Dynamically rendered catalog products -->
+
+          <!-- 3. Sorting Pills Bar -->
+          <div class="nextsystem-sort-bar">
+            <span class="sort-label">Trier par :</span>
+            <div class="sort-pills">
+              <button class="sort-pill active" id="sort-price-asc" data-sort="price-asc">
+                <span>&uarr;</span> Prix : Plus bas
+              </button>
+              <button class="sort-pill" id="sort-price-desc" data-sort="price-desc">
+                <span>&darr;</span> Prix : Plus haut
+              </button>
+              <button class="sort-pill" id="sort-name-asc" data-sort="name-asc">
+                <span>T</span> A-Z
+              </button>
+              <button class="sort-pill" id="sort-name-desc" data-sort="name-desc">
+                <span>&bot;</span> Z-A
+              </button>
             </div>
           </div>
+
+          <!-- 4. Products Grid -->
+          <div class="products-grid" id="catalog-products-grid">
+            <!-- Dynamically populated products -->
+          </div>
+
         </div>
+      </section>
 
         <!-- Client Support Tickets Section -->
         <div class="client-tickets-section" id="client-tickets-container" style="margin-top: 40px; display: none; border-top: 1px solid var(--border-color); padding-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
