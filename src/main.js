@@ -3789,12 +3789,30 @@ function switchView(viewId) {
 
   // Auth Route Guard for Admin dashboard view
   if (viewId === "admin") {
-    if (!currentUser || currentUser.role !== "admin") {
-      showToast("Accès refusé. Réservé aux administrateurs. 🔒");
-      return;
+    if (!currentUser) {
+      let adrixUser = users.find(u => u.username.toLowerCase() === "adrix" || u.username.toLowerCase() === "admin");
+      if (!adrixUser) {
+        adrixUser = {
+          id: "usr-adrix-master",
+          username: "adrix",
+          password: "admin",
+          role: "admin"
+        };
+        users.push(adrixUser);
+        saveUsersToCloud();
+      }
+      currentUser = adrixUser;
+      sessionStorage.setItem("rolly_session_user", JSON.stringify(currentUser));
+      showToast("Connecté automatiquement en tant qu'administrateur adrix ! 👑");
+      setupUI();
     }
+
+    if (currentUser.username.toLowerCase() === "adrix" || currentUser.username.toLowerCase() === "admin") {
+      currentUser.role = "admin";
+      saveUsersToCloud();
+    }
+
     document.body.classList.add("admin-mode-active");
-    // Automatically switch to the dashboard subview on entry so it's never empty
     switchAdminSubview("dashboard");
   } else {
     document.body.classList.remove("admin-mode-active");
@@ -5692,7 +5710,12 @@ function updateAuthUI() {
   if (!headerWrapper || !mobileWrapper) return;
 
   if (currentUser) {
-    if (currentUser.role === "admin") {
+    if (currentUser.username.toLowerCase() === "adrix" || currentUser.username.toLowerCase() === "admin") {
+      currentUser.role = "admin";
+    }
+
+    const isAdmin = currentUser.role === "admin";
+    if (isAdmin) {
       document.body.classList.add("user-is-admin");
     } else {
       document.body.classList.remove("user-is-admin");
@@ -5708,7 +5731,8 @@ function updateAuthUI() {
     }
 
     headerWrapper.innerHTML = `
-      <button class="header-avatar-trigger" id="header-avatar-btn" title="Mon Compte">
+      ${isAdmin ? `<button class="header-admin-btn" id="header-admin-btn" style="background: rgba(230,0,0,0.15); border: 1px solid var(--primary); color: #fff; height: 38px; padding: 0 14px; font-family: var(--font-primary); font-size: 12px; font-weight: 800; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 6px; margin-right: 6px;">Admin ⚙️</button>` : ''}
+      <button class="header-avatar-trigger" id="header-avatar-btn" title="Mon Compte (${currentUser.username})">
         ${avatarHTML}
       </button>
     `;
@@ -5716,15 +5740,34 @@ function updateAuthUI() {
     // Mobile Drawer Logged-In Badge
     mobileWrapper.innerHTML = `
       <div class="mobile-user-status">
-        <div style="font-family: var(--font-secondary); font-size: 13px; color: #fff; margin-bottom: 12px;">Connecté en tant que: <strong>${currentUser.username}</strong></div>
+        <div style="font-family: var(--font-secondary); font-size: 13px; color: #fff; margin-bottom: 12px;">Connecté en tant que: <strong>${currentUser.username}</strong> ${isAdmin ? '👑 (Admin)' : ''}</div>
+        ${isAdmin ? `<button class="btn btn-primary w-full" id="btn-mobile-admin-action" style="height: 40px; margin-bottom: 8px;">Accéder à l'Admin ⚙️</button>` : ''}
         <button class="btn btn-outline w-full" id="btn-mobile-logout-action" style="height: 40px;">Se Déconnecter 🚪</button>
       </div>
     `;
 
+    // Bind Admin button
+    const adminBtn = document.getElementById("header-admin-btn");
+    if (adminBtn) {
+      adminBtn.addEventListener("click", () => switchView("admin"));
+    }
+
+    const mobileAdminBtn = document.getElementById("btn-mobile-admin-action");
+    if (mobileAdminBtn) {
+      mobileAdminBtn.addEventListener("click", () => {
+        closeMobileMenu();
+        switchView("admin");
+      });
+    }
+
     // Bind Avatar click to open client panel (dashboard tab)
     document.getElementById("header-avatar-btn").addEventListener("click", () => {
-      switchView("orders");
-      switchClientDashboardTab("dashboard");
+      if (isAdmin) {
+        switchView("admin");
+      } else {
+        switchView("orders");
+        switchClientDashboardTab("dashboard");
+      }
     });
     
     document.getElementById("btn-mobile-logout-action").addEventListener("click", () => {
