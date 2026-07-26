@@ -2290,7 +2290,7 @@
 
     <!-- Authentication Modal (Login / Sign Up) -->
     <div class="modal-overlay" id="auth-modal">
-      <div class="modal-card auth-modal-card" style="max-width: 440px; background-color: #0b0d19; border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 35px 30px; position: relative;">
+      <div class="modal-card auth-modal-card" style="max-width: 440px; background-color: #0b0d19; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 35px 30px; position: relative;">
         <button class="close-btn" id="close-auth-modal" style="position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 24px; color: var(--text-muted); cursor: pointer;">&times;</button>
         
         <!-- Brand Logo -->
@@ -2298,39 +2298,39 @@
           <img src="/rolly-logo.png" alt="Rolly" style="height: 48px; object-fit: contain; filter: drop-shadow(0 0 10px rgba(230,0,0,0.2));" />
         </div>
 
-        <!-- Hidden legacy tabs for compatibility with JS triggers -->
-        <div class="auth-tabs" style="display: none;">
-          <button class="auth-tab-btn active" id="tab-login">Se connecter</button>
-          <button class="auth-tab-btn" id="tab-register">Créer un compte</button>
+        <!-- Auth Tabs -->
+        <div class="auth-tabs" style="display: flex; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 4px; margin-bottom: 24px;">
+          <button class="auth-tab-btn active" id="tab-login" type="button" style="flex: 1; padding: 10px; border: none; background: var(--primary); color: #fff; font-family: var(--font-primary); font-size: 13px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">Se connecter</button>
+          <button class="auth-tab-btn" id="tab-register" type="button" style="flex: 1; padding: 10px; border: none; background: transparent; color: var(--text-muted); font-family: var(--font-primary); font-size: 13px; font-weight: 800; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">Créer un compte</button>
         </div>
 
         <!-- Login Form Header -->
-        <div id="auth-login-header" style="text-align: center; margin-bottom: 24px;">
-          <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; font-family: var(--font-primary);">Welcome Back</h3>
-          <p style="font-family: var(--font-secondary); font-size: 12.5px; color: var(--text-muted);">Enter your credentials to access your account</p>
+        <div id="auth-login-header" style="text-align: center; margin-bottom: 20px;">
+          <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; font-family: var(--font-primary);">Bon retour parmi nous 👋</h3>
+          <p style="font-family: var(--font-secondary); font-size: 12.5px; color: var(--text-muted);">Saisissez vos identifiants pour accéder à votre compte ROLLY</p>
         </div>
 
         <!-- Register Form Header -->
-        <div id="auth-register-header" style="text-align: center; margin-bottom: 24px; display: none;">
-          <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; font-family: var(--font-primary);">Create an Account</h3>
-          <p style="font-family: var(--font-secondary); font-size: 12.5px; color: var(--text-muted);">Join ROLLY to manage your orders</p>
+        <div id="auth-register-header" style="text-align: center; margin-bottom: 20px; display: none;">
+          <h3 style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 6px; font-family: var(--font-primary);">Créer un compte ROLLY 🚀</h3>
+          <p style="font-family: var(--font-secondary); font-size: 12.5px; color: var(--text-muted);">Rejoignez la plateforme et gérez vos commandes en toute sécurité</p>
         </div>
 
         <div class="modal-body" style="padding: 0;">
           <!-- Login Form -->
           <form id="auth-login-form" class="auth-form active" style="display: flex; flex-direction: column; gap: 16px;">
             <div class="form-group">
-              <label for="login-username" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Username</label>
-              <input type="text" id="login-username" class="auth-input-new" required placeholder="your_username" />
+              <label for="login-username" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Nom d'utilisateur</label>
+              <input type="text" id="login-username" class="auth-input-new" required placeholder="Votre pseudo (ex: adrix)" />
             </div>
             <div class="form-group">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <label for="login-password" style="font-size: 12.5px; font-weight: 700; color: #fff; margin: 0;">Password</label>
-                <a href="#" style="font-family: var(--font-secondary); font-size: 11.5px; font-weight: 700; color: var(--primary); text-decoration: none;">Forgot Password?</a>
+                <label for="login-password" style="font-size: 12.5px; font-weight: 700; color: #fff; margin: 0;">Mot de passe</label>
+                <a href="#" style="font-family: var(--font-secondary); font-size: 11.5px; font-weight: 700; color: var(--primary); text-decoration: none;">Mot de passe oublié ?</a>
               </div>
               <input type="password" id="login-password" class="auth-input-new" required placeholder="••••••••" />
             </div>
-            <button type="submit" class="btn w-full" style="height: 44px; background: var(--primary); border: none; color: #fff; font-weight: 800; font-size: 13.5px; border-radius: 8px; box-shadow: 0 4px 12px rgba(230, 0, 0, 0.25); cursor: pointer; transition: var(--transition);">Sign In</button>
+            <button type="submit" class="btn w-full" style="height: 44px; background: var(--primary); border: none; color: #fff; font-weight: 800; font-size: 13.5px; border-radius: 8px; box-shadow: 0 4px 12px rgba(230, 0, 0, 0.25); cursor: pointer; transition: var(--transition);">Se connecter 🔐</button>
             
             <div style="display: flex; align-items: center; justify-content: center; margin: 6px 0;">
               <span style="flex: 1; height: 1px; background: rgba(255,255,255,0.06);"></span>
@@ -2342,39 +2342,35 @@
               <svg width="18" height="18" viewBox="0 0 127.14 96.36" fill="currentColor">
                 <path d="M107.7,8.07A105.15,105.15,0,0,0,77.26,0a77.19,77.19,0,0,0-3.3,6.83A96.67,96.67,0,0,0,53.22,6.83,77.19,77.19,0,0,0,49.88,0,105.15,105.15,0,0,0,19.44,8.07C3.66,31.58-1.86,54.65,1,77.53A105.73,105.73,0,0,0,32,96.36a77.7,77.7,0,0,0,6.63-10.85,68.43,68.43,0,0,1-10.5-5c.88-.65,1.72-1.34,2.51-2a75.58,75.58,0,0,0,66,0c.79.71,1.63,1.4,2.51,2a68.43,68.43,0,0,1-10.5,5,77.7,77.7,0,0,0,6.63,10.85,105.73,105.73,0,0,0,31-18.83C129.87,49.25,123.63,26.43,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53S36.18,40.36,42.45,40.36,53.83,46,53.83,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.24,60,73.24,53S78.41,40.36,84.69,40.36,96.07,46,96.07,53,91,65.69,84.69,65.69Z"/>
               </svg>
-              Sign In with Discord
+              Se connecter avec Discord
             </button>
 
             <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 10px; margin-bottom: 0;">
-              Don't have an account? <span id="switch-to-register" style="color: var(--primary); font-weight: 800; cursor: pointer;">Sign up</span>
+              Vous n'avez pas de compte ? <span id="switch-to-register" style="color: var(--primary); font-weight: 800; cursor: pointer;">S'inscrire</span>
             </p>
           </form>
 
           <!-- Register Form -->
           <form id="auth-register-form" class="auth-form" style="display: none; flex-direction: column; gap: 16px;">
             <div class="form-group">
-              <label for="register-username" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Username</label>
-              <input type="text" id="register-username" class="auth-input-new" required placeholder="your_username" />
+              <label for="register-username" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Nom d'utilisateur</label>
+              <input type="text" id="register-username" class="auth-input-new" required placeholder="Votre pseudo" />
             </div>
             <div class="form-group">
-              <label for="register-email" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Email</label>
-              <input type="email" id="register-email" class="auth-input-new" required placeholder="you@example.com" />
+              <label for="register-email" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Adresse E-mail</label>
+              <input type="email" id="register-email" class="auth-input-new" required placeholder="nom@exemple.com" />
             </div>
             <div class="form-group">
-              <label for="register-password" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Password</label>
+              <label for="register-password" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Mot de passe</label>
               <input type="password" id="register-password" class="auth-input-new" required placeholder="••••••••" />
             </div>
             <div class="form-group">
-              <label for="register-confirm-password" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Confirm Password</label>
+              <label for="register-confirm-password" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Confirmer le mot de passe</label>
               <input type="password" id="register-confirm-password" class="auth-input-new" required placeholder="••••••••" />
             </div>
-            <div class="form-group">
-              <label for="register-refcode" style="font-size: 12.5px; font-weight: 700; color: #fff; display: block; margin-bottom: 8px;">Referral Code (Optional)</label>
-              <input type="text" id="register-refcode" class="auth-input-new" placeholder="Affiliate code" />
-            </div>
-            <button type="submit" class="btn w-full" style="height: 44px; background: var(--primary); border: none; color: #fff; font-weight: 800; font-size: 13.5px; border-radius: 8px; box-shadow: 0 4px 12px rgba(230, 0, 0, 0.25); cursor: pointer; transition: var(--transition);">Create Account</button>
+            <button type="submit" class="btn w-full" style="height: 44px; background: var(--primary); border: none; color: #fff; font-weight: 800; font-size: 13.5px; border-radius: 8px; box-shadow: 0 4px 12px rgba(230, 0, 0, 0.25); cursor: pointer; transition: var(--transition);">Créer mon compte ✨</button>
             <p style="font-family: var(--font-secondary); font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 10px; margin-bottom: 0;">
-              Already have an account? <span id="switch-to-login" style="color: var(--primary); font-weight: 800; cursor: pointer;">Sign in</span>
+              Vous avez déjà un compte ? <span id="switch-to-login" style="color: var(--primary); font-weight: 800; cursor: pointer;">Se connecter</span>
             </p>
           </form>
         </div>

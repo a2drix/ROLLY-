@@ -5701,17 +5701,35 @@ function openAuthModal(defaultTab = "login") {
   const regForm = document.getElementById("auth-register-form");
   const loginHeader = document.getElementById("auth-login-header");
   const regHeader = document.getElementById("auth-register-header");
+  const tabLogin = document.getElementById("tab-login");
+  const tabRegister = document.getElementById("tab-register");
 
   if (defaultTab === "register") {
     if (loginForm) loginForm.style.display = "none";
     if (regForm) regForm.style.display = "flex";
     if (loginHeader) loginHeader.style.display = "none";
     if (regHeader) regHeader.style.display = "block";
+    if (tabLogin) {
+      tabLogin.style.background = "transparent";
+      tabLogin.style.color = "var(--text-muted)";
+    }
+    if (tabRegister) {
+      tabRegister.style.background = "var(--primary)";
+      tabRegister.style.color = "#fff";
+    }
   } else {
     if (loginForm) loginForm.style.display = "flex";
     if (regForm) regForm.style.display = "none";
     if (loginHeader) loginHeader.style.display = "block";
     if (regHeader) regHeader.style.display = "none";
+    if (tabLogin) {
+      tabLogin.style.background = "var(--primary)";
+      tabLogin.style.color = "#fff";
+    }
+    if (tabRegister) {
+      tabRegister.style.background = "transparent";
+      tabRegister.style.color = "var(--text-muted)";
+    }
   }
 
   modal.classList.add("active");
@@ -5719,6 +5737,20 @@ function openAuthModal(defaultTab = "login") {
 
 // Global delegated click handler for Auth triggers & Modal closers
 document.addEventListener("click", (e) => {
+  const tabLog = e.target.closest("#tab-login, #switch-to-login");
+  if (tabLog) {
+    e.preventDefault();
+    openAuthModal("login");
+    return;
+  }
+
+  const tabReg = e.target.closest("#tab-register, #switch-to-register");
+  if (tabReg) {
+    e.preventDefault();
+    openAuthModal("register");
+    return;
+  }
+
   const loginTrigger = e.target.closest("#btn-login-modal-trigger, #btn-mobile-login-trigger, .btn-login-trigger, .header-login-btn");
   if (loginTrigger) {
     e.preventDefault();
