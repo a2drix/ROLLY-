@@ -3700,34 +3700,53 @@ function switchView(viewId) {
   window.scrollTo(0, 0);
 }
 
-// Render Infinite Categories Marquee (scrolling loop on home view)
+// Render Nextsystem Vertical Poster Categories Carousel
 function renderCategoryMarquee() {
-  const container = document.getElementById("category-scroll-container");
+  const container = document.getElementById("nextsystem-categories-grid");
   if (!container) return;
 
-  const categoriesList = CATEGORIES.filter(c => c.id !== "all");
+  const POSTER_CATEGORIES = [
+    { id: "streaming", name: "Assinaturas", tag: "STREAMING", image: "https://img.lightshot.app/4FW3uOeqSdWx9onpt4LdJQ.png" },
+    { id: "fortnite", name: "Fortnite", tag: "EPIC GAMES", image: "https://cdn.ereemby.com/attachments/17841570442757757imagem.png" },
+    { id: "jeux", name: "Jogos Steam", tag: "STEAM", image: "https://cdn.ereemby.com/attachments/17841570364359540imagem.png" },
+    { id: "accounts", name: "Contas FA", tag: "FULL ACCESS", image: "https://cdn.ereemby.com/attachments/17841570509891761imagem.png" },
+    { id: "keys", name: "Steam Keys", tag: "CD KEYS", image: "https://cdn.ereemby.com/attachments/17841570268825207imagem.png" },
+    { id: "softwares", name: "Softs & IA", tag: "AI TOOLS", image: "https://nextsystem.site/cdn/stores/12403/packages/23fe27bd-51df-402e-8401-359512c67321.png" }
+  ];
 
-  const listHTML = categoriesList.map(cat => {
-    const activeClass = cat.id === activeCategory ? "active" : "";
+  container.innerHTML = POSTER_CATEGORIES.map(cat => {
     return `
-      <div class="category-btn ${activeClass}" data-category-id="${cat.id}">
-        <span>${cat.icon}</span>
-        ${cat.name}
+      <div class="category-poster-card shine-effect" data-category-id="${cat.id}">
+        <div class="poster-card-image" style="background-image: url('${cat.image}');"></div>
+        <div class="poster-card-overlay">
+          <span class="poster-brand-tag">${cat.tag}</span>
+          <h3 class="poster-card-title">${cat.name}</h3>
+        </div>
       </div>
     `;
   }).join("");
 
-  container.innerHTML = listHTML + listHTML;
-
-  container.querySelectorAll(".category-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const catId = btn.getAttribute("data-category-id");
+  // Bind click on poster cards
+  container.querySelectorAll(".category-poster-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const catId = card.getAttribute("data-category-id");
       activeCategory = catId;
-      document.getElementById("catalog-category-select").value = catId;
+      const select = document.getElementById("catalog-category-select");
+      if (select) select.value = catId;
       renderCatalogProducts();
       switchView("products");
     });
   });
+
+  // Bind arrows
+  const prevBtn = document.getElementById("cat-arrow-prev");
+  const nextBtn = document.getElementById("cat-arrow-next");
+  if (prevBtn) {
+    prevBtn.onclick = () => container.scrollBy({ left: -240, behavior: "smooth" });
+  }
+  if (nextBtn) {
+    nextBtn.onclick = () => container.scrollBy({ left: 240, behavior: "smooth" });
+  }
 }
 
 // Render Trending Sidebar items list on Hero right-hand side
@@ -3759,41 +3778,48 @@ function renderSidebarTrending() {
   });
 }
 
-// Render Trending Products grid on Home
+// Render Categorized Product Grids on Home
 function renderTrendingProducts() {
-  const grid = document.getElementById("trending-products-grid");
-  if (!grid) return;
+  const gridAbonnements = document.getElementById("grid-abonnements");
+  const gridJeux = document.getElementById("grid-jeux");
 
-  let filtered = products.filter(p => {
-    const group = getCategoryGroup(p.category);
-    const matchesCat = activeCategory === "all" || group === activeCategory;
-    const isTrending = p.featuredGrid === true;
-    return matchesCat && isTrending;
-  });
-
-  // Fallback if no products are explicitly selected for home grid
-  if (filtered.length === 0) {
-    filtered = products.filter(p => {
+  // Filter Streaming / Abonnements products
+  if (gridAbonnements) {
+    const streamingProds = products.filter(p => {
       const group = getCategoryGroup(p.category);
-      const matchesCat = activeCategory === "all" || group === activeCategory;
-      const isTrending = p.popularIndex >= 80;
-      return matchesCat && isTrending;
-    });
+      return group === "streaming" || group === "softwares" || p.category.toLowerCase().includes("streaming") || p.category.toLowerCase().includes("tv");
+    }).slice(0, 10);
+
+    gridAbonnements.innerHTML = (streamingProds.length > 0 ? streamingProds : products.slice(0, 10))
+      .map(prod => renderProductCardHTML(prod)).join("");
+    bindProductCardsTriggers(gridAbonnements);
   }
 
-  filtered = filtered.slice(0, 8); // Render 8 products as requested by visual specs
+  // Filter Gaming / Steam products
+  if (gridJeux) {
+    const gamingProds = products.filter(p => {
+      const group = getCategoryGroup(p.category);
+      return group === "jeux" || group === "accounts" || group === "keys" || p.category.toLowerCase().includes("jeux") || p.category.toLowerCase().includes("steam");
+    }).slice(0, 10);
 
-  if (filtered.length === 0) {
-    grid.innerHTML = `
-      <div class="empty-cart-state" style="grid-column: 1/-1; padding: 40px 0;">
-        <p>Aucun produit disponible dans cette catégorie.</p>
-      </div>
-    `;
-    return;
+    gridJeux.innerHTML = (gamingProds.length > 0 ? gamingProds : products.slice(5, 15))
+      .map(prod => renderProductCardHTML(prod)).join("");
+    bindProductCardsTriggers(gridJeux);
   }
 
-  grid.innerHTML = filtered.map(prod => renderProductCardHTML(prod)).join("");
-  bindProductCardsTriggers(grid);
+  // Bind "Voir plus" buttons
+  document.querySelectorAll(".btn-see-more").forEach(btn => {
+    btn.onclick = () => {
+      const targetCat = btn.getAttribute("data-cat-target");
+      if (targetCat) {
+        activeCategory = targetCat;
+        const select = document.getElementById("catalog-category-select");
+        if (select) select.value = targetCat;
+      }
+      renderCatalogProducts();
+      switchView("products");
+    };
+  });
 }
 
 // Render Catalog products view (filtered & sorted)
