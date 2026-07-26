@@ -3706,11 +3706,11 @@ function renderCategoryMarquee() {
   if (!container) return;
 
   const POSTER_CATEGORIES = [
-    { id: "streaming", name: "Assinaturas", tag: "STREAMING", image: "https://img.lightshot.app/4FW3uOeqSdWx9onpt4LdJQ.png" },
+    { id: "streaming", name: "Abonnements", tag: "STREAMING", image: "https://img.lightshot.app/4FW3uOeqSdWx9onpt4LdJQ.png" },
     { id: "fortnite", name: "Fortnite", tag: "EPIC GAMES", image: "https://cdn.ereemby.com/attachments/17841570442757757imagem.png" },
-    { id: "jeux", name: "Jogos Steam", tag: "STEAM", image: "https://cdn.ereemby.com/attachments/17841570364359540imagem.png" },
-    { id: "accounts", name: "Contas FA", tag: "FULL ACCESS", image: "https://cdn.ereemby.com/attachments/17841570509891761imagem.png" },
-    { id: "keys", name: "Steam Keys", tag: "CD KEYS", image: "https://cdn.ereemby.com/attachments/17841570268825207imagem.png" },
+    { id: "jeux", name: "Jeux Steam", tag: "STEAM", image: "https://cdn.ereemby.com/attachments/17841570364359540imagem.png" },
+    { id: "accounts", name: "Comptes FA", tag: "FULL ACCESS", image: "https://cdn.ereemby.com/attachments/17841570509891761imagem.png" },
+    { id: "keys", name: "Clés Steam", tag: "CD KEYS", image: "https://cdn.ereemby.com/attachments/17841570268825207imagem.png" },
     { id: "softwares", name: "Softs & IA", tag: "AI TOOLS", image: "https://nextsystem.site/cdn/stores/12403/packages/23fe27bd-51df-402e-8401-359512c67321.png" }
   ];
 
